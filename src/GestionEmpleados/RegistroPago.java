@@ -16,6 +16,10 @@ public class RegistroPago {
     // Monto total a pagar
     private double monto;
 
+    // Medio de pago
+    public enum MedioPago { PENDIENTE, REALIZADO };
+    private MedioPago medioPago;
+    
     // Estado actual del pago
     public enum PagoEstado { PENDIENTE, REALIZADO }
     private PagoEstado estado;
@@ -24,22 +28,26 @@ public class RegistroPago {
     public RegistroPago(int idPago,
                         int idEmpleado,
                         LocalDateTime fechaPago,
-                        double monto) {
+                        double monto,
+                        MedioPago medioPago) {
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
         this.fechaPago = fechaPago;
         this.monto = monto;
+        this.medioPago = medioPago;
         this.estado = PagoEstado.PENDIENTE;
     }
     
     // Constructor alternativo sin fechaIngreso explícita (se toma el momento actual).
     public RegistroPago(int idPago,
                         int idEmpleado,
-                        double monto) {
+                        double monto,
+                        MedioPago medioPago) {
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
         this.fechaPago = LocalDateTime.now();
         this.monto = monto;
+        this.medioPago = medioPago;
         this.estado = PagoEstado.PENDIENTE;
     }
 

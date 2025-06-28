@@ -1,12 +1,12 @@
 package GestionEmpleados;
 
 import GestionEmpleados.Enum.*;
-import Interfaz.IGestionSupervisores;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import Interfaz.IGestionGenerica;
 
-public class Jefe extends Empleado implements IGestionSupervisores {
+public class Jefe extends Empleado implements IGestionGenerica<Supervisor> {
 
     // ID de supervisores a cargo
     private final List<Integer> listaSupervisorIds;
@@ -65,21 +65,21 @@ public class Jefe extends Empleado implements IGestionSupervisores {
     
     // Agrega un supervisor al jefe si no está ya presente.
     @Override
-    public void addSupervisor(Supervisor supervisor) {
+    public void add(Supervisor supervisor) {
         listaSupervisorIds.add(supervisor.getId());
     }
 
     // Elimina un supervisor a cargo por su identificador.
     @Override
-    public void dropSupervisor(int idSupervisor) {
+    public void drop(int idSupervisor) {
         listaSupervisorIds.remove(Integer.valueOf(idSupervisor));
     }
 
     // Elimina un supervisor a cargo por su objeto.
     @Override
-    public void dropSupervisor(Supervisor supervisor) {
+    public void drop(Supervisor supervisor) {
         if (supervisor != null) {
-            dropSupervisor(supervisor.getId());
+            drop(supervisor.getId());
         }
     }
 

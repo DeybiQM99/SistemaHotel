@@ -1,12 +1,12 @@
 package GestionEmpleados;
 
 import GestionEmpleados.Enum.*;
-import Interfaz.IGestionOperativa;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import Interfaz.IGestionGenerica;
 
-public class Supervisor extends Empleado implements IGestionOperativa {
+public class Supervisor extends Empleado implements IGestionGenerica <Operario> {
 
     // Lista de IDs de operarios a cargo del supervisor
     private final List<Integer> listaOperarioIds = new ArrayList<>();
@@ -62,21 +62,21 @@ public class Supervisor extends Empleado implements IGestionOperativa {
     
     //Agrega un Operario.
     @Override
-    public void addOperario(Operario operario) {
+    public void add(Operario operario) {
         listaOperarioIds.add(operario.getId());
     }
 
     // Elimina un operario por su identificador.
     @Override
-    public void dropOperario(int idOperario) {
+    public void drop(int idOperario) {
         listaOperarioIds.remove(Integer.valueOf(idOperario));
     }
 
     // Elimina un operario por su objeto.
     @Override
-    public void dropOperario(Operario operario) {
+    public void drop(Operario operario) {
         if (operario != null)
-            dropOperario(operario.getId());
+            drop(operario.getId());
     }
 
     // Obtiene la lista de IDs de operarios asignados (solo lectura), evitando enlazar las listas.

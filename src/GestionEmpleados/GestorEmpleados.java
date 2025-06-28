@@ -4,6 +4,7 @@ import GestionEmpleados.Enum.TipoContrato;
 import Interfaz.*;
 import java.util.*;
 
+// No se impleto una clase generica para los Gestores, ya que podrian comprometer la integridad del tipado
 public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGestionRegistros{
     //Lista de empleados, areas y registros
     private Set<Empleado> misEmpleados;

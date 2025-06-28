@@ -55,6 +55,8 @@ public class Operario extends Empleado {
         
         salario = totalHoras * tarifaPorHora;
         
+        horasTrabajadasPorDia.clear();
+        
         return salario;
     }
 

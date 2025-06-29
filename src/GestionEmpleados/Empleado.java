@@ -1,17 +1,11 @@
 package GestionEmpleados;
 
 import GestionEmpleados.Enum.*;
-import Interfaz.IAsistenciaSemanal;
-import Interfaz.IRegistrarHorasDiarias;
-import java.time.Duration;
+import Interfaz.IAsistencia;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public abstract class Empleado extends Entidad 
-    implements IRegistrarHorasDiarias, IAsistenciaSemanal {
+public abstract class Empleado extends Entidad implements IAsistencia {
 
     // Salario calculado
     protected double salario;
@@ -23,10 +17,13 @@ public abstract class Empleado extends Entidad
     protected LocalDateTime fechaRenovacion;
 
     // Estado actual del empleado
-    protected EstadoEmpleado estadoLaboral;
+    protected EstadoLaboral estadoLaboral;
     
     // Tipo de contrato laboral
     protected TipoContrato tipoContrato;
+    
+    // Tipo de Incidencia
+    protected TipoIncidencia tipoIncidencia;
     
     // Área o departamento del empleado
     protected int idArea;
@@ -35,7 +32,7 @@ public abstract class Empleado extends Entidad
     protected double tarifaPorHora;
 
     // Horas trabajadas cada día de la semana
-    protected final List<Integer> horasTrabajadasPorDia = new ArrayList<>();
+    protected final Map<LocalDateTime, Integer> horasTrabajadasPorDia = new HashMap<>();
 
     // Mapa de asistencia: fecha -> presente (true) o falta (false)
     protected final Map<LocalDateTime, Boolean> listaAsistencias = new HashMap<>();
@@ -56,7 +53,8 @@ public abstract class Empleado extends Entidad
         this.fechaTermino = fechaTermino;
         this.fechaRenovacion = fechaRenovacion;
         this.tipoContrato = tipoContrato;
-        this.estadoLaboral = EstadoEmpleado.ACTIVO;
+        this.estadoLaboral = EstadoLaboral.ACTIVO;
+        this.tipoIncidencia = TipoIncidencia.NINGUNA;
         this.idArea = idArea;
         this.tarifaPorHora = tarifaPorHora;
     }
@@ -76,14 +74,15 @@ public abstract class Empleado extends Entidad
         this.fechaTermino = fechaTermino;
         this.fechaRenovacion = fechaRenovacion;
         this.tipoContrato = tipoContrato;
-        this.estadoLaboral = EstadoEmpleado.ACTIVO;
+        this.estadoLaboral = EstadoLaboral.ACTIVO;
+        this.tipoIncidencia = TipoIncidencia.NINGUNA;
         this.idArea = idArea;
         this.tarifaPorHora = tarifaPorHora;
     }
 
     //Marca al empleado como despedido y actualiza la fecha de término.
     public void registrarDespido() {
-        this.estadoLaboral = EstadoEmpleado.DESPEDIDO;
+        this.estadoLaboral = EstadoLaboral.DESPEDIDO;
         this.fechaTermino = LocalDateTime.now();
     }
     
@@ -107,13 +106,34 @@ public abstract class Empleado extends Entidad
     
     // Todavia no se implementa el metodo.
     @Override
-    public abstract double calcularSalario();
+    public double calcularSalario() {
+        double totalHoras = horasTrabajadasPorDia.values().stream().mapToDouble(p -> p).sum();
+
+        double descuento;
+        
+        salario = totalHoras * tarifaPorHora;
+        
+        switch (tipoIncidencia) {
+            case LEVE -> descuento = 0.05;
+            case MODERADA -> descuento = 0.1;
+            case GRAVE -> {
+                descuento = 0.25;
+                estadoLaboral = EstadoLaboral.DESPEDIDO;
+            }
+            default -> descuento = 0;
+        }
+        
+        salario = salario * (1 - descuento);
+        
+        horasTrabajadasPorDia.clear();
+        
+        return salario;
+    }
 
     // Registra las horas trabajadas en un día calculando la diferencia entre ingreso y salida.
     @Override
-    public void registrarHorasDiarias(LocalDateTime horaIngreso, LocalDateTime horaSalida) {
-        long horas = Duration.between(horaIngreso, horaSalida).toHours();
-        horasTrabajadasPorDia.add((int) horas);
+    public void registrarHorasDiarias(LocalDateTime fecha, int horasTrabajadas) {
+        horasTrabajadasPorDia.putIfAbsent(fecha, horasTrabajadas);
     }
 
     // Registra la asistencia en una fecha, evitando sobrescrituras.
@@ -131,6 +151,8 @@ public abstract class Empleado extends Entidad
             if (!asistio)
                 faltas ++;
         }
+        
+        faltas = (int)(listaAsistencias.values().stream().filter(asistio -> asistio == false).count());
 
         return faltas;
     }
@@ -144,7 +166,7 @@ public abstract class Empleado extends Entidad
     public void setTarifaPorHora(double tarifaPorHora) { this.tarifaPorHora = tarifaPorHora; }
 
     // Obtiene las horas trabajadas por día (solo lectura), evitando enlazar las listas.
-    public List<Integer> getHorasTrabajadasPorDia() { return List.copyOf(horasTrabajadasPorDia); }
+    public Map<LocalDateTime, Integer> getHorasTrabajadasPorDia() { return Collections.unmodifiableMap(horasTrabajadasPorDia); }
 
     // Obtiene el registro de asistencias (solo lectura), evitando enlazar las listas.
     public Map<LocalDateTime, Boolean> getListaAsistencias() { return Map.copyOf(listaAsistencias); }
@@ -157,11 +179,13 @@ public abstract class Empleado extends Entidad
     public LocalDateTime getFechaRenovacion() { return fechaRenovacion; }
     public void setFechaRenovacion(LocalDateTime fechaRenovacion) { this.fechaRenovacion = fechaRenovacion; }
 
-    public EstadoEmpleado getEstadoLaboral() { return estadoLaboral; }
-    public void setEstadoLaboral(EstadoEmpleado estadoLaboral) { this.estadoLaboral = estadoLaboral; }
+    public EstadoLaboral getEstadoLaboral() { return estadoLaboral; }
+    public void setEstadoLaboral(EstadoLaboral estadoLaboral) { this.estadoLaboral = estadoLaboral; }
     
-
     public TipoContrato getTipoContrato() { return tipoContrato; }
     public void setTipoContrato(TipoContrato tipoContrato) { this.tipoContrato = tipoContrato; }
+
+    public TipoIncidencia getTipoIncidencia() { return tipoIncidencia; }
+    public void setTipoIncidencia(TipoIncidencia tipoIncidencia) { this.tipoIncidencia = tipoIncidencia; }
 
 }

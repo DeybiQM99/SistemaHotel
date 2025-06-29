@@ -46,20 +46,6 @@ public class Supervisor extends Empleado implements IGestionGenerica <Operario> 
              LocalDateTime.now(), fechaTermino, fechaRenovacion, tipoContrato, idJefe);
     }
     
-    // Calcula el salario.
-    @Override
-    public double calcularSalario() {
-        double totalHoras = 0;
-        
-        for (int horas : horasTrabajadasPorDia) {
-            totalHoras += horas;
-        }
-        
-        salario = totalHoras * tarifaPorHora;
-        
-        return salario;
-    }
-    
     //Agrega un Operario.
     @Override
     public void add(Operario operario) {

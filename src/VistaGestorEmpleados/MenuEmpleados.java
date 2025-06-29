@@ -4,9 +4,11 @@
  */
 package VistaGestorEmpleados;
 
-import GestionEmpleados.GestorEmpleados;
+import GestionEmpleados.*;
+import GestionEmpleados.Enum.TipoContrato;
 import VistaHotel.Reservacion;
 import VistaHotel.VentanaPrincipal;
+import java.time.LocalDateTime;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -34,6 +36,19 @@ public class MenuEmpleados extends javax.swing.JFrame {
         lbImagen.setOpaque(false);
         
         actualizarTabla();
+        
+        GestorEmpleados gestor = new GestorEmpleados();
+        gestor.addEmpleado(new Operario(1,
+                    2,
+                    3,
+                    "Juan",
+                    "Apellido",
+                    "Juan@gmail.com",
+                    "1234567-1",
+                    LocalDateTime.now(),
+                    LocalDateTime.now(),
+                    TipoContrato.RENOVABLE,
+                    1));
     }
     
     public void registrarEmpleado(){

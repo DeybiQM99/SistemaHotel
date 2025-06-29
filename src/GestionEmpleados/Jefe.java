@@ -52,15 +52,7 @@ public class Jefe extends Empleado implements IGestionGenerica<Supervisor> {
     // Calcula el salario semanal: tarifa por horas trabajadas más bono.
     @Override
     public double calcularSalario() {
-        double totalHoras = 0;
-        
-        for (int horas : horasTrabajadasPorDia) {
-            totalHoras += horas;
-        }
-        
-        salario = (totalHoras * tarifaPorHora) + BONO_JEFE;
-        
-        return salario;
+        return super.calcularSalario() + BONO_JEFE;
     }
     
     // Agrega un supervisor al jefe si no está ya presente.

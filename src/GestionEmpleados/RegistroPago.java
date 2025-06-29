@@ -17,7 +17,7 @@ public class RegistroPago {
     private double monto;
 
     // Medio de pago
-    public enum MedioPago { PENDIENTE, REALIZADO };
+    public enum MedioPago { EFECTIVO, TRANSFERENCIA };
     private MedioPago medioPago;
     
     // Estado actual del pago

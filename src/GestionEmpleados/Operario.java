@@ -43,23 +43,6 @@ public class Operario extends Empleado {
         this.idSupervisor = idSupervisor;
     }
 
-    // Calcula el salario.
-
-    @Override
-    public double calcularSalario() {
-        double totalHoras = 0;
-        
-        for (int horas : horasTrabajadasPorDia) {
-            totalHoras += horas;
-        }
-        
-        salario = totalHoras * tarifaPorHora;
-        
-        horasTrabajadasPorDia.clear();
-        
-        return salario;
-    }
-
     // Obtiene el identificador del supervisor.
     public int getIdSupervisor() {
         return idSupervisor;

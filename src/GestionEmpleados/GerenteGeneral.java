@@ -1,6 +1,6 @@
 package GestionEmpleados;
 
-import GestionEmpleados.Enum.EstadoEmpleado;
+import GestionEmpleados.Enum.EstadoLaboral;
 import Interfaz.IAccionesGerente;
 import java.time.LocalDateTime;
 
@@ -75,8 +75,8 @@ public class GerenteGeneral extends Entidad implements IAccionesGerente {
         empleado.setFechaTermino(nuevaTermino);
         empleado.setFechaRenovacion(nuevaRenovacion);
         // Reactivar empleado en caso de que estuviera despedido
-        if (empleado.getEstadoLaboral() == EstadoEmpleado.DESPEDIDO) {
-            empleado.setEstadoLaboral(EstadoEmpleado.ACTIVO);
+        if (empleado.getEstadoLaboral() == EstadoLaboral.DESPEDIDO) {
+            empleado.setEstadoLaboral(EstadoLaboral.ACTIVO);
         }
     }
 

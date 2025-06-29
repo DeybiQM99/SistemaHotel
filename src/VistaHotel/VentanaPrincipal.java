@@ -1,7 +1,7 @@
 
 package VistaHotel;
 
-import VistaGestorEmpleados.MenuEmpleados;
+import VistaGestorEmpleados.MenuGerente;
 import VistaGestorEmpleados.Prueba;
 import javax.swing.JOptionPane;
 import javax.swing.UIClientPropertyKey;
@@ -24,6 +24,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BtnRegresar = new javax.swing.JButton();
         LblMinimizar = new javax.swing.JLabel();
         LblCerrar = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -36,7 +37,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/revisar (3).png"))); // NOI18N
-        jLabel1.setText("CLIENTES");
+        jLabel1.setText("GERENTE");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.setMaximumSize(new java.awt.Dimension(40, 16));
         jLabel1.setMinimumSize(new java.awt.Dimension(40, 16));
@@ -45,7 +46,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 240, 200));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 240, 200));
 
         jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -71,7 +72,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 BtnRegresarMouseClicked(evt);
             }
         });
-        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 150, 40));
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, 150, 40));
 
         LblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MinimizarEV.png"))); // NOI18N
         LblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,7 +85,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 LblMinimizarMouseClicked(evt);
             }
         });
-        jPanel1.add(LblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, -1, 20));
+        jPanel1.add(LblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, 20));
 
         LblCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarEV.png"))); // NOI18N
         LblCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,9 +93,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 LblCerrarMouseClicked(evt);
             }
         });
-        jPanel1.add(LblCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, 20));
+        jPanel1.add(LblCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, -1, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 420));
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/revisar (3).png"))); // NOI18N
+        jLabel2.setText("EMPLEADOS");
+        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel2.setMaximumSize(new java.awt.Dimension(40, 16));
+        jLabel2.setMinimumSize(new java.awt.Dimension(40, 16));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 240, 200));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,13 +161,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
    this.dispose();
         // Crea y muestra el siguiente formulario
-        MenuEmpleados reserwv = new MenuEmpleados();// Reemplaza con tu clase de formulario
+        MenuGerente reserwv = new MenuGerente();// Reemplaza con tu clase de formulario
         reserwv.setVisible(true); //  Hace visible la instancia de 'Login2',
         // FIN
 
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +203,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
     
         /* Create and display the form */
@@ -191,6 +220,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel LblCerrar;
     private javax.swing.JLabel LblMinimizar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

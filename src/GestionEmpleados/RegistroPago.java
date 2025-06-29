@@ -62,32 +62,22 @@ public class RegistroPago {
     }
 
     // Obtiene el identificador único del registro de pago.
-    public int getIdPago() {
-        return idPago;
-    }
+    public int getIdPago() { return idPago; }
 
     // Obtiene el identificador del empleado asociado.
-    public int getIdEmpleado() {
-        return idEmpleado;
-    }
+    public int getIdEmpleado() { return idEmpleado; }
 
     // Obtiene la fecha y hora del pago.
-    public LocalDateTime getFechaPago() {
-        return fechaPago;
-    }
+    public LocalDateTime getFechaPago() { return fechaPago; }
 
-    // Obtiene el monto a pagar.
-    public double getMonto() {
-        return monto;
-    }
-
-    // Actualiza el monto a pagar. Nuevo monto (debe ser >= 0).
-    public void setMonto(double monto) {
-        this.monto = monto;
-    }
+    public double getMonto() { return monto; }
+    public void setMonto(double monto) { this.monto = monto; }
 
     // Obtiene el estado actual del pago.
-    public PagoEstado getEstado() {
-        return estado;
-    }
+    public PagoEstado getEstado() { return estado; }
+
+    public MedioPago getMedioPago() { return medioPago; }
+    public void setMedioPago(MedioPago medioPago) { this.medioPago = medioPago; }
+    
+    
 }

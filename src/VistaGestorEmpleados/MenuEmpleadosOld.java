@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class MenuEmpleados extends javax.swing.JFrame {
+public class MenuEmpleadosOld extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuPrincipal
@@ -26,7 +26,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
     public static final List<String[]> empleados = new ArrayList<>();
     public static final GestorEmpleados gestor = new GestorEmpleados();
     
-    public MenuEmpleados() {
+    public MenuEmpleadosOld() {
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -1320,8 +1320,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarPagoActionPerformed
 
     private void btnReporte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporte1ActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(
-            MenuEmpleados.this, // Referencia al componente la ventana actual 
+        int respuesta = JOptionPane.showConfirmDialog(MenuEmpleadosOld.this, // Referencia al componente la ventana actual 
              "¿Deseas realmente salir?", // Mensaje que se muestra al usuario
              "Confirmación", // Título de la ventana de diálogo
              JOptionPane.YES_NO_OPTION // Tipo de opciones que se presentan al usuario (Sí y No)

@@ -1,15 +1,41 @@
 package VistaGestorEmpleados;
 
+import GestionEmpleados.*;
+import GestionEmpleados.Enum.TipoContrato;
 import VistaHotel.VentanaPrincipal;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import javax.swing.*;
 
 
 public class MenuEmpleado extends javax.swing.JFrame {
 
+    public final GestorEmpleados gestor = new GestorEmpleados();
+    
     public MenuEmpleado() {
         initComponents();
+        // Operarios
+        gestor.addEmpleado(new Operario(1,15.0,101,"Luis","Pérez","luis.perez@empresa.com","12345678A",LocalDateTime.of(2022,1,10,8,0),LocalDateTime.of(2025,1,10,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,201));
+        gestor.addEmpleado(new Operario(1,16.0,102,"Ana","Gómez","ana.gomez@empresa.com","12345679B",LocalDateTime.of(2022,2,5,8,0),LocalDateTime.of(2025,2,5,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,202));
+        gestor.addEmpleado(new Operario(1,17.0,103,"Carlos","López","carlos.lopez@empresa.com","12345680C",LocalDateTime.of(2022,3,1,8,0),LocalDateTime.of(2025,3,1,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,203));
+        gestor.addEmpleado(new Operario(1,18.0,104,"María","Ramírez","maria.ramirez@empresa.com","12345681D",LocalDateTime.of(2022,4,10,8,0),LocalDateTime.of(2025,4,10,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,204));
+        gestor.addEmpleado(new Operario(1,19.0,105,"Jorge","Torres","jorge.torres@empresa.com","12345682E",LocalDateTime.of(2022,5,15,8,0),LocalDateTime.of(2025,5,15,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,205));
+
+        // Supervisores
+        gestor.addEmpleado(new Supervisor(2,25.0,201,"Ricardo","Díaz","ricardo.diaz@empresa.com","22345678A",LocalDateTime.of(2021,6,1,8,0),LocalDateTime.of(2025,6,1,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,301));
+        gestor.addEmpleado(new Supervisor(2,26.0,202,"Laura","Herrera","laura.herrera@empresa.com","22345679B",LocalDateTime.of(2021,7,10,8,0),LocalDateTime.of(2025,7,10,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,302));
+        gestor.addEmpleado(new Supervisor(2,27.0,203,"Sofía","Vega","sofia.vega@empresa.com","22345680C",LocalDateTime.of(2021,8,15,8,0),LocalDateTime.of(2025,8,15,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,303));
+        gestor.addEmpleado(new Supervisor(2,28.0,204,"Eduardo","Salinas","eduardo.salinas@empresa.com","22345681D",LocalDateTime.of(2021,9,20,8,0),LocalDateTime.of(2025,9,20,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,304));
+        gestor.addEmpleado(new Supervisor(2,29.0,205,"Patricia","Muñoz","patricia.munoz@empresa.com","22345682E",LocalDateTime.of(2021,10,25,8,0),LocalDateTime.of(2025,10,25,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,305));
+
+        // Jefes
+        gestor.addEmpleado(new Jefe(3,40.0,301,"Fernando","Ortiz","fernando.ortiz@empresa.com","32345678A",LocalDateTime.of(2020,1,1,9,0),LocalDateTime.of(2025,1,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(201,202)));
+        gestor.addEmpleado(new Jefe(3,41.0,302,"Verónica","Salazar","veronica.salazar@empresa.com","32345679B",LocalDateTime.of(2020,2,1,9,0),LocalDateTime.of(2025,2,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(203,204)));
+        gestor.addEmpleado(new Jefe(3,42.0,303,"Miguel","Ramos","miguel.ramos@empresa.com","32345680C",LocalDateTime.of(2020,3,1,9,0),LocalDateTime.of(2025,3,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(205,201)));
+        gestor.addEmpleado(new Jefe(3,43.0,304,"Antonia","Flores","antonia.flores@empresa.com","32345681D",LocalDateTime.of(2020,4,1,9,0),LocalDateTime.of(2025,4,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(202,203)));
+        gestor.addEmpleado(new Jefe(3,44.0,305,"Ricardo","Blanco","ricardo.blanco@empresa.com","32345682E",LocalDateTime.of(2020,5,1,9,0),LocalDateTime.of(2025,5,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(204,205)));
         
         Icon miIcono = new ImageIcon(new ImageIcon(getClass().getResource("/imagenes/logoHotelOscuro.jpg")).getImage().getScaledInstance(lbImagen.getWidth(), lbImagen.getHeight(), 0));
         lbImagen.setIcon(miIcono);
@@ -27,10 +53,10 @@ public class MenuEmpleado extends javax.swing.JFrame {
         panelPrincipal = new javax.swing.JPanel();
         panelMenu = new javax.swing.JPanel();
         lbImagen = new javax.swing.JLabel();
-        btnEmpleados = new javax.swing.JButton();
-        btnAreas = new javax.swing.JButton();
-        btnPagos = new javax.swing.JButton();
         btnAsistencia = new javax.swing.JButton();
+        btnPagos = new javax.swing.JButton();
+        btnAreas = new javax.swing.JButton();
+        btnContratos = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         panelContenido = new javax.swing.JPanel();
@@ -49,50 +75,50 @@ public class MenuEmpleado extends javax.swing.JFrame {
             }
         });
 
-        btnEmpleados.setBackground(new java.awt.Color(17, 50, 77));
-        btnEmpleados.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
-        btnEmpleados.setForeground(new java.awt.Color(255, 255, 255));
-        btnEmpleados.setText("Empleados");
-        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmpleadosActionPerformed(evt);
-            }
-        });
-
-        btnAreas.setBackground(new java.awt.Color(17, 50, 77));
-        btnAreas.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
-        btnAreas.setForeground(new java.awt.Color(255, 255, 255));
-        btnAreas.setText("Areas");
-        btnAreas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAreasActionPerformed(evt);
-            }
-        });
-
-        btnPagos.setBackground(new java.awt.Color(17, 50, 77));
-        btnPagos.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
-        btnPagos.setForeground(new java.awt.Color(255, 255, 255));
-        btnPagos.setText("Nomina");
-        btnPagos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPagosActionPerformed(evt);
-            }
-        });
-
         btnAsistencia.setBackground(new java.awt.Color(17, 50, 77));
         btnAsistencia.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
         btnAsistencia.setForeground(new java.awt.Color(255, 255, 255));
-        btnAsistencia.setText("Asistencias");
+        btnAsistencia.setText("Asistencia");
         btnAsistencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAsistenciaActionPerformed(evt);
             }
         });
 
+        btnPagos.setBackground(new java.awt.Color(17, 50, 77));
+        btnPagos.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
+        btnPagos.setForeground(new java.awt.Color(255, 255, 255));
+        btnPagos.setText("Rev. Pagos");
+        btnPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagosActionPerformed(evt);
+            }
+        });
+
+        btnAreas.setBackground(new java.awt.Color(17, 50, 77));
+        btnAreas.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
+        btnAreas.setForeground(new java.awt.Color(255, 255, 255));
+        btnAreas.setText("Rev. Área");
+        btnAreas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAreasActionPerformed(evt);
+            }
+        });
+
+        btnContratos.setBackground(new java.awt.Color(17, 50, 77));
+        btnContratos.setFont(new java.awt.Font("Segoe UI Black", 3, 13)); // NOI18N
+        btnContratos.setForeground(new java.awt.Color(255, 255, 255));
+        btnContratos.setText("Rev. Contrato");
+        btnContratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContratosActionPerformed(evt);
+            }
+        });
+
         btnReportes.setBackground(new java.awt.Color(17, 50, 77));
         btnReportes.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
         btnReportes.setForeground(new java.awt.Color(255, 255, 255));
-        btnReportes.setText("Reportes");
+        btnReportes.setText("Registro");
         btnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReportesActionPerformed(evt);
@@ -114,18 +140,20 @@ public class MenuEmpleado extends javax.swing.JFrame {
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelMenuLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnContratos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelMenuLayout.setVerticalGroup(
@@ -133,17 +161,17 @@ public class MenuEmpleado extends javax.swing.JFrame {
             .addGroup(panelMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(btnAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
+                .addComponent(btnPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnContratos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(66, 66, 66)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -175,36 +203,36 @@ public class MenuEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
+    private void btnContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratosActionPerformed
         // Crear instancia del nuevo panel
-        GestionEmpleados empleados = new GestionEmpleados();
-    empleados.setPreferredSize(new Dimension(840, 600));
+        EmpContrato ar = new EmpContrato();
+        ar.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(empleados, BorderLayout.CENTER);
+        panelContenido.add(ar, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
-    }//GEN-LAST:event_btnEmpleadosActionPerformed
+    }//GEN-LAST:event_btnContratosActionPerformed
 
     private void btnAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasActionPerformed
         // Crear instancia del nuevo panel
-        GestionAreas areas1 = new GestionAreas();
-        areas1.setPreferredSize(new Dimension(840, 600));
+        EmpAreas sd= new EmpAreas();
+        sd.setPreferredSize(new Dimension(840, 600));
 
         // Agregarlo al panel contenedor
         panelContenido.removeAll();
-        panelContenido.add(areas1, BorderLayout.CENTER);
+        panelContenido.add(sd, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnAreasActionPerformed
 
     private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
         // Crear instancia del nuevo panel
-        GestionNominas pagos = new GestionNominas();
-        pagos.setPreferredSize(new Dimension(840, 600));
+        EmpPagos ae = new EmpPagos();
+        ae.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(pagos,BorderLayout.CENTER);
+        panelContenido.add(ae,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnPagosActionPerformed
@@ -223,27 +251,27 @@ public class MenuEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsistenciaActionPerformed
-        GestionAsistencias asistencias = new GestionAsistencias();
-        asistencias.setPreferredSize(new Dimension(840, 600));
+        EmpAsistencias asist = new EmpAsistencias(gestor);
+        asist.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(asistencias,BorderLayout.CENTER);
+        panelContenido.add(asist,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();   
     }//GEN-LAST:event_btnAsistenciaActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        GestionReportes reportes = new GestionReportes();
-        reportes.setPreferredSize(new Dimension(840, 600));
+        EmpReportes report = new EmpReportes();
+        report.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(reportes,BorderLayout.CENTER);
+        panelContenido.add(report,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnReportesActionPerformed
 
     private void lbImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbImagenMouseClicked
-        GestionLogo logo = new GestionLogo();
+        EmpLogo logo = new EmpLogo();
         logo.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
@@ -255,7 +283,7 @@ public class MenuEmpleado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAreas;
     private javax.swing.JButton btnAsistencia;
-    private javax.swing.JButton btnEmpleados;
+    private javax.swing.JButton btnContratos;
     private javax.swing.JButton btnPagos;
     private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnVolver;

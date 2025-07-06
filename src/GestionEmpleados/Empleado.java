@@ -2,6 +2,7 @@ package GestionEmpleados;
 
 import GestionEmpleados.Enum.*;
 import Interfaz.IAsistencia;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -32,10 +33,10 @@ public abstract class Empleado extends Entidad implements IAsistencia {
     protected double tarifaPorHora;
 
     // Horas trabajadas cada día de la semana
-    protected final Map<LocalDateTime, Integer> horasTrabajadasPorDia = new HashMap<>();
+    protected final Map<LocalDate, List<Integer>> horasTrabajadasPorDia = new HashMap<>();
 
     // Mapa de asistencia: fecha -> presente (true) o falta (false)
-    protected final Map<LocalDateTime, Boolean> listaAsistencias = new HashMap<>();
+    protected final Map<LocalDate, Boolean> listaAsistencias = new HashMap<>();
 
     // Constructor completo.
     public Empleado(int idArea,
@@ -107,8 +108,8 @@ public abstract class Empleado extends Entidad implements IAsistencia {
     // Todavia no se implementa el metodo.
     @Override
     public double calcularSalario() {
-        double totalHoras = horasTrabajadasPorDia.values().stream().mapToDouble(p -> p).sum();
-
+        int totalHoras = horasTrabajadasPorDia.values().stream().flatMap(List::stream).mapToInt(Integer::intValue).sum();
+        
         double descuento;
         
         salario = totalHoras * tarifaPorHora;
@@ -129,16 +130,18 @@ public abstract class Empleado extends Entidad implements IAsistencia {
         
         return salario;
     }
+    
+    public int getHorasTrabajadas() { return horasTrabajadasPorDia.values().stream().flatMap(List::stream).mapToInt(Integer::intValue).sum(); }
 
     // Registra las horas trabajadas en un día calculando la diferencia entre ingreso y salida.
     @Override
-    public void registrarHorasDiarias(LocalDateTime fecha, int horasTrabajadas) {
-        horasTrabajadasPorDia.putIfAbsent(fecha, horasTrabajadas);
+    public void registrarHorasDiarias(LocalDate fecha, List<Integer> horas) {
+        horasTrabajadasPorDia.putIfAbsent(fecha, horas);
     }
 
     // Registra la asistencia en una fecha, evitando sobrescrituras.
     @Override
-    public void registrarAsistencia(LocalDateTime fecha, boolean presente) {
+    public void registrarAsistencia(LocalDate fecha, boolean presente) {
         listaAsistencias.putIfAbsent(fecha, presente);
     }
 
@@ -166,10 +169,10 @@ public abstract class Empleado extends Entidad implements IAsistencia {
     public void setTarifaPorHora(double tarifaPorHora) { this.tarifaPorHora = tarifaPorHora; }
 
     // Obtiene las horas trabajadas por día (solo lectura), evitando enlazar las listas.
-    public Map<LocalDateTime, Integer> getHorasTrabajadasPorDia() { return Collections.unmodifiableMap(horasTrabajadasPorDia); }
+    public Map<LocalDate, List<Integer>> getHorasTrabajadasPorDia() { return Collections.unmodifiableMap(horasTrabajadasPorDia); }
 
     // Obtiene el registro de asistencias (solo lectura), evitando enlazar las listas.
-    public Map<LocalDateTime, Boolean> getListaAsistencias() { return Map.copyOf(listaAsistencias); }
+    public Map<LocalDate, Boolean> getListaAsistencias() { return Map.copyOf(listaAsistencias); }
     
     public LocalDateTime getFechaTermino() { return fechaTermino; }
     public void setFechaTermino(LocalDateTime fechaTermino) { this.fechaTermino = fechaTermino;}

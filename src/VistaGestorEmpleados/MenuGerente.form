@@ -29,7 +29,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelPrincipal" alignment="0" pref="600" max="32767" attributes="0"/>
+          <Component id="panelPrincipal" alignment="0" pref="601" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -147,7 +147,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Ascensos"/>
+                <Property name="text" type="java.lang.String" value="Contratos"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAscensosActionPerformed"/>
@@ -226,7 +226,7 @@
             <Component class="javax.swing.JLabel" name="lbImagenFondo">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Imagenes/fondoAdmin.jpg"/>
+                  <Image iconType="3" name="/Imagenes/fondo.jpg"/>
                 </Property>
               </Properties>
               <Constraints>

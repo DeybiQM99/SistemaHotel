@@ -72,7 +72,7 @@ public class MenuGerente extends javax.swing.JFrame {
         btnAscensos.setBackground(new java.awt.Color(17, 50, 77));
         btnAscensos.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
         btnAscensos.setForeground(new java.awt.Color(255, 255, 255));
-        btnAscensos.setText("Ascensos");
+        btnAscensos.setText("Contratos");
         btnAscensos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAscensosActionPerformed(evt);
@@ -155,7 +155,7 @@ public class MenuGerente extends javax.swing.JFrame {
         panelContenido.setForeground(new java.awt.Color(102, 102, 102));
         panelContenido.setLayout(new java.awt.BorderLayout());
 
-        lbImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdmin.jpg"))); // NOI18N
+        lbImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.jpg"))); // NOI18N
         panelContenido.add(lbImagenFondo, java.awt.BorderLayout.CENTER);
 
         panelPrincipal.add(panelContenido);
@@ -169,7 +169,7 @@ public class MenuGerente extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
         );
 
         pack();
@@ -177,37 +177,29 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
         // Crear instancia del nuevo panel
-        GerentePersonal personal = new GerentePersonal();
-        personal.setPreferredSize(new Dimension(840, 600));
+        AdminEmpleados AdministrarEmpleados1 = new AdminEmpleados();
+        AdministrarEmpleados1.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(personal, BorderLayout.CENTER);
+        panelContenido.add(AdministrarEmpleados1, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
+        
+        
+        
     }//GEN-LAST:event_btnPersonalActionPerformed
 
     private void btnNominasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNominasActionPerformed
         // Crear instancia del nuevo panel
-        GerenteNominas nominas = new GerenteNominas();
-        nominas.setPreferredSize(new Dimension(840, 600));
+        AdminrNominas AdministrarNominas1 = new AdminrNominas();
+        AdministrarNominas1.setPreferredSize(new Dimension(840, 600));
 
         // Agregarlo al panel contenedor
         panelContenido.removeAll();
-        panelContenido.add(nominas, BorderLayout.CENTER);
+        panelContenido.add(AdministrarNominas1, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnNominasActionPerformed
-
-    private void btnAscensosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscensosActionPerformed
-        // Crear instancia del nuevo panel
-        GerenteAscensos ascensos = new GerenteAscensos();
-        ascensos.setPreferredSize(new Dimension(840, 600));
-        
-        panelContenido.removeAll();
-        panelContenido.add(ascensos,BorderLayout.CENTER);
-        panelContenido.revalidate();
-        panelContenido.repaint();
-    }//GEN-LAST:event_btnAscensosActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
      int respuesta = JOptionPane.showConfirmDialog(MenuGerente.this, // Referencia al componente la ventana actual 
@@ -223,27 +215,27 @@ public class MenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnJerarquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJerarquiaActionPerformed
-        GerenteJerarquia jerarquia = new GerenteJerarquia();
-        jerarquia.setPreferredSize(new Dimension(840, 600));
+        AdminJerarquias jerarquia1 = new AdminJerarquias();
+        jerarquia1.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(jerarquia,BorderLayout.CENTER);
+        panelContenido.add(jerarquia1,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();   
     }//GEN-LAST:event_btnJerarquiaActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        GerenteReportes reportes = new GerenteReportes();
-        reportes.setPreferredSize(new Dimension(840, 600));
+        AdminReportes reportes1 = new AdminReportes();
+        reportes1.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(reportes,BorderLayout.CENTER);
+        panelContenido.add(reportes1,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnReportesActionPerformed
 
     private void lbImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbImagenMouseClicked
-        GerenteLogo logo = new GerenteLogo();
+        AdminLogo logo = new AdminLogo();
         logo.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
@@ -251,6 +243,17 @@ public class MenuGerente extends javax.swing.JFrame {
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_lbImagenMouseClicked
+
+    private void btnAscensosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscensosActionPerformed
+        // Crear instancia del nuevo panel
+        AdminContratos ad  = new AdminContratos ();
+        ad .setPreferredSize(new Dimension(840, 600));
+
+        panelContenido.removeAll();
+        panelContenido.add(ad ,BorderLayout.CENTER);
+        panelContenido.revalidate();
+        panelContenido.repaint();
+    }//GEN-LAST:event_btnAscensosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAscensos;

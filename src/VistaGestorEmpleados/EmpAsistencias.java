@@ -37,7 +37,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
         
         
         gestor.getEmpleado(101).registrarHorasDiarias(LocalDate.now(), Arrays.asList(1,5,6,7,9));
-        gestor.getEmpleado(102).registrarHorasDiarias(LocalDate.now(), Arrays.asList(1,5,6,7));
+        gestor.getEmpleado(102).registrarHorasDiarias(LocalDate.now(), Arrays.asList(1,8));
         
         int timer = 1000;
         

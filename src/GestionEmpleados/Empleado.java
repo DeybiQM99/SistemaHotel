@@ -136,7 +136,7 @@ public abstract class Empleado extends Entidad implements IAsistencia {
     // Registra las horas trabajadas en un día calculando la diferencia entre ingreso y salida.
     @Override
     public void registrarHorasDiarias(LocalDate fecha, List<Integer> horas) {
-        horasTrabajadasPorDia.putIfAbsent(fecha, horas);
+        horasTrabajadasPorDia.put(fecha, horas);
     }
 
     // Registra la asistencia en una fecha, evitando sobrescrituras.
@@ -147,7 +147,8 @@ public abstract class Empleado extends Entidad implements IAsistencia {
 
     // Cuenta cuántas faltas (valores false) hay en la semana.
     @Override
-    public int obtenerFaltasSemana() {
+    public int obtenerFaltas(int ultimosNdias) {
+        /*
         int faltas = 0;
 
         for(Boolean asistio : listaAsistencias.values()){
@@ -158,6 +159,11 @@ public abstract class Empleado extends Entidad implements IAsistencia {
         faltas = (int)(listaAsistencias.values().stream().filter(asistio -> asistio == false).count());
 
         return faltas;
+        */
+        
+        //Calcular las faltas de los ultimos n dias
+        
+        return 1;
     }
 
     // Getters y setters

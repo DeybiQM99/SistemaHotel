@@ -179,6 +179,11 @@ public class Inscripcion extends javax.swing.JFrame {
                 BtnRegistrarMouseClicked(evt);
             }
         });
+        BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 150, 40));
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
@@ -509,6 +514,10 @@ public class Inscripcion extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(null, "Error al registrar habitacionessss: " + e.getMessage());
         }
     }//GEN-LAST:event_BtnRegistrarMouseClicked
+
+    private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments

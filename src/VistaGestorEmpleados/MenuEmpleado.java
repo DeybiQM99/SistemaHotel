@@ -251,11 +251,11 @@ public class MenuEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsistenciaActionPerformed
-        EmpAsistencias asist = new EmpAsistencias(gestor);
-        asist.setPreferredSize(new Dimension(840, 600));
+        EmpAsistencias sss = new EmpAsistencias(gestor);
+        sss.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(asist,BorderLayout.CENTER);
+        panelContenido.add(sss,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();   
     }//GEN-LAST:event_btnAsistenciaActionPerformed

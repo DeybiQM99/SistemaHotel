@@ -29,7 +29,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="panelSoloEmpl3" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelDatos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="panelAreas1" max="32767" attributes="0"/>
@@ -59,7 +59,7 @@
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Component id="panelAreas4" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="panelSoloEmpl3" max="32767" attributes="0"/>
+                  <Component id="panelDatos" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="panelReloj" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -101,7 +101,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblBuscarOpc" max="32767" attributes="0"/>
+                                  <Component id="lblBuscarOpc" pref="315" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -125,7 +125,7 @@
                       <Component id="jtBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtIdEmpleadoAsist" pref="202" max="32767" attributes="0"/>
+                  <Component id="txtIdEmpleadoAsist" pref="199" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -193,18 +193,16 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                           <Component id="lblIDBuscar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtIdBuscar" pref="97" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jDateBuscar" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace pref="110" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="txtIdBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblIDBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblIDBuscar" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDateBuscar" min="-2" max="-2" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -214,7 +212,7 @@
                     <Property name="text" type="java.lang.String" value="Dia Registrado:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtIdBuscar">
+                <Component class="com.toedter.calendar.JDateChooser" name="jDateBuscar">
                 </Component>
               </SubComponents>
             </Container>
@@ -228,7 +226,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="panelSoloEmpl3">
+    <Container class="javax.swing.JPanel" name="panelDatos">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -247,9 +245,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="lbID3" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="lblEmpIdAsis" min="-2" pref="29" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="txtIdEmpleadoAs" max="32767" attributes="0"/>
+                          <Component id="txtEmpIdAsis" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -257,12 +255,12 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lbNombre3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="txtNombre3" max="32767" attributes="0"/>
+                                  <Component id="txtNomAsis" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblApellido3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="txtApellido3" max="32767" attributes="0"/>
+                                  <Component id="txtApeAsis" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -275,13 +273,13 @@
                           <Component id="lblCorreo3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtCorreo3" max="32767" attributes="0"/>
-                              <Component id="txtDNI3" max="32767" attributes="0"/>
+                              <Component id="txtCorreoAsis" max="32767" attributes="0"/>
+                              <Component id="txtDniAsis" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="103" max="32767" attributes="0"/>
-                          <Component id="btnModifiar3" min="-2" pref="181" max="-2" attributes="0"/>
+                          <Component id="btnMostrarAsis" min="-2" pref="181" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -292,30 +290,30 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbID3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtIdEmpleadoAs" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEmpIdAsis" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmpIdAsis" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnModifiar3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMostrarAsis" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbNombre3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNombre3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNomAsis" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblApellido3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtApellido3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtApeAsis" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblDni3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDNI3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDniAsis" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblCorreo3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCorreo3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCorreoAsis" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -323,42 +321,42 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lbID3">
+        <Component class="javax.swing.JLabel" name="lblEmpIdAsis">
           <Properties>
             <Property name="text" type="java.lang.String" value="ID:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtIdEmpleadoAs">
+        <Component class="javax.swing.JTextField" name="txtEmpIdAsis">
         </Component>
         <Component class="javax.swing.JLabel" name="lbNombre3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombre:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNombre3">
+        <Component class="javax.swing.JTextField" name="txtNomAsis">
         </Component>
         <Component class="javax.swing.JLabel" name="lblApellido3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Apellido:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtApellido3">
+        <Component class="javax.swing.JTextField" name="txtApeAsis">
         </Component>
         <Component class="javax.swing.JLabel" name="lblDni3">
           <Properties>
             <Property name="text" type="java.lang.String" value="DNI:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtDNI3">
+        <Component class="javax.swing.JTextField" name="txtDniAsis">
         </Component>
         <Component class="javax.swing.JLabel" name="lblCorreo3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Correo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCorreo3">
+        <Component class="javax.swing.JTextField" name="txtCorreoAsis">
         </Component>
-        <Component class="javax.swing.JButton" name="btnModifiar3">
+        <Component class="javax.swing.JButton" name="btnMostrarAsis">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -368,6 +366,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Mostrar Datos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarAsisActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -389,20 +390,19 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblIdArea" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtDia" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jDateChooserEntrada" min="-2" pref="201" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtDia" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblIdArea" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblIdArea" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDateChooserEntrada" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -413,7 +413,7 @@
             <Property name="text" type="java.lang.String" value="D&#xed;a: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtDia">
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserEntrada">
         </Component>
       </SubComponents>
     </Container>

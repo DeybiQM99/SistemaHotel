@@ -1,25 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VistaGestorEmpleados;
 
 import GestionEmpleados.GestorEmpleados;
 import java.awt.event.ActionEvent;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Arrays;
+import java.time.*;
+import java.util.*;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
-/**
- *
- * @author User
- */
 public class EmpAsistencias extends javax.swing.JPanel {
 
     
     
     public static GestorEmpleados gestor = new GestorEmpleados();
+    public static LocalDate fechaComoLocalDate;
     /**
      * Creates new form GestionAreasPanel
      * @param gestor
@@ -52,6 +45,13 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 ahora.getSecond())
                 );
         }).start();
+        
+        
+        txtNomAsis.setEditable(false);
+        txtApeAsis.setEditable(false);
+        txtDniAsis.setEditable(false);
+        txtCorreoAsis.setEditable(false);
+        reset();
     }
 
     /**
@@ -70,23 +70,23 @@ public class EmpAsistencias extends javax.swing.JPanel {
         jtBuscar = new javax.swing.JTabbedPane();
         panelIdBuscar = new javax.swing.JPanel();
         lblIDBuscar = new javax.swing.JLabel();
-        txtIdBuscar = new javax.swing.JTextField();
+        jDateBuscar = new com.toedter.calendar.JDateChooser();
         lblBuscarOpc = new javax.swing.JLabel();
-        panelSoloEmpl3 = new javax.swing.JPanel();
-        lbID3 = new javax.swing.JLabel();
-        txtIdEmpleadoAs = new javax.swing.JTextField();
+        panelDatos = new javax.swing.JPanel();
+        lblEmpIdAsis = new javax.swing.JLabel();
+        txtEmpIdAsis = new javax.swing.JTextField();
         lbNombre3 = new javax.swing.JLabel();
-        txtNombre3 = new javax.swing.JTextField();
+        txtNomAsis = new javax.swing.JTextField();
         lblApellido3 = new javax.swing.JLabel();
-        txtApellido3 = new javax.swing.JTextField();
+        txtApeAsis = new javax.swing.JTextField();
         lblDni3 = new javax.swing.JLabel();
-        txtDNI3 = new javax.swing.JTextField();
+        txtDniAsis = new javax.swing.JTextField();
         lblCorreo3 = new javax.swing.JLabel();
-        txtCorreo3 = new javax.swing.JTextField();
-        btnModifiar3 = new javax.swing.JButton();
+        txtCorreoAsis = new javax.swing.JTextField();
+        btnMostrarAsis = new javax.swing.JButton();
         panelAreas = new javax.swing.JPanel();
         lblIdArea = new javax.swing.JLabel();
-        txtDia = new javax.swing.JTextField();
+        jDateChooserEntrada = new com.toedter.calendar.JDateChooser();
         panelAreas1 = new javax.swing.JPanel();
         lblIdArea1 = new javax.swing.JLabel();
         txtHoraEnt = new javax.swing.JTextField();
@@ -137,15 +137,14 @@ public class EmpAsistencias extends javax.swing.JPanel {
             .addGroup(panelIdBuscarLayout.createSequentialGroup()
                 .addGap(117, 117, 117)
                 .addComponent(lblIDBuscar)
-                .addGap(18, 18, 18)
-                .addComponent(txtIdBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                .addGap(171, 171, 171))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDateBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         panelIdBuscarLayout.setVerticalGroup(
             panelIdBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelIdBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(txtIdBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblIDBuscar))
+            .addComponent(lblIDBuscar)
+            .addComponent(jDateBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jtBuscar.addTab("Día", panelIdBuscar);
@@ -168,7 +167,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(panelBusquedaLayout.createSequentialGroup()
-                                .addComponent(lblBuscarOpc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblBuscarOpc, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -184,14 +183,14 @@ public class EmpAsistencias extends javax.swing.JPanel {
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtIdEmpleadoAsist, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addComponent(txtIdEmpleadoAsist, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panelSoloEmpl3.setBackground(new java.awt.Color(255, 255, 255));
-        panelSoloEmpl3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Empleado"));
+        panelDatos.setBackground(new java.awt.Color(255, 255, 255));
+        panelDatos.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Empleado"));
 
-        lbID3.setText("ID:");
+        lblEmpIdAsis.setText("ID:");
 
         lbNombre3.setText("Nombre:");
 
@@ -201,71 +200,76 @@ public class EmpAsistencias extends javax.swing.JPanel {
 
         lblCorreo3.setText("Correo:");
 
-        btnModifiar3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnModifiar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lista-del-portapapeles.png"))); // NOI18N
-        btnModifiar3.setText("Mostrar Datos");
+        btnMostrarAsis.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnMostrarAsis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lista-del-portapapeles.png"))); // NOI18N
+        btnMostrarAsis.setText("Mostrar Datos");
+        btnMostrarAsis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarAsisActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout panelSoloEmpl3Layout = new javax.swing.GroupLayout(panelSoloEmpl3);
-        panelSoloEmpl3.setLayout(panelSoloEmpl3Layout);
-        panelSoloEmpl3Layout.setHorizontalGroup(
-            panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSoloEmpl3Layout.createSequentialGroup()
-                .addGroup(panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelSoloEmpl3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelDatosLayout = new javax.swing.GroupLayout(panelDatos);
+        panelDatos.setLayout(panelDatosLayout);
+        panelDatosLayout.setHorizontalGroup(
+            panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatosLayout.createSequentialGroup()
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDatosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(lbID3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblEmpIdAsis, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(txtIdEmpleadoAs))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSoloEmpl3Layout.createSequentialGroup()
+                        .addComponent(txtEmpIdAsis))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelSoloEmpl3Layout.createSequentialGroup()
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDatosLayout.createSequentialGroup()
                                 .addComponent(lbNombre3)
                                 .addGap(14, 14, 14)
-                                .addComponent(txtNombre3))
-                            .addGroup(panelSoloEmpl3Layout.createSequentialGroup()
+                                .addComponent(txtNomAsis))
+                            .addGroup(panelDatosLayout.createSequentialGroup()
                                 .addComponent(lblApellido3)
                                 .addGap(12, 12, 12)
-                                .addComponent(txtApellido3))))
-                    .addGroup(panelSoloEmpl3Layout.createSequentialGroup()
+                                .addComponent(txtApeAsis))))
+                    .addGroup(panelDatosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblDni3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelSoloEmpl3Layout.createSequentialGroup()
+                    .addGroup(panelDatosLayout.createSequentialGroup()
                         .addComponent(lblCorreo3)
                         .addGap(28, 28, 28)
-                        .addGroup(panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCorreo3)
-                            .addComponent(txtDNI3)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSoloEmpl3Layout.createSequentialGroup()
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCorreoAsis)
+                            .addComponent(txtDniAsis)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosLayout.createSequentialGroup()
                         .addGap(0, 103, Short.MAX_VALUE)
-                        .addComponent(btnModifiar3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnMostrarAsis, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        panelSoloEmpl3Layout.setVerticalGroup(
-            panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSoloEmpl3Layout.createSequentialGroup()
-                .addGroup(panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbID3)
-                    .addComponent(txtIdEmpleadoAs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        panelDatosLayout.setVerticalGroup(
+            panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatosLayout.createSequentialGroup()
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmpIdAsis)
+                    .addComponent(txtEmpIdAsis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnModifiar3)
+                .addComponent(btnMostrarAsis)
                 .addGap(18, 18, 18)
-                .addGroup(panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombre3)
-                    .addComponent(txtNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomAsis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblApellido3)
-                    .addComponent(txtApellido3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApeAsis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDni3)
-                    .addComponent(txtDNI3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDniAsis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelSoloEmpl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCorreo3)
-                    .addComponent(txtCorreo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCorreoAsis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -281,17 +285,16 @@ public class EmpAsistencias extends javax.swing.JPanel {
             .addGroup(panelAreasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblIdArea)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDia)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jDateChooserEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelAreasLayout.setVerticalGroup(
             panelAreasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAreasLayout.createSequentialGroup()
-                .addGroup(panelAreasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblIdArea))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelAreasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIdArea)
+                    .addComponent(jDateChooserEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         panelAreas1.setBackground(new java.awt.Color(255, 255, 255));
@@ -408,7 +411,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                         .addComponent(panelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelSoloEmpl3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(panelAreas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -431,7 +434,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                         .addComponent(panelAreas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)
                         .addComponent(panelAreas4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelSoloEmpl3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(panelReloj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -443,113 +446,169 @@ public class EmpAsistencias extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAsistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsistenciasActionPerformed
-        if (btnAsistencias.getText().equals("Verificar Horas")){
-            int id = Integer.parseInt(txtIdEmpleadoAs.getText());
-            int horasTrabajadas = gestor.getEmpleado(id).getHorasTrabajadasPorDia().get(LocalDate.now()).size();
-            
-            if ((horasTrabajadas) % 2 == 0){
-                //Si el empleado tiene una cantidad de horas registradas pares, marca entrada
-                txtHoraEnt.setEditable(true);
-                txtMinEnt.setEditable(true);
-                txtHoraSal.setEditable(false);
-                txtMinSal.setEditable(false);
-            }else {
-                //Si el empleado tiene una cantidad de horas registradas impares, marca salida
-                txtHoraEnt.setEditable(false);
-                txtMinEnt.setEditable(false);
-                txtHoraSal.setEditable(true);
-                txtMinSal.setEditable(true);
+        Date fechaSeleccionada;
+
+        if (btnAsistencias.getText().equals("Verificar Horas")) {
+            if (txtEmpIdAsis.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingrese el ID de empleado.");
+                return;
             }
+
+            try {
+                int id = Integer.parseInt(txtEmpIdAsis.getText());
+
+                if (gestor.getEmpleado(id) != null) {
+                    if (jDateChooserEntrada.getDate() != null) {
+                        fechaSeleccionada = jDateChooserEntrada.getDate();
+                        fechaComoLocalDate = fechaSeleccionada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Trabajando con la fecha actual.");
+                        fechaComoLocalDate = LocalDate.now();
+                    }
+
+                    int horasTrabajadas = gestor.getEmpleado(id).getHorasTrabajadasPorDia().get(fechaComoLocalDate).size();
+
+                    boolean esPar = horasTrabajadas % 2 == 0;
+                    txtHoraEnt.setEditable(esPar);
+                    txtMinEnt.setEditable(esPar);
+                    txtHoraSal.setEditable(!esPar);
+                    txtMinSal.setEditable(!esPar);
+
+                    btnAsistencias.setText("Registrar Hora");
+                    txtEmpIdAsis.setEditable(false);
+                    jDateChooserEntrada.setEnabled(false);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error... No existe el empleado.");
+                }
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error... Número inválido.");
+            }
+
+        } else {
+            if (txtHoraEnt.getText().isEmpty() && txtMinEnt.getText().isEmpty()
+                    && txtHoraSal.getText().isEmpty() && txtMinSal.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Error... Ingrese una hora completa.");
+                return;
+            }
+
+            int id = Integer.parseInt(txtEmpIdAsis.getText());
+            List<Integer> listahorasOriginal = gestor.getEmpleado(id).getHorasTrabajadasPorDia().getOrDefault(fechaComoLocalDate, new ArrayList<Integer>());
+            List<Integer> listahoras = new ArrayList<>(listahorasOriginal);
+
+            try {
+                int horasSum = (txtHoraEnt.getText().isEmpty() ? 0 : Integer.parseInt(txtHoraEnt.getText()))
+                             + (txtHoraSal.getText().isEmpty() ? 0 : Integer.parseInt(txtHoraSal.getText()));
+
+                int minSum = (txtMinEnt.getText().isEmpty() ? 0 : Integer.parseInt(txtMinEnt.getText()))
+                           + (txtMinSal.getText().isEmpty() ? 0 : Integer.parseInt(txtMinSal.getText()));
+
+                if (horasSum < 0 || horasSum > 24) {
+                    JOptionPane.showMessageDialog(this, "Error... Hora inválida.");
+                    return;
+                }
+
+                if (!listahorasOriginal.isEmpty() && horasSum <= listahorasOriginal.getLast()) {
+                    JOptionPane.showMessageDialog(this, "Error... Hora incoherente con el registro.");
+                    return;
+                }
+
+                if (minSum < 0 || minSum > 60) {
+                    JOptionPane.showMessageDialog(this, "Error... Minutos inválidos.");
+                    return;
+                }
+
+                if (minSum >= 30) horasSum++;
+
+                listahoras.add(horasSum);
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error... Formato de horas o minutos inválido.");
+                return;
+            }
+
+            gestor.getEmpleado(id).registrarHorasDiarias(fechaComoLocalDate, listahoras);
+            gestor.getEmpleado(id).registrarAsistencia(fechaComoLocalDate, true);
+
+            btnAsistencias.setText("Verificar Horas");
+            txtEmpIdAsis.setEditable(true);
+            jDateChooserEntrada.setEnabled(true);
+            reset();
         }
-        
-        
+
         btnAsistencias.setSize(213, 75);
     }//GEN-LAST:event_btnAsistenciasActionPerformed
+
+    private void reset(){
+            txtHoraEnt.setText("");
+            txtMinEnt.setText("");
+            txtHoraSal.setText("");
+            txtMinSal.setText("");
+            txtCorreoAsis.setEditable(false);
+            txtHoraEnt.setEditable(false);
+            txtMinEnt.setEditable(false);
+            txtHoraSal.setEditable(false);
+            txtMinSal.setEditable(false);
+    }
+    
+    private void btnMostrarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarAsisActionPerformed
+        
+        try{
+            int id = Integer.parseInt(txtEmpIdAsis.getText());
+
+            if (gestor.getEmpleado(id) != null){
+                txtEmpIdAsis.setText(String.valueOf(gestor.getEmpleado(id).getId()));
+                txtNomAsis.setText(gestor.getEmpleado(id).getNombre());
+                txtApeAsis.setText(gestor.getEmpleado(id).getApellido());
+                txtDniAsis.setText(gestor.getEmpleado(id).getDni());
+                txtCorreoAsis.setText(gestor.getEmpleado(id).getEmail());
+            } else {
+                JOptionPane.showMessageDialog(this, "Error... No existe el empleado.");
+            }
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error... Número invalido.");
+        }
+
+    }//GEN-LAST:event_btnMostrarAsisActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsistencias;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnModifiar;
-    private javax.swing.JButton btnModifiar1;
-    private javax.swing.JButton btnModifiar2;
-    private javax.swing.JButton btnModifiar3;
+    private javax.swing.JButton btnMostrarAsis;
+    private com.toedter.calendar.JDateChooser jDateBuscar;
+    private com.toedter.calendar.JDateChooser jDateChooserEntrada;
     private javax.swing.JTabbedPane jtBuscar;
-    private javax.swing.JLabel lbID;
-    private javax.swing.JLabel lbID1;
-    private javax.swing.JLabel lbID2;
-    private javax.swing.JLabel lbID3;
-    private javax.swing.JLabel lbNombre;
-    private javax.swing.JLabel lbNombre1;
-    private javax.swing.JLabel lbNombre2;
     private javax.swing.JLabel lbNombre3;
     private javax.swing.JLabel lbReloj;
-    private javax.swing.JLabel lblApellido;
-    private javax.swing.JLabel lblApellido1;
-    private javax.swing.JLabel lblApellido2;
     private javax.swing.JLabel lblApellido3;
     private javax.swing.JLabel lblArea;
-    private javax.swing.JLabel lblArea1;
-    private javax.swing.JLabel lblArea2;
     private javax.swing.JLabel lblArea3;
     private javax.swing.JLabel lblBuscarOpc;
-    private javax.swing.JLabel lblCorreo;
-    private javax.swing.JLabel lblCorreo1;
-    private javax.swing.JLabel lblCorreo2;
     private javax.swing.JLabel lblCorreo3;
-    private javax.swing.JLabel lblDni;
-    private javax.swing.JLabel lblDni1;
-    private javax.swing.JLabel lblDni2;
     private javax.swing.JLabel lblDni3;
+    private javax.swing.JLabel lblEmpIdAsis;
     private javax.swing.JLabel lblIDBuscar;
     private javax.swing.JLabel lblIdArea;
     private javax.swing.JLabel lblIdArea1;
-    private javax.swing.JLabel lblIdArea2;
-    private javax.swing.JLabel lblIdArea3;
     private javax.swing.JLabel lblIdArea4;
     private javax.swing.JPanel panelAreas;
     private javax.swing.JPanel panelAreas1;
-    private javax.swing.JPanel panelAreas2;
-    private javax.swing.JPanel panelAreas3;
     private javax.swing.JPanel panelAreas4;
     private javax.swing.JPanel panelBusqueda;
+    private javax.swing.JPanel panelDatos;
     private javax.swing.JPanel panelIdBuscar;
     private javax.swing.JPanel panelReloj;
-    private javax.swing.JPanel panelSoloEmpl;
-    private javax.swing.JPanel panelSoloEmpl1;
-    private javax.swing.JPanel panelSoloEmpl2;
-    private javax.swing.JPanel panelSoloEmpl3;
     private javax.swing.JTable tbLista;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtApellido1;
-    private javax.swing.JTextField txtApellido2;
-    private javax.swing.JTextField txtApellido3;
-    private javax.swing.JTextField txtArea1;
-    private javax.swing.JTextField txtArea2;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtCorreo1;
-    private javax.swing.JTextField txtCorreo2;
-    private javax.swing.JTextField txtCorreo3;
-    private javax.swing.JTextField txtDNI;
-    private javax.swing.JTextField txtDNI1;
-    private javax.swing.JTextField txtDNI2;
-    private javax.swing.JTextField txtDNI3;
-    private javax.swing.JTextField txtDia;
+    private javax.swing.JTextField txtApeAsis;
+    private javax.swing.JTextField txtCorreoAsis;
+    private javax.swing.JTextField txtDniAsis;
+    private javax.swing.JTextField txtEmpIdAsis;
     private javax.swing.JTextField txtHoraEnt;
     private javax.swing.JTextField txtHoraSal;
-    private javax.swing.JTextField txtIdArea2;
-    private javax.swing.JTextField txtIdArea3;
-    private javax.swing.JTextField txtIdBuscar;
-    private javax.swing.JTextField txtIdEmpleado;
-    private javax.swing.JTextField txtIdEmpleado1;
-    private javax.swing.JTextField txtIdEmpleado2;
-    private javax.swing.JTextField txtIdEmpleadoAs;
     private javax.swing.JScrollPane txtIdEmpleadoAsist;
     private javax.swing.JTextField txtMinEnt;
     private javax.swing.JTextField txtMinSal;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombre1;
-    private javax.swing.JTextField txtNombre2;
-    private javax.swing.JTextField txtNombre3;
+    private javax.swing.JTextField txtNomAsis;
     // End of variables declaration//GEN-END:variables
 }

@@ -78,7 +78,9 @@ public abstract class Empleado extends Entidad implements IAsistencia {
     //Marca al empleado como despedido y actualiza la fecha de término.
     public void registrarDespido() {
         this.tipoContrato = TipoContrato.DESPEDIDO;
-        this.fechaTermino = LocalDate.now();
+        fechaIngreso = null;
+        fechaTermino = null;
+        fechaRenovacion = null;
     }
     
     // Representación en texto de la entidad con formato legible.

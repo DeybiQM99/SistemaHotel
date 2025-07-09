@@ -289,11 +289,11 @@ public class MenuEmpleado extends javax.swing.JFrame {
 
     private void btnContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratosActionPerformed
         // Crear instancia del nuevo panel
-        EmpContrato arg = new EmpContrato(gestor);
-        arg.setPreferredSize(new Dimension(840, 600));
+        EmpContrato sdf = new EmpContrato(gestor);
+        sdf.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(arg, BorderLayout.CENTER);
+        panelContenido.add(sdf, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnContratosActionPerformed

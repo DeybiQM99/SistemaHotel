@@ -2,9 +2,11 @@ package VistaGestorEmpleados;
 
 import GestionEmpleados.*;
 import GestionEmpleados.Enum.TipoContrato;
+import GestionEmpleados.RegistroPago.MedioPago;
 import VistaHotel.VentanaPrincipal;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import javax.swing.*;
@@ -16,26 +18,108 @@ public class MenuEmpleado extends javax.swing.JFrame {
     
     public MenuEmpleado() {
         initComponents();
-        // Operarios
-        gestor.addEmpleado(new Operario(1,15.0,101,"Luis","Pérez","luis.perez@empresa.com","12345678A",LocalDateTime.of(2022,1,10,8,0),LocalDateTime.of(2025,1,10,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,201));
-        gestor.addEmpleado(new Operario(1,16.0,102,"Ana","Gómez","ana.gomez@empresa.com","12345679B",LocalDateTime.of(2022,2,5,8,0),LocalDateTime.of(2025,2,5,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,202));
-        gestor.addEmpleado(new Operario(1,17.0,103,"Carlos","López","carlos.lopez@empresa.com","12345680C",LocalDateTime.of(2022,3,1,8,0),LocalDateTime.of(2025,3,1,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,203));
-        gestor.addEmpleado(new Operario(1,18.0,104,"María","Ramírez","maria.ramirez@empresa.com","12345681D",LocalDateTime.of(2022,4,10,8,0),LocalDateTime.of(2025,4,10,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,204));
-        gestor.addEmpleado(new Operario(1,19.0,105,"Jorge","Torres","jorge.torres@empresa.com","12345682E",LocalDateTime.of(2022,5,15,8,0),LocalDateTime.of(2025,5,15,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.TEMPORAL,205));
+        // Operarios (Temporal: ingreso y término; renovación = null)
+        gestor.addEmpleado(new Operario(1, 15.0, 101, "Luis",   "Pérez",  "luis.perez@empresa.com",   "12345678A",
+            LocalDate.of(2022,  1, 10), LocalDate.of(2025,  1, 10), null,
+            TipoContrato.TEMPORAL, 201));
+        gestor.addEmpleado(new Operario(1, 16.0, 102, "Ana",    "Gómez",  "ana.gomez@empresa.com",    "12345679B",
+            LocalDate.of(2022,  2,  5), LocalDate.of(2025,  2,  5), null,
+            TipoContrato.TEMPORAL, 202));
+        gestor.addEmpleado(new Operario(2, 17.0, 103, "Carlos", "López",  "carlos.lopez@empresa.com", "12345680C",
+            LocalDate.of(2022,  3,  1), LocalDate.of(2025,  3,  1), null,
+            TipoContrato.TEMPORAL, 203));
+        gestor.addEmpleado(new Operario(2, 18.0, 104, "María",  "Ramírez","maria.ramirez@empresa.com","12345681D",
+            LocalDate.of(2022,  4, 10), LocalDate.of(2025,  4, 10), null,
+            TipoContrato.TEMPORAL, 204));
+        gestor.addEmpleado(new Operario(3, 19.0, 105, "Jorge",  "Torres", "jorge.torres@empresa.com",  "12345682E",
+            LocalDate.of(2022,  5, 15), LocalDate.of(2025,  5, 15), null,
+            TipoContrato.TEMPORAL, 205));
 
-        // Supervisores
-        gestor.addEmpleado(new Supervisor(2,25.0,201,"Ricardo","Díaz","ricardo.diaz@empresa.com","22345678A",LocalDateTime.of(2021,6,1,8,0),LocalDateTime.of(2025,6,1,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,301));
-        gestor.addEmpleado(new Supervisor(2,26.0,202,"Laura","Herrera","laura.herrera@empresa.com","22345679B",LocalDateTime.of(2021,7,10,8,0),LocalDateTime.of(2025,7,10,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,302));
-        gestor.addEmpleado(new Supervisor(2,27.0,203,"Sofía","Vega","sofia.vega@empresa.com","22345680C",LocalDateTime.of(2021,8,15,8,0),LocalDateTime.of(2025,8,15,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,303));
-        gestor.addEmpleado(new Supervisor(2,28.0,204,"Eduardo","Salinas","eduardo.salinas@empresa.com","22345681D",LocalDateTime.of(2021,9,20,8,0),LocalDateTime.of(2025,9,20,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,304));
-        gestor.addEmpleado(new Supervisor(2,29.0,205,"Patricia","Muñoz","patricia.munoz@empresa.com","22345682E",LocalDateTime.of(2021,10,25,8,0),LocalDateTime.of(2025,10,25,17,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.INDEFINIDO,305));
+        
+        
+        // Supervisores (Indefinido: ingreso; término y renovación nulos)
+        gestor.addEmpleado(new Supervisor(1,25.0,201,"Ricardo","Díaz","ricardo.diaz@empresa.com","22345678A",
+            LocalDate.of(2021,6,1), null, null,
+            TipoContrato.INDEFINIDO,301));
+        gestor.addEmpleado(new Supervisor(1,26.0,202,"Laura","Herrera","laura.herrera@empresa.com","22345679B",
+            LocalDate.of(2021,7,10), null, null,
+            TipoContrato.INDEFINIDO,302));
+        gestor.addEmpleado(new Supervisor(2,27.0,203,"Sofía","Vega","sofia.vega@empresa.com","22345680C",
+            LocalDate.of(2021,8,15), null, null,
+            TipoContrato.INDEFINIDO,303));
+        gestor.addEmpleado(new Supervisor(2,28.0,204,"Eduardo","Salinas","eduardo.salinas@empresa.com","22345681D",
+            LocalDate.of(2021,9,20), null, null,
+            TipoContrato.INDEFINIDO,304));
+        gestor.addEmpleado(new Supervisor(3,29.0,205,"Patricia","Muñoz","patricia.munoz@empresa.com","22345682E",
+            LocalDate.of(2021,10,25), null, null,
+            TipoContrato.INDEFINIDO,305));
+        
+        for(int i = 201; i <= 205; i++){
+            Supervisor sup = (Supervisor) gestor.getEmpleado(i);
+            
+            sup.add(i - 100);
+        }
 
-        // Jefes
-        gestor.addEmpleado(new Jefe(3,40.0,301,"Fernando","Ortiz","fernando.ortiz@empresa.com","32345678A",LocalDateTime.of(2020,1,1,9,0),LocalDateTime.of(2025,1,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(201,202)));
-        gestor.addEmpleado(new Jefe(3,41.0,302,"Verónica","Salazar","veronica.salazar@empresa.com","32345679B",LocalDateTime.of(2020,2,1,9,0),LocalDateTime.of(2025,2,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(203,204)));
-        gestor.addEmpleado(new Jefe(3,42.0,303,"Miguel","Ramos","miguel.ramos@empresa.com","32345680C",LocalDateTime.of(2020,3,1,9,0),LocalDateTime.of(2025,3,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(205,201)));
-        gestor.addEmpleado(new Jefe(3,43.0,304,"Antonia","Flores","antonia.flores@empresa.com","32345681D",LocalDateTime.of(2020,4,1,9,0),LocalDateTime.of(2025,4,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(202,203)));
-        gestor.addEmpleado(new Jefe(3,44.0,305,"Ricardo","Blanco","ricardo.blanco@empresa.com","32345682E",LocalDateTime.of(2020,5,1,9,0),LocalDateTime.of(2025,5,1,18,0),LocalDateTime.of(2024,12,31,0,0),TipoContrato.RENOVABLE,Arrays.asList(204,205)));
+        // Jefes (Renovable: ingreso, término, renovación)
+        gestor.addEmpleado(new Jefe(1,40.0,301,"Fernando","Ortiz","fernando.ortiz@empresa.com","32345678A",
+            LocalDate.of(2020,1,1),  LocalDate.of(2025,1,1),  LocalDate.of(2024,12,31),
+            TipoContrato.RENOVABLE));
+        gestor.addEmpleado(new Jefe(1,41.0,302,"Verónica","Salazar","veronica.salazar@empresa.com","32345679B",
+            LocalDate.of(2020,2,1),  LocalDate.of(2025,2,1),  LocalDate.of(2024,12,31),
+            TipoContrato.RENOVABLE));
+        gestor.addEmpleado(new Jefe(2,42.0,303,"Miguel","Ramos","miguel.ramos@empresa.com","32345680C",
+            LocalDate.of(2020,3,1),  LocalDate.of(2025,3,1),  LocalDate.of(2024,12,31),
+            TipoContrato.RENOVABLE));
+        gestor.addEmpleado(new Jefe(2,43.0,304,"Antonia","Flores","antonia.flores@empresa.com","32345681D",
+            LocalDate.of(2020,4,1),  LocalDate.of(2025,4,1),  LocalDate.of(2024,12,31),
+            TipoContrato.RENOVABLE));
+        gestor.addEmpleado(new Jefe(3,44.0,305,"Ricardo","Blanco","ricardo.blanco@empresa.com","32345682E",
+            LocalDate.of(2020,5,1),  LocalDate.of(2025,5,1),  LocalDate.of(2024,12,31),
+            TipoContrato.RENOVABLE));
+        
+        for(int i = 301; i <= 305; i++){
+            Jefe sup = (Jefe) gestor.getEmpleado(i);
+            
+            sup.add(i - 100);
+        }
+        
+        // Creación de pagos// Pagos para el empleado 101
+        gestor.addRegistroPago(new RegistroPago(1, 101, LocalDateTime.of(2025, 1, 15, 10, 30), 450.0, MedioPago.TRANSFERENCIA));
+        gestor.addRegistroPago(new RegistroPago(2, 101, LocalDateTime.of(2025, 2, 15, 10, 30), 460.0, MedioPago.TRANSFERENCIA));
+        gestor.addRegistroPago(new RegistroPago(3, 101, LocalDateTime.of(2025, 3, 15, 10, 30), 470.0, MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(4, 101, LocalDateTime.of(2025, 4, 15, 10, 30), 480.0, MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(5, 101, LocalDateTime.of(2025, 5, 15, 10, 30), 490.0, MedioPago.EFECTIVO));
+
+        // Pagos para el empleado 102
+        gestor.addRegistroPago(new RegistroPago(6, 102, LocalDateTime.of(2025, 1, 10, 9, 15), 430.0, MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(7, 102, LocalDateTime.of(2025, 2, 10, 9, 15), 440.0, MedioPago.TRANSFERENCIA));
+        gestor.addRegistroPago(new RegistroPago(8, 102, LocalDateTime.of(2025, 3, 10, 9, 15), 450.0, MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(9, 102, LocalDateTime.of(2025, 4, 10, 9, 15), 460.0, MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(10, 102, LocalDateTime.of(2025, 5, 10, 9, 15), 470.0, MedioPago.TRANSFERENCIA));
+        
+        //Areas para los empleados
+        gestor.addArea(new Area(1, "Producción"));
+        gestor.getArea(1).addEmpleado(gestor.getEmpleado(101));
+        gestor.getArea(1).addEmpleado(gestor.getEmpleado(102));
+        gestor.getArea(1).addEmpleado(gestor.getEmpleado(201));
+        gestor.getArea(1).addEmpleado(gestor.getEmpleado(202));
+        gestor.getArea(1).addEmpleado(gestor.getEmpleado(301));
+        gestor.getArea(1).addEmpleado(gestor.getEmpleado(302));
+        
+        
+        gestor.addArea(new Area(2, "Calidad"));
+        gestor.getArea(2).addEmpleado(gestor.getEmpleado(103));
+        gestor.getArea(2).addEmpleado(gestor.getEmpleado(104));
+        gestor.getArea(2).addEmpleado(gestor.getEmpleado(203));
+        gestor.getArea(2).addEmpleado(gestor.getEmpleado(204));
+        gestor.getArea(2).addEmpleado(gestor.getEmpleado(303));
+        gestor.getArea(2).addEmpleado(gestor.getEmpleado(304));
+        
+        
+        gestor.addArea(new Area(3, "Administración"));
+        gestor.getArea(3).addEmpleado(gestor.getEmpleado(105));
+        gestor.getArea(3).addEmpleado(gestor.getEmpleado(205));
+        gestor.getArea(3).addEmpleado(gestor.getEmpleado(305));
         
         Icon miIcono = new ImageIcon(new ImageIcon(getClass().getResource("/imagenes/logoHotelOscuro.jpg")).getImage().getScaledInstance(lbImagen.getWidth(), lbImagen.getHeight(), 0));
         lbImagen.setIcon(miIcono);
@@ -205,30 +289,30 @@ public class MenuEmpleado extends javax.swing.JFrame {
 
     private void btnContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratosActionPerformed
         // Crear instancia del nuevo panel
-        EmpContrato ar = new EmpContrato();
-        ar.setPreferredSize(new Dimension(840, 600));
+        EmpContrato arg = new EmpContrato(gestor);
+        arg.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(ar, BorderLayout.CENTER);
+        panelContenido.add(arg, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnContratosActionPerformed
 
     private void btnAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasActionPerformed
         // Crear instancia del nuevo panel
-        EmpAreas sd= new EmpAreas();
-        sd.setPreferredSize(new Dimension(840, 600));
+        EmpAreas xz= new EmpAreas(gestor);
+        xz.setPreferredSize(new Dimension(840, 600));
 
         // Agregarlo al panel contenedor
         panelContenido.removeAll();
-        panelContenido.add(sd, BorderLayout.CENTER);
+        panelContenido.add(xz, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnAreasActionPerformed
 
     private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
         // Crear instancia del nuevo panel
-        EmpPagos ae = new EmpPagos();
+        EmpPagos ae = new EmpPagos(gestor);
         ae.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
@@ -251,21 +335,21 @@ public class MenuEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsistenciaActionPerformed
-        EmpAsistencias sss = new EmpAsistencias(gestor);
-        sss.setPreferredSize(new Dimension(840, 600));
+        EmpAsistencias ds = new EmpAsistencias(gestor);
+        ds.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(sss,BorderLayout.CENTER);
+        panelContenido.add(ds,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();   
     }//GEN-LAST:event_btnAsistenciaActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        EmpReportes report = new EmpReportes();
-        report.setPreferredSize(new Dimension(840, 600));
+        EmpReportes rpta = new EmpReportes(gestor);
+        rpta.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(report,BorderLayout.CENTER);
+        panelContenido.add(rpta,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnReportesActionPerformed

@@ -1,7 +1,7 @@
 package GestionEmpleados;
 
 import GestionEmpleados.Enum.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Operario extends Empleado {
     // Identificador del supervisor responsable
@@ -15,9 +15,9 @@ public class Operario extends Empleado {
                     String apellido,
                     String email,
                     String dni,
-                    LocalDateTime fechaIngreso,
-                    LocalDateTime fechaTermino,
-                    LocalDateTime fechaRenovacion,
+                    LocalDate fechaIngreso,
+                    LocalDate fechaTermino,
+                    LocalDate fechaRenovacion,
                     TipoContrato tipoContrato,
                     int idSupervisor) {
         super(idArea, tarifaPorHora, id, nombre, apellido, email, dni,
@@ -34,8 +34,8 @@ public class Operario extends Empleado {
                     String apellido,
                     String email,
                     String dni,
-                    LocalDateTime fechaTermino,
-                    LocalDateTime fechaRenovacion,
+                    LocalDate fechaTermino,
+                    LocalDate fechaRenovacion,
                     TipoContrato tipoContrato,
                     int idSupervisor) {
         super(idArea, tarifaPorHora, id, nombre, apellido, email, dni,

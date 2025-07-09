@@ -1,10 +1,10 @@
 package GestionEmpleados;
 
 import GestionEmpleados.Enum.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import Interfaz.IGestionGenerica;
+import java.time.LocalDate;
 
 public class Supervisor extends Empleado implements IGestionGenerica <Operario> {
 
@@ -21,9 +21,9 @@ public class Supervisor extends Empleado implements IGestionGenerica <Operario> 
                       String apellido,
                       String email,
                       String dni,
-                      LocalDateTime fechaIngreso,
-                      LocalDateTime fechaTermino,
-                      LocalDateTime fechaRenovacion,
+                      LocalDate fechaIngreso,
+                      LocalDate fechaTermino,
+                      LocalDate fechaRenovacion,
                       TipoContrato tipoContrato,
                       int idJefe) {
         super(idArea, tarifaPorHora, id, nombre, apellido, email, dni,
@@ -38,12 +38,12 @@ public class Supervisor extends Empleado implements IGestionGenerica <Operario> 
                       String apellido,
                       String email,
                       String dni,
-                      LocalDateTime fechaTermino,
-                      LocalDateTime fechaRenovacion,
+                      LocalDate fechaTermino,
+                      LocalDate fechaRenovacion,
                       TipoContrato tipoContrato,
                       int idJefe) {
         this(idArea, tarifaPorHora, id, nombre, apellido, email, dni,
-             LocalDateTime.now(), fechaTermino, fechaRenovacion, tipoContrato, idJefe);
+             LocalDate.now(), fechaTermino, fechaRenovacion, tipoContrato, idJefe);
     }
     
     //Agrega un Operario.
@@ -52,6 +52,12 @@ public class Supervisor extends Empleado implements IGestionGenerica <Operario> 
         listaOperarioIds.add(operario.getId());
     }
 
+    //Agrega un Operario.
+    @Override
+    public void add(int idOperario) {
+        listaOperarioIds.add(idOperario);
+    }
+    
     // Elimina un operario por su identificador.
     @Override
     public void drop(int idOperario) {

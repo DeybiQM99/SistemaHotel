@@ -1,5 +1,6 @@
 package GestionEmpleados;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -20,7 +21,7 @@ public abstract class Entidad {
     protected String dni;
 
     // Fecha y hora de ingreso
-    protected final LocalDateTime fechaIngreso;
+    protected LocalDate fechaIngreso;
     
     //Formateo de la fecha de salida
     protected static final DateTimeFormatter FORMATO_FECHA =
@@ -32,7 +33,7 @@ public abstract class Entidad {
                    String apellido,
                    String email,
                    String dni,
-                   LocalDateTime fechaIngreso) {
+                   LocalDate fechaIngreso) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -48,7 +49,7 @@ public abstract class Entidad {
                    String email,
                    String dni) {
         this(id, nombre, apellido, email, dni,
-             LocalDateTime.now());
+             LocalDate.now());
     }
 
     // Representación en texto de la entidad con formato legible. No implementada todavia
@@ -56,7 +57,7 @@ public abstract class Entidad {
     public abstract String toString();
 
     // Método abstracto para el cálculo de salario.
-    public abstract double calcularSalario();
+    public abstract double calcularSalario(int ultimosNdias);
 
     // Getters y Setters
 
@@ -75,5 +76,7 @@ public abstract class Entidad {
     public String getDni() { return dni; }
     public void setDni(String dni) { this.dni = dni; }
 
-    public LocalDateTime getFechaIngreso() { return fechaIngreso; }
+    public LocalDate getFechaIngreso() { return fechaIngreso; }
+    public void setFechaIngreso(LocalDate fechaIngreso) { this.fechaIngreso = fechaIngreso; }
+    
 }

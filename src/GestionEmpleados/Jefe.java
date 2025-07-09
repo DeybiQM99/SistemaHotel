@@ -5,11 +5,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import Interfaz.IGestionGenerica;
+import java.time.LocalDate;
 
 public class Jefe extends Empleado implements IGestionGenerica<Supervisor> {
 
     // ID de supervisores a cargo
-    private final List<Integer> listaSupervisorIds;
+    private final List<Integer> listaSupervisorIds = new ArrayList<>();
 
     // Bono fijo que recibe el jefe por gestión
     private static final double BONO_JEFE = 380;
@@ -22,14 +23,12 @@ public class Jefe extends Empleado implements IGestionGenerica<Supervisor> {
                 String apellido,
                 String email,
                 String dni,
-                LocalDateTime fechaIngreso,
-                LocalDateTime fechaTermino,
-                LocalDateTime fechaRenovacion,
-                TipoContrato tipoContrato,
-                List<Integer> supervisorIds) {
+                LocalDate fechaIngreso,
+                LocalDate fechaTermino,
+                LocalDate fechaRenovacion,
+                TipoContrato tipoContrato) {
         super(idArea, tarifaPorHora, id, nombre, apellido, email, dni,
               fechaIngreso, fechaTermino, fechaRenovacion, tipoContrato);
-        this.listaSupervisorIds = new ArrayList<>();
     }
 
     // Constructor alternativo: fechaIngreso al momento actual.
@@ -40,19 +39,17 @@ public class Jefe extends Empleado implements IGestionGenerica<Supervisor> {
                 String apellido,
                 String email,
                 String dni,
-                LocalDateTime fechaTermino,
-                LocalDateTime fechaRenovacion,
-                TipoContrato tipoContrato,
-                List<Integer> supervisorIds) {
+                LocalDate fechaTermino,
+                LocalDate fechaRenovacion,
+                TipoContrato tipoContrato) {
         this(idArea, tarifaPorHora, id, nombre, apellido, email, dni,
-             LocalDateTime.now(), fechaTermino, fechaRenovacion, tipoContrato,
-             supervisorIds);
+             LocalDate.now(), fechaTermino, fechaRenovacion, tipoContrato);
     }
 
     // Calcula el salario semanal: tarifa por horas trabajadas más bono.
     @Override
-    public double calcularSalario() {
-        return super.calcularSalario() + BONO_JEFE;
+    public double calcularSalario(int ultimosNdias) {
+        return super.calcularSalario(ultimosNdias) + BONO_JEFE;
     }
     
     // Agrega un supervisor al jefe si no está ya presente.
@@ -60,7 +57,11 @@ public class Jefe extends Empleado implements IGestionGenerica<Supervisor> {
     public void add(Supervisor supervisor) {
         listaSupervisorIds.add(supervisor.getId());
     }
-
+    // Agrega un supervisor al jefe si no está ya presente.
+    @Override
+    public void add(int IDsupervisor) {
+        listaSupervisorIds.add(IDsupervisor);
+    }
     // Elimina un supervisor a cargo por su identificador.
     @Override
     public void drop(int idSupervisor) {

@@ -4,21 +4,37 @@
  */
 package VistaGestorEmpleados;
 
+import GestionEmpleados.Area;
+import GestionEmpleados.Empleado;
+import GestionEmpleados.GestorEmpleados;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
  */
 public class EmpAreas extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GestionAreasPanel
-     */
-    public EmpAreas() {
+    GestorEmpleados gestor;
+    
+    public EmpAreas(GestorEmpleados gestor) {
         initComponents();
-        
+        this.gestor = gestor;
         
         panelBusquedaPago.setSize(828, 114);
         this.setSize(840, 600);
+        
+        for (Area area : gestor.getMisAreas()) {
+            comboxListaAreas.addItem(area.getNombre());
+        }
+        
+        txtAreaID.setEditable(false);
+        
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new String[]{"ID", "Nombre Completo", "Correo", "Contrato"});
+        tbListaAreas.setModel(modelo);
     }
 
     /**
@@ -38,8 +54,8 @@ public class EmpAreas extends javax.swing.JPanel {
         lblBuscarOpc1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        comboxListaAreas = new javax.swing.JComboBox<>();
+        txtAreaID = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(17, 50, 77));
 
@@ -85,6 +101,11 @@ public class EmpAreas extends javax.swing.JPanel {
         btnBuscarPago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBuscarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
         btnBuscarPago.setText("Buscar");
+        btnBuscarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPagoActionPerformed(evt);
+            }
+        });
 
         lblBuscarOpc1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         lblBuscarOpc1.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,10 +122,6 @@ public class EmpAreas extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ID area:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jTextField1.setText("jTextField1");
-
         javax.swing.GroupLayout panelBusquedaPagoLayout = new javax.swing.GroupLayout(panelBusquedaPago);
         panelBusquedaPago.setLayout(panelBusquedaPagoLayout);
         panelBusquedaPagoLayout.setHorizontalGroup(
@@ -120,8 +137,8 @@ public class EmpAreas extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                    .addComponent(comboxListaAreas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAreaID, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
                 .addContainerGap(136, Short.MAX_VALUE))
         );
         panelBusquedaPagoLayout.setVerticalGroup(
@@ -129,13 +146,13 @@ public class EmpAreas extends javax.swing.JPanel {
             .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
                 .addGroup(panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAreaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2))
                     .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
                         .addGroup(panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblBuscarOpc1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboxListaAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -163,17 +180,53 @@ public class EmpAreas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPagoActionPerformed
+        String nombreArea = comboxListaAreas.getSelectedItem().toString();
+        
+        for(Area ar: gestor.getMisAreas()){
+            if(ar.getNombre().equals(nombreArea))
+                txtAreaID.setText(String.valueOf(ar.getIdArea()));
+        }
+        
+        int idArea = Integer.parseInt(txtAreaID.getText());
+        Area area = gestor.getArea(idArea);
+
+        if (area == null) {
+            JOptionPane.showMessageDialog(null, "Área no encontrada.");
+            return;
+        }
+
+        // Limpiar la tabla
+        DefaultTableModel model = (DefaultTableModel) tbListaAreas.getModel();
+        model.setRowCount(0);
+
+        // Agregar filas de empleados
+        for (int idEmpleado : area.getListaEmpleadoIds()) {
+            Empleado emp = gestor.getEmpleado(idEmpleado);
+            if (emp != null) {
+                model.addRow(new Object[]{
+                    emp.getId(),
+                    emp.getNombre(),
+                    emp.getEmail(),
+                    emp.getTipoContrato().toString()
+                });
+            }
+        }
+        
+        txtAreaID.setEditable(false);
+    }//GEN-LAST:event_btnBuscarPagoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarPago;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> comboxListaAreas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblBuscarOpc1;
     private javax.swing.JPanel panelBusqueda;
     private javax.swing.JPanel panelBusquedaPago;
     private javax.swing.JTable tbListaAreas;
+    private javax.swing.JTextField txtAreaID;
     private javax.swing.JScrollPane txtIdEmpleadoAsist;
     // End of variables declaration//GEN-END:variables
 }

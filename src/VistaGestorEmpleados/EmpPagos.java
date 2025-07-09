@@ -4,19 +4,24 @@
  */
 package VistaGestorEmpleados;
 
-/**
- *
- * @author User
- */
+import GestionEmpleados.GestorEmpleados;
+import GestionEmpleados.RegistroPago;
+import GestionEmpleados.RegistroPago.PagoEstado;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class EmpPagos extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GestionAreasPanel
-     */
-    public EmpPagos() {
+    public static GestorEmpleados gestor;
+    
+    public EmpPagos(GestorEmpleados gestor) {
         initComponents();
-        
-        
+        this.gestor = gestor;
+        String[] columnas = {"ID Pago", "Fecha", "Monto", "Medio", "Estado"};
+        tbListaAreas.setModel(new DefaultTableModel(columnas, 0));
+
         panelBusquedaPago.setSize(828, 114);
         this.setSize(840, 600);
     }
@@ -31,7 +36,7 @@ public class EmpPagos extends javax.swing.JPanel {
     private void initComponents() {
 
         panelBusqueda = new javax.swing.JPanel();
-        txtIdEmpleadoAsist = new javax.swing.JScrollPane();
+        tablaPagos = new javax.swing.JScrollPane();
         tbListaAreas = new javax.swing.JTable();
         panelBusquedaPago = new javax.swing.JPanel();
         btnBuscarPago = new javax.swing.JButton();
@@ -46,8 +51,8 @@ public class EmpPagos extends javax.swing.JPanel {
         panelBusqueda.setBackground(new java.awt.Color(255, 255, 255));
         panelBusqueda.setBorder(javax.swing.BorderFactory.createTitledBorder("PanelBusqueda"));
 
-        txtIdEmpleadoAsist.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Empleados"));
-        txtIdEmpleadoAsist.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaPagos.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Empleados"));
+        tablaPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         tbListaAreas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -60,7 +65,7 @@ public class EmpPagos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        txtIdEmpleadoAsist.setViewportView(tbListaAreas);
+        tablaPagos.setViewportView(tbListaAreas);
 
         javax.swing.GroupLayout panelBusquedaLayout = new javax.swing.GroupLayout(panelBusqueda);
         panelBusqueda.setLayout(panelBusquedaLayout);
@@ -68,14 +73,14 @@ public class EmpPagos extends javax.swing.JPanel {
             panelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBusquedaLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(txtIdEmpleadoAsist, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
+                .addComponent(tablaPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelBusquedaLayout.setVerticalGroup(
             panelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusquedaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtIdEmpleadoAsist, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(tablaPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -85,6 +90,11 @@ public class EmpPagos extends javax.swing.JPanel {
         btnBuscarPago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBuscarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
         btnBuscarPago.setText("Buscar");
+        btnBuscarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPagoActionPerformed(evt);
+            }
+        });
 
         lblBuscarOpc1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         lblBuscarOpc1.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,6 +168,53 @@ public class EmpPagos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPagoActionPerformed
+        String idTexto = lblPagoPorId.getText().trim();
+        String filtroEstado = (String) listaEstadoPagoEmp.getSelectedItem();
+
+        DefaultTableModel model = (DefaultTableModel) tbListaAreas.getModel();
+        model.setRowCount(0); // Limpiar tabla
+
+        if (idTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+            return;
+        }
+
+        try {
+            int idEmpleado = Integer.parseInt(idTexto);
+            List<RegistroPago> pagos = gestor.getMisRagistro();
+            pagos = pagos.stream().filter(p -> p.getIdEmpleado() == idEmpleado).collect(Collectors.toList());
+            
+            if (pagos == null || pagos.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No se encontraron pagos para el ID ingresado.");
+                return;
+            }
+
+            for (RegistroPago pago : pagos) {
+                boolean mostrar = false;
+
+                switch (filtroEstado) {
+                    case "TODOS" -> mostrar = true;
+                    case "REALIZADO" -> mostrar = pago.getEstado() == PagoEstado.REALIZADO;
+                    case "PENDIENTES" -> mostrar = pago.getEstado() == PagoEstado.PENDIENTE;
+                }
+
+                if (mostrar) {
+                    model.addRow(new Object[]{
+                        pago.getIdPago(),
+                        pago.getFechaPago().toString(),
+                        pago.getMonto(),
+                        pago.getMedioPago().toString(),
+                        pago.getEstado().toString()
+                    });
+                }
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "El ID debe ser un número.");
+        }
+    }//GEN-LAST:event_btnBuscarPagoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarPago;
@@ -168,7 +225,7 @@ public class EmpPagos extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> listaEstadoPagoEmp;
     private javax.swing.JPanel panelBusqueda;
     private javax.swing.JPanel panelBusquedaPago;
+    private javax.swing.JScrollPane tablaPagos;
     private javax.swing.JTable tbListaAreas;
-    private javax.swing.JScrollPane txtIdEmpleadoAsist;
     // End of variables declaration//GEN-END:variables
 }

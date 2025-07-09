@@ -1,8 +1,8 @@
 package GestionEmpleados;
 
-import GestionEmpleados.Enum.EstadoLaboral;
+import GestionEmpleados.Enum.TipoContrato;
 import Interfaz.IAccionesGerente;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class GerenteGeneral extends Entidad implements IAccionesGerente {
     // Salario fijo mensual del Gerente General
@@ -14,7 +14,7 @@ public class GerenteGeneral extends Entidad implements IAccionesGerente {
                           String apellido,
                           String email,
                           String dni,
-                          LocalDateTime fechaIngreso) {
+                          LocalDate fechaIngreso) {
         super(id, nombre, apellido, email, dni, fechaIngreso);
     }
 
@@ -70,19 +70,17 @@ public class GerenteGeneral extends Entidad implements IAccionesGerente {
     // Renueva el contrato de un empleado actualizando sus fechas.
     @Override
     public void renovarContrato(Empleado empleado,
-                                LocalDateTime nuevaTermino,
-                                LocalDateTime nuevaRenovacion) {
+                                LocalDate nuevaTermino,
+                                LocalDate nuevaRenovacion,
+                                TipoContrato tipoContrarto) {
         empleado.setFechaTermino(nuevaTermino);
         empleado.setFechaRenovacion(nuevaRenovacion);
-        // Reactivar empleado en caso de que estuviera despedido
-        if (empleado.getEstadoLaboral() == EstadoLaboral.DESPEDIDO) {
-            empleado.setEstadoLaboral(EstadoLaboral.ACTIVO);
-        }
+        empleado.setTipoContrato(tipoContrarto);
     }
 
     // Devuelve el salario fijo del Gerente General.
     @Override
-    public double calcularSalario() {
+    public double calcularSalario(int ultimosNdias) {
         return SALARIO_FIJO;
     }
 

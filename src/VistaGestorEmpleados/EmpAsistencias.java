@@ -1,52 +1,28 @@
 package VistaGestorEmpleados;
 
+import GestionEmpleados.Empleado;
 import GestionEmpleados.GestorEmpleados;
+import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionEvent;
 import java.time.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 
 public class EmpAsistencias extends javax.swing.JPanel {
-
-    
-    
     public static GestorEmpleados gestor = new GestorEmpleados();
     public static LocalDate fechaComoLocalDate;
-    /**
-     * Creates new form GestionAreasPanel
-     * @param gestor
-     */
+    public static Date fechaSeleccionada;
+    
     public EmpAsistencias(GestorEmpleados gestor) {
-        initComponents();
         this.gestor = gestor;
-        
-        LocalTime a = LocalTime.now();
-        lbReloj.setText(
-                String.format("%02d : %02d : %02d",
-                a.getHour(),
-                a.getMinute(),
-                a.getSecond()));
-        
-        
+        initComponents();
+        actualizarReloj();
         gestor.getEmpleado(101).registrarHorasDiarias(LocalDate.now(), Arrays.asList(1,5,6,7,9));
         gestor.getEmpleado(102).registrarHorasDiarias(LocalDate.now(), Arrays.asList(1,8));
-        
-        int timer = 1000;
-        
-
-        
-        new Timer(timer, (ActionEvent e) -> {
-                LocalTime ahora = LocalTime.now();
-                lbReloj.setText(
-                String.format("%02d : %02d : %02d",
-                ahora.getHour(),
-                ahora.getMinute(),
-                ahora.getSecond())
-                );
-        }).start();
-        
-        
+        iniciarTimer();
+        tablaAsistencias.setModel(new DefaultTableModel(new Object[][]{}, new String[]{"Tipo Hora", "Hora"}));
         txtNomAsis.setEditable(false);
         txtApeAsis.setEditable(false);
         txtDniAsis.setEditable(false);
@@ -54,6 +30,36 @@ public class EmpAsistencias extends javax.swing.JPanel {
         reset();
     }
 
+    private void actualizarReloj() {
+        LocalTime ahora = LocalTime.now();
+        lbReloj.setText(String.format("%02d : %02d : %02d", ahora.getHour(), ahora.getMinute(), ahora.getSecond()));
+    }
+
+    private void iniciarTimer() {
+        new Timer(1000, (ActionEvent e) -> actualizarReloj()).start();
+    }
+    
+    private void reset(){
+            txtHoraEnt.setText("");
+            txtMinEnt.setText("");
+            txtHoraSal.setText("");
+            txtMinSal.setText("");
+            txtHoraEnt.setEditable(false);
+            txtMinEnt.setEditable(false);
+            txtHoraSal.setEditable(false);
+            txtMinSal.setEditable(false);
+    }
+    
+    private void compFecha(JDateChooser jd){
+        if (jd.getDate() != null) {
+            fechaSeleccionada = jd.getDate();
+            fechaComoLocalDate = fechaSeleccionada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        } else {
+            JOptionPane.showMessageDialog(this, "Trabajando con la fecha actual.");
+            fechaComoLocalDate = LocalDate.now();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,7 +72,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
         panelBusqueda = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
         txtIdEmpleadoAsist = new javax.swing.JScrollPane();
-        tbLista = new javax.swing.JTable();
+        tablaAsistencias = new javax.swing.JTable();
         jtBuscar = new javax.swing.JTabbedPane();
         panelIdBuscar = new javax.swing.JPanel();
         lblIDBuscar = new javax.swing.JLabel();
@@ -86,7 +92,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
         btnMostrarAsis = new javax.swing.JButton();
         panelAreas = new javax.swing.JPanel();
         lblIdArea = new javax.swing.JLabel();
-        jDateChooserEntrada = new com.toedter.calendar.JDateChooser();
+        jDHoras = new com.toedter.calendar.JDateChooser();
         panelAreas1 = new javax.swing.JPanel();
         lblIdArea1 = new javax.swing.JLabel();
         txtHoraEnt = new javax.swing.JTextField();
@@ -109,11 +115,16 @@ public class EmpAsistencias extends javax.swing.JPanel {
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         txtIdEmpleadoAsist.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Empleados"));
         txtIdEmpleadoAsist.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        tbLista.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAsistencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -124,7 +135,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        txtIdEmpleadoAsist.setViewportView(tbLista);
+        txtIdEmpleadoAsist.setViewportView(tablaAsistencias);
 
         jtBuscar.setToolTipText("");
 
@@ -286,14 +297,14 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblIdArea)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jDateChooserEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jDHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelAreasLayout.setVerticalGroup(
             panelAreasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAreasLayout.createSequentialGroup()
                 .addGroup(panelAreasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblIdArea)
-                    .addComponent(jDateChooserEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -446,138 +457,118 @@ public class EmpAsistencias extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAsistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsistenciasActionPerformed
-        Date fechaSeleccionada;
-
         if (btnAsistencias.getText().equals("Verificar Horas")) {
             if (txtEmpIdAsis.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Ingrese el ID de empleado.");
                 return;
             }
-
             try {
                 int id = Integer.parseInt(txtEmpIdAsis.getText());
-
                 if (gestor.getEmpleado(id) != null) {
-                    if (jDateChooserEntrada.getDate() != null) {
-                        fechaSeleccionada = jDateChooserEntrada.getDate();
-                        fechaComoLocalDate = fechaSeleccionada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Trabajando con la fecha actual.");
-                        fechaComoLocalDate = LocalDate.now();
-                    }
-
-                    int horasTrabajadas = gestor.getEmpleado(id).getHorasTrabajadasPorDia().get(fechaComoLocalDate).size();
-
-                    boolean esPar = horasTrabajadas % 2 == 0;
+                    compFecha(jDHoras);
+                    List<Integer> horasList = gestor.getEmpleado(id).getHorasTrabajadasPorDia()
+                        .getOrDefault(fechaComoLocalDate, new ArrayList<>());
+                    boolean esPar = horasList.size() % 2 == 0;
                     txtHoraEnt.setEditable(esPar);
                     txtMinEnt.setEditable(esPar);
                     txtHoraSal.setEditable(!esPar);
                     txtMinSal.setEditable(!esPar);
-
                     btnAsistencias.setText("Registrar Hora");
                     txtEmpIdAsis.setEditable(false);
-                    jDateChooserEntrada.setEnabled(false);
+                    jDHoras.setEnabled(false);
                 } else {
                     JOptionPane.showMessageDialog(this, "Error... No existe el empleado.");
                 }
-
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Error... Número inválido.");
             }
-
         } else {
             if (txtHoraEnt.getText().isEmpty() && txtMinEnt.getText().isEmpty()
-                    && txtHoraSal.getText().isEmpty() && txtMinSal.getText().isEmpty()) {
+                && txtHoraSal.getText().isEmpty() && txtMinSal.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Error... Ingrese una hora completa.");
                 return;
             }
-
-            int id = Integer.parseInt(txtEmpIdAsis.getText());
-            List<Integer> listahorasOriginal = gestor.getEmpleado(id).getHorasTrabajadasPorDia().getOrDefault(fechaComoLocalDate, new ArrayList<Integer>());
-            List<Integer> listahoras = new ArrayList<>(listahorasOriginal);
-
             try {
-                int horasSum = (txtHoraEnt.getText().isEmpty() ? 0 : Integer.parseInt(txtHoraEnt.getText()))
-                             + (txtHoraSal.getText().isEmpty() ? 0 : Integer.parseInt(txtHoraSal.getText()));
-
-                int minSum = (txtMinEnt.getText().isEmpty() ? 0 : Integer.parseInt(txtMinEnt.getText()))
-                           + (txtMinSal.getText().isEmpty() ? 0 : Integer.parseInt(txtMinSal.getText()));
-
-                if (horasSum < 0 || horasSum > 24) {
-                    JOptionPane.showMessageDialog(this, "Error... Hora inválida.");
+                int id = Integer.parseInt(txtEmpIdAsis.getText());
+                List<Integer> original = gestor.getEmpleado(id).getHorasTrabajadasPorDia()
+                    .getOrDefault(fechaComoLocalDate, new ArrayList<>());
+                List<Integer> lista = new ArrayList<>(original);
+                int horasSum = (txtHoraEnt.getText().isEmpty()?0:Integer.parseInt(txtHoraEnt.getText()))
+                             + (txtHoraSal.getText().isEmpty()?0:Integer.parseInt(txtHoraSal.getText()));
+                int minSum = (txtMinEnt.getText().isEmpty()?0:Integer.parseInt(txtMinEnt.getText()))
+                           + (txtMinSal.getText().isEmpty()?0:Integer.parseInt(txtMinSal.getText()));
+                if (horasSum < 0 || horasSum > 24 || minSum < 0 || minSum > 60) {
+                    JOptionPane.showMessageDialog(this, "Error... Hora o minutos inválidos.");
                     return;
                 }
-
-                if (!listahorasOriginal.isEmpty() && horasSum <= listahorasOriginal.getLast()) {
+                if (minSum >= 30) horasSum++;
+                if (!original.isEmpty() && horasSum <= original.get(original.size()-1)) {
                     JOptionPane.showMessageDialog(this, "Error... Hora incoherente con el registro.");
                     return;
                 }
-
-                if (minSum < 0 || minSum > 60) {
-                    JOptionPane.showMessageDialog(this, "Error... Minutos inválidos.");
-                    return;
-                }
-
-                if (minSum >= 30) horasSum++;
-
-                listahoras.add(horasSum);
-
+                lista.add(horasSum);
+                gestor.getEmpleado(id).registrarHorasDiarias(fechaComoLocalDate, lista);
+                gestor.getEmpleado(id).registrarAsistencia(fechaComoLocalDate, true);
+                btnAsistencias.setText("Verificar Horas");
+                txtEmpIdAsis.setEditable(true);
+                jDHoras.setEnabled(true);
+                reset();
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Error... Formato de horas o minutos inválido.");
-                return;
+                JOptionPane.showMessageDialog(this, "Error... Formato inválido.");
             }
-
-            gestor.getEmpleado(id).registrarHorasDiarias(fechaComoLocalDate, listahoras);
-            gestor.getEmpleado(id).registrarAsistencia(fechaComoLocalDate, true);
-
-            btnAsistencias.setText("Verificar Horas");
-            txtEmpIdAsis.setEditable(true);
-            jDateChooserEntrada.setEnabled(true);
-            reset();
         }
-
         btnAsistencias.setSize(213, 75);
     }//GEN-LAST:event_btnAsistenciasActionPerformed
 
-    private void reset(){
-            txtHoraEnt.setText("");
-            txtMinEnt.setText("");
-            txtHoraSal.setText("");
-            txtMinSal.setText("");
-            txtCorreoAsis.setEditable(false);
-            txtHoraEnt.setEditable(false);
-            txtMinEnt.setEditable(false);
-            txtHoraSal.setEditable(false);
-            txtMinSal.setEditable(false);
-    }
-    
     private void btnMostrarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarAsisActionPerformed
-        
-        try{
+        try {
             int id = Integer.parseInt(txtEmpIdAsis.getText());
-
-            if (gestor.getEmpleado(id) != null){
-                txtEmpIdAsis.setText(String.valueOf(gestor.getEmpleado(id).getId()));
-                txtNomAsis.setText(gestor.getEmpleado(id).getNombre());
-                txtApeAsis.setText(gestor.getEmpleado(id).getApellido());
-                txtDniAsis.setText(gestor.getEmpleado(id).getDni());
-                txtCorreoAsis.setText(gestor.getEmpleado(id).getEmail());
+            Empleado emp = gestor.getEmpleado(id);
+            if (emp != null) {
+                txtEmpIdAsis.setText(String.valueOf(emp.getId()));
+                txtNomAsis.setText(emp.getNombre());
+                txtApeAsis.setText(emp.getApellido());
+                txtDniAsis.setText(emp.getDni());
+                txtCorreoAsis.setText(emp.getEmail());
             } else {
                 JOptionPane.showMessageDialog(this, "Error... No existe el empleado.");
             }
-        } catch(NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error... Número invalido.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error... Número inválido.");
         }
-
     }//GEN-LAST:event_btnMostrarAsisActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (txtEmpIdAsis.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el ID de empleado.");
+            return;
+        }
+        compFecha(jDateBuscar);
+        try {
+            int id = Integer.parseInt(txtEmpIdAsis.getText());
+            if (gestor.getEmpleado(id) != null) {
+                List<Integer> horas = gestor.getEmpleado(id).getHorasTrabajadasPorDia()
+                    .getOrDefault(fechaComoLocalDate, new ArrayList<>());
+                DefaultTableModel modelo = (DefaultTableModel) tablaAsistencias.getModel();
+                modelo.setRowCount(0);
+                for (int i = 0; i < horas.size(); i++) {
+                    modelo.addRow(new Object[]{(i % 2 == 0)?"Entrada":"Salida", horas.get(i)});
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Error... No existe el empleado.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error... Número inválido.");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsistencias;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnMostrarAsis;
+    private com.toedter.calendar.JDateChooser jDHoras;
     private com.toedter.calendar.JDateChooser jDateBuscar;
-    private com.toedter.calendar.JDateChooser jDateChooserEntrada;
     private javax.swing.JTabbedPane jtBuscar;
     private javax.swing.JLabel lbNombre3;
     private javax.swing.JLabel lbReloj;
@@ -599,7 +590,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
     private javax.swing.JPanel panelDatos;
     private javax.swing.JPanel panelIdBuscar;
     private javax.swing.JPanel panelReloj;
-    private javax.swing.JTable tbLista;
+    private javax.swing.JTable tablaAsistencias;
     private javax.swing.JTextField txtApeAsis;
     private javax.swing.JTextField txtCorreoAsis;
     private javax.swing.JTextField txtDniAsis;

@@ -37,7 +37,7 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
     }   
    
     @Override
-    public void addRegistro(RegistroPago rp){
+    public void addRegistroPago(RegistroPago rp){
         misRegistros.add(rp);
     }
     
@@ -83,7 +83,7 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
     
     // Elimina un Registro por su identificador.
     @Override
-    public void dropRegistro(int idRegistro) {
+    public void dropRegistroPago(int idRegistro) {
         if(!misRegistros.isEmpty()){
             for(RegistroPago rg: misRegistros){
                 if(rg.getIdPago() == idRegistro){
@@ -95,7 +95,7 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
 
     // Elimina un Registro por su objeto.
     @Override
-    public void dropRegistro(RegistroPago registro) {
+    public void dropRegistroPago(RegistroPago registro) {
         if (registro != null) {
             misRegistros.remove(registro);
         }
@@ -171,7 +171,7 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
 
     // Buscador de registro por su id
     @Override
-    public RegistroPago getRegistro(int idRegistro){
+    public RegistroPago getRegistroPago(int idRegistro){
         RegistroPago registro = null;
 
         if(!misRegistros.isEmpty()){
@@ -188,7 +188,7 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
 
     // Buscador de registro por su objeto
     @Override
-    public RegistroPago getRegistro(RegistroPago registro){
+    public RegistroPago getRegistroPago(RegistroPago registro){
         RegistroPago resultado = null;
 
         if(registro != null && !misRegistros.isEmpty()){
@@ -238,7 +238,7 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
     
     //Modificar valores Registro
     @Override
-    public void modificarRegistro(int idRegistro, double monto){
+    public void modificarRegistroPago(int idRegistro, double monto){
         if(!misRegistros.isEmpty()){
             for(RegistroPago rp: misRegistros){
                 if(rp.getIdPago() == idRegistro){

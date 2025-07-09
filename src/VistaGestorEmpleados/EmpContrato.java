@@ -4,17 +4,22 @@
  */
 package VistaGestorEmpleados;
 
-/**
- *
- * @author User
- */
+import GestionEmpleados.Empleado;
+import GestionEmpleados.Enum.TipoContrato;
+import GestionEmpleados.GestorEmpleados;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+
 public class EmpContrato extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GestionAreasPanel
-     */
-    public EmpContrato() {
+    public static GestorEmpleados gestor = new GestorEmpleados();
+    private DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    
+    public EmpContrato(GestorEmpleados gestor) {
         initComponents();
+        this.gestor = gestor;
+        
         
         txtContrato.setText("""
                             CONTRATO DE TRABAJO
@@ -87,7 +92,7 @@ public class EmpContrato extends javax.swing.JPanel {
         btnBuscarPago1 = new javax.swing.JButton();
         lblBuscarOpc2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtReporteID = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(17, 50, 77));
@@ -120,6 +125,11 @@ public class EmpContrato extends javax.swing.JPanel {
         btnBuscarPago1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBuscarPago1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
         btnBuscarPago1.setText("Buscar Contrato");
+        btnBuscarPago1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPago1ActionPerformed(evt);
+            }
+        });
 
         lblBuscarOpc2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         lblBuscarOpc2.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,7 +158,7 @@ public class EmpContrato extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtReporteID, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(jButton1)
                 .addContainerGap(91, Short.MAX_VALUE))
@@ -159,7 +169,7 @@ public class EmpContrato extends javax.swing.JPanel {
                 .addGroup(panelBusquedaContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelBusquedaContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtReporteID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton1))
                     .addGroup(panelBusquedaContratoLayout.createSequentialGroup()
                         .addComponent(lblBuscarOpc2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,23 +200,64 @@ public class EmpContrato extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarPago1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPago1ActionPerformed
+        if (txtReporteID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el ID de empleado.");
+            return;
+        }
+        try {
+            int id = Integer.parseInt(txtReporteID.getText());
+            Empleado emp = gestor.getEmpleado(id);
+            if (emp != null) {
+                StringBuilder c = new StringBuilder();
+                c.append("CONTRATO DE TRABAJO\n");
+                c.append("Trabajador: ").append(emp.getNombre()).append(", DNI ")
+                 .append(emp.getDni()).append("\n");
+                c.append("Cargo: ").append(emp.getClass().getSimpleName()).append("\n");
+                c.append("Tarifa: S/ ").append(emp.getTarifaPorHora()).append(" por hora.\n");
+                c.append("Fecha Ingreso: ").append(emp.getFechaIngreso().format(fmt)).append("\n");
+                switch (emp.getTipoContrato()) {
+                    case DISCAPACIDAD:
+                        c.append("Fecha Término: ").append(emp.getFechaTermino().format(fmt)).append("\n");
+                        c.append("Fecha Renovación: ").append(emp.getFechaRenovacion().format(fmt)).append("\n");
+                        c.append("Modalidad: Indefinida con ajustes razonables para discapacidad.\n");
+                        c.append("No podrá prestar servicios hasta el término del contrato.\n");
+                        break;
+                    case INDEFINIDO:
+                        c.append("Modalidad: Contrato indefinido sin fecha de término ni renovación.\n");
+                        break;
+                    case RENOVABLE:
+                        c.append("Fecha Término: ").append(emp.getFechaTermino().format(fmt)).append("\n");
+                        c.append("Fecha Renovación: ").append(emp.getFechaRenovacion().format(fmt)).append("\n");
+                        c.append("Modalidad: Contrato a plazo renovable automáticamente.\n");
+                        break;
+                    case TEMPORAL:
+                        c.append("Fecha Término: ").append(emp.getFechaTermino().format(fmt)).append("\n");
+                        c.append("Modalidad: Contrato a plazo fijo sin opción de renovación.\n");
+                        break;
+                    default:
+                        c.append("ERROR: Tipo de contrato no válido.\n");
+                        break;
+                }
+                txtContrato.setText(c.toString());
+            } else {
+                JOptionPane.showMessageDialog(this, "Error... No existe el empleado.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error... Número inválido.");
+        }
+    }//GEN-LAST:event_btnBuscarPago1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscarPago;
     private javax.swing.JButton btnBuscarPago1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField lblAreaID;
-    private javax.swing.JLabel lblBuscarOpc1;
     private javax.swing.JLabel lblBuscarOpc2;
-    private javax.swing.JComboBox<String> listaNombresAreas;
     private javax.swing.JPanel panelBusquedaContrato;
-    private javax.swing.JPanel panelBusquedaPago;
     private javax.swing.JTextArea txtContrato;
+    private javax.swing.JTextField txtReporteID;
     // End of variables declaration//GEN-END:variables
 }

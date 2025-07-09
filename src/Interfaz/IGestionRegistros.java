@@ -4,11 +4,11 @@ import GestionEmpleados.RegistroPago;
 import java.util.List;
 
   public interface IGestionRegistros {
-    void addRegistro(RegistroPago registro);
-    void dropRegistro(int idRegistro);
-    void dropRegistro(RegistroPago registro);
-    RegistroPago getRegistro(int idRegistro);
-    RegistroPago getRegistro(RegistroPago registro);
-    void modificarRegistro(int idRegistro, double monto);
+    void addRegistroPago(RegistroPago registro);
+    void dropRegistroPago(int idRegistro);
+    void dropRegistroPago(RegistroPago registro);
+    RegistroPago getRegistroPago(int idRegistro);
+    RegistroPago getRegistroPago(RegistroPago registro);
+    void modificarRegistroPago(int idRegistro, double monto);
     List<Area> getMisAreas();
 }

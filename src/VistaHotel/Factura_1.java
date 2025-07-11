@@ -309,7 +309,6 @@ public class Factura_1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         TxtFa_IDReserva = new javax.swing.JTextField();
         Btn_Buscar = new javax.swing.JButton();
@@ -353,14 +352,9 @@ public class Factura_1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("FACTURA DE RESERVA");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 30));
-
         jLabel2.setText("ID de Reserva:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 90, -1));
-        getContentPane().add(TxtFa_IDReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 160, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, -1));
+        getContentPane().add(TxtFa_IDReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 160, -1));
 
         Btn_Buscar.setText("Buscar");
         Btn_Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -368,7 +362,7 @@ public class Factura_1 extends javax.swing.JFrame {
                 Btn_BuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, -1, -1));
+        getContentPane().add(Btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalles de Reserva"));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -397,7 +391,7 @@ public class Factura_1 extends javax.swing.JFrame {
         TxtFa_FechaReserva.setEnabled(false);
         jPanel2.add(TxtFa_FechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 100, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 220, 150));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 220, 150));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resumen de Factura"));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -420,7 +414,7 @@ public class Factura_1 extends javax.swing.JFrame {
         TxtFa_Total.setEnabled(false);
         jPanel3.add(TxtFa_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 100, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 180, 120));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 180, 120));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Cliente"));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -449,7 +443,7 @@ public class Factura_1 extends javax.swing.JFrame {
         TxtFa_Nombre.setEnabled(false);
         jPanel4.add(TxtFa_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 150));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 220, 150));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Habitaciones"));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -472,7 +466,7 @@ public class Factura_1 extends javax.swing.JFrame {
         TxtFa_Precio.setEnabled(false);
         jPanel5.add(TxtFa_Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 100, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 170, 120));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 170, 120));
 
         Sp_ServiciosAdicionales.setBorder(javax.swing.BorderFactory.createTitledBorder("Servicios Adicionales"));
 
@@ -489,10 +483,10 @@ public class Factura_1 extends javax.swing.JFrame {
         ));
         Sp_ServiciosAdicionales.setViewportView(Jt_ServiciosAdicionales);
 
-        getContentPane().add(Sp_ServiciosAdicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 350, 150));
+        getContentPane().add(Sp_ServiciosAdicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 350, 150));
 
         Btn_RegistrarPago.setText("Registrar Pago");
-        getContentPane().add(Btn_RegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 250, -1));
+        getContentPane().add(Btn_RegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 250, -1));
 
         Btn_GenerarPDF.setText("Generar PDF / Imprimir");
         Btn_GenerarPDF.addActionListener(new java.awt.event.ActionListener() {
@@ -500,7 +494,7 @@ public class Factura_1 extends javax.swing.JFrame {
                 Btn_GenerarPDFActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_GenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 250, -1));
+        getContentPane().add(Btn_GenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 250, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -583,7 +577,6 @@ try {
     private javax.swing.JTextField TxtFa_Telefono;
     private javax.swing.JTextField TxtFa_Tipo;
     private javax.swing.JTextField TxtFa_Total;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Inscripcion extends javax.swing.JFrame {
+public class EditarReserva extends javax.swing.JFrame {
 
-    public Inscripcion() {
+    public EditarReserva() {
         initComponents();
         this.setLocationRelativeTo(null);
         // --------- AQUI: PON LOS LISTENERS DE FECHAS ---------
@@ -35,7 +35,7 @@ public class Inscripcion extends javax.swing.JFrame {
     private ReservarHabitacion panelReservarHabitacion;
 
     // Nuevo constructor que recibe datos
-    public Inscripcion(String numero, String tipo, String precio, ReservarHabitacion panel) {
+    public EditarReserva(String numero, String tipo, String precio, ReservarHabitacion panel) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.panelReservarHabitacion = panel;
@@ -139,10 +139,8 @@ public class Inscripcion extends javax.swing.JFrame {
         jDateChooserSalida = new com.toedter.calendar.JDateChooser();
         jDateChooserEntrada = new com.toedter.calendar.JDateChooser();
         CbEstado = new javax.swing.JComboBox<>();
-        BtnRegresar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
         setMinimumSize(new java.awt.Dimension(750, 440));
         setUndecorated(true);
         setResizable(false);
@@ -174,7 +172,7 @@ public class Inscripcion extends javax.swing.JFrame {
         BtnRegistrar.setBackground(new java.awt.Color(33, 44, 116));
         BtnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
-        BtnRegistrar.setText("Registrar");
+        BtnRegistrar.setText("GUARDAR");
         BtnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnRegistrarMouseClicked(evt);
@@ -185,7 +183,7 @@ public class Inscripcion extends javax.swing.JFrame {
                 BtnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 150, 40));
+        jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 150, 40));
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -353,19 +351,8 @@ public class Inscripcion extends javax.swing.JFrame {
         jPanel1.add(jDateChooserSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 170, -1));
         jPanel1.add(jDateChooserEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 170, -1));
 
-        CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "OCUPADO", "LIMPIEZA" }));
+        CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OCUPADO", " " }));
         jPanel1.add(CbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 170, -1));
-
-        BtnRegresar2.setBackground(new java.awt.Color(33, 44, 116));
-        BtnRegresar2.setForeground(new java.awt.Color(255, 255, 255));
-        BtnRegresar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/papelera-xmark.png"))); // NOI18N
-        BtnRegresar2.setText("LIMPIAR");
-        BtnRegresar2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnRegresar2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(BtnRegresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 150, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
 
@@ -531,10 +518,6 @@ public class Inscripcion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnRegistrarActionPerformed
 
-    private void BtnRegresar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresar2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnRegresar2MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -552,20 +535,21 @@ public class Inscripcion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inscripcion().setVisible(true);
+                new EditarReserva().setVisible(true);
             }
         });
     }
@@ -573,7 +557,6 @@ public class Inscripcion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegistrar;
     private javax.swing.JButton BtnRegresar1;
-    private javax.swing.JButton BtnRegresar2;
     private javax.swing.JComboBox<String> CbEstado;
     private javax.swing.JTextField TxtApellido;
     private javax.swing.JTextField TxtCorreo;

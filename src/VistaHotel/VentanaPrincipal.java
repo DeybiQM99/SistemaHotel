@@ -21,7 +21,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbGerente = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbRecepcion = new javax.swing.JLabel();
         BtnRegresar = new javax.swing.JButton();
         LblMinimizar = new javax.swing.JLabel();
         LblCerrar = new javax.swing.JLabel();
@@ -49,20 +49,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(lbGerente, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 240, 200));
 
-        jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reservar-mas.png"))); // NOI18N
-        jLabel3.setText("RESERVACION");
-        jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setMaximumSize(new java.awt.Dimension(40, 16));
-        jLabel3.setMinimumSize(new java.awt.Dimension(40, 16));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbRecepcion.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 12)); // NOI18N
+        lbRecepcion.setForeground(new java.awt.Color(255, 255, 255));
+        lbRecepcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reservar-mas.png"))); // NOI18N
+        lbRecepcion.setText("RESERVACION");
+        lbRecepcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lbRecepcion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        lbRecepcion.setMaximumSize(new java.awt.Dimension(40, 16));
+        lbRecepcion.setMinimumSize(new java.awt.Dimension(40, 16));
+        lbRecepcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                lbRecepcionMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 260, 200));
+        jPanel1.add(lbRecepcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 260, 200));
 
         BtnRegresar.setBackground(new java.awt.Color(33, 44, 116));
         BtnRegresar.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,7 +144,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LblCerrarMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void lbRecepcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRecepcionMouseClicked
         // TODO add your handling code here:
         
           // INICIO
@@ -155,13 +155,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         reserv.setVisible(true); //  Hace visible la instancia de 'Login2',
         // FIN
         
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_lbRecepcionMouseClicked
 
     private void lbGerenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbGerenteMouseClicked
         this.dispose();
         // Crea y muestra el siguiente formulario
         MenuGerente reserwv = new MenuGerente();// Reemplaza con tu clase de formulario
-        reserwv.setVisible(true); //  Hace visible la instancia.
+        reserwv.setVisible(true); //  Hace visible la instancia. 
+        
+        // ESTA MAL 
     }//GEN-LAST:event_lbGerenteMouseClicked
 
     private void lbEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbEmpleadoMouseClicked
@@ -212,14 +214,56 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    
+    
+    
+    
+     // MÉTODO PÚBLICO para configurar accesos según rol
+    public void configurarAccesoPorRol(String rol) {
+        switch (rol.toLowerCase()) {
+            case "gerente":
+                lbRecepcion.setEnabled(true);
+                lbEmpleado.setEnabled(true);
+                lbGerente.setEnabled(true);
+                break;
+            case "recepcion":
+                lbRecepcion.setEnabled(true);
+                lbEmpleado.setEnabled(false);
+                lbGerente.setEnabled(false);
+                break;
+            case "rrhh":
+                lbRecepcion.setEnabled(false);
+                lbEmpleado.setEnabled(true);
+                lbGerente.setEnabled(false);
+                break;
+            default:
+                lbRecepcion.setEnabled(false);
+                lbEmpleado.setEnabled(false);
+                lbGerente.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "Rol no reconocido: " + rol);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel LblCerrar;
     private javax.swing.JLabel LblMinimizar;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbEmpleado;
     private javax.swing.JLabel lbGerente;
+    private javax.swing.JLabel lbRecepcion;
     // End of variables declaration//GEN-END:variables
 }

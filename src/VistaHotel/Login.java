@@ -256,33 +256,36 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtContraseñaFocusLost
 
     private void BtnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnIniciarSesionMouseClicked
-       validarIngreso();
+        validarIngreso();
     }//GEN-LAST:event_BtnIniciarSesionMouseClicked
 
-   private int intentos = 0; //Variable para controlar el intentos de accesos incorrectos
+    private int intentos = 0; //Variable para controlar el intentos de accesos incorrectos
 
 // METODO VALIDAR INGRESO - INICIO
-private void validarIngreso() {
-    String usuario = TxtUsuario.getText(); // Campo usuario
-    String contrasena = new String(TxtContraseña.getPassword()); // Campo contraseña
+   
+ private void validarIngreso() {
+    String usuario = TxtUsuario.getText();
+    String contrasena = new String(TxtContraseña.getPassword());
 
-    // Verifica si los campos contienen los valores por defecto o están vacíos
-    if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****") ||
-        usuario.isEmpty() || contrasena.isEmpty()) {
+    if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****")
+        || usuario.isEmpty() || contrasena.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
         return;
     }
 
     try {
-        // Conexión a la base de datos de Clever Cloud
-        String url = "jdbc:mysql://bb8eb94l4tbafdhhua6p-mysql.services.clever-cloud.com:3306/bb8eb94l4tbafdhhua6p";
-        String dbUser = "u7bx0koexr09nu6w";
-        String dbPassword = "KXufvIJGaeouglbc9GsG";
+        String url = "jdbc:sqlserver://bdpa.database.windows.net:1433;"
+                   + "database=bd_hotel;"
+                   + "encrypt=true;"
+                   + "trustServerCertificate=false;"
+                   + "loginTimeout=30;";
+        String dbUser = "sqladmin";
+        String dbPassword = "admin12@";
 
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         Connection connection = DriverManager.getConnection(url, dbUser, dbPassword);
 
-        // Consulta para verificar usuario y contraseña
-        String query = "SELECT * FROM usuarios WHERE NombreUsuario = ? AND contrasena = ?";
+        String query = "SELECT rol FROM usuarios WHERE NombreUsuario = ? AND contrasena = ?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, usuario);
         statement.setString(2, contrasena);
@@ -290,13 +293,16 @@ private void validarIngreso() {
         ResultSet resultSet = statement.executeQuery();
 
         if (resultSet.next()) {
-            JOptionPane.showMessageDialog(this, "¡Acceso correcto!");
+            String rol = resultSet.getString("rol");
+            JOptionPane.showMessageDialog(this, "¡Acceso correcto como " + rol + "!");
             intentos = 0;
 
-            // Abre la ventana principal
             VentanaPrincipal nuevoFormulario = new VentanaPrincipal();
+            // Llamas al método que configura botones según rol
+            nuevoFormulario.configurarAccesoPorRol(rol);
             nuevoFormulario.setVisible(true);
-            this.dispose(); // Cierra la ventana de login
+            this.dispose();
+
         } else {
             intentos++;
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Intento " + intentos + " de 3.");
@@ -309,21 +315,22 @@ private void validarIngreso() {
             }
         }
 
-        // Cierre de recursos
         resultSet.close();
         statement.close();
         connection.close();
 
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage());
+    } catch (ClassNotFoundException e) {
+        JOptionPane.showMessageDialog(this, "No se encontró el driver de SQL Server.");
     }
 }
-// METODO VALIDAR INGRESO - FIN
+
 
     
     
-    
-    
+// METODO VALIDAR INGRESO - FIN
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

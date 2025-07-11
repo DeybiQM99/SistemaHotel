@@ -47,11 +47,6 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnRegresarMouseClicked(evt);
             }
         });
-        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresarActionPerformed(evt);
-            }
-        });
         jPanel2.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 130, 40));
 
         BtnReservacion.setBackground(new java.awt.Color(33, 44, 116));
@@ -94,6 +89,11 @@ public class Reservacion extends javax.swing.JFrame {
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Factura.png"))); // NOI18N
         jButton8.setText("FACTURA");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 180, 40));
 
         BtnSalidaHabitacion.setBackground(new java.awt.Color(33, 44, 116));
@@ -167,16 +167,22 @@ public class Reservacion extends javax.swing.JFrame {
         SalidaHabitacion salidaPanel = new SalidaHabitacion();
         salidaPanel.setSize(750, 450);
         salidaPanel.setLocation(0, 0);
-        salidaPanel.cargarHabitacionesOcupadas(); // Se cargan los datos desde BD
+      
         JpContent.removeAll();
         JpContent.add(salidaPanel, BorderLayout.CENTER);
         JpContent.revalidate();
         JpContent.repaint();
     }//GEN-LAST:event_BtnSalidaHabitacionMouseClicked
 
-    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnRegresarActionPerformed
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+     
+        
+        Factura_1 facttura = new Factura_1();
+        facttura.setVisible(true); 
+        
+        
+        
+    }//GEN-LAST:event_jButton8MouseClicked
 
 //Método para obtener la instancia actual de ReservarHabitacion
     public ReservarHabitacion getReservarHabitacion() {

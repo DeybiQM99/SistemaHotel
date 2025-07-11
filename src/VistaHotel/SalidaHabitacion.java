@@ -1,12 +1,5 @@
 package VistaHotel;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class SalidaHabitacion extends javax.swing.JPanel {
 
@@ -15,60 +8,36 @@ public class SalidaHabitacion extends javax.swing.JPanel {
     public SalidaHabitacion() {
         initComponents();
         panelReservas = new ReservarHabitacion(); // Creamos una instancia para acceder a los paneles ya diseñados
-        cargarHabitacionesOcupadas(); // Cargamos solo los ocupados
-
+       
     }
 
-// Método para cargar solo habitaciones con estado 'ocupado'
-    public void cargarHabitacionesOcupadas() {
-
-        this.removeAll();  // Limpia el panel para recargar
-
-        try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
-            String sql = "SELECT numero_habitacion, tipo, descripcion, precio_por_noche FROM Habitaciones WHERE estado = 'ocupado'";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                String numero = rs.getString("numero_habitacion");
-                String tipo = rs.getString("tipo");
-                String descripcion = rs.getString("descripcion");
-                String precio = rs.getString("precio_por_noche");
-
-                JPanel panelHabitacion = crearPanelHabitacion(numero, tipo, descripcion, precio);
-
-                this.add(panelHabitacion);
-            }
-
-            this.revalidate();
-            this.repaint();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al cargar paneles ocupados: " + e.getMessage());
-        }
-
-    }
-
-    private JPanel crearPanelHabitacion(String numero, String tipo, String descripcion, String precio) {
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.RED);  // porque están ocupadas
-        panel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
-        panel.setLayout(new java.awt.GridLayout(4, 1));
-        panel.setPreferredSize(new java.awt.Dimension(150, 100));
-
-        panel.add(new javax.swing.JLabel("Número: " + numero));
-        panel.add(new javax.swing.JLabel("Tipo: " + tipo));
-        panel.add(new javax.swing.JLabel("Descripción: " + descripcion));
-        panel.add(new javax.swing.JLabel("Precio: $" + precio));
-
-        return panel;
-    }
+  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        CLIENTE = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        CLIENTE1 = new javax.swing.JLabel();
+        CLIENTE2 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        CLIENTE3 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        CLIENTE4 = new javax.swing.JLabel();
+        CLIENTE5 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jTextField7 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,10 +53,103 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         setBackground(new java.awt.Color(33, 44, 116));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(750, 450));
-        setLayout(new java.awt.GridLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CLIENTE.setForeground(new java.awt.Color(255, 255, 255));
+        CLIENTE.setText("FECHA SALIDA");
+        add(CLIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 120, 30));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("DIN");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 50, 30));
+
+        jButton1.setText("BUSCAR");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 130, 30));
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 170, 30));
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 290, 30));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("ESTADO");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 70, -1));
+        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 130, 30));
+
+        CLIENTE1.setForeground(new java.awt.Color(255, 255, 255));
+        CLIENTE1.setText("CLIENTE");
+        add(CLIENTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 60, 30));
+
+        CLIENTE2.setForeground(new java.awt.Color(255, 255, 255));
+        CLIENTE2.setText("METODO DE PAGO");
+        add(CLIENTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 30));
+        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 140, 30));
+        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 160, 30));
+
+        CLIENTE3.setForeground(new java.awt.Color(255, 255, 255));
+        CLIENTE3.setText("FECHA ENTRADA");
+        add(CLIENTE3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 120, 30));
+        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 140, 30));
+
+        CLIENTE4.setForeground(new java.awt.Color(255, 255, 255));
+        CLIENTE4.setText("ESTADO DE PAGO");
+        add(CLIENTE4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 120, 30));
+
+        CLIENTE5.setForeground(new java.awt.Color(255, 255, 255));
+        CLIENTE5.setText("TOTAL A PAGAR");
+        add(CLIENTE5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 120, 30));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EFECTIVO", "TARJETA" }));
+        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 140, 30));
+        add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 160, 30));
+
+        jButton2.setText("ALARGAR FECHA");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 150, 40));
+
+        jButton3.setText("CONFIRMAR SALIDA");
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 150, 40));
+
+        jButton4.setText("CANCELAR RESERVA");
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 150, 40));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+      
+        EditarReserva editRes = new EditarReserva();
+        editRes.setVisible(true);
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton2MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CLIENTE;
+    private javax.swing.JLabel CLIENTE1;
+    private javax.swing.JLabel CLIENTE2;
+    private javax.swing.JLabel CLIENTE3;
+    private javax.swing.JLabel CLIENTE4;
+    private javax.swing.JLabel CLIENTE5;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

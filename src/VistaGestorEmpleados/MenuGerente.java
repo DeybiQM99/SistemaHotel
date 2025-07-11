@@ -1,5 +1,6 @@
 package VistaGestorEmpleados;
 
+import GestionEmpleados.GestorEmpleados;
 import VistaHotel.VentanaPrincipal;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -8,7 +9,23 @@ import javax.swing.*;
 
 public class MenuGerente extends javax.swing.JFrame {
 
-    public MenuGerente() {
+    public static GestorEmpleados gestor;
+    
+    public MenuGerente(GestorEmpleados gestor) {
+        initComponents();
+        
+        this.gestor = gestor;
+        
+        Icon miIcono = new ImageIcon(new ImageIcon(getClass().getResource("/imagenes/logoHotelOscuro.jpg")).getImage().getScaledInstance(lbImagen.getWidth(), lbImagen.getHeight(), 0));
+        lbImagen.setIcon(miIcono);
+        lbImagen.setOpaque(true);
+        
+        panelPrincipal.setSize(600, 1000);
+        panelMenu.setSize(160, 600);
+        panelContenido.setSize(840, 600);
+    }
+    
+        public MenuGerente() {
         initComponents();
         
         Icon miIcono = new ImageIcon(new ImageIcon(getClass().getResource("/imagenes/logoHotelOscuro.jpg")).getImage().getScaledInstance(lbImagen.getWidth(), lbImagen.getHeight(), 0));

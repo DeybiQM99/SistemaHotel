@@ -19,8 +19,6 @@ public class EmpAsistencias extends javax.swing.JPanel {
         this.gestor = gestor;
         initComponents();
         actualizarReloj();
-        gestor.getEmpleado(101).registrarHorasDiarias(LocalDate.now(), Arrays.asList(1,5,6,7,9));
-        gestor.getEmpleado(102).registrarHorasDiarias(LocalDate.now(), Arrays.asList(1,8));
         iniciarTimer();
         tablaAsistencias.setModel(new DefaultTableModel(new Object[][]{}, new String[]{"Tipo Hora", "Hora"}));
         txtNomAsis.setEditable(false);

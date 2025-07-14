@@ -4,21 +4,46 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import ConexionBaseDeDatos.ConexionBD;
+import Interfaz.Bloqueable;
 import java.beans.Statement;
 import java.sql.ResultSet;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
-public class ServicioAdicional extends javax.swing.JPanel {
+import Interfaz.Limpiable;
+import Interfaz.Bloqueable;
+
+public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, Bloqueable {
 
     public ServicioAdicional() {
         initComponents();
+        bloquearCampos();   //INICIALIZAMOS EL METODO BLOQUEAR CAMPOS
         cargarProductos(); // INICIALIZAR EL METODO DE PARA EL CBRESPRODUCTOS
         configurarTabla();        //  CREA MODELO PARA PODER EDITAR LAS COLIMNAS
         agregarListenerTabla();   //  ACTUALIZAR EL SUBTOTAL
 
     }
+    
+    //SOBREESCRITURA PARA LIMPIAR DATOS
+    @Override
+    public void limpiarDatos() {
+        TxtResNHabitacion.setText("");
+        TxtResCliente.setText("");
+        TxtResCategoria.setText("");
+        TxtResDni.setText("");
+        TxtResTelefono.setText("");
+    }
+  //SOBREESCRITURA PARA BLOQUEAR CAMPOS DE NUESTRO JPANEL
+    @Override
+    public void bloquearCampos() {
+        TxtResCliente.setEditable(false);
+        TxtResCategoria.setEditable(false);
+        TxtResTelefono.setEditable(false);
+        TxtResNHabitacion.setEditable(false);
+        TxtResTotalPago.setEditable(false);
+    }
+    
 
     //METODO PARA CONECTAR LA BD DE LOS PRODUCTOS EN EL CBRESPRODUCTOS
     private void cargarProductos() {
@@ -101,17 +126,17 @@ public class ServicioAdicional extends javax.swing.JPanel {
         TxtResDni.setBackground(new java.awt.Color(33, 44, 116));
         TxtResDni.setForeground(new java.awt.Color(255, 255, 255));
         TxtResDni.setBorder(null);
-        add(TxtResDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 170, 20));
+        add(TxtResDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, 20));
 
         TxtResCategoria.setBackground(new java.awt.Color(33, 44, 116));
         TxtResCategoria.setForeground(new java.awt.Color(255, 255, 255));
         TxtResCategoria.setBorder(null);
-        add(TxtResCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, 20));
+        add(TxtResCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 170, 20));
 
         TxtResNHabitacion.setBackground(new java.awt.Color(33, 44, 116));
         TxtResNHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         TxtResNHabitacion.setBorder(null);
-        add(TxtResNHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, 20));
+        add(TxtResNHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 170, 20));
 
         BtnFinalizarVenta.setBackground(new java.awt.Color(33, 44, 116));
         BtnFinalizarVenta.setForeground(new java.awt.Color(255, 255, 255));
@@ -204,12 +229,12 @@ public class ServicioAdicional extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("DNI");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, 30));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, 30));
 
         jLabel9.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("CATEGORIA");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, 30));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,7 +244,7 @@ public class ServicioAdicional extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("N. HABITACION");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, 30));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, 30));
 
         jLabel12.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -235,10 +260,10 @@ public class ServicioAdicional extends javax.swing.JPanel {
         add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 170, 10));
         add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 170, 10));
         add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 170, 10));
-        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 170, 10));
-        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 170, 10));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 170, 10));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 170, 10));
         add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 170, 10));
-        add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 170, 10));
+        add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 170, 10));
         add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 170, 10));
 
         jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
@@ -344,11 +369,11 @@ public class ServicioAdicional extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnResAgregarActionPerformed
 
     private void BtnResBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResBuscarActionPerformed
-        String numeroHabitacion = TxtResNHabitacion.getText().trim();
-        if (!numeroHabitacion.isEmpty()) {
-            cargarDatosHabitacion(numeroHabitacion);
+        String dniCliente = TxtResDni.getText().trim();
+        if (!dniCliente.isEmpty()) {
+            cargarDatosPorDni(dniCliente); // usamos el nuevo método
         } else {
-            JOptionPane.showMessageDialog(null, "Escribe un número de habitación.");
+            JOptionPane.showMessageDialog(null, "Escribe el DNI del cliente.");
         }
     }//GEN-LAST:event_BtnResBuscarActionPerformed
 
@@ -376,25 +401,24 @@ public class ServicioAdicional extends javax.swing.JPanel {
 
     private void BtnFinalizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFinalizarVentaActionPerformed
 
-        String numeroHabitacion = TxtResNHabitacion.getText().trim();
+        String dniCliente = TxtResDni.getText().trim();
         String totalStr = TxtResTotalPago.getText().trim();
         String estadoVenta = (String) JcResEstadoVenta.getSelectedItem();
 
-        if (numeroHabitacion.isEmpty() || totalStr.isEmpty() || JtResMostrar.getRowCount() == 0) {
+        if (dniCliente.isEmpty() || totalStr.isEmpty() || JtResMostrar.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos y agregar al menos un producto.");
             return;
         }
 
-        int idReserva = obtenerIdReservaPorHabitacion(numeroHabitacion);
+        int idReserva = obtenerIdReservaPorDni(dniCliente); // usamos el metodo para obtener dato por dni
         if (idReserva == -1) {
-            JOptionPane.showMessageDialog(null, "No se encontró una reserva activa para esta habitación.");
+            JOptionPane.showMessageDialog(null, "No se encontró una reserva activa para este cliente.");
             return;
         }
 
         try (Connection con = ConexionBD.conectar()) {
-            con.setAutoCommit(false); // Para asegurar integridad
+            con.setAutoCommit(false);
 
-            // Insertar en tabla Ventas
             String insertVenta = "INSERT INTO Ventas (id_reserva, estado, total) VALUES (?, ?, ?)";
             PreparedStatement ventaStmt = con.prepareStatement(insertVenta, new String[]{"id_venta"});
 
@@ -411,7 +435,6 @@ public class ServicioAdicional extends javax.swing.JPanel {
                 throw new SQLException("No se pudo obtener el ID de la venta generada.");
             }
 
-            // Insertar productos vendidos en Detalle_Venta
             String insertDetalle = "INSERT INTO Detalle_Venta (id_venta, id_producto, cantidad, precio_unitario) VALUES (?, ?, ?, ?)";
             PreparedStatement detalleStmt = con.prepareStatement(insertDetalle);
 
@@ -433,43 +456,33 @@ public class ServicioAdicional extends javax.swing.JPanel {
             detalleStmt.executeBatch();
             con.commit();
             JOptionPane.showMessageDialog(null, "Venta registrada correctamente.");
-              // SE PROCEDE A BORRAR LOS CAMPOS QUE NO ESTAN REGISTRADOS EN LA HABITACION QUE SE ESTA BUSCANDO
-                TxtResNHabitacion.setText("");
-                TxtResCliente.setText("");
-                TxtResCategoria.setText("");
-                TxtResDni.setText("");
-                TxtResTelefono.setText("");
 
-                // Limpiar tabla de productos agregados
-                DefaultTableModel modelo = (DefaultTableModel) JtResMostrar.getModel();
-                modelo.setRowCount(0);
+            limpiarDatos();
+            ((DefaultTableModel) JtResMostrar.getModel()).setRowCount(0);
+            TxtResTotalPago.setText("");
 
-                // Limpiar también total si lo deseas
-                TxtResTotalPago.setText("");
-            
-            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al guardar la venta: " + e.getMessage());
             e.printStackTrace();
         }
 
-
     }//GEN-LAST:event_BtnFinalizarVentaActionPerformed
 
-    private int obtenerIdReservaPorHabitacion(String numeroHabitacion) {
+    private int obtenerIdReservaPorDni(String dniCliente) {
         int idReserva = -1;
-        String sql = "SELECT r.id_reserva FROM Reservas r "
-         + "JOIN Detalle_Reserva dr ON r.id_reserva = dr.id_reserva "
-         + "JOIN Habitaciones h ON dr.id_habitacion = h.id_habitacion "
-         + "WHERE h.numero_habitacion = ? ORDER BY r.id_reserva DESC LIMIT 1";
+        String sql = "SELECT TOP 1 r.id_reserva FROM Reservas r "
+         + "JOIN Clientes c ON r.id_cliente = c.id_cliente "
+         + "WHERE c.dni_pasaporte = ? "
+         + "ORDER BY r.id_reserva DESC";
+
         try (Connection con = ConexionBD.conectar(); PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, numeroHabitacion);
+            stmt.setString(1, dniCliente);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 idReserva = rs.getInt("id_reserva");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al obtener ID de reserva: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener ID de reserva por DNI: " + e.getMessage());
         }
         return idReserva;
     }
@@ -489,46 +502,36 @@ public class ServicioAdicional extends javax.swing.JPanel {
         return idProducto;
     }
 
-    // metodo para poder cargar los datos del cliente que esta en la habitaciona buscar
-    private void cargarDatosHabitacion(String numeroHabitacion) {
+    /*METODO PARA CARGAR DATOS POR EL DNI */
+    private void cargarDatosPorDni(String dniCliente) {
         try (Connection con = ConexionBaseDeDatos.ConexionBD.conectar()) {
             String sql = """
-            SELECT c.nombre, c.telefono, c.dni_pasaporte, h.tipo
+            SELECT TOP 1 c.nombre, c.telefono, c.dni_pasaporte, h.tipo, h.numero_habitacion
             FROM Reservas r
             JOIN Clientes c ON r.id_cliente = c.id_cliente
             JOIN Detalle_Reserva dr ON dr.id_reserva = r.id_reserva
             JOIN Habitaciones h ON dr.id_habitacion = h.id_habitacion
-            WHERE h.numero_habitacion = ?
+            WHERE c.dni_pasaporte = ?
             ORDER BY r.id_reserva DESC
-            LIMIT 1
         """;
 
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, numeroHabitacion);
+            stmt.setString(1, dniCliente);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 TxtResCliente.setText(rs.getString("nombre"));
                 TxtResTelefono.setText(rs.getString("telefono"));
                 TxtResDni.setText(rs.getString("dni_pasaporte"));
-                TxtResCategoria.setText(rs.getString("tipo")); // tipo de habitación
+                TxtResCategoria.setText(rs.getString("tipo"));
+                TxtResNHabitacion.setText(rs.getString("numero_habitacion"));
             } else {
-                JOptionPane.showMessageDialog(null, "No se encontró información para esa habitación.");
-                // SE PROCEDE A BORRAR LOS CAMPOS QUE NO ESTAN REGISTRADOS EN LA HABITACION QUE SE ESTA BUSCANDO
-                TxtResNHabitacion.setText("");
-                TxtResCliente.setText("");
-                TxtResCategoria.setText("");
-                TxtResDni.setText("");
-                TxtResTelefono.setText("");
-
-                // Limpiar tabla de productos agregados
-                DefaultTableModel modelo = (DefaultTableModel) JtResMostrar.getModel();
-                modelo.setRowCount(0);
-
-                // Limpiar también total si lo deseas
+                JOptionPane.showMessageDialog(null, "No se encontró información para ese DNI.");
+                limpiarDatos();
+                ((DefaultTableModel) JtResMostrar.getModel()).setRowCount(0);
                 TxtResTotalPago.setText("");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al buscar habitación: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al buscar por DNI: " + e.getMessage());
         }
     }
 

@@ -7,11 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+/*PARA IMPORTAER DE GESTION USUARIOS PARA LA CONSULTA Y ACTUALIZACION DE LAS CREDENCIALES DE ACCESO*/
+import GestionReservas.Usuario;
+import GestionReservas.GestorUsuarios;
+
 public class CambioContraseña extends javax.swing.JFrame {
 
     public CambioContraseña() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //CENTRAR EL JFRAME
+        // OCULTAMOS LAS IMAGENES DE VISIBILIDAD AL INICIALIZAR EL PROGRAMA
         this.ocultar.setVisible(false);
         this.ocultar1.setVisible(false);
         this.ocultar2.setVisible(false);
@@ -322,7 +327,6 @@ public class CambioContraseña extends javax.swing.JFrame {
     }//GEN-LAST:event_ocultar1MouseClicked
 
     private void ocultar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ocultar2MouseClicked
-        // TODO add your handling code here:
         TxtNContraseña2.setEchoChar('*'); // para poner la contraseña de nuevo en caracter
         ver2.setVisible(true);
         ocultar2.setVisible(false);
@@ -340,92 +344,64 @@ public class CambioContraseña extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegresarMouseClicked
 
     private void BtnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAceptarMouseClicked
-        // TODO add your handling code here:
-
         CambioContrasena();
     }//GEN-LAST:event_BtnAceptarMouseClicked
 
 // METODO CAMBIO DE CONTRASEÑA - INICIO
-private void CambioContrasena() {
+    private void CambioContrasena() {
 
-    String usuario = TxtUsuario.getText();
-    String contrasena = new String(TxtContraseña.getPassword());
-    String ncontrasena1 = new String(TxtNContraseña1.getPassword());
-    String ncontrasena2 = new String(TxtNContraseña2.getPassword());
-    String contrasenactual;
+        String usuario = TxtUsuario.getText();
+        String contrasena = new String(TxtContraseña.getPassword());
+        String ncontrasena1 = new String(TxtNContraseña1.getPassword());
+        String ncontrasena2 = new String(TxtNContraseña2.getPassword());
+        String contrasenactual;
 
-    // Validación de campos vacíos o con valores por defecto
-    if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****") ||
-        ncontrasena1.equals("*****") || ncontrasena2.equals("*****") ||
-        usuario.isEmpty() || contrasena.isEmpty() || ncontrasena1.isEmpty() || ncontrasena2.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
-        return;
-    }
+        // Validación de campos vacíos o con valores por defecto
+        if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****")
+         || ncontrasena1.equals("*****") || ncontrasena2.equals("*****")
+         || usuario.isEmpty() || contrasena.isEmpty() || ncontrasena1.isEmpty() || ncontrasena2.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
+            return;
+        }
 
-    // Validar que las nuevas contraseñas coincidan
-    if (!ncontrasena1.equals(ncontrasena2)) {
-        JOptionPane.showMessageDialog(this, "Contraseñas no coinciden");
-        TxtNContraseña1.setText("");
-        TxtNContraseña2.setText("");
-        return;
-    }
+        // Validar que las nuevas contraseñas coincidan
+        if (!ncontrasena1.equals(ncontrasena2)) {
+            JOptionPane.showMessageDialog(this, "Contraseñas no coinciden");
+            TxtNContraseña1.setText("");
+            TxtNContraseña2.setText("");
+            return;
+        }
 
-    contrasenactual = ncontrasena1;
+        contrasenactual = ncontrasena1;
 
-    // Conexión a la base de datos de Clever Cloud
-    try {
-        String url = "jdbc:mysql://bb8eb94l4tbafdhhua6p-mysql.services.clever-cloud.com:3306/bb8eb94l4tbafdhhua6p";
-        String dbUser = "u7bx0koexr09nu6w";
-        String dbPassword = "KXufvIJGaeouglbc9GsG";
+        // Crear objeto Usuario con los datos ingresados
+        Usuario usuarioObj = new Usuario(usuario, contrasena);
 
-        Connection connection = DriverManager.getConnection(url, dbUser, dbPassword);
+        // Crear instancia del gestor que maneja la lógica con la BD
+        GestorUsuarios gestor = new GestorUsuarios();
 
-        // Verificar si el usuario y contraseña actual existen
-        String query = "SELECT * FROM usuarios WHERE NombreUsuario = ? AND contrasena = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1, usuario);
-        statement.setString(2, contrasena);
-        ResultSet resultSet = statement.executeQuery();
-
-        if (resultSet.next()) {
-            // Actualizar contraseña
-            String queryUpdate = "UPDATE usuarios SET contrasena = ? WHERE NombreUsuario = ? AND contrasena = ?";
-            PreparedStatement statement2 = connection.prepareStatement(queryUpdate);
-            statement2.setString(1, contrasenactual);
-            statement2.setString(2, usuario);
-            statement2.setString(3, contrasena);
-            int filasActualizadas = statement2.executeUpdate();
-
-            if (filasActualizadas > 0) {
-                JOptionPane.showMessageDialog(this, "La contraseña se actualizó correctamente.");
-                // Volver al formulario de Login
-                Login retornologin = new Login();
-                retornologin.setVisible(true);
-                this.dispose(); // Cierra la ventana actual
-            } else {
-                JOptionPane.showMessageDialog(this, "No se pudo actualizar la contraseña.");
-            }
-
-            statement2.close();
-        } else {
-            JOptionPane.showMessageDialog(this, "No se pudo actualizar la contraseña por datos incorrectos");
+        // Verificar si el usuario y contraseña actuales son correctos
+        if (!gestor.validarUsuario(usuarioObj.getNombreUsuario(), usuarioObj.getContrasena())) {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña actual incorrectos");
             TxtUsuario.setText("Ingrese su nombre de usuario");
             TxtContraseña.setText("*****");
             TxtNContraseña1.setText("*****");
             TxtNContraseña2.setText("*****");
+            return;
         }
 
-        // Cierre de recursos
-        resultSet.close();
-        statement.close();
-        connection.close();
+        // Intentar actualizar la contraseña
+        if (gestor.actualizarContraseña(usuarioObj.getNombreUsuario(), usuarioObj.getContrasena(), contrasenactual)) {
+            JOptionPane.showMessageDialog(this, "La contraseña se actualizó correctamente.");
+            Login retornologin = new Login();
+            retornologin.setVisible(true);
+            this.dispose();  // Cierra esta ventana
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo actualizar la contraseña.");
+        }
 
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage());
     }
-}
 // METODO CAMBIO DE CONTRASEÑA - FIN
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

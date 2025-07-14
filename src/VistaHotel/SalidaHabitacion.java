@@ -38,6 +38,15 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,58 +70,108 @@ public class SalidaHabitacion extends javax.swing.JPanel {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DIN");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 50, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 50, 30));
 
+        jButton1.setBackground(new java.awt.Color(33, 44, 116));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarTalentoEV.png"))); // NOI18N
         jButton1.setText("BUSCAR");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 130, 30));
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 170, 30));
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 290, 30));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 150, 40));
+
+        jTextField1.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setBorder(null);
+        jTextField1.setPreferredSize(new java.awt.Dimension(64, 64));
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 170, 20));
+
+        jTextField2.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setBorder(null);
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 170, 20));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ESTADO");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 70, -1));
-        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 130, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 70, -1));
+
+        jTextField3.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField3.setBorder(null);
+        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 170, 20));
 
         CLIENTE1.setForeground(new java.awt.Color(255, 255, 255));
         CLIENTE1.setText("CLIENTE");
-        add(CLIENTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 60, 30));
+        add(CLIENTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 60, 30));
 
         CLIENTE2.setForeground(new java.awt.Color(255, 255, 255));
         CLIENTE2.setText("METODO DE PAGO");
         add(CLIENTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 30));
-        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 140, 30));
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 160, 30));
+
+        jTextField4.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.setBorder(null);
+        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 170, 20));
+
+        jTextField5.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField5.setBorder(null);
+        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 170, 20));
 
         CLIENTE3.setForeground(new java.awt.Color(255, 255, 255));
         CLIENTE3.setText("FECHA ENTRADA");
-        add(CLIENTE3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 120, 30));
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 140, 30));
+        add(CLIENTE3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 110, 30));
+
+        jTextField6.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField6.setBorder(null);
+        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 170, 20));
 
         CLIENTE4.setForeground(new java.awt.Color(255, 255, 255));
         CLIENTE4.setText("ESTADO DE PAGO");
-        add(CLIENTE4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 120, 30));
+        add(CLIENTE4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 30));
 
         CLIENTE5.setForeground(new java.awt.Color(255, 255, 255));
         CLIENTE5.setText("TOTAL A PAGAR");
-        add(CLIENTE5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 120, 30));
+        add(CLIENTE5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 100, 30));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EFECTIVO", "TARJETA" }));
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 140, 30));
-        add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 160, 30));
+        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 170, 30));
 
+        jTextField7.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField7.setBorder(null);
+        add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 170, 20));
+
+        jButton2.setBackground(new java.awt.Color(33, 44, 116));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reserva.png"))); // NOI18N
         jButton2.setText("ALARGAR FECHA");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 150, 40));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 150, 40));
 
+        jButton3.setBackground(new java.awt.Color(33, 44, 116));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
         jButton3.setText("CONFIRMAR SALIDA");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 150, 40));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 180, 40));
 
+        jButton4.setBackground(new java.awt.Color(33, 44, 116));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton4.setText("CANCELAR RESERVA");
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 150, 40));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 170, 40));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 170, 20));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 170, 20));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 170, 20));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 170, 20));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 170, 20));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 170, 20));
+        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 170, 20));
+        add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 170, 20));
+        add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 170, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -144,6 +203,15 @@ public class SalidaHabitacion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

@@ -262,73 +262,62 @@ public class Login extends javax.swing.JFrame {
     private int intentos = 0; //Variable para controlar el intentos de accesos incorrectos
 
 // METODO VALIDAR INGRESO - INICIO
-   
- private void validarIngreso() {
-    String usuario = TxtUsuario.getText();
-    String contrasena = new String(TxtContraseña.getPassword());
+    private void validarIngreso() {
+        String usuario = TxtUsuario.getText();
+        String contrasena = new String(TxtContraseña.getPassword());
 
-    if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****")
-        || usuario.isEmpty() || contrasena.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
-        return;
-    }
-
-    try {
-        String url = "jdbc:sqlserver://bdpa.database.windows.net:1433;"
-                   + "database=bd_hotel;"
-                   + "encrypt=true;"
-                   + "trustServerCertificate=false;"
-                   + "loginTimeout=30;";
-        String dbUser = "sqladmin";
-        String dbPassword = "admin12@";
-
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        Connection connection = DriverManager.getConnection(url, dbUser, dbPassword);
-
-        String query = "SELECT rol FROM usuarios WHERE NombreUsuario = ? AND contrasena = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1, usuario);
-        statement.setString(2, contrasena);
-
-        ResultSet resultSet = statement.executeQuery();
-
-        if (resultSet.next()) {
-            String rol = resultSet.getString("rol");
-            JOptionPane.showMessageDialog(this, "¡Acceso correcto como " + rol + "!");
-            intentos = 0;
-
-            VentanaPrincipal nuevoFormulario = new VentanaPrincipal();
-            // Llamas al método que configura botones según rol
-            nuevoFormulario.configurarAccesoPorRol(rol);
-            nuevoFormulario.setVisible(true);
-            this.dispose();
-
-        } else {
-            intentos++;
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Intento " + intentos + " de 3.");
-            TxtUsuario.setText("Ingrese su nombre de usuario");
-            TxtContraseña.setText("*****");
-
-            if (intentos >= 3) {
-                JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El sistema se cerrará.");
-                System.exit(0);
-            }
+        // Validación de campos vacíos o con texto por defecto
+        if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****")
+         || usuario.isEmpty() || contrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
+            return;
         }
 
-        resultSet.close();
-        statement.close();
-        connection.close();
+        try {
+            // Se usa la clase ConexionBD para no repetir código
+            Connection connection = ConexionBaseDeDatos.ConexionBD.conectar();
 
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage());
-    } catch (ClassNotFoundException e) {
-        JOptionPane.showMessageDialog(this, "No se encontró el driver de SQL Server.");
+            // Consulta para obtener el rol del usuario
+            String query = "SELECT rol FROM usuarios WHERE NombreUsuario = ? AND contrasena = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, usuario);
+            statement.setString(2, contrasena);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String rol = resultSet.getString("rol");
+                JOptionPane.showMessageDialog(this, "¡Acceso correcto como " + rol + "!");
+                intentos = 0;
+                // Instancia de ventana principal (objeto)
+                VentanaPrincipal nuevoFormulario = new VentanaPrincipal();
+                // Asociación entre clases: se le pasa el rol para configurar accesos
+                nuevoFormulario.configurarAccesoPorRol(rol);
+                nuevoFormulario.setVisible(true);
+                this.dispose();  // Cierra la ventana actual
+
+            } else {
+                intentos++;
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Intento " + intentos + " de 3.");
+                TxtUsuario.setText("Ingrese su nombre de usuario");
+                TxtContraseña.setText("*****");
+
+                // Validar número de intentos
+                if (intentos >= 3) {
+                    JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El sistema se cerrará.");
+                    System.exit(0);
+                }
+            }
+
+            // Cierre de recursos
+            resultSet.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage());
+        }
     }
-}
-
-
-    
-    
 // METODO VALIDAR INGRESO - FIN
 
     public static void main(String args[]) {

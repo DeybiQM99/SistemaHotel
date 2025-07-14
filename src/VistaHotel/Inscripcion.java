@@ -13,7 +13,20 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Inscripcion extends javax.swing.JFrame {
+import Interfaz.Limpiable;
+
+public class Inscripcion extends javax.swing.JFrame implements Limpiable {
+
+    @Override
+    public void limpiarDatos() {
+        TxtNombre.setText("");
+        TxtApellido.setText("");
+        TxtCorreo.setText("");
+        TxtDni.setText("");
+        TxtTelefono.setText("");
+        TxtDireccion.setText("");
+
+    }
 
     public Inscripcion() {
         initComponents();
@@ -139,7 +152,7 @@ public class Inscripcion extends javax.swing.JFrame {
         jDateChooserSalida = new com.toedter.calendar.JDateChooser();
         jDateChooserEntrada = new com.toedter.calendar.JDateChooser();
         CbEstado = new javax.swing.JComboBox<>();
-        BtnRegresar2 = new javax.swing.JButton();
+        BtnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(null);
@@ -178,11 +191,6 @@ public class Inscripcion extends javax.swing.JFrame {
         BtnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnRegistrarMouseClicked(evt);
-            }
-        });
-        BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegistrarActionPerformed(evt);
             }
         });
         jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 150, 40));
@@ -356,16 +364,16 @@ public class Inscripcion extends javax.swing.JFrame {
         CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "OCUPADO", "LIMPIEZA" }));
         jPanel1.add(CbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 170, -1));
 
-        BtnRegresar2.setBackground(new java.awt.Color(33, 44, 116));
-        BtnRegresar2.setForeground(new java.awt.Color(255, 255, 255));
-        BtnRegresar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/papelera-xmark.png"))); // NOI18N
-        BtnRegresar2.setText("LIMPIAR");
-        BtnRegresar2.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnLimpiar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/papelera-xmark.png"))); // NOI18N
+        BtnLimpiar.setText("LIMPIAR");
+        BtnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnRegresar2MouseClicked(evt);
+                BtnLimpiarMouseClicked(evt);
             }
         });
-        jPanel1.add(BtnRegresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 150, 40));
+        jPanel1.add(BtnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 150, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
 
@@ -378,20 +386,20 @@ public class Inscripcion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegresar1MouseClicked
 
     private void BtnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarMouseClicked
-            // Leer datos CLIENTES
+        // Leer datos CLIENTES
         String nombre = TxtNombre.getText();
         String apellido = TxtApellido.getText();
         String dni = TxtDni.getText();
         String telefono = TxtTelefono.getText();
         String correo = TxtCorreo.getText();
         String direccion = TxtDireccion.getText();
-            // Leer datos HABITACION
+        // Leer datos HABITACION
         String numHabitacion = TxtNumHabitacion.getText();
         String precioPorNoche = TxtPrecioPorNoche.getText();
         String estadoSeleccionado = (String) CbEstado.getSelectedItem();
         String tipoHabitacion = TxtTipoH.getText();
         String descripcion = TxtDescripcion.getText();
-            // Leer fechas desde JDateChooser
+        // Leer fechas desde JDateChooser
         java.util.Date fechaEntradaUtil = jDateChooserEntrada.getDate();
         java.util.Date fechaSalidaUtil = jDateChooserSalida.getDate();
 
@@ -527,13 +535,12 @@ public class Inscripcion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtnRegistrarMouseClicked
 
-    private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnRegistrarActionPerformed
+    private void BtnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnLimpiarMouseClicked
 
-    private void BtnRegresar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresar2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnRegresar2MouseClicked
+        limpiarDatos();
+
+
+    }//GEN-LAST:event_BtnLimpiarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -571,9 +578,9 @@ public class Inscripcion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnLimpiar;
     private javax.swing.JButton BtnRegistrar;
     private javax.swing.JButton BtnRegresar1;
-    private javax.swing.JButton BtnRegresar2;
     private javax.swing.JComboBox<String> CbEstado;
     private javax.swing.JTextField TxtApellido;
     private javax.swing.JTextField TxtCorreo;

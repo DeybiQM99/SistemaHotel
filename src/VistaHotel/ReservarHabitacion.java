@@ -16,6 +16,10 @@ public class ReservarHabitacion extends javax.swing.JPanel {
 
     // Mapa para asociar número de habitación con su panel
     private Map<String, JPanel> mapaPaneles = new HashMap<>();
+    private Map<String, JButton> mapaBotones = new HashMap<>();
+    private Map<String, JLabel> mapaLblNumero = new HashMap<>();
+    private Map<String, JLabel> mapaLblTipo = new HashMap<>();
+    private Map<String, JLabel> mapaLblPrecio = new HashMap<>();
 
     public ReservarHabitacion() {
         initComponents();
@@ -23,13 +27,16 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         inicializarMapaBotones(); // <<--- AGREGA ESTO
         inicializarColoresPorDefecto();
         cargarEstadosDesdeBD();
+
+        inicializarMapaLabels();    // NUEVO
+        asignarEventosBotones();    // NUEVO 
     }
 
     public ReservarHabitacion(String numero, String tipo, String precio) {
         initComponents();
     }
 
-    // Asociar número de habitación con su panel visual CON MAPS
+    // Asociar número de habitación con su MAPA panel visual CON MAPS
     private void inicializarMapaPaneles() {
         mapaPaneles.put("1", Panel1);
         mapaPaneles.put("2", Panel2);
@@ -45,6 +52,88 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         mapaPaneles.put("12", Panel12);
     }
 
+    private void inicializarMapaBotones() {
+        mapaBotones.put("1", BtnReservar1);
+        mapaBotones.put("2", BtnReservar2);
+        mapaBotones.put("3", BtnReservar3);
+        mapaBotones.put("4", BtnReservar4);
+        mapaBotones.put("5", BtnReservar5);
+        mapaBotones.put("6", BtnReservar6);
+        mapaBotones.put("7", BtnReservar7);
+        mapaBotones.put("8", BtnReservar8);
+        mapaBotones.put("9", BtnReservar9);
+        mapaBotones.put("10", BtnReservar10);
+        mapaBotones.put("11", BtnReservar11);
+        mapaBotones.put("12", BtnReservar12);
+    }
+
+    private void inicializarMapaLabels() {
+        mapaLblNumero.put("1", LblNumero1);
+        mapaLblTipo.put("1", LblTipo1);
+        mapaLblPrecio.put("1", lblPrecio1);
+
+        mapaLblNumero.put("2", LblNumero2);
+        mapaLblTipo.put("2", LblTipo2);
+        mapaLblPrecio.put("2", lblPrecio2);
+
+        mapaLblNumero.put("3", LblNumero3);
+        mapaLblTipo.put("3", LblTipo3);
+        mapaLblPrecio.put("3", lblPrecio3);
+
+        mapaLblNumero.put("4", LblNumero4);
+        mapaLblTipo.put("4", LblTipo4);
+        mapaLblPrecio.put("4", lblPrecio4);
+
+        mapaLblNumero.put("5", LblNumero5);
+        mapaLblTipo.put("5", LblTipo5);
+        mapaLblPrecio.put("5", lblPrecio5);
+
+        mapaLblNumero.put("6", LblNumero6);
+        mapaLblTipo.put("6", LblTipo6);
+        mapaLblPrecio.put("6", lblPrecio6);
+
+        mapaLblNumero.put("7", LblNumero7);
+        mapaLblTipo.put("7", LblTipo7);
+        mapaLblPrecio.put("7", lblPrecio7);
+
+        mapaLblNumero.put("8", LblNumero8);
+        mapaLblTipo.put("8", LblTipo8);
+        mapaLblPrecio.put("8", lblPrecio8);
+
+        mapaLblNumero.put("9", LblNumero9);
+        mapaLblTipo.put("9", LblTipo9);
+        mapaLblPrecio.put("9", lblPrecio9);
+
+        mapaLblNumero.put("10", LblNumero10);
+        mapaLblTipo.put("10", LblTipo10);
+        mapaLblPrecio.put("10", lblPrecio10);
+
+        mapaLblNumero.put("11", LblNumero11);
+        mapaLblTipo.put("11", LblTipo11);
+        mapaLblPrecio.put("11", lblPrecio11);
+
+        mapaLblNumero.put("12", LblNumero12);
+        mapaLblTipo.put("12", LblTipo12);
+        mapaLblPrecio.put("12", lblPrecio12);
+    }
+
+    private void asignarEventosBotones() {
+        for (int i = 1; i <= 12; i++) {
+            String num = String.valueOf(i);
+            JButton boton = mapaBotones.get(num);
+
+            boton.addActionListener(evt -> {
+                if (!boton.isEnabled()) {
+                    return;
+                }
+                JLabel lblNum = mapaLblNumero.get(num);
+                JLabel lblTipo = mapaLblTipo.get(num);
+                JLabel lblPrecio = mapaLblPrecio.get(num);
+                abrirInscripcion(lblNum, lblTipo, lblPrecio);
+            });
+        }
+    }
+
     // Pintar todos los paneles en verde por defecto (disponible)
     private void inicializarColoresPorDefecto() {
         for (JPanel panel : mapaPaneles.values()) {
@@ -52,6 +141,8 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         }
     }
 
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -165,11 +256,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar9.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar9.setText("Reservar");
-        BtnReservar9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar9ActionPerformed(evt);
-            }
-        });
         Panel9.add(BtnReservar9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -196,11 +282,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar1.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar1.setText("Reservar");
-        BtnReservar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar1ActionPerformed(evt);
-            }
-        });
         Panel1.add(BtnReservar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -227,11 +308,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar5.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar5.setText("Reservar");
-        BtnReservar5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar5ActionPerformed(evt);
-            }
-        });
         Panel5.add(BtnReservar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -258,11 +334,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar10.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar10.setText("Reservar");
-        BtnReservar10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar10ActionPerformed(evt);
-            }
-        });
         Panel10.add(BtnReservar10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -289,11 +360,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar6.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar6.setText("Reservar");
-        BtnReservar6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar6ActionPerformed(evt);
-            }
-        });
         Panel6.add(BtnReservar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -320,11 +386,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar11.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar11.setText("Reservar");
-        BtnReservar11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar11ActionPerformed(evt);
-            }
-        });
         Panel11.add(BtnReservar11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -351,11 +412,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar7.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar7.setText("Reservar");
-        BtnReservar7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar7ActionPerformed(evt);
-            }
-        });
         Panel7.add(BtnReservar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -382,11 +438,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar12.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar12.setText("Reservar");
-        BtnReservar12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar12ActionPerformed(evt);
-            }
-        });
         Panel12.add(BtnReservar12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -413,11 +464,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar8.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar8.setText("Reservar");
-        BtnReservar8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar8ActionPerformed(evt);
-            }
-        });
         Panel8.add(BtnReservar8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -444,11 +490,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar2.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar2.setText("Reservar");
-        BtnReservar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar2ActionPerformed(evt);
-            }
-        });
         Panel2.add(BtnReservar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -475,11 +516,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar3.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar3.setText("Reservar");
-        BtnReservar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar3ActionPerformed(evt);
-            }
-        });
         Panel3.add(BtnReservar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -506,11 +542,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         BtnReservar4.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar4.setText("Reservar");
-        BtnReservar4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReservar4ActionPerformed(evt);
-            }
-        });
         Panel4.add(BtnReservar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
@@ -547,23 +578,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
             System.out.println("Error al cargar estados: " + e.getMessage());
         }
     }
-    //metodod para inhan¿bilitar el boton
-    private Map<String, JButton> mapaBotones = new HashMap<>();
-
-    private void inicializarMapaBotones() {
-        mapaBotones.put("1", BtnReservar1);
-        mapaBotones.put("2", BtnReservar2);
-        mapaBotones.put("3", BtnReservar3);
-        mapaBotones.put("4", BtnReservar4);
-        mapaBotones.put("5", BtnReservar5);
-        mapaBotones.put("6", BtnReservar6);
-        mapaBotones.put("7", BtnReservar7);
-        mapaBotones.put("8", BtnReservar8);
-        mapaBotones.put("9", BtnReservar9);
-        mapaBotones.put("10", BtnReservar10);
-        mapaBotones.put("11", BtnReservar11);
-        mapaBotones.put("12", BtnReservar12);
-    }
 
     // Cambiar el color del panel según el estado de la habitación
     public void actualizarColorPanelPorEstado(String numeroHabitacion, String estado) {
@@ -576,8 +590,8 @@ public class ReservarHabitacion extends javax.swing.JPanel {
                     if (boton != null) {
                         if (boton != null) {
                             boton.setEnabled(false); // 🔒 Desactiva
-                         
-                    boton.setForeground(Color.BLACK);
+
+                            boton.setForeground(Color.BLACK);
                         }
                     }
                     break;
@@ -607,91 +621,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Inscripcion ins = new Inscripcion(numero, tipo, precio, this); // <-- Aquí agregas 'this'
         ins.setVisible(true);
     }
-    private void BtnReservar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar9ActionPerformed
-        if (!BtnReservar9.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero9, LblTipo9, lblPrecio9);
-    }//GEN-LAST:event_BtnReservar9ActionPerformed
 
-    private void BtnReservar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar1ActionPerformed
-        if (!BtnReservar1.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero1, LblTipo1, lblPrecio1);
-    }//GEN-LAST:event_BtnReservar1ActionPerformed
-
-    private void BtnReservar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar2ActionPerformed
-        if (!BtnReservar2.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero2, LblTipo2, lblPrecio2);
-    }//GEN-LAST:event_BtnReservar2ActionPerformed
-
-    private void BtnReservar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar3ActionPerformed
-        if (!BtnReservar3.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero3, LblTipo3, lblPrecio3);
-    }//GEN-LAST:event_BtnReservar3ActionPerformed
-
-    private void BtnReservar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar4ActionPerformed
-        if (!BtnReservar4.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero4, LblTipo4, lblPrecio4);
-    }//GEN-LAST:event_BtnReservar4ActionPerformed
-
-    private void BtnReservar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar5ActionPerformed
-        if (!BtnReservar5.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero5, LblTipo5, lblPrecio5);
-    }//GEN-LAST:event_BtnReservar5ActionPerformed
-
-    private void BtnReservar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar6ActionPerformed
-        if (!BtnReservar6.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero6, LblTipo6, lblPrecio6);
-    }//GEN-LAST:event_BtnReservar6ActionPerformed
-
-    private void BtnReservar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar7ActionPerformed
-        if (!BtnReservar7.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero7, LblTipo7, lblPrecio7);
-    }//GEN-LAST:event_BtnReservar7ActionPerformed
-
-    private void BtnReservar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar8ActionPerformed
-        if (!BtnReservar8.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero8, LblTipo8, lblPrecio8);
-    }//GEN-LAST:event_BtnReservar8ActionPerformed
-
-    private void BtnReservar10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar10ActionPerformed
-        if (!BtnReservar10.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero10, LblTipo10, lblPrecio10);
-
-    }//GEN-LAST:event_BtnReservar10ActionPerformed
-
-    private void BtnReservar11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar11ActionPerformed
-        if (!BtnReservar11.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero11, LblTipo11, lblPrecio11);
-
-    }//GEN-LAST:event_BtnReservar11ActionPerformed
-
-    private void BtnReservar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar12ActionPerformed
-        if (!BtnReservar12.isEnabled()) {
-            return;
-        }
-        abrirInscripcion(LblNumero12, LblTipo12, lblPrecio12);
-    }//GEN-LAST:event_BtnReservar12ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

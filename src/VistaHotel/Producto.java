@@ -7,8 +7,17 @@ import ConexionBaseDeDatos.ConexionBD;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import GestionReservas.Productos;
+import Interfaz.Limpiable;
 
-public class Producto extends javax.swing.JPanel {
+public class Producto extends javax.swing.JPanel implements Limpiable {
+
+    @Override
+    public void limpiarDatos() {
+        TxtNombre.setText("");
+        TxtCategoria.setText("");
+        TxtCantidad.setText("");
+        TxtPrecio.setText("");
+    }
 
     public Producto() {
         initComponents();
@@ -29,7 +38,6 @@ public class Producto extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JtMostrar = new javax.swing.JTable();
-        BtnNuevo = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JButton();
         BtnGuardar = new javax.swing.JButton();
         TxtBuscar = new javax.swing.JTextField();
@@ -91,17 +99,6 @@ public class Producto extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 730, 200));
 
-        BtnNuevo.setBackground(new java.awt.Color(33, 44, 116));
-        BtnNuevo.setForeground(new java.awt.Color(255, 255, 255));
-        BtnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.png"))); // NOI18N
-        BtnNuevo.setText("NUEVO");
-        BtnNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnNuevoMouseClicked(evt);
-            }
-        });
-        add(BtnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 120, 30));
-
         BtnCancelar.setBackground(new java.awt.Color(33, 44, 116));
         BtnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
@@ -111,7 +108,7 @@ public class Producto extends javax.swing.JPanel {
                 BtnCancelarMouseClicked(evt);
             }
         });
-        add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 120, 30));
+        add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 140, 40));
 
         BtnGuardar.setBackground(new java.awt.Color(33, 44, 116));
         BtnGuardar.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,7 +121,7 @@ public class Producto extends javax.swing.JPanel {
                 BtnGuardarMouseClicked(evt);
             }
         });
-        add(BtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 120, 30));
+        add(BtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 140, 40));
         add(TxtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 230, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 750, 20));
 
@@ -141,7 +138,7 @@ public class Producto extends javax.swing.JPanel {
                 BtnBuscarMouseClicked(evt);
             }
         });
-        add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 120, -1));
+        add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 130, -1));
 
         BtnEliminar.setBackground(new java.awt.Color(33, 44, 116));
         BtnEliminar.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,7 +152,7 @@ public class Producto extends javax.swing.JPanel {
                 BtnEliminarMouseClicked(evt);
             }
         });
-        add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 120, -1));
+        add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 120, -1));
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,7 +236,7 @@ public class Producto extends javax.swing.JPanel {
 
                 if (filasInsertadas > 0) {
                     JOptionPane.showMessageDialog(null, "Producto registrado correctamente.");
-                    limpiarCampos(); // opcional
+                    limpiarDatos(); // opcional
                     mostrarProductos(); // recargar tabla
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo registrar el producto.");
@@ -274,21 +271,10 @@ public class Producto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BtnBuscarMouseClicked
 
-    private void BtnNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnNuevoMouseClicked
-        limpiarCampos();
-    }//GEN-LAST:event_BtnNuevoMouseClicked
-
     private void BtnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCancelarMouseClicked
-
+        limpiarDatos();
 
     }//GEN-LAST:event_BtnCancelarMouseClicked
-
-    private void limpiarCampos() {
-        TxtNombre.setText("");
-        TxtCategoria.setText("");
-        TxtCantidad.setText("");
-        TxtPrecio.setText("");
-    }
 
     private void mostrarProductos() {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -314,7 +300,6 @@ public class Producto extends javax.swing.JPanel {
     private javax.swing.JButton BtnCancelar;
     private javax.swing.JButton BtnEliminar;
     private javax.swing.JButton BtnGuardar;
-    private javax.swing.JButton BtnNuevo;
     private javax.swing.JTable JtMostrar;
     private javax.swing.JTextField TxtBuscar;
     private javax.swing.JTextField TxtCantidad;

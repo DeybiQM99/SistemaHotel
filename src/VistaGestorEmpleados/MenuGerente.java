@@ -24,7 +24,6 @@ public class MenuGerente extends javax.swing.JFrame {
         panelMenu.setSize(160, 600);
         panelContenido.setSize(850, 600);
     }
-    
     public MenuGerente() {
         initComponents();
         
@@ -45,7 +44,7 @@ public class MenuGerente extends javax.swing.JFrame {
         lbImagen = new javax.swing.JLabel();
         btnPersonal = new javax.swing.JButton();
         btnNominas = new javax.swing.JButton();
-        btnAscensos = new javax.swing.JButton();
+        btnContrato = new javax.swing.JButton();
         btnIncidencias = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
@@ -87,13 +86,13 @@ public class MenuGerente extends javax.swing.JFrame {
             }
         });
 
-        btnAscensos.setBackground(new java.awt.Color(17, 50, 77));
-        btnAscensos.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
-        btnAscensos.setForeground(new java.awt.Color(255, 255, 255));
-        btnAscensos.setText("Contratos");
-        btnAscensos.addActionListener(new java.awt.event.ActionListener() {
+        btnContrato.setBackground(new java.awt.Color(17, 50, 77));
+        btnContrato.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
+        btnContrato.setForeground(new java.awt.Color(255, 255, 255));
+        btnContrato.setText("Contratos");
+        btnContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAscensosActionPerformed(evt);
+                btnContratoActionPerformed(evt);
             }
         });
 
@@ -163,7 +162,7 @@ public class MenuGerente extends javax.swing.JFrame {
                     .addComponent(btnIncidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNominas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAscensos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -178,7 +177,7 @@ public class MenuGerente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnNominas)
                 .addGap(18, 18, 18)
-                .addComponent(btnAscensos)
+                .addComponent(btnContrato)
                 .addGap(18, 18, 18)
                 .addComponent(btnIncidencias)
                 .addGap(18, 18, 18)
@@ -221,18 +220,21 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
         // Crear instancia del nuevo panel
-        AdminEmpleados AdminEmpleados = new AdminEmpleados();
-        AdminEmpleados.setPreferredSize(new Dimension(840, 600));
+        AdminEmpleados2 adminEmpleados = new AdminEmpleados2(gestor);
+        adminEmpleados.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(AdminEmpleados, BorderLayout.CENTER);
+        panelContenido.add(adminEmpleados, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
+        
+        
+        
     }//GEN-LAST:event_btnPersonalActionPerformed
 
     private void btnNominasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNominasActionPerformed
         // Crear instancia del nuevo panel
-        AdminrNominas AdministrarNominas1 = new AdminrNominas();
+        AdminNominas AdministrarNominas1 = new AdminNominas();
         AdministrarNominas1.setPreferredSize(new Dimension(840, 600));
 
         // Agregarlo al panel contenedor
@@ -256,7 +258,7 @@ public class MenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnIncidenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncidenciasActionPerformed
-        AdminIncidencias AdminIncidencias = new AdminIncidencias();
+        AdminIncidencias AdminIncidencias = new AdminIncidencias(gestor);
         AdminIncidencias.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
@@ -285,16 +287,16 @@ public class MenuGerente extends javax.swing.JFrame {
         panelContenido.repaint();
     }//GEN-LAST:event_lbImagenMouseClicked
 
-    private void btnAscensosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscensosActionPerformed
+    private void btnContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratoActionPerformed
         // Crear instancia del nuevo panel
-        AdminContratos AdministrarContratos = new AdminContratos();
-        AdministrarContratos.setPreferredSize(new Dimension(830,600));
+        AdminContratos AdminContratos = new AdminContratos();
+        AdminContratos.setPreferredSize(new Dimension(840,600));
 
         panelContenido.removeAll();
-        panelContenido.add(AdministrarContratos,BorderLayout.CENTER);
+        panelContenido.add(AdminContratos,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
-    }//GEN-LAST:event_btnAscensosActionPerformed
+    }//GEN-LAST:event_btnContratoActionPerformed
 
     private void btnJerarquiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJerarquiasActionPerformed
         // TODO add your handling code here:
@@ -319,7 +321,7 @@ public class MenuGerente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAreas;
-    private javax.swing.JButton btnAscensos;
+    private javax.swing.JButton btnContrato;
     private javax.swing.JButton btnIncidencias;
     private javax.swing.JButton btnJerarquias;
     private javax.swing.JButton btnNominas;

@@ -3,31 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package VistaGestorEmpleados;
-import GestionEmpleados.Empleado;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Jokan5443
- */
 public class AdminEmpleados extends javax.swing.JPanel {
-
-private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
-
     
             
  
  public AdminEmpleados(){   
         initComponents();
-        D1.setEditable(false);
-        D2.setEditable(false);
-        D3.setEditable(false);
-        D4.setEditable(false);
-        D5.setEditable(false);
-        D6.setEditable(false);
-        D8.setEditable(false);
-        D9.setEditable(false);
+        txtNombreDespedir.setEditable(false);
+        txtApellidoDespedir.setEditable(false);
+        txtTelefonoDespedir.setEditable(false);
+        txtDNIDespedir.setEditable(false);
+        txtCorreoDespedir.setEditable(false);
+        BoxContratoDespedir.setEditable(false);
+        BoxCargoDespedir.setEditable(false);
+        BoxAreaDespedir.setEditable(false);
     
 
  
@@ -64,19 +56,19 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        txtBuscarId2 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField26 = new javax.swing.JTextField();
-        jTextField27 = new javax.swing.JTextField();
-        jTextField28 = new javax.swing.JTextField();
-        jTextField29 = new javax.swing.JTextField();
+        txtBuscarID2 = new javax.swing.JTextField();
+        txtNombreModificar = new javax.swing.JTextField();
+        txtTelefonoModificar = new javax.swing.JTextField();
+        txtApellidoModificar = new javax.swing.JTextField();
+        txtCorreoModificar = new javax.swing.JTextField();
+        txtDNIModificar = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        BtnBuscarModificar = new javax.swing.JButton();
         btnModificarEmpleado = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        BoxContratoModificar = new javax.swing.JComboBox<>();
+        BoxCargoModificar = new javax.swing.JComboBox<>();
+        BoxAreaModificar = new javax.swing.JComboBox<>();
         panelBusqueda = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
         jsEmpleados = new javax.swing.JScrollPane();
@@ -92,18 +84,19 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         jLabel24 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        txtBuscarId1 = new javax.swing.JTextField();
-        D1 = new javax.swing.JTextField();
-        D3 = new javax.swing.JTextField();
-        D2 = new javax.swing.JTextField();
-        D6 = new javax.swing.JTextField();
-        D4 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtIDDespedir = new javax.swing.JTextField();
+        txtNombreDespedir = new javax.swing.JTextField();
+        txtTelefonoDespedir = new javax.swing.JTextField();
+        txtApellidoDespedir = new javax.swing.JTextField();
+        txtDNIDespedir = new javax.swing.JTextField();
+        BtnDespedirEmpleado = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        D5 = new javax.swing.JTextField();
-        D9 = new javax.swing.JTextField();
-        D8 = new javax.swing.JTextField();
+        txtCorreoDespedir = new javax.swing.JTextField();
+        BtnBuscarDespedir = new javax.swing.JButton();
+        BoxContratoDespedir = new javax.swing.JComboBox<>();
+        BoxCargoDespedir = new javax.swing.JComboBox<>();
+        BoxAreaDespedir = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(17, 50, 77));
 
@@ -167,6 +160,7 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
             }
         });
 
+        btnRegistrarEmpleado.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrarEmpleado.setText("Registrar");
         btnRegistrarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +171,7 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cargo:");
 
+        BoxCargo.setForeground(new java.awt.Color(0, 0, 0));
         BoxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Limpieza", "Tecnico", "Cocinero", "Recepcionista", "Botones" }));
         BoxCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +179,7 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
             }
         });
 
+        BoxContrato.setForeground(new java.awt.Color(0, 0, 0));
         BoxContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Indefinido", "Renovable", "Temporal", "Discapacidad" }));
         BoxContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +190,7 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Area:");
 
+        BoxArea.setForeground(new java.awt.Color(0, 0, 0));
         BoxArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Limpieza", "Cocina", "Area Tecnica", "Recepcion", "Salon" }));
 
         javax.swing.GroupLayout panelPagoReg1Layout = new javax.swing.GroupLayout(panelPagoReg1);
@@ -216,7 +213,7 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
                             .addComponent(jLabel6))
                         .addGap(23, 23, 23)
                         .addGroup(panelPagoReg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BoxCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BoxCargo, 0, 120, Short.MAX_VALUE)
                             .addComponent(txtDNI, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtIDEmpleado)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -271,7 +268,7 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRegistrarEmpleado)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         panelPagoReg4.setBackground(new java.awt.Color(0, 0, 0));
@@ -298,47 +295,54 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Tipo Contrato:");
 
-        txtBuscarId2.addActionListener(new java.awt.event.ActionListener() {
+        txtBuscarID2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarId2ActionPerformed(evt);
+                txtBuscarID2ActionPerformed(evt);
             }
         });
 
-        jTextField25.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField25ActionPerformed(evt);
+                txtNombreModificarActionPerformed(evt);
             }
         });
 
-        jTextField26.addActionListener(new java.awt.event.ActionListener() {
+        txtTelefonoModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField26ActionPerformed(evt);
+                txtTelefonoModificarActionPerformed(evt);
             }
         });
 
-        jTextField27.addActionListener(new java.awt.event.ActionListener() {
+        txtApellidoModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField27ActionPerformed(evt);
+                txtApellidoModificarActionPerformed(evt);
             }
         });
 
-        jTextField28.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreoModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField28ActionPerformed(evt);
+                txtCorreoModificarActionPerformed(evt);
             }
         });
 
-        jTextField29.addActionListener(new java.awt.event.ActionListener() {
+        txtDNIModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField29ActionPerformed(evt);
+                txtDNIModificarActionPerformed(evt);
             }
         });
 
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("Cargo:");
 
-        jButton6.setText("Buscar");
+        BtnBuscarModificar.setForeground(new java.awt.Color(0, 0, 0));
+        BtnBuscarModificar.setText("Buscar");
+        BtnBuscarModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarModificarActionPerformed(evt);
+            }
+        });
 
+        btnModificarEmpleado.setForeground(new java.awt.Color(0, 0, 0));
         btnModificarEmpleado.setText("Modificar");
         btnModificarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,11 +353,24 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Area:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        BoxContratoModificar.setForeground(new java.awt.Color(0, 0, 0));
+        BoxContratoModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Indefinido", "Renovable", "Temporal", "Discapacidad" }));
+        BoxContratoModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                BoxContratoModificarActionPerformed(evt);
             }
         });
+
+        BoxCargoModificar.setForeground(new java.awt.Color(0, 0, 0));
+        BoxCargoModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Limpieza", "Tecnico", "Cocinero", "Recepcionista", "Botones" }));
+        BoxCargoModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoxCargoModificarActionPerformed(evt);
+            }
+        });
+
+        BoxAreaModificar.setForeground(new java.awt.Color(0, 0, 0));
+        BoxAreaModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Limpieza", "Cocina", "Area Tecnica", "Recepcion", "Salon" }));
 
         javax.swing.GroupLayout panelPagoReg4Layout = new javax.swing.GroupLayout(panelPagoReg4);
         panelPagoReg4.setLayout(panelPagoReg4Layout);
@@ -363,39 +380,32 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
                 .addContainerGap()
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPagoReg4Layout.createSequentialGroup()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGap(8, 8, 8)
+                        .addComponent(BtnBuscarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnModificarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelPagoReg4Layout.createSequentialGroup()
                         .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panelPagoReg4Layout.createSequentialGroup()
-                                    .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblIdPago4)
-                                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(28, 28, 28))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagoReg4Layout.createSequentialGroup()
-                                    .addComponent(jLabel30)
-                                    .addGap(32, 32, 32)))
-                            .addGroup(panelPagoReg4Layout.createSequentialGroup()
-                                .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(41, 41, 41)))
+                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIdPago4)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
                         .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField29, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtBuscarId2)
-                            .addComponent(jTextField26, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField27)
-                            .addComponent(jTextField28)
-                            .addComponent(jTextField25)
-                            .addComponent(jTextField1))))
+                            .addComponent(BoxAreaModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BoxCargoModificar, 0, 124, Short.MAX_VALUE)
+                            .addComponent(BoxContratoModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDNIModificar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtBuscarID2)
+                            .addComponent(txtTelefonoModificar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtApellidoModificar)
+                            .addComponent(txtCorreoModificar)
+                            .addComponent(txtNombreModificar))))
                 .addContainerGap())
         );
         panelPagoReg4Layout.setVerticalGroup(
@@ -404,43 +414,43 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
                 .addGap(6, 6, 6)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdPago4)
-                    .addComponent(txtBuscarId2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBuscarID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellidoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefonoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27))
                 .addGap(12, 12, 12)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDNIModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
                 .addGap(12, 12, 12)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel30))
+                    .addComponent(jLabel30)
+                    .addComponent(BoxContratoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32))
+                    .addComponent(jLabel32)
+                    .addComponent(BoxCargoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20))
+                    .addComponent(jLabel20)
+                    .addComponent(BoxAreaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificarEmpleado)
-                    .addComponent(jButton6))
+                    .addComponent(BtnBuscarModificar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -536,43 +546,43 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Tipo Contrato:");
 
-        txtBuscarId1.addActionListener(new java.awt.event.ActionListener() {
+        txtIDDespedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarId1ActionPerformed(evt);
+                txtIDDespedirActionPerformed(evt);
             }
         });
 
-        D1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreDespedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D1ActionPerformed(evt);
+                txtNombreDespedirActionPerformed(evt);
             }
         });
 
-        D3.addActionListener(new java.awt.event.ActionListener() {
+        txtTelefonoDespedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D3ActionPerformed(evt);
+                txtTelefonoDespedirActionPerformed(evt);
             }
         });
 
-        D2.addActionListener(new java.awt.event.ActionListener() {
+        txtApellidoDespedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D2ActionPerformed(evt);
+                txtApellidoDespedirActionPerformed(evt);
             }
         });
 
-        D6.addActionListener(new java.awt.event.ActionListener() {
+        txtDNIDespedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D6ActionPerformed(evt);
+                txtDNIDespedirActionPerformed(evt);
             }
         });
 
-        D4.addActionListener(new java.awt.event.ActionListener() {
+        BtnDespedirEmpleado.setForeground(new java.awt.Color(0, 0, 0));
+        BtnDespedirEmpleado.setText("Despedir");
+        BtnDespedirEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D4ActionPerformed(evt);
+                BtnDespedirEmpleadoActionPerformed(evt);
             }
         });
-
-        jButton2.setText("Despedir");
 
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Cargo:");
@@ -580,23 +590,38 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("Area:");
 
-        D5.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreoDespedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D5ActionPerformed(evt);
+                txtCorreoDespedirActionPerformed(evt);
             }
         });
 
-        D9.addActionListener(new java.awt.event.ActionListener() {
+        BtnBuscarDespedir.setForeground(new java.awt.Color(0, 0, 0));
+        BtnBuscarDespedir.setText("Buscar");
+        BtnBuscarDespedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D9ActionPerformed(evt);
+                BtnBuscarDespedirActionPerformed(evt);
             }
         });
 
-        D8.addActionListener(new java.awt.event.ActionListener() {
+        BoxContratoDespedir.setForeground(new java.awt.Color(0, 0, 0));
+        BoxContratoDespedir.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Indefinido", "Renovable", "Temporal", "Discapacidad" }));
+        BoxContratoDespedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D8ActionPerformed(evt);
+                BoxContratoDespedirActionPerformed(evt);
             }
         });
+
+        BoxCargoDespedir.setForeground(new java.awt.Color(0, 0, 0));
+        BoxCargoDespedir.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Limpieza", "Tecnico", "Cocinero", "Recepcionista", "Botones" }));
+        BoxCargoDespedir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoxCargoDespedirActionPerformed(evt);
+            }
+        });
+
+        BoxAreaDespedir.setForeground(new java.awt.Color(0, 0, 0));
+        BoxAreaDespedir.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Limpieza", "Cocina", "Area Tecnica", "Recepcion", "Salon" }));
 
         javax.swing.GroupLayout panelPagoReg3Layout = new javax.swing.GroupLayout(panelPagoReg3);
         panelPagoReg3.setLayout(panelPagoReg3Layout);
@@ -604,9 +629,6 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
             panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPagoReg3Layout.createSequentialGroup()
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPagoReg3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelPagoReg3Layout.createSequentialGroup()
                         .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel34)
@@ -616,19 +638,26 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblIdPago3)
-                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel37))
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(D4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                            .addComponent(txtBuscarId1)
-                            .addComponent(D3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(D2)
-                            .addComponent(D6)
-                            .addComponent(D1)
-                            .addComponent(D5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(D9, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(D8, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(BoxCargoDespedir, javax.swing.GroupLayout.Alignment.TRAILING, 0, 122, Short.MAX_VALUE)
+                            .addComponent(BoxContratoDespedir, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDNIDespedir, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtIDDespedir)
+                            .addComponent(txtTelefonoDespedir, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtApellidoDespedir)
+                            .addComponent(txtNombreDespedir)
+                            .addComponent(txtCorreoDespedir, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(panelPagoReg3Layout.createSequentialGroup()
+                        .addComponent(jLabel37)
+                        .addGap(73, 73, 73)
+                        .addComponent(BoxAreaDespedir, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagoReg3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BtnBuscarDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnDespedirEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         panelPagoReg3Layout.setVerticalGroup(
@@ -637,42 +666,44 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
                 .addGap(6, 6, 6)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdPago3)
-                    .addComponent(txtBuscarId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIDDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(D1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(D2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellidoDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(D3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefonoDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
                 .addGap(12, 12, 12)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(D4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDNIDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
                 .addGap(12, 12, 12)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addComponent(D5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCorreoDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
-                    .addComponent(D6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BoxContratoDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(D8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel36))
-                .addGap(12, 12, 12)
-                .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(D9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36)
+                    .addComponent(BoxCargoDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BoxAreaDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnDespedirEmpleado)
+                    .addComponent(BtnBuscarDespedir))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -682,14 +713,14 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(panelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelPagoReg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(panelPagoReg3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(18, 18, 18)
                         .addComponent(panelPagoReg4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -697,8 +728,8 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(panelPagoReg3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelPagoReg4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelPagoReg1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelPagoReg1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelPagoReg4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -733,114 +764,108 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         // TODO add your handling code here:
     }//GEN-LAST:event_BoxContratoActionPerformed
 
-    private void txtBuscarId2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarId2ActionPerformed
+    private void txtBuscarID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarID2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarId2ActionPerformed
+    }//GEN-LAST:event_txtBuscarID2ActionPerformed
 
-    private void jTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField25ActionPerformed
+    private void txtNombreModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField25ActionPerformed
+    }//GEN-LAST:event_txtNombreModificarActionPerformed
 
-    private void jTextField26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField26ActionPerformed
+    private void txtTelefonoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField26ActionPerformed
+    }//GEN-LAST:event_txtTelefonoModificarActionPerformed
 
-    private void jTextField27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField27ActionPerformed
+    private void txtApellidoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField27ActionPerformed
+    }//GEN-LAST:event_txtApellidoModificarActionPerformed
 
-    private void jTextField28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField28ActionPerformed
+    private void txtCorreoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField28ActionPerformed
+    }//GEN-LAST:event_txtCorreoModificarActionPerformed
 
-    private void jTextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField29ActionPerformed
+    private void txtDNIModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField29ActionPerformed
+    }//GEN-LAST:event_txtDNIModificarActionPerformed
 
-    private void txtBuscarId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarId1ActionPerformed
+    private void txtIDDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDDespedirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarId1ActionPerformed
+    }//GEN-LAST:event_txtIDDespedirActionPerformed
 
-    private void D1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D1ActionPerformed
-       D1.setEditable(false);
+    private void txtNombreDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreDespedirActionPerformed
+    
         // TODO add your handling code here:
-    }//GEN-LAST:event_D1ActionPerformed
+    }//GEN-LAST:event_txtNombreDespedirActionPerformed
 
-    private void D3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D3ActionPerformed
-     D3.setEditable(false);    
+    private void txtTelefonoDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoDespedirActionPerformed
+        
 // TODO add your handling code here:
-    }//GEN-LAST:event_D3ActionPerformed
+    }//GEN-LAST:event_txtTelefonoDespedirActionPerformed
 
-    private void D2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2ActionPerformed
-       D2.setEditable(false);
+    private void txtApellidoDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoDespedirActionPerformed
+      
         // TODO add your handling code here:
-    }//GEN-LAST:event_D2ActionPerformed
+    }//GEN-LAST:event_txtApellidoDespedirActionPerformed
 
-    private void D6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D6ActionPerformed
-    D6.setEditable(false);    
-// TODO add your handling code here:
-    }//GEN-LAST:event_D6ActionPerformed
-
-    private void D4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D4ActionPerformed
-      D4.setEditable(false);
+    private void txtDNIDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIDespedirActionPerformed
+     
         // TODO add your handling code here:
-    }//GEN-LAST:event_D4ActionPerformed
+    }//GEN-LAST:event_txtDNIDespedirActionPerformed
 
-    private void D5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D5ActionPerformed
-    D5.setEditable(false);    
+    private void txtCorreoDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoDespedirActionPerformed
+       
 // TODO add your handling code here:
-    }//GEN-LAST:event_D5ActionPerformed
-
-    private void D9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D9ActionPerformed
-      D9.setEditable(false);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_D9ActionPerformed
-
-    private void D8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D8ActionPerformed
-    D8.setEditable(false);    
-// TODO add your handling code here:
-    }//GEN-LAST:event_D8ActionPerformed
+    }//GEN-LAST:event_txtCorreoDespedirActionPerformed
 
     private void BoxCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxCargoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BoxCargoActionPerformed
 
     private void btnRegistrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEmpleadoActionPerformed
-    String Id =txtIDEmpleado.getText();
-    String Nombre = txtNombre.getText();
-    String Apellido = txtApellido.getText();
-    String Telefono = txtTelefono.getText();
-    String DNI = txtDNI.getText();
-    String Correo = txtCorreo.getText();
+    String Idtexto =txtIDEmpleado.getText().trim();
+    int id = Integer.parseInt(Idtexto.trim());
+    String Nombre = txtNombre.getText().trim();
+    String Apellido = txtApellido.getText().trim();
+    String Telefono = txtTelefono.getText().trim();
+    String DNI = txtDNI.getText().trim();
+    String Correo = txtCorreo.getText().trim();
     String TipoContrato = BoxContrato.getSelectedItem().toString();
     String Cargo = BoxCargo.getSelectedItem().toString();
     String Area = BoxArea.getSelectedItem().toString();
     
-   
     
-    
-    
-    if(Nombre.isEmpty() || Apellido.isEmpty() || Telefono.isEmpty()
+    if(Idtexto.isEmpty() || Nombre.isEmpty() || Apellido.isEmpty() || Telefono.isEmpty()
     || DNI.isEmpty() || Correo.isEmpty() || TipoContrato.equals("Seleccionar") || Cargo.equals("Seleccionar") || Area.equals("Seleccionar") ){
-        JOptionPane.showMessageDialog(this, "Completa todos los campos porfavor :).");
+        JOptionPane.showMessageDialog(this, "Completa todos los campos porfavor :)");
     return;
     }//GEN-LAST:event_btnRegistrarEmpleadoActionPerformed
      
-    //Empleado emp = new Empleado(Nombre,Apellido,Telefono,DNI,Correo);
-              
-    limpiarcampos();
-    
-    }
-    private void btnModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarEmpleadoActionPerformed
-    if(listaEmpleados.isEmpty()){
-    JOptionPane.showMessageDialog(this,"No hay emmpleados registrados.");
+    try{
+    id = Integer.parseInt(Idtexto);
+    } catch(NumberFormatException e){
+    JOptionPane.showMessageDialog(this,"El ID debe ser un numero.");
     return;
     }
     
-    String IdTexto =txtBuscarId2.getText();
+    Empleado nuevoEmpleado = new Empleado(id ,Nombre ,Apellido,Telefono,DNI,Correo,TipoContrato,Cargo,Area);
+    DatosCompartidos.listaEmpleados.add(nuevoEmpleado);
+    
+    System.out.println("total de empleados registrados "+listaEmpleados.size()); 
+    JOptionPane.showMessageDialog(null, "Empleado registrado");
+    limpiarCampos();
+    
+    }
+
+    private void btnModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarEmpleadoActionPerformed
+    if(DatosCompartidos.listaEmpleados.isEmpty()){
+    JOptionPane.showMessageDialog(this,"No hay empleados registrados.");
+    return;
+    }
+    
+    String IdTexto =txtBuscarID2.getText();
     
     if(IdTexto.isEmpty()){
-    JOptionPane.showMessageDialog(this, "Ingrese un ID papeto lendo.");
+    JOptionPane.showMessageDialog(this, "Ingrese un ID.");
     return;
     }
     
@@ -849,12 +874,58 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     idBuscado = Integer.parseInt(IdTexto);
     }//GEN-LAST:event_btnModificarEmpleadoActionPerformed
     catch (NumberFormatException e) {
-    JOptionPane.showMessageDialog(this,"El ID debe ser un numero papeto lendo.");
+    JOptionPane.showMessageDialog(this,"El ID debe ser un numero.");
+    return;
+    }
+    Empleados encontrado = null;
+    for (Empleados emp : DatosCompartidos.listaEmpleados){
+    if(emp.getId() == idBuscado){
+    encontrado = emp;
+    break;
+    }  
+    }
+    if(encontrado!= null){
+    txtNombre.setText(encontrado.getNombre());
+    txtApellido.setText(encontrado.getApellido());
+    txtTelefono.setText(encontrado.getTelefono());
+    txtDNI.setText(encontrado.getDNI());
+    txtCorreo.setText(encontrado.getCorreo());
+    BoxContrato.setSelectedItem(encontrado.getTipoContrato());
+    BoxCargo.setSelectedItem(encontrado.getCargo());
+    BoxArea.setSelectedItem(encontrado.getArea());
+    
+    JOptionPane.showMessageDialog(this,"Empleado Modificado correctamente");
+    } else {
+     JOptionPane.showMessageDialog(this, "Empleado no encontrado.");
+    }
+    limpiarCampos();
+    }
+
+    private void BtnBuscarDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarDespedirActionPerformed
+    if(DatosCompartidos.listaEmpleados.isEmpty()){
+    JOptionPane.showMessageDialog(this,"No hay empleados registrados.");
     return;
     }
     
-    Empleado encontrado = null;
-    for (Empleado emp : listaEmpleados){
+    String IdTexto =txtBuscarID2.getText();
+    
+    if(IdTexto.isEmpty()){
+    JOptionPane.showMessageDialog(this, "Ingrese un ID valida.");
+    return;
+    }
+    
+    int idBuscado;
+    
+    try{
+    idBuscado = Integer.parseInt(IdTexto);
+    }                                                    
+    catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(this,"El ID debe ser un numero.");
+    return;
+    }
+    
+    Empleados encontrado = null;
+    for (Empleados emp :DatosCompartidos.listaEmpleados){
     if(emp.getId() == idBuscado){
     encontrado = emp;
     break;
@@ -862,21 +933,146 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     }
     
     if(encontrado!= null){
-    txtNombre.setText(encontrado.getNombre());
-    txtApellido.setText(encontrado.getApellido());
-    txtDNI.setText(encontrado.getDni());
-    txtCorreo.setText(encontrado.getEmail()); 
-    } else {
-     JOptionPane.showMessageDialog(this, "Empleado no encontrado papeto lendo.");
+    txtNombreDespedir.setText(encontrado.getNombre());
+    txtApellidoDespedir.setText(encontrado.getApellido());
+    txtTelefonoDespedir.setText(encontrado.getTelefono());
+    txtDNIDespedir.setText(encontrado.getDNI());
+    txtCorreoDespedir.setText(encontrado.getCorreo());
+    BoxContratoDespedir.setSelectedItem(encontrado.getTipoContrato());
+    BoxCargoDespedir.setSelectedItem(encontrado.getCargo());
+    BoxAreaDespedir.setSelectedItem(encontrado.getArea());
+    JOptionPane.showMessageDialog(this,"Datos obtenidos correctamente");
+    } 
+    
+    else{
+    JOptionPane.showMessageDialog(this, "Empleado no encontrado.");
+    }
+    */
+    }//GEN-LAST:event_BtnBuscarDespedirActionPerformed
+    private void BtnBuscarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarModificarActionPerformed
+    if(DatosCompartidos.listaEmpleados.isEmpty()){
+    JOptionPane.showMessageDialog(this,"No hay empleados registrados.");
+    return;
+    }
+    
+    String IdTexto =txtBuscarID2.getText();
+    
+    if(IdTexto.isEmpty()){
+    JOptionPane.showMessageDialog(this, "Ingrese un ID.");
+    return;
+    }
+    
+    int idBuscado;
+    
+    try{
+    idBuscado = Integer.parseInt(IdTexto);
+    }                                                    
+    catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(this,"El ID debe ser un numero.");
+    return;
+    }
+    
+    Empleados encontrado = null;
+    for (Empleados emp : DatosCompartidos.listaEmpleados){
+    if(emp.getId() == idBuscado){
+    encontrado = emp;
+    break;
+    }  
+    }
+    
+    if(encontrado!= null){
+    txtNombreModificar.setText(encontrado.getNombre());
+    txtApellidoModificar.setText(encontrado.getApellido());
+    txtTelefonoModificar.setText(encontrado.getTelefono());
+    txtDNIModificar.setText(encontrado.getDNI());
+    txtCorreoModificar.setText(encontrado.getCorreo());
+    BoxContratoModificar.setSelectedItem(encontrado.getTipoContrato());
+    BoxCargoModificar.setSelectedItem(encontrado.getCargo());
+    BoxAreaModificar.setSelectedItem(encontrado.getArea());
+    JOptionPane.showMessageDialog(this,"Datos obtenidos correctamente");
+    }else{
+    JOptionPane.showMessageDialog(this, "Empleado no encontrado.");
+    }
+    
+    }//GEN-LAST:event_BtnBuscarModificarActionPerformed
+
+    private void BoxContratoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxContratoModificarActionPerformed
+    int Id = Integer.parseInt(txtBuscarID2.getText().trim());
+    
+    for(Empleados e: DatosCompartidos.listaEmpleados){
+    if(e.getId() == Id){
+    e.setNombre(txtNombreModificar.getText().trim());
+    e.setApellido(txtNombreModificar.getText().trim());
+    e.setTelefono(txtNombreModificar.getText().trim());
+    e.setDNI(txtNombreModificar.getText().trim());
+    e.setCorreo(txtNombreModificar.getText().trim());
+    e.setTipoContrato(BoxContratoModificar.getSelectedItem().toString());
+    e.setCargo(BoxCargoModificar.getSelectedItem().toString());
+    e.setArea(BoxAreaModificar.getSelectedItem().toString());
+            
+    JOptionPane.showMessageDialog(null,"Empleado modificado correctamente");
     }
     }
+    }//GEN-LAST:event_BoxContratoModificarActionPerformed
+
+    private void BoxCargoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxCargoModificarActionPerformed
     
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_BoxCargoModificarActionPerformed
+
+    private void BtnDespedirEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDespedirEmpleadoActionPerformed
     
+    String IdTexto = txtIDDespedir.getText().trim();
     
-    private void limpiarcampos(){
+    if(IdTexto.isEmpty()){
+    JOptionPane.showMessageDialog(this,"Ingrese una ID");
+    return;
+    }
+    int Id;
+    try{
+    Id = Integer.parseInt(IdTexto);
+    }catch(NumberFormatException e){
+    JOptionPane.showMessageDialog(this,"El ID debe ser un numero");
+    return;
+    }
+    
+    boolean encontrado = false;
+    
+    for(int i = 0; i < DatosCompartidos.listaEmpleados.size(); i++){
+    if(DatosCompartidos.listaEmpleados.get(i).getId() == Id){
+    int confirmacion = JOptionPane.showConfirmDialog(null,
+    "Estas seguro de despedir al empleado con ID"+ Id + "?",
+    "Confirmar despido",
+    JOptionPane.YES_NO_OPTION);
+    
+    if(confirmacion == JOptionPane.YES_OPTION){
+    DatosCompartidos.listaEmpleados.remove(i);
+    encontrado = true;
+    JOptionPane.showMessageDialog(null,"Empleado despedido correctamente");
+    limpiarCampos();
+    }else{
+    JOptionPane.showMessageDialog(null,"Operacion cancelada");
+    }
+    
+    return;
+    }
+    }
+    if(!encontrado){
+    JOptionPane.showMessageDialog(null,"Empleado no encontrado.");
+    }
+    
+    limpiarCampos();
+    }//GEN-LAST:event_BtnDespedirEmpleadoActionPerformed
+
+    private void BoxContratoDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxContratoDespedirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BoxContratoDespedirActionPerformed
+
+    private void BoxCargoDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxCargoDespedirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BoxCargoDespedirActionPerformed
+    
+    private void limpiarCampos(){
+    txtIDEmpleado.setText("");
     txtNombre.setText("");
     txtApellido.setText("");
     txtTelefono.setText("");
@@ -885,25 +1081,25 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     BoxContrato.setSelectedIndex(0);
     BoxCargo.setSelectedIndex(0);
     BoxArea.setSelectedIndex(0);    
- }
+    }  
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> BoxArea;
+    private javax.swing.JComboBox<String> BoxAreaDespedir;
+    private javax.swing.JComboBox<String> BoxAreaModificar;
     private javax.swing.JComboBox<String> BoxCargo;
+    private javax.swing.JComboBox<String> BoxCargoDespedir;
+    private javax.swing.JComboBox<String> BoxCargoModificar;
     private javax.swing.JComboBox<String> BoxContrato;
-    private javax.swing.JTextField D1;
-    private javax.swing.JTextField D2;
-    private javax.swing.JTextField D3;
-    private javax.swing.JTextField D4;
-    private javax.swing.JTextField D5;
-    private javax.swing.JTextField D6;
-    private javax.swing.JTextField D8;
-    private javax.swing.JTextField D9;
+    private javax.swing.JComboBox<String> BoxContratoDespedir;
+    private javax.swing.JComboBox<String> BoxContratoModificar;
+    private javax.swing.JButton BtnBuscarDespedir;
+    private javax.swing.JButton BtnBuscarModificar;
+    private javax.swing.JButton BtnDespedirEmpleado;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnModificarEmpleado;
     private javax.swing.JButton btnRegistrarEmpleado;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -929,15 +1125,7 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JScrollPane jsEmpleados;
     private javax.swing.JLabel lblBuscarOpc;
     private javax.swing.JLabel lblIdPago1;
@@ -949,12 +1137,22 @@ private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     private javax.swing.JPanel panelPagoReg4;
     private javax.swing.JTable tbLista;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtBuscarId1;
-    private javax.swing.JTextField txtBuscarId2;
+    private javax.swing.JTextField txtApellidoDespedir;
+    private javax.swing.JTextField txtApellidoModificar;
+    private javax.swing.JTextField txtBuscarID2;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtCorreoDespedir;
+    private javax.swing.JTextField txtCorreoModificar;
     private javax.swing.JTextField txtDNI;
+    private javax.swing.JTextField txtDNIDespedir;
+    private javax.swing.JTextField txtDNIModificar;
+    private javax.swing.JTextField txtIDDespedir;
     private javax.swing.JTextField txtIDEmpleado;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreDespedir;
+    private javax.swing.JTextField txtNombreModificar;
     private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtTelefonoDespedir;
+    private javax.swing.JTextField txtTelefonoModificar;
     // End of variables declaration//GEN-END:variables
 }

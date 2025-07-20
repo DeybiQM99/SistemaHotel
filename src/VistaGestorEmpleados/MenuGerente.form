@@ -68,7 +68,7 @@
                           <Component id="btnIncidencias" min="-2" pref="125" max="-2" attributes="0"/>
                           <Component id="btnNominas" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
                           <Component id="btnPersonal" min="-2" pref="125" max="-2" attributes="0"/>
-                          <Component id="btnAscensos" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="btnContrato" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
                           <Component id="btnVolver" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
                           <Component id="btnReportes" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
                       </Group>
@@ -86,7 +86,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnNominas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnAscensos" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnContrato" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnIncidencias" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -142,7 +142,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNominasActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAscensos">
+            <Component class="javax.swing.JButton" name="btnContrato">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="4d" green="32" red="11" type="rgb"/>
@@ -156,7 +156,7 @@
                 <Property name="text" type="java.lang.String" value="Contratos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAscensosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContratoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnIncidencias">

@@ -56,7 +56,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(33, 44, 116));
+        jPanel1.setBackground(new java.awt.Color(17, 50, 77));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblUsuario2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -79,7 +79,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         LblUsuario.setText("REPETIR CONTRASEÑA");
         jPanel1.add(LblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 210, 33));
 
-        TxtContraseña.setBackground(new java.awt.Color(33, 44, 116));
+        TxtContraseña.setBackground(new java.awt.Color(17, 50, 77));
         TxtContraseña.setForeground(new java.awt.Color(204, 204, 255));
         TxtContraseña.setText("*****");
         TxtContraseña.setBorder(null);
@@ -93,7 +93,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         });
         jPanel1.add(TxtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 270, 20));
 
-        TxtNContraseña1.setBackground(new java.awt.Color(33, 44, 116));
+        TxtNContraseña1.setBackground(new java.awt.Color(17, 50, 77));
         TxtNContraseña1.setForeground(new java.awt.Color(204, 204, 255));
         TxtNContraseña1.setText("*****");
         TxtNContraseña1.setBorder(null);
@@ -107,7 +107,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         });
         jPanel1.add(TxtNContraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 270, 20));
 
-        TxtNContraseña2.setBackground(new java.awt.Color(33, 44, 116));
+        TxtNContraseña2.setBackground(new java.awt.Color(17, 50, 77));
         TxtNContraseña2.setForeground(new java.awt.Color(204, 204, 255));
         TxtNContraseña2.setText("*****");
         TxtNContraseña2.setBorder(null);
@@ -121,7 +121,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         });
         jPanel1.add(TxtNContraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 270, 20));
 
-        TxtUsuario.setBackground(new java.awt.Color(33, 44, 116));
+        TxtUsuario.setBackground(new java.awt.Color(17, 50, 77));
         TxtUsuario.setForeground(new java.awt.Color(204, 204, 255));
         TxtUsuario.setText("Ingrese su nombre de usuario");
         TxtUsuario.setBorder(null);
@@ -183,7 +183,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         });
         jPanel1.add(ocultar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
 
-        BtnAceptar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnAceptar.setBackground(new java.awt.Color(17, 50, 77));
         BtnAceptar.setForeground(new java.awt.Color(255, 255, 255));
         BtnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
         BtnAceptar.setText("Aceptar");
@@ -194,7 +194,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         });
         jPanel1.add(BtnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 150, 40));
 
-        BtnRegresar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnRegresar.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegresar.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
         BtnRegresar.setText("Regresar");

@@ -118,27 +118,27 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setBackground(new java.awt.Color(33, 44, 116));
+        setBackground(new java.awt.Color(17, 50, 77));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(750, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TxtResDni.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResDni.setBackground(new java.awt.Color(17, 50, 77));
         TxtResDni.setForeground(new java.awt.Color(255, 255, 255));
         TxtResDni.setBorder(null);
         add(TxtResDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, 20));
 
-        TxtResCategoria.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResCategoria.setBackground(new java.awt.Color(17, 50, 77));
         TxtResCategoria.setForeground(new java.awt.Color(255, 255, 255));
         TxtResCategoria.setBorder(null);
         add(TxtResCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 170, 20));
 
-        TxtResNHabitacion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResNHabitacion.setBackground(new java.awt.Color(17, 50, 77));
         TxtResNHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         TxtResNHabitacion.setBorder(null);
         add(TxtResNHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 170, 20));
 
-        BtnFinalizarVenta.setBackground(new java.awt.Color(33, 44, 116));
+        BtnFinalizarVenta.setBackground(new java.awt.Color(17, 50, 77));
         BtnFinalizarVenta.setForeground(new java.awt.Color(255, 255, 255));
         BtnFinalizarVenta.setText("FINALIZAR VENTA");
         BtnFinalizarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +148,7 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         });
         add(BtnFinalizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 150, 30));
 
-        JcResProducto.setBackground(new java.awt.Color(33, 44, 116));
+        JcResProducto.setBackground(new java.awt.Color(17, 50, 77));
         JcResProducto.setEditable(true);
         JcResProducto.setForeground(new java.awt.Color(255, 255, 255));
         JcResProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", " " }));
@@ -159,7 +159,7 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         });
         add(JcResProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 170, 20));
 
-        TxtResTelefono.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResTelefono.setBackground(new java.awt.Color(17, 50, 77));
         TxtResTelefono.setForeground(new java.awt.Color(255, 255, 255));
         TxtResTelefono.setBorder(null);
         add(TxtResTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 170, 20));
@@ -190,12 +190,12 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 710, 90));
 
-        TxtResPrecio.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResPrecio.setBackground(new java.awt.Color(17, 50, 77));
         TxtResPrecio.setForeground(new java.awt.Color(255, 255, 255));
         TxtResPrecio.setBorder(null);
         add(TxtResPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, 20));
 
-        BtnResAgregar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnResAgregar.setBackground(new java.awt.Color(17, 50, 77));
         BtnResAgregar.setForeground(new java.awt.Color(255, 255, 255));
         BtnResAgregar.setText("AGREGAR");
         BtnResAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -205,13 +205,13 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         });
         add(BtnResAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 240, 110, 30));
 
-        JcResEstadoVenta.setBackground(new java.awt.Color(33, 44, 116));
+        JcResEstadoVenta.setBackground(new java.awt.Color(17, 50, 77));
         JcResEstadoVenta.setEditable(true);
         JcResEstadoVenta.setForeground(new java.awt.Color(255, 255, 255));
         JcResEstadoVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Cancelado" }));
         add(JcResEstadoVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 170, 20));
 
-        TxtResCantidad.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResCantidad.setBackground(new java.awt.Color(17, 50, 77));
         TxtResCantidad.setForeground(new java.awt.Color(255, 255, 255));
         TxtResCantidad.setBorder(null);
         add(TxtResCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 170, 20));
@@ -251,7 +251,7 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         jLabel12.setText("TELEFONO");
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, 30));
 
-        TxtResTotalPago.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResTotalPago.setBackground(new java.awt.Color(17, 50, 77));
         TxtResTotalPago.setForeground(new java.awt.Color(255, 255, 255));
         TxtResTotalPago.setBorder(null);
         add(TxtResTotalPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 170, 20));
@@ -291,7 +291,7 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         jLabel18.setText("ESTADO DE VENTA");
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 150, 20));
 
-        BtnResBuscar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnResBuscar.setBackground(new java.awt.Color(17, 50, 77));
         BtnResBuscar.setForeground(new java.awt.Color(255, 255, 255));
         BtnResBuscar.setText("BUSCAR");
         BtnResBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -301,12 +301,12 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         });
         add(BtnResBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 90, 30));
 
-        TxtResCliente.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResCliente.setBackground(new java.awt.Color(17, 50, 77));
         TxtResCliente.setForeground(new java.awt.Color(255, 255, 255));
         TxtResCliente.setBorder(null);
         add(TxtResCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, 20));
 
-        TxtResEliminar.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResEliminar.setBackground(new java.awt.Color(17, 50, 77));
         TxtResEliminar.setForeground(new java.awt.Color(255, 255, 255));
         TxtResEliminar.setText("ELIMINAR");
         TxtResEliminar.addActionListener(new java.awt.event.ActionListener() {

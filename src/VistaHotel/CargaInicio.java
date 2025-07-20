@@ -55,19 +55,18 @@ public class CargaInicio extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 204, 153));
         setMaximumSize(new java.awt.Dimension(520, 450));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(600, 424));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(33, 44, 116));
+        jPanel1.setBackground(new java.awt.Color(17, 50, 77));
         jPanel1.setMinimumSize(new java.awt.Dimension(600, 420));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 420, 30));
+        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 420, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5-estrellas (3).png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 270, 270));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoHotel.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-210, 10, 820, 400));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 450));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

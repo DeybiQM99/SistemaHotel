@@ -1,5 +1,6 @@
 package VistaHotel;
 
+import com.mysql.cj.log.Log;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 
@@ -32,16 +33,16 @@ public class Reservacion extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(33, 44, 116));
+        jPanel1.setBackground(new java.awt.Color(17, 50, 77));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnRegresar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnRegresar.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegresar.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
-        BtnRegresar.setText("REGRESAR");
+        BtnRegresar.setText("SALIR");
         BtnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnRegresarMouseClicked(evt);
@@ -49,7 +50,7 @@ public class Reservacion extends javax.swing.JFrame {
         });
         jPanel2.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 130, 40));
 
-        BtnReservacion.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservacion.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservacion.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reserva.png"))); // NOI18N
         BtnReservacion.setText("RESERVACION");
@@ -58,9 +59,9 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnReservacionMouseClicked(evt);
             }
         });
-        jPanel2.add(BtnReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 180, 40));
+        jPanel2.add(BtnReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 180, 40));
 
-        BtnServicioAdicional.setBackground(new java.awt.Color(33, 44, 116));
+        BtnServicioAdicional.setBackground(new java.awt.Color(17, 50, 77));
         BtnServicioAdicional.setForeground(new java.awt.Color(255, 255, 255));
         BtnServicioAdicional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/servicio-de-habitaciones.png"))); // NOI18N
         BtnServicioAdicional.setText("SERVICIO ADICIONAL");
@@ -69,12 +70,13 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnServicioAdicionalMouseClicked(evt);
             }
         });
-        jPanel2.add(BtnServicioAdicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 180, 40));
+        jPanel2.add(BtnServicioAdicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 180, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioEV.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 50, 70));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogRecepcion.jpg"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 100, 110));
 
-        BtnProductos.setBackground(new java.awt.Color(33, 44, 116));
+        BtnProductos.setBackground(new java.awt.Color(17, 50, 77));
         BtnProductos.setForeground(new java.awt.Color(255, 255, 255));
         BtnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Carrito.png"))); // NOI18N
         BtnProductos.setText("PRODUCTOS");
@@ -83,9 +85,9 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnProductosMouseClicked(evt);
             }
         });
-        jPanel2.add(BtnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 180, 40));
+        jPanel2.add(BtnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 180, 40));
 
-        jButton8.setBackground(new java.awt.Color(33, 44, 116));
+        jButton8.setBackground(new java.awt.Color(17, 50, 77));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Factura.png"))); // NOI18N
         jButton8.setText("FACTURA");
@@ -94,9 +96,9 @@ public class Reservacion extends javax.swing.JFrame {
                 jButton8MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 180, 40));
+        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 180, 40));
 
-        BtnSalidaHabitacion.setBackground(new java.awt.Color(33, 44, 116));
+        BtnSalidaHabitacion.setBackground(new java.awt.Color(17, 50, 77));
         BtnSalidaHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         BtnSalidaHabitacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SalidaHabitacion.png"))); // NOI18N
         BtnSalidaHabitacion.setText("SALIDAS");
@@ -105,7 +107,7 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnSalidaHabitacionMouseClicked(evt);
             }
         });
-        jPanel2.add(BtnSalidaHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 180, 40));
+        jPanel2.add(BtnSalidaHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 180, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 490));
 
@@ -137,9 +139,11 @@ public class Reservacion extends javax.swing.JFrame {
         );
         if (respuesta == JOptionPane.YES_OPTION) { // Verifica si el usuario seleccionó "Sí"
             dispose(); // Cierra la ventana y libera los recursos
-            VentanaPrincipal vprinc = new VentanaPrincipal();
-            vprinc.setVisible(true);
+            Login log = new Login();
+            log.setVisible(true);
         }
+        
+        
     }//GEN-LAST:event_BtnRegresarMouseClicked
 
     private void BtnReservacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservacionMouseClicked

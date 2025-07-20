@@ -59,7 +59,7 @@ public class SalidaHabitacion extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setBackground(new java.awt.Color(33, 44, 116));
+        setBackground(new java.awt.Color(17, 50, 77));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(750, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,19 +72,19 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         jLabel2.setText("DIN");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 50, 30));
 
-        jButton1.setBackground(new java.awt.Color(33, 44, 116));
+        jButton1.setBackground(new java.awt.Color(17, 50, 77));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarTalentoEV.png"))); // NOI18N
         jButton1.setText("BUSCAR");
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 150, 40));
 
-        jTextField1.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField1.setBackground(new java.awt.Color(17, 50, 77));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setBorder(null);
         jTextField1.setPreferredSize(new java.awt.Dimension(64, 64));
         add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 170, 20));
 
-        jTextField2.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField2.setBackground(new java.awt.Color(17, 50, 77));
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setBorder(null);
         add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 170, 20));
@@ -93,7 +93,7 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         jLabel1.setText("ESTADO");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 70, -1));
 
-        jTextField3.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField3.setBackground(new java.awt.Color(17, 50, 77));
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
         jTextField3.setBorder(null);
         add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 170, 20));
@@ -106,12 +106,12 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         CLIENTE2.setText("METODO DE PAGO");
         add(CLIENTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 30));
 
-        jTextField4.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField4.setBackground(new java.awt.Color(17, 50, 77));
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
         jTextField4.setBorder(null);
         add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 170, 20));
 
-        jTextField5.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField5.setBackground(new java.awt.Color(17, 50, 77));
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
         jTextField5.setBorder(null);
         add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 170, 20));
@@ -120,7 +120,7 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         CLIENTE3.setText("FECHA ENTRADA");
         add(CLIENTE3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 110, 30));
 
-        jTextField6.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField6.setBackground(new java.awt.Color(17, 50, 77));
         jTextField6.setForeground(new java.awt.Color(255, 255, 255));
         jTextField6.setBorder(null);
         add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 170, 20));
@@ -136,12 +136,12 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EFECTIVO", "TARJETA" }));
         add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 170, 30));
 
-        jTextField7.setBackground(new java.awt.Color(33, 44, 116));
+        jTextField7.setBackground(new java.awt.Color(17, 50, 77));
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
         jTextField7.setBorder(null);
         add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 170, 20));
 
-        jButton2.setBackground(new java.awt.Color(33, 44, 116));
+        jButton2.setBackground(new java.awt.Color(17, 50, 77));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reserva.png"))); // NOI18N
         jButton2.setText("ALARGAR FECHA");
@@ -152,13 +152,13 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 150, 40));
 
-        jButton3.setBackground(new java.awt.Color(33, 44, 116));
+        jButton3.setBackground(new java.awt.Color(17, 50, 77));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
         jButton3.setText("CONFIRMAR SALIDA");
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 180, 40));
 
-        jButton4.setBackground(new java.awt.Color(33, 44, 116));
+        jButton4.setBackground(new java.awt.Color(17, 50, 77));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton4.setText("CANCELAR RESERVA");

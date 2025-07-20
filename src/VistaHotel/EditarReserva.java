@@ -146,10 +146,10 @@ public class EditarReserva extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(33, 44, 116));
+        jPanel1.setBackground(new java.awt.Color(17, 50, 77));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TxtTelefono.setBackground(new java.awt.Color(33, 44, 116));
+        TxtTelefono.setBackground(new java.awt.Color(17, 50, 77));
         TxtTelefono.setForeground(new java.awt.Color(255, 255, 255));
         TxtTelefono.setBorder(null);
         jPanel1.add(TxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 170, 20));
@@ -169,7 +169,7 @@ public class EditarReserva extends javax.swing.JFrame {
         jLabel4.setText("DNI");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, 20));
 
-        BtnRegistrar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnRegistrar.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
         BtnRegistrar.setText("GUARDAR");
@@ -190,7 +190,7 @@ public class EditarReserva extends javax.swing.JFrame {
         jLabel5.setText("NOMBRE");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, 20));
 
-        BtnRegresar1.setBackground(new java.awt.Color(33, 44, 116));
+        BtnRegresar1.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegresar1.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
         BtnRegresar1.setText("Regresar");
@@ -212,19 +212,19 @@ public class EditarReserva extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 40));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 170, 10));
 
-        TxtDni.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDni.setBackground(new java.awt.Color(17, 50, 77));
         TxtDni.setForeground(new java.awt.Color(255, 255, 255));
         TxtDni.setBorder(null);
         jPanel1.add(TxtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 170, 20));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 170, 10));
 
-        TxtApellido.setBackground(new java.awt.Color(33, 44, 116));
+        TxtApellido.setBackground(new java.awt.Color(17, 50, 77));
         TxtApellido.setForeground(new java.awt.Color(255, 255, 255));
         TxtApellido.setBorder(null);
         jPanel1.add(TxtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 170, 20));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 170, 10));
 
-        TxtNombre.setBackground(new java.awt.Color(33, 44, 116));
+        TxtNombre.setBackground(new java.awt.Color(17, 50, 77));
         TxtNombre.setForeground(new java.awt.Color(255, 255, 255));
         TxtNombre.setBorder(null);
         jPanel1.add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 170, 20));
@@ -234,7 +234,7 @@ public class EditarReserva extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 10, 440));
 
-        TxtTipoH.setBackground(new java.awt.Color(33, 44, 116));
+        TxtTipoH.setBackground(new java.awt.Color(17, 50, 77));
         TxtTipoH.setForeground(new java.awt.Color(255, 255, 255));
         TxtTipoH.setBorder(null);
         jPanel1.add(TxtTipoH, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 170, 20));
@@ -261,13 +261,13 @@ public class EditarReserva extends javax.swing.JFrame {
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 170, 10));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 170, 10));
 
-        TxtPrecioPorNoche.setBackground(new java.awt.Color(33, 44, 116));
+        TxtPrecioPorNoche.setBackground(new java.awt.Color(17, 50, 77));
         TxtPrecioPorNoche.setForeground(new java.awt.Color(255, 255, 255));
         TxtPrecioPorNoche.setBorder(null);
         jPanel1.add(TxtPrecioPorNoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 170, 20));
         jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 170, 10));
 
-        TxtNumHabitacion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtNumHabitacion.setBackground(new java.awt.Color(17, 50, 77));
         TxtNumHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         TxtNumHabitacion.setBorder(null);
         jPanel1.add(TxtNumHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 170, 20));
@@ -308,7 +308,7 @@ public class EditarReserva extends javax.swing.JFrame {
         jLabel18.setText("F. ENTRADA");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, 30));
 
-        TxtResPrecio.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResPrecio.setBackground(new java.awt.Color(17, 50, 77));
         TxtResPrecio.setForeground(new java.awt.Color(255, 255, 255));
         TxtResPrecio.setBorder(null);
         jPanel1.add(TxtResPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 170, 20));
@@ -316,7 +316,7 @@ public class EditarReserva extends javax.swing.JFrame {
         jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 170, -1));
         jPanel1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 170, 0));
 
-        TxtDireccion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDireccion.setBackground(new java.awt.Color(17, 50, 77));
         TxtDireccion.setForeground(new java.awt.Color(255, 255, 255));
         TxtDireccion.setBorder(null);
         jPanel1.add(TxtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 170, 20));
@@ -332,13 +332,13 @@ public class EditarReserva extends javax.swing.JFrame {
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 80, 30));
         jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 170, 10));
 
-        TxtCorreo.setBackground(new java.awt.Color(33, 44, 116));
+        TxtCorreo.setBackground(new java.awt.Color(17, 50, 77));
         TxtCorreo.setForeground(new java.awt.Color(255, 255, 255));
         TxtCorreo.setBorder(null);
         jPanel1.add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 170, 20));
         jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 170, 10));
 
-        TxtDescripcion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDescripcion.setBackground(new java.awt.Color(17, 50, 77));
         TxtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         TxtDescripcion.setBorder(null);
         jPanel1.add(TxtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 170, 20));

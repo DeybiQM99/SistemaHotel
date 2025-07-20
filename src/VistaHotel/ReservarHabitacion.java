@@ -244,7 +244,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setBackground(new java.awt.Color(33, 44, 116));
+        setBackground(new java.awt.Color(17, 50, 77));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(750, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -252,7 +252,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel9.setBackground(new java.awt.Color(255, 255, 255));
         Panel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar9.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar9.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar9.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar9.setText("Reservar");
@@ -278,7 +278,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel1.setBackground(new java.awt.Color(255, 255, 255));
         Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar1.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar1.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar1.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar1.setText("Reservar");
@@ -304,7 +304,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel5.setBackground(new java.awt.Color(255, 255, 255));
         Panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar5.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar5.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar5.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar5.setText("Reservar");
@@ -330,7 +330,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel10.setBackground(new java.awt.Color(255, 255, 255));
         Panel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar10.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar10.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar10.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar10.setText("Reservar");
@@ -356,7 +356,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel6.setBackground(new java.awt.Color(255, 255, 255));
         Panel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar6.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar6.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar6.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar6.setText("Reservar");
@@ -382,7 +382,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel11.setBackground(new java.awt.Color(255, 255, 255));
         Panel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar11.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar11.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar11.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar11.setText("Reservar");
@@ -408,7 +408,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel7.setBackground(new java.awt.Color(255, 255, 255));
         Panel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar7.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar7.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar7.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar7.setText("Reservar");
@@ -434,7 +434,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel12.setBackground(new java.awt.Color(255, 255, 255));
         Panel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar12.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar12.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar12.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar12.setText("Reservar");
@@ -460,7 +460,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel8.setBackground(new java.awt.Color(255, 255, 255));
         Panel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar8.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar8.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar8.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar8.setText("Reservar");
@@ -486,7 +486,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel2.setBackground(new java.awt.Color(255, 255, 255));
         Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar2.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar2.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar2.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar2.setText("Reservar");
@@ -512,7 +512,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel3.setBackground(new java.awt.Color(255, 255, 255));
         Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar3.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar3.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar3.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar3.setText("Reservar");
@@ -538,7 +538,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Panel4.setBackground(new java.awt.Color(255, 255, 255));
         Panel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnReservar4.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar4.setBackground(new java.awt.Color(17, 50, 77));
         BtnReservar4.setForeground(new java.awt.Color(255, 255, 255));
         BtnReservar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
         BtnReservar4.setText("Reservar");

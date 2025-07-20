@@ -46,6 +46,11 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         BtnBuscar = new javax.swing.JButton();
         BtnEliminar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -58,7 +63,7 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setBackground(new java.awt.Color(33, 44, 116));
+        setBackground(new java.awt.Color(17, 50, 77));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(750, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,18 +71,30 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NOMBRE");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 60, 20));
-        add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 140, -1));
+
+        TxtNombre.setBackground(new java.awt.Color(17, 50, 77));
+        TxtNombre.setBorder(null);
+        add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 140, 20));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CATEGORIA");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, 20));
-        add(TxtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 140, -1));
+
+        TxtCategoria.setBackground(new java.awt.Color(17, 50, 77));
+        TxtCategoria.setBorder(null);
+        add(TxtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 116, 140, 20));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("PRECIO");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 50, 20));
-        add(TxtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 150, -1));
-        add(TxtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 140, -1));
+
+        TxtPrecio.setBackground(new java.awt.Color(17, 50, 77));
+        TxtPrecio.setBorder(null);
+        add(TxtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 140, 20));
+
+        TxtCantidad.setBackground(new java.awt.Color(17, 50, 77));
+        TxtCantidad.setBorder(null);
+        add(TxtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 140, 20));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("CANTIDAD");
@@ -99,7 +116,7 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 730, 200));
 
-        BtnCancelar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnCancelar.setBackground(new java.awt.Color(17, 50, 77));
         BtnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         BtnCancelar.setText("CANCELAR");
@@ -110,7 +127,7 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         });
         add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 140, 40));
 
-        BtnGuardar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnGuardar.setBackground(new java.awt.Color(17, 50, 77));
         BtnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         BtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
         BtnGuardar.setText("GUARDAR");
@@ -122,14 +139,17 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
             }
         });
         add(BtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 140, 40));
-        add(TxtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 230, -1));
+
+        TxtBuscar.setBackground(new java.awt.Color(17, 50, 77));
+        TxtBuscar.setBorder(null);
+        add(TxtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 230, 20));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 750, 20));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("BUSCAR");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 70, 20));
 
-        BtnBuscar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnBuscar.setBackground(new java.awt.Color(17, 50, 77));
         BtnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         BtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarTalentoEV.png"))); // NOI18N
         BtnBuscar.setText("BUSCAR");
@@ -140,7 +160,7 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         });
         add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 130, -1));
 
-        BtnEliminar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnEliminar.setBackground(new java.awt.Color(17, 50, 77));
         BtnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         BtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarEV.png"))); // NOI18N
         BtnEliminar.setText("ELIMINAR");
@@ -158,6 +178,11 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("PRODUCTO");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 140, 10));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, 10));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 230, 10));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 140, 10));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 140, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEliminarMouseClicked
@@ -315,5 +340,10 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     // End of variables declaration//GEN-END:variables
 }

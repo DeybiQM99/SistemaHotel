@@ -38,13 +38,11 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusTraversalPolicyProvider(true);
-        setMaximumSize(new java.awt.Dimension(730, 450));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(676, 450));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(33, 44, 116));
+        jPanel1.setBackground(new java.awt.Color(17, 50, 77));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MinimizarEV.png"))); // NOI18N
@@ -68,7 +66,7 @@ public class Login extends javax.swing.JFrame {
         LTitulo.setText("INICIO DE SESION");
         jPanel1.add(LTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 260, 50));
 
-        TxtUsuario.setBackground(new java.awt.Color(33, 44, 116));
+        TxtUsuario.setBackground(new java.awt.Color(17, 50, 77));
         TxtUsuario.setForeground(new java.awt.Color(204, 204, 255));
         TxtUsuario.setText("Ingrese su nombre de usuario");
         TxtUsuario.setBorder(null);
@@ -95,7 +93,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("CONTRASEÑA");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
 
-        BtnCambiarContraseña.setBackground(new java.awt.Color(33, 44, 116));
+        BtnCambiarContraseña.setBackground(new java.awt.Color(17, 50, 77));
         BtnCambiarContraseña.setForeground(new java.awt.Color(255, 255, 255));
         BtnCambiarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LlaveEV.png"))); // NOI18N
         BtnCambiarContraseña.setText("CAMBIAR CONTRASEÑA");
@@ -114,7 +112,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("jLabel3");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 50, -1));
 
-        BtnIniciarSesion.setBackground(new java.awt.Color(33, 44, 116));
+        BtnIniciarSesion.setBackground(new java.awt.Color(17, 50, 77));
         BtnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         BtnIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IniciarEV.png"))); // NOI18N
         BtnIniciarSesion.setText("INICIAR SESION");
@@ -125,7 +123,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(BtnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 190, 40));
 
-        TxtContraseña.setBackground(new java.awt.Color(33, 44, 116));
+        TxtContraseña.setBackground(new java.awt.Color(17, 50, 77));
         TxtContraseña.setForeground(new java.awt.Color(204, 204, 255));
         TxtContraseña.setText("*****");
         TxtContraseña.setBorder(null);
@@ -153,9 +151,9 @@ public class Login extends javax.swing.JFrame {
         PanelIzquierdo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setForeground(new java.awt.Color(255, 153, 51));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5-estrellas (2).png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogLogin.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
-        PanelIzquierdo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 260, 280));
+        PanelIzquierdo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 260, 320));
 
         jPanel1.add(PanelIzquierdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 450));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 240, 20));

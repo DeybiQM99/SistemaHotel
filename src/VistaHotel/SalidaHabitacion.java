@@ -1,17 +1,41 @@
 package VistaHotel;
 
 
-public class SalidaHabitacion extends javax.swing.JPanel {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import ConexionBaseDeDatos.ConexionBD;
+import Interfaz.Bloqueable;
+import javax.swing.JOptionPane;
+
+import java.sql.ResultSet;
+
+import java.sql.*;
+
+
+
+
+public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable{
 
     ReservarHabitacion panelReservas;
 
     public SalidaHabitacion() {
         initComponents();
         panelReservas = new ReservarHabitacion(); // Creamos una instancia para acceder a los paneles ya diseñados
-       
+             bloquearCampos();   //INICIALIZAMOS EL METODO BLOQUEAR CAMPOS
     }
 
-  
+   //SOBREESCRITURA PARA BLOQUEAR CAMPOS DE NUESTRO JPANEL
+    @Override
+    public void bloquearCampos() {
+        TxtCliente.setEditable(false);
+        TxtEstado.setEditable(false);
+        TxtEstadoPago.setEditable(false);
+        TxtFechEntrada.setEditable(false);
+        TxtFechSalida.setEditable(false);
+        
+        TxtTotalPagar.setEditable(false);
+     
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -20,24 +44,24 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         CLIENTE = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        BtnBuscar = new javax.swing.JButton();
+        TxtDni = new javax.swing.JTextField();
+        TxtCliente = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        TxtEstado = new javax.swing.JTextField();
         CLIENTE1 = new javax.swing.JLabel();
         CLIENTE2 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        TxtFechSalida = new javax.swing.JTextField();
+        TxtEstadoPago = new javax.swing.JTextField();
         CLIENTE3 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        TxtFechEntrada = new javax.swing.JTextField();
         CLIENTE4 = new javax.swing.JLabel();
         CLIENTE5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField7 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        CbTipoPago = new javax.swing.JComboBox<>();
+        TxtTotalPagar = new javax.swing.JTextField();
+        BtnAlargarReserva = new javax.swing.JButton();
+        BtnConfirmarSalida = new javax.swing.JButton();
+        BtnCancelarReserva = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -72,31 +96,36 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         jLabel2.setText("DIN");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 50, 30));
 
-        jButton1.setBackground(new java.awt.Color(17, 50, 77));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarTalentoEV.png"))); // NOI18N
-        jButton1.setText("BUSCAR");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 150, 40));
+        BtnBuscar.setBackground(new java.awt.Color(17, 50, 77));
+        BtnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarTalentoEV.png"))); // NOI18N
+        BtnBuscar.setText("BUSCAR");
+        BtnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnBuscarMouseClicked(evt);
+            }
+        });
+        add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 150, 40));
 
-        jTextField1.setBackground(new java.awt.Color(17, 50, 77));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(null);
-        jTextField1.setPreferredSize(new java.awt.Dimension(64, 64));
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 170, 20));
+        TxtDni.setBackground(new java.awt.Color(17, 50, 77));
+        TxtDni.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDni.setBorder(null);
+        TxtDni.setPreferredSize(new java.awt.Dimension(64, 64));
+        add(TxtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 170, 20));
 
-        jTextField2.setBackground(new java.awt.Color(17, 50, 77));
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setBorder(null);
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 170, 20));
+        TxtCliente.setBackground(new java.awt.Color(17, 50, 77));
+        TxtCliente.setForeground(new java.awt.Color(255, 255, 255));
+        TxtCliente.setBorder(null);
+        add(TxtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 170, 20));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ESTADO");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 70, -1));
 
-        jTextField3.setBackground(new java.awt.Color(17, 50, 77));
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setBorder(null);
-        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 170, 20));
+        TxtEstado.setBackground(new java.awt.Color(17, 50, 77));
+        TxtEstado.setForeground(new java.awt.Color(255, 255, 255));
+        TxtEstado.setBorder(null);
+        add(TxtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 170, 20));
 
         CLIENTE1.setForeground(new java.awt.Color(255, 255, 255));
         CLIENTE1.setText("CLIENTE");
@@ -106,24 +135,24 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         CLIENTE2.setText("METODO DE PAGO");
         add(CLIENTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 30));
 
-        jTextField4.setBackground(new java.awt.Color(17, 50, 77));
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setBorder(null);
-        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 170, 20));
+        TxtFechSalida.setBackground(new java.awt.Color(17, 50, 77));
+        TxtFechSalida.setForeground(new java.awt.Color(255, 255, 255));
+        TxtFechSalida.setBorder(null);
+        add(TxtFechSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 170, 20));
 
-        jTextField5.setBackground(new java.awt.Color(17, 50, 77));
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setBorder(null);
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 170, 20));
+        TxtEstadoPago.setBackground(new java.awt.Color(17, 50, 77));
+        TxtEstadoPago.setForeground(new java.awt.Color(255, 255, 255));
+        TxtEstadoPago.setBorder(null);
+        add(TxtEstadoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 170, 20));
 
         CLIENTE3.setForeground(new java.awt.Color(255, 255, 255));
         CLIENTE3.setText("FECHA ENTRADA");
         add(CLIENTE3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 110, 30));
 
-        jTextField6.setBackground(new java.awt.Color(17, 50, 77));
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField6.setBorder(null);
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 170, 20));
+        TxtFechEntrada.setBackground(new java.awt.Color(17, 50, 77));
+        TxtFechEntrada.setForeground(new java.awt.Color(255, 255, 255));
+        TxtFechEntrada.setBorder(null);
+        add(TxtFechEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 170, 20));
 
         CLIENTE4.setForeground(new java.awt.Color(255, 255, 255));
         CLIENTE4.setText("ESTADO DE PAGO");
@@ -133,36 +162,36 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         CLIENTE5.setText("TOTAL A PAGAR");
         add(CLIENTE5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 100, 30));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EFECTIVO", "TARJETA" }));
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 170, 30));
+        CbTipoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EFECTIVO", "TARJETA" }));
+        add(CbTipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 170, 30));
 
-        jTextField7.setBackground(new java.awt.Color(17, 50, 77));
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField7.setBorder(null);
-        add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 170, 20));
+        TxtTotalPagar.setBackground(new java.awt.Color(17, 50, 77));
+        TxtTotalPagar.setForeground(new java.awt.Color(255, 255, 255));
+        TxtTotalPagar.setBorder(null);
+        add(TxtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 170, 20));
 
-        jButton2.setBackground(new java.awt.Color(17, 50, 77));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reserva.png"))); // NOI18N
-        jButton2.setText("ALARGAR FECHA");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnAlargarReserva.setBackground(new java.awt.Color(17, 50, 77));
+        BtnAlargarReserva.setForeground(new java.awt.Color(255, 255, 255));
+        BtnAlargarReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reserva.png"))); // NOI18N
+        BtnAlargarReserva.setText("ALARGAR FECHA");
+        BtnAlargarReserva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                BtnAlargarReservaMouseClicked(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 150, 40));
+        add(BtnAlargarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 170, 40));
 
-        jButton3.setBackground(new java.awt.Color(17, 50, 77));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
-        jButton3.setText("CONFIRMAR SALIDA");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 180, 40));
+        BtnConfirmarSalida.setBackground(new java.awt.Color(17, 50, 77));
+        BtnConfirmarSalida.setForeground(new java.awt.Color(255, 255, 255));
+        BtnConfirmarSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
+        BtnConfirmarSalida.setText("CONFIRMAR SALIDA");
+        add(BtnConfirmarSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 180, 40));
 
-        jButton4.setBackground(new java.awt.Color(17, 50, 77));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
-        jButton4.setText("CANCELAR RESERVA");
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 170, 40));
+        BtnCancelarReserva.setBackground(new java.awt.Color(17, 50, 77));
+        BtnCancelarReserva.setForeground(new java.awt.Color(255, 255, 255));
+        BtnCancelarReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
+        BtnCancelarReserva.setText("CANCELAR RESERVA");
+        add(BtnCancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 200, 40));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 170, 20));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 170, 20));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 170, 20));
@@ -174,32 +203,83 @@ public class SalidaHabitacion extends javax.swing.JPanel {
         add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 170, 20));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void BtnAlargarReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAlargarReservaMouseClicked
       
         EditarReserva editRes = new EditarReserva();
         editRes.setVisible(true);
+ 
+    }//GEN-LAST:event_BtnAlargarReservaMouseClicked
+
+    private void BtnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnBuscarMouseClicked
+
+       String dniCliente = TxtDni.getText().trim();
+
+if (dniCliente.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Ingrese el DNI del cliente.");
+    return;
+}
+
+try (Connection con = ConexionBD.conectar()) {
+    String sql = "SELECT c.nombre + ' ' + c.apellido AS cliente, " +
+                 "r.fecha_entrada, r.fecha_salida, er.descripcion AS estado_reserva, " +
+                 "ISNULL(p.monto, 0) AS total_pagar, " +
+                 "ISNULL(mp.descripcion, 'Efectivo') AS metodo_pago, " +
+                 "ISNULL(ep.descripcion, 'Pendiente') AS estado_pago " +
+                 "FROM Clientes c " +
+                 "JOIN Reservas r ON c.id_cliente = r.id_cliente " +
+                 "JOIN Estados_Reserva er ON r.id_estado = er.id_estado " +
+                 "LEFT JOIN Pagos p ON r.id_reserva = p.id_reserva " +
+                 "LEFT JOIN Metodos_Pago mp ON p.id_metodo = mp.id_metodo " +
+                 "LEFT JOIN Estados_Pago ep ON p.id_estado_pago = ep.id_estado_pago " +
+                 "WHERE c.dni_pasaporte = ?";
+
+    PreparedStatement ps = con.prepareStatement(sql);
+    ps.setString(1, dniCliente);
+
+    ResultSet rs = ps.executeQuery();
+
+    if (rs.next()) {
+        // Establecer valores en tus campos
+        TxtCliente.setText(rs.getString("cliente"));
+        TxtFechEntrada.setText(rs.getString("fecha_entrada"));
+        TxtFechSalida.setText(rs.getString("fecha_salida"));
+        TxtEstado.setText(rs.getString("estado_reserva"));
+        TxtTotalPagar.setText(String.valueOf(rs.getDouble("total_pagar")));
+        CbTipoPago.setSelectedItem(rs.getString("metodo_pago"));
+        TxtEstadoPago.setText(rs.getString("estado_pago"));
+    } else {
+        JOptionPane.showMessageDialog(null, "No se encontró una reserva para el DNI ingresado.");
+    }
+
+} catch (SQLException e) {
+    JOptionPane.showMessageDialog(null, "Error al buscar la reserva: " + e.getMessage());
+    e.printStackTrace();
+}
+
         
         
         
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_BtnBuscarMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAlargarReserva;
+    private javax.swing.JButton BtnBuscar;
+    private javax.swing.JButton BtnCancelarReserva;
+    private javax.swing.JButton BtnConfirmarSalida;
     private javax.swing.JLabel CLIENTE;
     private javax.swing.JLabel CLIENTE1;
     private javax.swing.JLabel CLIENTE2;
     private javax.swing.JLabel CLIENTE3;
     private javax.swing.JLabel CLIENTE4;
     private javax.swing.JLabel CLIENTE5;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> CbTipoPago;
+    private javax.swing.JTextField TxtCliente;
+    private javax.swing.JTextField TxtDni;
+    private javax.swing.JTextField TxtEstado;
+    private javax.swing.JTextField TxtEstadoPago;
+    private javax.swing.JTextField TxtFechEntrada;
+    private javax.swing.JTextField TxtFechSalida;
+    private javax.swing.JTextField TxtTotalPagar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -212,12 +292,5 @@ public class SalidaHabitacion extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

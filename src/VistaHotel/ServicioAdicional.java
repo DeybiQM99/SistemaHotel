@@ -42,6 +42,7 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         TxtResTelefono.setEditable(false);
         TxtResNHabitacion.setEditable(false);
         TxtResTotalPago.setEditable(false);
+        TxtResPrecio.setEditable(false);
     }
     
 

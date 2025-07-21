@@ -5,30 +5,36 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionBDEmpleados {
-    private static final String URL = "jdbc:mysql://localhost:3306/bd_empleados";
-    private static final String USUARIO = "root";
-    private static final String CONTRASENA = "";
-
-    public static Connection conectar() {
+    public static void main(String[] args) {
         Connection conexion = null;
-        try {
-            conexion = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
-            System.out.println("Conexion exitosa.");
-        } catch (SQLException e) {
-            System.out.println("Error al conectar: " + e.getMessage());
-        }
-        return conexion;
-    }
 
-    // Pueba para comprobar la coneccion
-     public static void main(String[] args) {
-        Connection con = conectar(); // Llama al método para conectar
-        if (con != null) {
-            // Si la conexión no es nula, imprime éxito
-            System.out.println("Conexion exitosa");
-        } else {
-            // Si hay fallos
-            System.out.println("Fallo la conexión.");
+        try {
+            // Cargar el driver
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            // URL de conexión a Azure SQL
+            String url = "jdbc:sqlserver://empleadosutp.database.windows.net:1433;"
+                       + "database=empleadosutpBD;"
+                       + "user=nallelyadmin@empleadosutp;"
+                       + "password=Nallely2025!;"
+                       + "encrypt=true;"
+                       + "trustServerCertificate=false;"
+                       + "loginTimeout=30;";
+
+            // Intentar conectar
+            conexion = DriverManager.getConnection(url);
+            System.out.println("Conexión exitosa a Azure SQL");
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("No se encontró el driver JDBC: " + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Error de conexión: " + e.getMessage());
+        } finally {
+            try {
+                if (conexion != null) conexion.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
         }
     }
 }

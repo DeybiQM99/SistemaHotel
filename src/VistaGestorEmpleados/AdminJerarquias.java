@@ -36,7 +36,6 @@ public class AdminJerarquias extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
 
         jPanel1.setBackground(new java.awt.Color(17, 50, 77));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
         panelBusqueda.setBackground(new java.awt.Color(0, 0, 0));
         panelBusqueda.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PanelBusquedaJerarquia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -75,8 +74,8 @@ public class AdminJerarquias extends javax.swing.JPanel {
                         .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61))))
             .addGroup(panelBusquedaLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelBusquedaLayout.setVerticalGroup(

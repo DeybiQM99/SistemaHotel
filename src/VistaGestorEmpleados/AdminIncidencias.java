@@ -52,19 +52,13 @@ public class AdminIncidencias extends javax.swing.JPanel {
         lblIdPago3 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
         D1 = new javax.swing.JTextField();
-        D3 = new javax.swing.JTextField();
         D2 = new javax.swing.JTextField();
-        D6 = new javax.swing.JTextField();
         D4 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jLabel35 = new javax.swing.JLabel();
-        D7 = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         D5 = new javax.swing.JTextField();
@@ -89,7 +83,6 @@ public class AdminIncidencias extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tipo Indidencia:");
 
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Leve", "Moderado", "Grave" }));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,6 +90,8 @@ public class AdminIncidencias extends javax.swing.JPanel {
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Fecha:");
+
+        jTextField3.setText("VACIO");
 
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
@@ -111,7 +106,6 @@ public class AdminIncidencias extends javax.swing.JPanel {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Reportar");
 
         javax.swing.GroupLayout panelPagoReg4Layout = new javax.swing.GroupLayout(panelPagoReg4);
@@ -186,17 +180,11 @@ public class AdminIncidencias extends javax.swing.JPanel {
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Apellido:");
 
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Telefono:");
-
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("DNI:");
 
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("Correo:");
-
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("Tipo Contrato:");
 
         jTextField17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,21 +198,9 @@ public class AdminIncidencias extends javax.swing.JPanel {
             }
         });
 
-        D3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D3ActionPerformed(evt);
-            }
-        });
-
         D2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 D2ActionPerformed(evt);
-            }
-        });
-
-        D6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D6ActionPerformed(evt);
             }
         });
 
@@ -234,17 +210,7 @@ public class AdminIncidencias extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Buscar");
-
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("Tiempo Contrato:");
-
-        D7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                D7ActionPerformed(evt);
-            }
-        });
 
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Cargo:");
@@ -277,21 +243,14 @@ public class AdminIncidencias extends javax.swing.JPanel {
             .addGroup(panelPagoReg3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPagoReg3Layout.createSequentialGroup()
-                        .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel34)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIdPago3)
-                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel37))
-                        .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagoReg3Layout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblIdPago3)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37))
+                .addGap(27, 27, 27)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPagoReg3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -301,11 +260,8 @@ public class AdminIncidencias extends javax.swing.JPanel {
                         .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(D4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField17)
-                            .addComponent(D3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(D2)
-                            .addComponent(D6)
                             .addComponent(D1)
-                            .addComponent(D7, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(D5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(D9, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(D8, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -326,11 +282,7 @@ public class AdminIncidencias extends javax.swing.JPanel {
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(D2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(D3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23))
-                .addGap(12, 12, 12)
+                .addGap(43, 43, 43)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(D4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
@@ -338,15 +290,7 @@ public class AdminIncidencias extends javax.swing.JPanel {
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
                     .addComponent(D5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
-                    .addComponent(D6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(D7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel35))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(77, 77, 77)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
                     .addComponent(D8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -420,7 +364,7 @@ public class AdminIncidencias extends javax.swing.JPanel {
                     .addGroup(panelBusquedaLayout.createSequentialGroup()
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jsEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                        .addComponent(jsEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
                     .addGroup(panelBusquedaLayout.createSequentialGroup()
                         .addGroup(panelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -462,9 +406,7 @@ public class AdminIncidencias extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -477,30 +419,15 @@ public class AdminIncidencias extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_D1ActionPerformed
 
-    private void D3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D3ActionPerformed
-        D3.setEditable(false);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_D3ActionPerformed
-
     private void D2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D2ActionPerformed
         D2.setEditable(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_D2ActionPerformed
 
-    private void D6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D6ActionPerformed
-        D6.setEditable(false);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_D6ActionPerformed
-
     private void D4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D4ActionPerformed
         D4.setEditable(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_D4ActionPerformed
-
-    private void D7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D7ActionPerformed
-        D7.setEditable(false);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_D7ActionPerformed
 
     private void D5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_D5ActionPerformed
         D5.setEditable(false);
@@ -521,11 +448,8 @@ public class AdminIncidencias extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField D1;
     private javax.swing.JTextField D2;
-    private javax.swing.JTextField D3;
     private javax.swing.JTextField D4;
     private javax.swing.JTextField D5;
-    private javax.swing.JTextField D6;
-    private javax.swing.JTextField D7;
     private javax.swing.JTextField D8;
     private javax.swing.JTextField D9;
     private javax.swing.JButton btnBuscar;
@@ -536,12 +460,9 @@ public class AdminIncidencias extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;

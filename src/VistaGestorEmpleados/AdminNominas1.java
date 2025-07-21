@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package VistaGestorEmpleados;
-
 import GestionEmpleados.GestorEmpleados;
 
 /**
@@ -20,12 +15,9 @@ public class AdminNominas1 extends javax.swing.JPanel {
         
         D1.setEditable(false);
         D2.setEditable(false);
-        D3.setEditable(false);
         D4.setEditable(false);
         D5.setEditable(false);
         D6.setEditable(false);
-        D7.setEditable(false);
-        D8.setEditable(false);
         D9.setEditable(false);
     }
 
@@ -367,7 +359,7 @@ public class AdminNominas1 extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("Modificar");
+        jButton4.setText("Registrar");
 
         javax.swing.GroupLayout panelPagosEmpLayout = new javax.swing.GroupLayout(panelPagosEmp);
         panelPagosEmp.setLayout(panelPagosEmpLayout);
@@ -392,24 +384,24 @@ public class AdminNominas1 extends javax.swing.JPanel {
                                 .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(18, 18, 18)
+                                    .addComponent(jLabel6))
+                                .addGap(20, 20, 20)
                                 .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField7)
-                                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextField4)))))))
+                                    .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextField4)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagosEmpLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
+                        .addContainerGap()
                         .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                        .addGap(23, 23, 23)
+                        .addGap(28, 28, 28)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)
+                        .addGap(35, 35, 35)
+                        .addComponent(jTextField7)))
                 .addContainerGap())
         );
         panelPagosEmpLayout.setVerticalGroup(
@@ -439,16 +431,16 @@ public class AdminNominas1 extends javax.swing.JPanel {
                 .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

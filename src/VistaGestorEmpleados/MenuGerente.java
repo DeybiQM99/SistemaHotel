@@ -54,7 +54,6 @@ public class MenuGerente extends javax.swing.JFrame {
         lbImagenFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         panelPrincipal.setLayout(null);
 
@@ -220,11 +219,11 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
         // Crear instancia del nuevo panel
-        AdminEmpleados2 adminEmpleados = new AdminEmpleados2(gestor);
-        adminEmpleados.setPreferredSize(new Dimension(840, 600));
+        AdminEmpleados dggdded = new AdminEmpleados(gestor);
+        dggdded.setSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(adminEmpleados, BorderLayout.CENTER);
+        panelContenido.add(dggdded, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
         
@@ -234,7 +233,7 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnNominasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNominasActionPerformed
         // Crear instancia del nuevo panel
-        AdminNominas AdministrarNominas1 = new AdminNominas();
+        AdminNominas1 AdministrarNominas1 = new AdminNominas1(gestor);
         AdministrarNominas1.setPreferredSize(new Dimension(840, 600));
 
         // Agregarlo al panel contenedor

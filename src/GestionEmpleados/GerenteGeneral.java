@@ -1,94 +1,89 @@
 package GestionEmpleados;
 
 import GestionEmpleados.Enum.TipoContrato;
-import Interfaz.IAccionesGerente;
 import java.time.LocalDate;
 
-public class GerenteGeneral extends Entidad implements IAccionesGerente {
-    // Salario fijo mensual del Gerente General
-    private static final double SALARIO_FIJO = 9800.0;
-
-    //Constructor completo.
-    public GerenteGeneral(int id,
-                          String nombre,
-                          String apellido,
-                          String email,
-                          String dni,
-                          LocalDate fechaIngreso) {
-        super(id, nombre, apellido, email, dni, fechaIngreso);
-    }
-
-    // Constructor alternativo sin fechaIngreso explícita (se toma el momento actual).
-    public GerenteGeneral(int id,
-                        String nombre,
-                        String apellido,
-                        String email,
-                        String dni) {
-        super(id, nombre, apellido, email, dni);
-    }
+public class GerenteGeneral {
 
     // Aprueba un pago pendiente, marcándolo como realizado.
-    @Override
-    public void aprobarPago(RegistroPago pago) {
+    public static void aprobarPago(RegistroPago pago) {
         if (pago.isPendiente()) {
             pago.marcarComoRealizado();
         }
     }
 
     // Aprueba un despido, registrándolo en el empleado.
-    @Override
-    public void aprobarDespido(Empleado empleado) {
+    public static void aprobarDespido(Empleado empleado) {
         empleado.registrarDespido();
     }
 
     // Gestiona el ascenso de un operario a supervisor.
-    @Override
-    public void asensoOperario(GestorEmpleados gestorEmpleados, Empleado nuevoOperario, int idSupervisor) {
-        Operario operarioAsignado = (Operario)(nuevoOperario);
-        operarioAsignado.setIdSupervisor(idSupervisor);
+    public static void asensoOperario(GestorEmpleados gestorEmpleados, Empleado nuevoOperario, int idSupervisor) {
+        Operario operarioAsignado = new Operario(
+            nuevoOperario.getAreaLabor(),            // int idArea
+            nuevoOperario.getTarifaPorHora(),        // double tarifaPorHora
+            nuevoOperario.getId(),                   // int id
+            nuevoOperario.getNombre(),               // String nombre
+            nuevoOperario.getApellido(),             // String apellido
+            nuevoOperario.getEmail(),                // String email
+            nuevoOperario.getDni(),                  // String dni
+            nuevoOperario.getFechaIngreso(),         // LocalDate fechaIngreso
+            nuevoOperario.getFechaTermino(),         // LocalDate fechaTermino
+            nuevoOperario.getFechaRenovacion(),      // LocalDate fechaRenovacion
+            nuevoOperario.getTipoContrato(),         // TipoContrato tipoContrato
+            idSupervisor                              // int idSupervisor
+        );
+        
         gestorEmpleados.dropEmpleado(nuevoOperario);
         gestorEmpleados.addEmpleado(operarioAsignado);
     }
 
     // Gestiona el ascenso de un supervisor a jefe.
-    @Override
-    public void asensoSupervisor(GestorEmpleados gestorEmpleados, Empleado nuevoSupervisor, int idJefe) {
-        Supervisor supervisorAsignado = (Supervisor)(nuevoSupervisor);
-        supervisorAsignado.setIdJefe(idJefe);
+    public static void asensoSupervisor(GestorEmpleados gestorEmpleados, Empleado nuevoSupervisor, int idJefe) {
+        Supervisor supervisorAsignado = new Supervisor(
+            nuevoSupervisor.getAreaLabor(),            // int idArea
+            nuevoSupervisor.getTarifaPorHora(),        // double tarifaPorHora
+            nuevoSupervisor.getId(),                   // int id
+            nuevoSupervisor.getNombre(),               // String nombre
+            nuevoSupervisor.getApellido(),             // String apellido
+            nuevoSupervisor.getEmail(),                // String email
+            nuevoSupervisor.getDni(),                  // String dni
+            nuevoSupervisor.getFechaIngreso(),         // LocalDate fechaIngreso
+            nuevoSupervisor.getFechaTermino(),         // LocalDate fechaTermino
+            nuevoSupervisor.getFechaRenovacion(),      // LocalDate fechaRenovacion
+            nuevoSupervisor.getTipoContrato(),         // TipoContrato tipoContrato
+            idJefe                              // int idSupervisor
+        );
         gestorEmpleados.dropEmpleado(nuevoSupervisor);
         gestorEmpleados.addEmpleado(supervisorAsignado);
     }
 
     // Gestiona el ascenso de un jefe a Gerente General.
-    @Override
-    public void asensoJefe(GestorEmpleados gestorEmpleados,Empleado nuevoJefe) {
-        Jefe jefeAsignado = (Jefe)(nuevoJefe);
+    public static void asensoJefe(GestorEmpleados gestorEmpleados,Empleado nuevoJefe) {
+        Jefe jefeAsignado = new Jefe(
+            nuevoJefe.getAreaLabor(),            // int idArea
+            nuevoJefe.getTarifaPorHora(),        // double tarifaPorHora
+            nuevoJefe.getId(),                   // int id
+            nuevoJefe.getNombre(),               // String nombre
+            nuevoJefe.getApellido(),             // String apellido
+            nuevoJefe.getEmail(),                // String email
+            nuevoJefe.getDni(),                  // String dni
+            nuevoJefe.getFechaIngreso(),         // LocalDate fechaIngreso
+            nuevoJefe.getFechaTermino(),         // LocalDate fechaTermino
+            nuevoJefe.getFechaRenovacion(),      // LocalDate fechaRenovacion
+            nuevoJefe.getTipoContrato()          // TipoContrato tipoContrato
+        );
         gestorEmpleados.dropEmpleado(nuevoJefe);
         gestorEmpleados.addEmpleado(jefeAsignado);
     }
 
     // Renueva el contrato de un empleado actualizando sus fechas.
-    @Override
-    public void renovarContrato(Empleado empleado,
+    public static void renovarContrato(Empleado empleado,
                                 LocalDate nuevaTermino,
                                 LocalDate nuevaRenovacion,
                                 TipoContrato tipoContrarto) {
         empleado.setFechaTermino(nuevaTermino);
         empleado.setFechaRenovacion(nuevaRenovacion);
         empleado.setTipoContrato(tipoContrarto);
-    }
-
-    // Devuelve el salario fijo del Gerente General.
-    @Override
-    public double calcularSalario(int ultimosNdias) {
-        return SALARIO_FIJO;
-    }
-
-    // Representación en texto del Gerente General.
-    @Override
-    public String toString() {
-        return String.format("Gerente General: %s %s (ID: %d)\nCorreo: %s\nDNI: %s\nIngreso: %s",
-                nombre, apellido, id, email, dni,
-                fechaIngreso.format(FORMATO_FECHA));
     }
 }

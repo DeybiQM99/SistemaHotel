@@ -13,6 +13,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         LblModoRol.setVisible(true);
+        
+        
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -71,7 +75,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BtnRegresar.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegresar.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
-        BtnRegresar.setText("Regresar");
+        BtnRegresar.setText("REGRESAR");
         BtnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnRegresarMouseClicked(evt);
@@ -126,13 +130,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BtnCrearUsuario.setBackground(new java.awt.Color(17, 50, 77));
         BtnCrearUsuario.setForeground(new java.awt.Color(255, 255, 255));
         BtnCrearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AgregarUsuario.png"))); // NOI18N
-        BtnCrearUsuario.setText("Nuevo Usuario");
+        BtnCrearUsuario.setText("NUEVO USUARIO");
         BtnCrearUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnCrearUsuarioMouseClicked(evt);
             }
         });
-        jPanel1.add(BtnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 150, 40));
+        jPanel1.add(BtnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 160, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 420));
 

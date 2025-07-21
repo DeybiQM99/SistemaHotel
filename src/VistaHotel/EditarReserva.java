@@ -193,7 +193,7 @@ public class EditarReserva extends javax.swing.JFrame {
         BtnRegresar1.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegresar1.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
-        BtnRegresar1.setText("Regresar");
+        BtnRegresar1.setText("REGRESAR");
         BtnRegresar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnRegresar1MouseClicked(evt);

@@ -186,7 +186,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         BtnAceptar.setBackground(new java.awt.Color(17, 50, 77));
         BtnAceptar.setForeground(new java.awt.Color(255, 255, 255));
         BtnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
-        BtnAceptar.setText("Aceptar");
+        BtnAceptar.setText("ACEPTAR");
         BtnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnAceptarMouseClicked(evt);
@@ -197,7 +197,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         BtnRegresar.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegresar.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
-        BtnRegresar.setText("Regresar");
+        BtnRegresar.setText("REGRESAR");
         BtnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnRegresarMouseClicked(evt);

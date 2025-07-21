@@ -187,7 +187,7 @@ public class Inscripcion extends javax.swing.JFrame implements Limpiable {
         BtnRegistrar.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
-        BtnRegistrar.setText("Registrar");
+        BtnRegistrar.setText("REGISTRAR");
         BtnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnRegistrarMouseClicked(evt);
@@ -203,7 +203,7 @@ public class Inscripcion extends javax.swing.JFrame implements Limpiable {
         BtnRegresar1.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegresar1.setForeground(new java.awt.Color(255, 255, 255));
         BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
-        BtnRegresar1.setText("Regresar");
+        BtnRegresar1.setText("REGRESAR");
         BtnRegresar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnRegresar1MouseClicked(evt);

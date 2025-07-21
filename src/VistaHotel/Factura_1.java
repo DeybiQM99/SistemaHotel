@@ -309,6 +309,7 @@ public class Factura_1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         TxtFa_IDReserva = new javax.swing.JTextField();
         Btn_Buscar = new javax.swing.JButton();
@@ -352,30 +353,42 @@ public class Factura_1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("ID de Reserva:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, -1));
-        getContentPane().add(TxtFa_IDReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 160, -1));
+        jPanel1.setBackground(new java.awt.Color(17, 50, 77));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Btn_Buscar.setText("Buscar");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("ID de Reserva:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, -1));
+        jPanel1.add(TxtFa_IDReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 160, -1));
+
+        Btn_Buscar.setBackground(new java.awt.Color(17, 50, 77));
+        Btn_Buscar.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarTalentoEV.png"))); // NOI18N
+        Btn_Buscar.setText("BUSCAR");
         Btn_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_BuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+        jPanel1.add(Btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 140, 40));
 
+        jPanel2.setBackground(new java.awt.Color(17, 50, 77));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalles de Reserva"));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Reserva ID:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 72, -1));
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Entrada:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 84, -1));
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Fecha/Reserva");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 84, -1));
 
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Salida:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 84, -1));
 
@@ -391,17 +404,21 @@ public class Factura_1 extends javax.swing.JFrame {
         TxtFa_FechaReserva.setEnabled(false);
         jPanel2.add(TxtFa_FechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 100, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 220, 150));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 220, 150));
 
+        jPanel3.setBackground(new java.awt.Color(17, 50, 77));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resumen de Factura"));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Sub Total");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, -1, -1));
 
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("IGV:");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Total:");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
@@ -414,20 +431,26 @@ public class Factura_1 extends javax.swing.JFrame {
         TxtFa_Total.setEnabled(false);
         jPanel3.add(TxtFa_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 100, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 180, 120));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 180, 120));
 
+        jPanel4.setBackground(new java.awt.Color(17, 50, 77));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Cliente"));
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Nombre:");
         jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 52, -1));
 
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("DNI/Pasaporte:");
         jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 84, -1));
 
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Telefono:");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 84, -1));
 
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Correo:");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 84, -1));
 
@@ -443,17 +466,21 @@ public class Factura_1 extends javax.swing.JFrame {
         TxtFa_Nombre.setEnabled(false);
         jPanel4.add(TxtFa_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 220, 150));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 220, 150));
 
+        jPanel5.setBackground(new java.awt.Color(17, 50, 77));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Habitaciones"));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("N hab:");
         jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, -1, -1));
 
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Tipo:");
         jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Precio:");
         jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
@@ -466,7 +493,7 @@ public class Factura_1 extends javax.swing.JFrame {
         TxtFa_Precio.setEnabled(false);
         jPanel5.add(TxtFa_Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 100, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 170, 120));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 170, 120));
 
         Sp_ServiciosAdicionales.setBorder(javax.swing.BorderFactory.createTitledBorder("Servicios Adicionales"));
 
@@ -483,18 +510,26 @@ public class Factura_1 extends javax.swing.JFrame {
         ));
         Sp_ServiciosAdicionales.setViewportView(Jt_ServiciosAdicionales);
 
-        getContentPane().add(Sp_ServiciosAdicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 350, 150));
+        jPanel1.add(Sp_ServiciosAdicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 350, 150));
 
-        Btn_RegistrarPago.setText("Registrar Pago");
-        getContentPane().add(Btn_RegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 250, -1));
+        Btn_RegistrarPago.setBackground(new java.awt.Color(17, 50, 77));
+        Btn_RegistrarPago.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_RegistrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Factura.png"))); // NOI18N
+        Btn_RegistrarPago.setText("REGISTRAR PAGO");
+        jPanel1.add(Btn_RegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 250, 40));
 
-        Btn_GenerarPDF.setText("Generar PDF / Imprimir");
+        Btn_GenerarPDF.setBackground(new java.awt.Color(17, 50, 77));
+        Btn_GenerarPDF.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_GenerarPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/archivo-pdf.png"))); // NOI18N
+        Btn_GenerarPDF.setText("GENERAR PDF");
         Btn_GenerarPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_GenerarPDFActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_GenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 250, -1));
+        jPanel1.add(Btn_GenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 250, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -592,6 +627,7 @@ try {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

@@ -14,7 +14,16 @@ public class RegistroPago {
     private final LocalDateTime fechaPago;
 
     // Monto total a pagar
-    private double monto;
+    private double sueldoBase;
+    
+    // Monto total a pagar
+    private double bono;
+    
+    // Monto total a pagar
+    private double descuento;
+    
+    // Monto total a pagar
+    private double montoTotal;
 
     // Medio de pago
     public enum MedioPago { EFECTIVO, TRANSFERENCIA };
@@ -28,12 +37,17 @@ public class RegistroPago {
     public RegistroPago(int idPago,
                         int idEmpleado,
                         LocalDateTime fechaPago,
-                        double monto,
+                        double sueldoBase,
+                        double bono,
+                        double descuento,
                         MedioPago medioPago) {
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
         this.fechaPago = fechaPago;
-        this.monto = monto;
+        this.sueldoBase = sueldoBase;
+        this.bono = bono;
+        this.descuento = descuento;
+        this.montoTotal = (sueldoBase +  bono) - descuento;
         this.medioPago = medioPago;
         this.estado = PagoEstado.PENDIENTE;
     }
@@ -41,12 +55,17 @@ public class RegistroPago {
     // Constructor alternativo sin fechaIngreso explícita (se toma el momento actual).
     public RegistroPago(int idPago,
                         int idEmpleado,
-                        double monto,
+                        double sueldoBase,
+                        double bono,
+                        double descuento,
                         MedioPago medioPago) {
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
         this.fechaPago = LocalDateTime.now();
-        this.monto = monto;
+        this.sueldoBase = sueldoBase;
+        this.bono = bono;
+        this.descuento = descuento;
+        this.montoTotal = (sueldoBase +  bono) - descuento;
         this.medioPago = medioPago;
         this.estado = PagoEstado.PENDIENTE;
     }
@@ -69,10 +88,21 @@ public class RegistroPago {
 
     // Obtiene la fecha y hora del pago.
     public LocalDateTime getFechaPago() { return fechaPago; }
+    
+    
 
-    public double getMonto() { return monto; }
-    public void setMonto(double monto) { this.monto = monto; }
+    public double getSueldoBase() { return sueldoBase; }
+    public void setSueldoBase(double sueldoBase) { this.sueldoBase = sueldoBase; }
 
+    public double getBono() { return bono; }
+    public void setBono(double bono) { this.bono = bono; }
+
+    public double getDescuento() { return descuento; }
+    public void setDescuento(double descuento) { this.descuento = descuento; }
+
+    public double getMontoTotal() { return montoTotal; }
+    public void setMontoTotal(double montoTotal) { this.montoTotal = montoTotal; }
+    
     // Obtiene el estado actual del pago.
     public PagoEstado getEstado() { return estado; }
 

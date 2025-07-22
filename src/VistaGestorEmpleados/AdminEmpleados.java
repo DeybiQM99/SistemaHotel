@@ -8,7 +8,6 @@ import static GestionEmpleados.Enum.TipoContrato.DISCAPACIDAD;
 import static GestionEmpleados.Enum.TipoContrato.INDEFINIDO;
 import static GestionEmpleados.Enum.TipoContrato.RENOVABLE;
 import static GestionEmpleados.Enum.TipoContrato.TEMPORAL;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -117,6 +116,7 @@ public class AdminEmpleados extends javax.swing.JPanel {
         TxtEmpJefe = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(17, 50, 77));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelDespedir.setBorder(javax.swing.BorderFactory.createTitledBorder("DespedirEmpleado"));
 
@@ -153,6 +153,7 @@ public class AdminEmpleados extends javax.swing.JPanel {
             .addGroup(PanelDespedirLayout.createSequentialGroup()
                 .addGroup(PanelDespedirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelDespedirLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(PanelDespedirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20)
                             .addComponent(jLabel21))
@@ -170,14 +171,13 @@ public class AdminEmpleados extends javax.swing.JPanel {
                             .addComponent(btnMostrarAsis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnDespedir, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDespedirLayout.createSequentialGroup()
-                                .addGroup(PanelDespedirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDespedirLayout.createSequentialGroup()
-                                        .addComponent(jLabel19)
-                                        .addGap(18, 18, 18))
+                                .addGroup(PanelDespedirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(PanelDespedirLayout.createSequentialGroup()
                                         .addComponent(jLabel18)
-                                        .addGap(20, 20, 20)))
-                                .addGap(5, 5, 5)
+                                        .addGap(25, 25, 25))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelDespedirLayout.createSequentialGroup()
+                                        .addComponent(jLabel19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(PanelDespedirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TxtBusNom, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                                     .addComponent(TxtBusApp))))))
@@ -212,6 +212,8 @@ public class AdminEmpleados extends javax.swing.JPanel {
                 .addComponent(btnDespedir)
                 .addContainerGap())
         );
+
+        add(PanelDespedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 6, -1, -1));
 
         PanelModificar.setBorder(javax.swing.BorderFactory.createTitledBorder("ModificarEmpleado"));
         PanelModificar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -257,7 +259,7 @@ public class AdminEmpleados extends javax.swing.JPanel {
         PanelModificar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 167, -1, -1));
 
         jLabel14.setText("Cargo:");
-        PanelModificar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 195, -1, -1));
+        PanelModificar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         jLabel15.setText("Área:");
         PanelModificar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 223, -1, -1));
@@ -276,6 +278,8 @@ public class AdminEmpleados extends javax.swing.JPanel {
 
         TxtCargo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         PanelModificar.add(TxtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 160, -1));
+
+        add(PanelModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(568, 6, 266, 310));
 
         PanelBusqueda.setBackground(new java.awt.Color(255, 255, 255));
         PanelBusqueda.setBorder(javax.swing.BorderFactory.createTitledBorder("PanelBusqueda"));
@@ -418,6 +422,8 @@ public class AdminEmpleados extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        add(PanelBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 320, 828, -1));
+
         PanelModificar1.setBorder(javax.swing.BorderFactory.createTitledBorder("ModificarEmpleado"));
         PanelModificar1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -476,34 +482,7 @@ public class AdminEmpleados extends javax.swing.JPanel {
         PanelModificar1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 248, -1, -1));
         PanelModificar1.add(TxtEmpJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 248, 150, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(PanelModificar1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PanelDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(PanelModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelDespedir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelModificar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PanelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(PanelModificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 274, 310));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarComboAreas() {
@@ -653,7 +632,6 @@ public class AdminEmpleados extends javax.swing.JPanel {
             TxtBusCorreo.setText(emp.getEmail());
         } else {
             JOptionPane.showMessageDialog(this, "Error... No existe un empleado con ID " + id + ".");
-            // Opcional: limpiar los campos de detalle
             TxtBusNom.setText("");
             TxtBusApp.setText("");
             TxtBusDNI.setText("");

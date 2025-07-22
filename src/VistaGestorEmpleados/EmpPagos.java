@@ -203,7 +203,7 @@ public class EmpPagos extends javax.swing.JPanel {
                     model.addRow(new Object[]{
                         pago.getIdPago(),
                         pago.getFechaPago().toString(),
-                        pago.getMonto(),
+                        pago.getMontoTotal(),
                         pago.getMedioPago().toString(),
                         pago.getEstado().toString()
                     });

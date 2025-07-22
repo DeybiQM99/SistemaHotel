@@ -195,7 +195,7 @@ public class EmpReportes extends javax.swing.JPanel {
             info.append("DNI: ").append(emp.getDni()).append("\n");
             info.append("Cargo: ").append(emp.getClass().getSimpleName()).append("\n");
             info.append("Tarifa: S/ ").append(emp.getTarifaPorHora()).append(" por hora.\n");
-            // Contrato
+            // Contratos
             info.append("Tipo Contrato: ").append(emp.getTipoContrato()).append("\n");
             info.append("Fecha Ingreso: ").append(emp.getFechaIngreso().format(fmt)).append("\n");
             if (emp.getFechaTermino() != null) {
@@ -205,6 +205,7 @@ public class EmpReportes extends javax.swing.JPanel {
                 info.append("Fecha Renovación: ").append(emp.getFechaRenovacion().format(fmt)).append("\n");
             }
             // Información adicional según tipo
+            /*
             if (emp instanceof Supervisor) {
                 Supervisor sup = (Supervisor) emp;
                 List<Integer> ops = sup.getListaOperarioIds();
@@ -214,6 +215,8 @@ public class EmpReportes extends javax.swing.JPanel {
                 List<Integer> sups = jefe.getListaSupervisorIds();
                 info.append("Supervisores a cargo: ").append(sups).append("\n");
             }
+            */
+            
             txtReporteID.setText(info.toString());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error... Número inválido.");

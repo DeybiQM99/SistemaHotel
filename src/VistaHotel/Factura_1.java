@@ -8,21 +8,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-//OPEN PDF
-//////--------------------//////////////
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.FontFactory;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfWriter;
-//////--------------------//////////////
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
-
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 import java.awt.Color;
@@ -35,22 +23,47 @@ public class Factura_1 extends javax.swing.JFrame {
     }
 
     //botón “Buscar”
-    private void buscarReserva(int idReserva) {
+    private void buscarReservaPorDNI(String dni) {
         try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
             if (conn == null) {
                 JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
                 return;
             }
 
+            // ========== BUSCAR ID DE RESERVA MÁS RECIENTE POR DNI ==========
+            String sqlReservaID = """
+            SELECT TOP 1 r.id_reserva
+            FROM Reservas r
+            JOIN Clientes c ON r.id_cliente = c.id_cliente
+            WHERE c.dni_pasaporte = ?
+            ORDER BY r.fecha_reserva DESC
+        """;
+
+            int idReserva = -1;
+
+            try (PreparedStatement ps = conn.prepareStatement(sqlReservaID)) {
+                ps.setString(1, dni);
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        idReserva = rs.getInt("id_reserva");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se encontró ninguna reserva para el DNI: " + dni);
+                        return;
+                    }
+                }
+            }
+
             // ========== DATOS DEL CLIENTE Y RESERVA ==========
-            String sqlClienteReserva = "SELECT c.nombre, c.dni_pasaporte, c.telefono, c.correo, "
-             + "r.id_reserva, r.fecha_entrada, r.fecha_salida, r.fecha_reserva "
-             + "FROM Reservas r "
-             + "JOIN Clientes c ON r.id_cliente = c.id_cliente "
-             + "WHERE r.id_reserva = ?";
-            try (PreparedStatement psCliente = conn.prepareStatement(sqlClienteReserva)) {
-                psCliente.setInt(1, idReserva);
-                try (ResultSet rs = psCliente.executeQuery()) {
+            String sqlClienteReserva = """
+            SELECT c.nombre, c.dni_pasaporte, c.telefono, c.correo,
+                   r.id_reserva, r.fecha_entrada, r.fecha_salida, r.fecha_reserva
+            FROM Reservas r
+            JOIN Clientes c ON r.id_cliente = c.id_cliente
+            WHERE r.id_reserva = ?
+        """;
+            try (PreparedStatement ps = conn.prepareStatement(sqlClienteReserva)) {
+                ps.setInt(1, idReserva);
+                try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next()) {
                         TxtFa_Nombre.setText(rs.getString("nombre"));
                         TxtFa_DNI.setText(rs.getString("dni_pasaporte"));
@@ -60,21 +73,20 @@ public class Factura_1 extends javax.swing.JFrame {
                         TxtFa_Entrada.setText(rs.getDate("fecha_entrada").toString());
                         TxtFa_Salida.setText(rs.getDate("fecha_salida").toString());
                         TxtFa_FechaReserva.setText(rs.getTimestamp("fecha_reserva").toString());
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró la reserva con ID: " + idReserva);
-                        return;
                     }
                 }
             }
 
             // ========== DATOS DE LA HABITACIÓN ==========
-            String sqlHabitacion = "SELECT h.numero_habitacion, h.tipo, dr.precio "
-             + "FROM Detalle_Reserva dr "
-             + "JOIN Habitaciones h ON dr.id_habitacion = h.id_habitacion "
-             + "WHERE dr.id_reserva = ?";
-            try (PreparedStatement psHab = conn.prepareStatement(sqlHabitacion)) {
-                psHab.setInt(1, idReserva);
-                try (ResultSet rs = psHab.executeQuery()) {
+            String sqlHabitacion = """
+            SELECT h.numero_habitacion, h.tipo, dr.precio
+            FROM Detalle_Reserva dr
+            JOIN Habitaciones h ON dr.id_habitacion = h.id_habitacion
+            WHERE dr.id_reserva = ?
+        """;
+            try (PreparedStatement ps = conn.prepareStatement(sqlHabitacion)) {
+                ps.setInt(1, idReserva);
+                try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next()) {
                         TxtFa_Nhab.setText(rs.getString("numero_habitacion"));
                         TxtFa_Tipo.setText(rs.getString("tipo"));
@@ -90,13 +102,15 @@ public class Factura_1 extends javax.swing.JFrame {
             // ========== SERVICIOS ADICIONALES ==========
             DefaultTableModel modeloTabla = (DefaultTableModel) Jt_ServiciosAdicionales.getModel();
             modeloTabla.setRowCount(0); // Limpiar tabla
-            String sqlServicios = "SELECT s.nombre_servicio, rs.cantidad, (s.precio * rs.cantidad) AS subtotal "
-             + "FROM Reserva_Servicios rs "
-             + "JOIN Servicios_Adicionales s ON rs.id_servicio = s.id_servicio "
-             + "WHERE rs.id_reserva = ?";
-            try (PreparedStatement psServ = conn.prepareStatement(sqlServicios)) {
-                psServ.setInt(1, idReserva);
-                try (ResultSet rs = psServ.executeQuery()) {
+            String sqlServicios = """
+            SELECT s.nombre_servicio, rs.cantidad, (s.precio * rs.cantidad) AS subtotal
+            FROM Reserva_Servicios rs
+            JOIN Servicios_Adicionales s ON rs.id_servicio = s.id_servicio
+            WHERE rs.id_reserva = ?
+        """;
+            try (PreparedStatement ps = conn.prepareStatement(sqlServicios)) {
+                ps.setInt(1, idReserva);
+                try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
                         Object[] fila = {
                             rs.getString("nombre_servicio"),
@@ -108,33 +122,11 @@ public class Factura_1 extends javax.swing.JFrame {
                 }
             }
 
-            /*
-            // ======== PRODUCTOS RESERVADOS ========
-            String sqlProductos = """
-    SELECT p.nombre, rp.cantidad, (p.precio * rp.cantidad) AS subtotal
-    FROM Reserva_Productos rp
-    JOIN Productos p ON rp.id_producto = p.id_producto
-    WHERE rp.id_reserva = ?
-""";
-
-            try (PreparedStatement psProd = conn.prepareStatement(sqlProductos)) {
-                psProd.setInt(1, idReserva);
-                ResultSet rsProd = psProd.executeQuery();
-
-                while (rsProd.next()) {
-                    Object[] filaProducto = {
-                        rsProd.getString("nombre"),
-                        rsProd.getInt("cantidad"),
-                        rsProd.getBigDecimal("subtotal")
-                    };
-                    modeloTabla.addRow(filaProducto); // Se agrega a la misma tabla Jt_ServiciosAdicionales
-                }
-            }*/
             // ========== DATOS DE LA FACTURA ==========
             String sqlFactura = "SELECT subtotal, igv, monto_total FROM Facturas WHERE id_reserva = ?";
-            try (PreparedStatement psFact = conn.prepareStatement(sqlFactura)) {
-                psFact.setInt(1, idReserva);
-                try (ResultSet rs = psFact.executeQuery()) {
+            try (PreparedStatement ps = conn.prepareStatement(sqlFactura)) {
+                ps.setInt(1, idReserva);
+                try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next()) {
                         TxtFa_SubTotal.setText(String.valueOf(rs.getBigDecimal("subtotal")));
                         TxtFa_IGV.setText(String.valueOf(rs.getBigDecimal("igv")));
@@ -149,73 +141,9 @@ public class Factura_1 extends javax.swing.JFrame {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar la reserva: " + ex.getMessage());
+            ex.printStackTrace();
         }
     }
-
-    /*
-    //METODO PARA IMPORTAR EL PDF
-    
-    
-    public void generarPDF(int idReserva) {
-    try {
-        Document doc = new Document();
-        String nombreArchivo = "Factura_Reserva_" + idReserva + ".pdf";
-        PdfWriter.getInstance(doc, new FileOutputStream(nombreArchivo));
-        doc.open();
-
-        doc.add(new Paragraph("Factura de Reserva", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18)));
-        doc.add(new Paragraph(" "));
-
-        doc.add(new Paragraph("ID Reserva: " + TxtFa_ReservaID.getText()));
-        doc.add(new Paragraph("Nombre Cliente: " + TxtFa_Nombre.getText()));
-        doc.add(new Paragraph("DNI/Pasaporte: " + TxtFa_DNI.getText()));
-        doc.add(new Paragraph("Teléfono: " + TxtFa_Telefono.getText()));
-        doc.add(new Paragraph("Correo: " + TxtFa_Correo.getText()));
-        doc.add(new Paragraph("Entrada: " + TxtFa_Entrada.getText()));
-        doc.add(new Paragraph("Salida: " + TxtFa_Salida.getText()));
-        doc.add(new Paragraph("Fecha de Reserva: " + TxtFa_FechaReserva.getText()));
-        doc.add(new Paragraph(" "));
-
-        doc.add(new Paragraph("Habitación: " + TxtFa_Nhab.getText() + " - " + TxtFa_Tipo.getText()));
-        doc.add(new Paragraph("Precio: S/ " + TxtFa_Precio.getText()));
-        doc.add(new Paragraph(" "));
-
-        doc.add(new Paragraph("Servicios Adicionales:"));
-        PdfPTable tabla = new PdfPTable(3);
-        tabla.addCell("Producto");
-        tabla.addCell("Cantidad");
-        tabla.addCell("SubTotal");
-
-        DefaultTableModel modelo = (DefaultTableModel) Jt_ServiciosAdicionales.getModel();
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            tabla.addCell(modelo.getValueAt(i, 0).toString());
-            tabla.addCell(modelo.getValueAt(i, 1).toString());
-            tabla.addCell(modelo.getValueAt(i, 2).toString());
-        }
-        doc.add(tabla);
-
-        doc.add(new Paragraph(" "));
-        doc.add(new Paragraph("Subtotal: S/ " + TxtFa_SubTotal.getText()));
-        doc.add(new Paragraph("IGV: S/ " + TxtFa_IGV.getText()));
-        doc.add(new Paragraph("Total: S/ " + TxtFa_Total.getText()));
-
-        doc.close();
-
-        JOptionPane.showMessageDialog(null, "Factura PDF generada correctamente.");
-
-        // Abrir automáticamente el PDF
-        File archivo = new File(nombreArchivo);
-        if (archivo.exists()) {
-            Desktop.getDesktop().open(archivo);
-        }
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error al generar el PDF: " + e.getMessage());
-    }
-}
-    
-     */
 
     public void generarPDF(int idReserva) {
         try {
@@ -307,7 +235,7 @@ public class Factura_1 extends javax.swing.JFrame {
         LblMinimizar = new javax.swing.JLabel();
         LblCerrar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        TxtFa_IDReserva = new javax.swing.JTextField();
+        TxtFa_DNI_ = new javax.swing.JTextField();
         Btn_Buscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -370,9 +298,9 @@ public class Factura_1 extends javax.swing.JFrame {
         jPanel1.add(LblCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 20));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("ID de Reserva:");
+        jLabel2.setText("DNI");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 90, -1));
-        jPanel1.add(TxtFa_IDReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 160, -1));
+        jPanel1.add(TxtFa_DNI_, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 160, -1));
 
         Btn_Buscar.setBackground(new java.awt.Color(17, 50, 77));
         Btn_Buscar.setForeground(new java.awt.Color(255, 255, 255));
@@ -548,16 +476,16 @@ public class Factura_1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_BuscarActionPerformed
-        String textoId = TxtFa_IDReserva.getText(); // ← este es el campo donde ingresas el ID de reserva
-        if (!textoId.isEmpty()) {
+        String DNI = TxtFa_DNI_.getText();
+        if (!DNI.isEmpty()) {
             try {
-                int idReserva = Integer.parseInt(textoId);
-                buscarReserva(idReserva);
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "El ID de reserva debe ser un número entero.");
+                buscarReservaPorDNI(DNI);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Ocurrió un error al buscar la reserva.");
+                ex.printStackTrace();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Por favor, ingresa un ID de reserva.");
+            JOptionPane.showMessageDialog(null, "Por favor, ingresa un DNI.");
         }
     }//GEN-LAST:event_Btn_BuscarActionPerformed
 
@@ -578,10 +506,10 @@ public class Factura_1 extends javax.swing.JFrame {
     private void LblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblCerrarMouseClicked
         //cogido para preguntar si se desea salir o no del programa
         int respuesta = JOptionPane.showConfirmDialog(
-            Factura_1.this, // Referencia al componente la ventana actual (Login)
-            "¿Deseas realmente salir?", // Mensaje que se muestra al usuario
-            "Confirmación", // Título de la ventana de diálogo
-            JOptionPane.YES_NO_OPTION // Tipo de opciones que se presentan al usuario (Sí y No)
+                Factura_1.this, // Referencia al componente la ventana actual (Login)
+                "¿Deseas realmente salir?", // Mensaje que se muestra al usuario
+                "Confirmación", // Título de la ventana de diálogo
+                JOptionPane.YES_NO_OPTION // Tipo de opciones que se presentan al usuario (Sí y No)
         );
 
         if (respuesta == JOptionPane.YES_OPTION) { // Verifica si el usuario seleccionó "Sí"
@@ -633,9 +561,9 @@ public class Factura_1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane Sp_ServiciosAdicionales;
     private javax.swing.JTextField TxtFa_Correo;
     private javax.swing.JTextField TxtFa_DNI;
+    private javax.swing.JTextField TxtFa_DNI_;
     private javax.swing.JTextField TxtFa_Entrada;
     private javax.swing.JTextField TxtFa_FechaReserva;
-    private javax.swing.JTextField TxtFa_IDReserva;
     private javax.swing.JTextField TxtFa_IGV;
     private javax.swing.JTextField TxtFa_Nhab;
     private javax.swing.JTextField TxtFa_Nombre;

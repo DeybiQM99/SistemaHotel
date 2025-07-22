@@ -51,7 +51,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         mapaPaneles.put("11", Panel11);
         mapaPaneles.put("12", Panel12);
     }
-
+    // Colección de tipo Map que asocia el número de habitación con su botón correspondiente
     private void inicializarMapaBotones() {
         mapaBotones.put("1", BtnReservar1);
         mapaBotones.put("2", BtnReservar2);

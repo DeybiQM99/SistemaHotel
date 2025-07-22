@@ -2,5 +2,8 @@
 package Interfaz;
 
 public interface Limpiable {
-    void limpiarDatos();
+    void limpiarDatos(); // Interfaz para limpiar los campos
 }
+
+
+

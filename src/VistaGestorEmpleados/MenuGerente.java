@@ -219,11 +219,11 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
         // Crear instancia del nuevo panel
-        AdminEmpleados dggdded = new AdminEmpleados(gestor);
-        dggdded.setSize(new Dimension(840, 600));
+        AdminEmpleados qwew = new AdminEmpleados(gestor);
+        qwew.setSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(dggdded, BorderLayout.CENTER);
+        panelContenido.add(qwew, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
         
@@ -233,12 +233,12 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnNominasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNominasActionPerformed
         // Crear instancia del nuevo panel
-        AdminNominas1 AdministrarNominas1 = new AdminNominas1(gestor);
-        AdministrarNominas1.setPreferredSize(new Dimension(840, 600));
+        AdminNominas AdministrarNominass = new AdminNominas(gestor);
+        AdministrarNominass.setPreferredSize(new Dimension(840, 600));
 
         // Agregarlo al panel contenedor
         panelContenido.removeAll();
-        panelContenido.add(AdministrarNominas1, BorderLayout.CENTER);
+        panelContenido.add(AdministrarNominass, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnNominasActionPerformed
@@ -257,11 +257,11 @@ public class MenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnIncidenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncidenciasActionPerformed
-        AdminIncidencias AdminIncidencias = new AdminIncidencias(gestor);
-        AdminIncidencias.setPreferredSize(new Dimension(840, 600));
+        AdminIncidencias asd = new AdminIncidencias(gestor);
+        asd.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
-        panelContenido.add(AdminIncidencias,BorderLayout.CENTER);
+        panelContenido.add(asd,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();   
     }//GEN-LAST:event_btnIncidenciasActionPerformed
@@ -309,11 +309,11 @@ public class MenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJerarquiasActionPerformed
 
     private void btnAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasActionPerformed
-    AdminAreas AdminAreas = new AdminAreas();
-        AdminAreas.setPreferredSize(new Dimension(830,600));
+    AdminAreas AdminAreasdds = new AdminAreas(gestor);
+        AdminAreasdds.setPreferredSize(new Dimension(830,600));
 
         panelContenido.removeAll();
-        panelContenido.add(AdminAreas,BorderLayout.CENTER);
+        panelContenido.add(AdminAreasdds,BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnAreasActionPerformed

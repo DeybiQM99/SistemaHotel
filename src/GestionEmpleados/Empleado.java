@@ -19,9 +19,6 @@ public abstract class Empleado extends Entidad implements IAsistencia {
     // Tipo de contrato laboral
     protected TipoContrato tipoContrato;
     
-    // Tipo de Incidencia
-    protected TipoIncidencia tipoIncidencia;
-    
     // Área o departamento del empleado
     protected int idArea;
 
@@ -34,11 +31,17 @@ public abstract class Empleado extends Entidad implements IAsistencia {
     // Mapa de asistencia: fecha -> presente (true) o falta (false)
     protected final Map<LocalDate, Boolean> listaAsistencias = new HashMap<>();
 
+    // Tipo de Incidencia
+    protected TipoIncidencia tipoIncidencia;
+    
     // Descrp Incidencia
     protected String textIncidencia;
     
-    // Descrp Incidencia
+    // Observacion Incidencia
     protected String textObservacion;
+    
+    // Fecha Incidencia
+    protected LocalDate fechaInc;
     
     // Constructor completo.
     public Empleado(int idArea,
@@ -189,4 +192,7 @@ public abstract class Empleado extends Entidad implements IAsistencia {
 
     public String getTextObservacion() { return textObservacion; }
     public void setTextObservacion(String textObservacion) { this.textObservacion = textObservacion; }
+
+    public LocalDate getFechaInc() { return fechaInc; }
+    public void setFechaInc(LocalDate fechaInc) { this.fechaInc = fechaInc; }
 }

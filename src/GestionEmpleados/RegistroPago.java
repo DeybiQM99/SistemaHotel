@@ -1,6 +1,6 @@
 package GestionEmpleados;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class RegistroPago {
 
@@ -11,10 +11,19 @@ public class RegistroPago {
     private final int idEmpleado;
 
     // Fecha y hora en que se emitió o programó el pago
-    private final LocalDateTime fechaPago;
+    private final LocalDate fechaPago;
 
     // Monto total a pagar
-    private double monto;
+    private double sueldoBase;
+    
+    // Monto total a pagar
+    private double bono;
+    
+    // Monto total a pagar
+    private double descuento;
+    
+    // Monto total a pagar
+    private double montoTotal;
 
     // Medio de pago
     public enum MedioPago { EFECTIVO, TRANSFERENCIA };
@@ -27,13 +36,18 @@ public class RegistroPago {
     // Constructor principal.
     public RegistroPago(int idPago,
                         int idEmpleado,
-                        LocalDateTime fechaPago,
-                        double monto,
+                        LocalDate fechaPago,
+                        double sueldoBase,
+                        double bono,
+                        double descuento,
                         MedioPago medioPago) {
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
         this.fechaPago = fechaPago;
-        this.monto = monto;
+        this.sueldoBase = sueldoBase;
+        this.bono = bono;
+        this.descuento = descuento;
+        this.montoTotal = (sueldoBase +  bono) - descuento;
         this.medioPago = medioPago;
         this.estado = PagoEstado.PENDIENTE;
     }
@@ -41,12 +55,17 @@ public class RegistroPago {
     // Constructor alternativo sin fechaIngreso explícita (se toma el momento actual).
     public RegistroPago(int idPago,
                         int idEmpleado,
-                        double monto,
+                        double sueldoBase,
+                        double bono,
+                        double descuento,
                         MedioPago medioPago) {
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
-        this.fechaPago = LocalDateTime.now();
-        this.monto = monto;
+        this.fechaPago = LocalDate.now();
+        this.sueldoBase = sueldoBase;
+        this.bono = bono;
+        this.descuento = descuento;
+        this.montoTotal = (sueldoBase +  bono) - descuento;
         this.medioPago = medioPago;
         this.estado = PagoEstado.PENDIENTE;
     }
@@ -60,6 +79,11 @@ public class RegistroPago {
     public boolean isPendiente() {
         return this.estado == PagoEstado.PENDIENTE;
     }
+    
+    //Actualizar MontoTotal
+    public void actualizarMonto() {
+        montoTotal = (sueldoBase +  bono) - descuento;
+    }
 
     // Obtiene el identificador único del registro de pago.
     public int getIdPago() { return idPago; }
@@ -68,11 +92,19 @@ public class RegistroPago {
     public int getIdEmpleado() { return idEmpleado; }
 
     // Obtiene la fecha y hora del pago.
-    public LocalDateTime getFechaPago() { return fechaPago; }
+    public LocalDate getFechaPago() { return fechaPago; }
 
-    public double getMonto() { return monto; }
-    public void setMonto(double monto) { this.monto = monto; }
+    public double getSueldoBase() { return sueldoBase; }
+    public void setSueldoBase(double sueldoBase) { this.sueldoBase = sueldoBase; }
 
+    public double getBono() { return bono; }
+    public void setBono(double bono) { this.bono = bono; }
+
+    public double getDescuento() { return descuento; }
+    public void setDescuento(double descuento) { this.descuento = descuento; }
+
+    public double getMontoTotal() { return montoTotal; }
+    
     // Obtiene el estado actual del pago.
     public PagoEstado getEstado() { return estado; }
 

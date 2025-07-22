@@ -1,7 +1,9 @@
 package VistaGestorEmpleados;
 
 import GestionEmpleados.Area;
+import GestionEmpleados.Empleado;
 import GestionEmpleados.Enum.TipoContrato;
+import GestionEmpleados.Enum.TipoIncidencia;
 import GestionEmpleados.GestorEmpleados;
 import GestionEmpleados.Jefe;
 import GestionEmpleados.Operario;
@@ -60,13 +62,19 @@ public class Prueba {
         gestor.addEmpleado(new Supervisor(3,29.0,205,"Patricia","Muñoz","patricia.munoz@empresa.com","22345682E",
             LocalDate.of(2021,10,25), null, null,
             TipoContrato.INDEFINIDO,305));
-        
-        for(int i = 201; i <= 205; i++){
-            Supervisor sup = (Supervisor) gestor.getEmpleado(i);
-            
-            sup.add(i - 100);
-        }
 
+        Supervisor sup = (Supervisor)gestor.getEmpleado(201);
+        sup.setIdJefe(301);
+        sup = (Supervisor)gestor.getEmpleado(202);
+        sup.setIdJefe(302);
+        sup = (Supervisor)gestor.getEmpleado(203);
+        sup.setIdJefe(303);
+        sup = (Supervisor)gestor.getEmpleado(204);
+        sup.setIdJefe(304);
+        sup = (Supervisor)gestor.getEmpleado(205);
+        sup.setIdJefe(305);
+        
+        
         // Jefes (Renovable: ingreso, término, renovación)
         gestor.addEmpleado(new Jefe(1,40.0,301,"Fernando","Ortiz","fernando.ortiz@empresa.com","32345678A",
             LocalDate.of(2020,1,1),  LocalDate.of(2025,1,1),  LocalDate.of(2024,12,31),
@@ -84,25 +92,25 @@ public class Prueba {
             LocalDate.of(2020,5,1),  LocalDate.of(2025,5,1),  LocalDate.of(2024,12,31),
             TipoContrato.RENOVABLE));
         
-        for(int i = 301; i <= 305; i++){
-            Jefe sup = (Jefe) gestor.getEmpleado(i);
-            
-            sup.add(i - 100);
-        }
+        Empleado emp = gestor.getEmpleado(301);
+        emp.setTipoIncidencia(TipoIncidencia.LEVE);
+        emp.setTextIncidencia("INCUMPLIMIENTO DE NORMAS.");
+        emp.setTextObservacion("Mejorar urgentemente.");
+        emp.setFechaInc(LocalDate.now());
         
         // Creación de pagos// Pagos para el empleado 101
-        gestor.addRegistroPago(new RegistroPago(1, 101, LocalDateTime.of(2025, 1, 15, 10, 30), 450.0, RegistroPago.MedioPago.TRANSFERENCIA));
-        gestor.addRegistroPago(new RegistroPago(2, 101, LocalDateTime.of(2025, 2, 15, 10, 30), 460.0, RegistroPago.MedioPago.TRANSFERENCIA));
-        gestor.addRegistroPago(new RegistroPago(3, 101, LocalDateTime.of(2025, 3, 15, 10, 30), 470.0, RegistroPago.MedioPago.EFECTIVO));
-        gestor.addRegistroPago(new RegistroPago(4, 101, LocalDateTime.of(2025, 4, 15, 10, 30), 480.0, RegistroPago.MedioPago.EFECTIVO));
-        gestor.addRegistroPago(new RegistroPago(5, 101, LocalDateTime.of(2025, 5, 15, 10, 30), 490.0, RegistroPago.MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(1, 101, LocalDate.of(2025, 1, 15), 450.0,60,40, RegistroPago.MedioPago.TRANSFERENCIA));
+        gestor.addRegistroPago(new RegistroPago(2, 101, LocalDate.of(2025, 2, 15), 460.0,80,60, RegistroPago.MedioPago.TRANSFERENCIA));
+        gestor.addRegistroPago(new RegistroPago(3, 101, LocalDate.of(2025, 3, 15), 470.0,40,30, RegistroPago.MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(4, 101, LocalDate.of(2025, 4, 15), 480.0,80,35, RegistroPago.MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(5, 101, LocalDate.of(2025, 5, 15), 490.0,20,15, RegistroPago.MedioPago.EFECTIVO));
 
         // Pagos para el empleado 102
-        gestor.addRegistroPago(new RegistroPago(6, 102, LocalDateTime.of(2025, 1, 10, 9, 15), 430.0, RegistroPago.MedioPago.EFECTIVO));
-        gestor.addRegistroPago(new RegistroPago(7, 102, LocalDateTime.of(2025, 2, 10, 9, 15), 440.0, RegistroPago.MedioPago.TRANSFERENCIA));
-        gestor.addRegistroPago(new RegistroPago(8, 102, LocalDateTime.of(2025, 3, 10, 9, 15), 450.0, RegistroPago.MedioPago.EFECTIVO));
-        gestor.addRegistroPago(new RegistroPago(9, 102, LocalDateTime.of(2025, 4, 10, 9, 15), 460.0, RegistroPago.MedioPago.EFECTIVO));
-        gestor.addRegistroPago(new RegistroPago(10, 102, LocalDateTime.of(2025, 5, 10, 9, 15), 470.0, RegistroPago.MedioPago.TRANSFERENCIA));
+        gestor.addRegistroPago(new RegistroPago(6, 102, LocalDate.of(2025, 1, 10), 430.0,10,35, RegistroPago.MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(7, 102, LocalDate.of(2025, 2, 10), 440.0,90,40, RegistroPago.MedioPago.TRANSFERENCIA));
+        gestor.addRegistroPago(new RegistroPago(8, 102, LocalDate.of(2025, 3, 10), 450.0,40,32, RegistroPago.MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(9, 102, LocalDate.of(2025, 4, 10), 460.0,30,38, RegistroPago.MedioPago.EFECTIVO));
+        gestor.addRegistroPago(new RegistroPago(10, 102, LocalDate.of(2025, 5, 10), 470.0,20,39, RegistroPago.MedioPago.TRANSFERENCIA));
         
         //Areas para los empleados
         gestor.addArea(new Area(1, "Producción"));

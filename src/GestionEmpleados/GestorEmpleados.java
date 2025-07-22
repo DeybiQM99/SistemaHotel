@@ -64,20 +64,26 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
     // Elimina un Area por su identificador.
     @Override
     public void dropArea(int idArea) {
-        if(!misAreas.isEmpty()){
-            for(Area a: misAreas){
-                if(a.getIdArea() == idArea){
-                    misAreas.remove(a);
-                }
-            }
-        }
+        Iterator<Area> it = misAreas.iterator();
+        while (it.hasNext()){
+            Area a = it.next();
+                if(a.getIdArea() == idArea)
+                    it.remove();
+       }   
     }
 
     // Elimina un Area por su objeto.
     @Override
     public void dropArea(Area area) {
-        if (area != null) {
-            misAreas.remove(area);
+        if (area != null && !misAreas.isEmpty()) {
+            Iterator<Area> it = misAreas.iterator();
+                while (it.hasNext()){
+                    Area a = it.next();  
+                    if(a.getIdArea() == area.getIdArea()){
+                        it.remove();
+                        break;    
+                    }
+                }
         }
     }
     
@@ -99,7 +105,7 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
         if (registro != null) {
             misRegistros.remove(registro);
         }
-    }
+    }    
     
     // Buscador de empleado por su id
     @Override
@@ -238,11 +244,12 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
     
     //Modificar valores Registro
     @Override
-    public void modificarRegistroPago(int idRegistro, double monto){
+    public void modificarRegistroPago(int idRegistro, double montoBase){
         if(!misRegistros.isEmpty()){
             for(RegistroPago rp: misRegistros){
                 if(rp.getIdPago() == idRegistro){
-                    rp.setMonto(monto);
+                    rp.setSueldoBase(montoBase);
+                    rp.actualizarMonto();
                 }
             }
         }

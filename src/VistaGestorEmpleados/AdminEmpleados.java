@@ -3,11 +3,7 @@ package VistaGestorEmpleados;
 import GestionEmpleados.Empleado;
 import GestionEmpleados.*;
 import GestionEmpleados.Enum.TipoContrato;
-import static GestionEmpleados.Enum.TipoContrato.DESPEDIDO;
-import static GestionEmpleados.Enum.TipoContrato.DISCAPACIDAD;
-import static GestionEmpleados.Enum.TipoContrato.INDEFINIDO;
-import static GestionEmpleados.Enum.TipoContrato.RENOVABLE;
-import static GestionEmpleados.Enum.TipoContrato.TEMPORAL;
+import static GestionEmpleados.Enum.TipoContrato.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 

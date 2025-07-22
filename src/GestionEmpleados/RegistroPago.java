@@ -1,6 +1,6 @@
 package GestionEmpleados;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class RegistroPago {
 
@@ -11,7 +11,7 @@ public class RegistroPago {
     private final int idEmpleado;
 
     // Fecha y hora en que se emitió o programó el pago
-    private final LocalDateTime fechaPago;
+    private final LocalDate fechaPago;
 
     // Monto total a pagar
     private double sueldoBase;
@@ -36,7 +36,7 @@ public class RegistroPago {
     // Constructor principal.
     public RegistroPago(int idPago,
                         int idEmpleado,
-                        LocalDateTime fechaPago,
+                        LocalDate fechaPago,
                         double sueldoBase,
                         double bono,
                         double descuento,
@@ -61,7 +61,7 @@ public class RegistroPago {
                         MedioPago medioPago) {
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
-        this.fechaPago = LocalDateTime.now();
+        this.fechaPago = LocalDate.now();
         this.sueldoBase = sueldoBase;
         this.bono = bono;
         this.descuento = descuento;
@@ -79,6 +79,11 @@ public class RegistroPago {
     public boolean isPendiente() {
         return this.estado == PagoEstado.PENDIENTE;
     }
+    
+    //Actualizar MontoTotal
+    public void actualizarMonto() {
+        montoTotal = (sueldoBase +  bono) - descuento;
+    }
 
     // Obtiene el identificador único del registro de pago.
     public int getIdPago() { return idPago; }
@@ -87,9 +92,7 @@ public class RegistroPago {
     public int getIdEmpleado() { return idEmpleado; }
 
     // Obtiene la fecha y hora del pago.
-    public LocalDateTime getFechaPago() { return fechaPago; }
-    
-    
+    public LocalDate getFechaPago() { return fechaPago; }
 
     public double getSueldoBase() { return sueldoBase; }
     public void setSueldoBase(double sueldoBase) { this.sueldoBase = sueldoBase; }
@@ -101,7 +104,6 @@ public class RegistroPago {
     public void setDescuento(double descuento) { this.descuento = descuento; }
 
     public double getMontoTotal() { return montoTotal; }
-    public void setMontoTotal(double montoTotal) { this.montoTotal = montoTotal; }
     
     // Obtiene el estado actual del pago.
     public PagoEstado getEstado() { return estado; }

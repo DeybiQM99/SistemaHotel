@@ -233,7 +233,7 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnNominasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNominasActionPerformed
         // Crear instancia del nuevo panel
-        AdminNominas1 AdministrarNominass = new AdminNominas1(gestor);
+        AdminNominas AdministrarNominass = new AdminNominas(gestor);
         AdministrarNominass.setPreferredSize(new Dimension(840, 600));
 
         // Agregarlo al panel contenedor

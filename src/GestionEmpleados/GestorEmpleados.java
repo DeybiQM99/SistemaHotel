@@ -244,11 +244,12 @@ public class GestorEmpleados implements IGestionEmpleados, IGestionAreas, IGesti
     
     //Modificar valores Registro
     @Override
-    public void modificarRegistroPago(int idRegistro, double monto){
+    public void modificarRegistroPago(int idRegistro, double montoBase){
         if(!misRegistros.isEmpty()){
             for(RegistroPago rp: misRegistros){
                 if(rp.getIdPago() == idRegistro){
-                    rp.setMontoTotal(monto);
+                    rp.setSueldoBase(montoBase);
+                    rp.actualizarMonto();
                 }
             }
         }

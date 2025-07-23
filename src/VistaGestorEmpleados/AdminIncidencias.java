@@ -6,6 +6,7 @@ package VistaGestorEmpleados;
 
 import GestionEmpleados.Empleado;
 import GestionEmpleados.GestorEmpleados;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,18 +39,18 @@ public class AdminIncidencias extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         panelPagoReg4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        CboxIndc = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TxtIndDesc = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        CboxIndc = new javax.swing.JComboBox<>();
+        TxtIndDesc = new javax.swing.JScrollPane();
+        TxtIndDescu = new javax.swing.JTextArea();
+        fecha = new com.toedter.calendar.JDateChooser();
+        txtobser = new javax.swing.JScrollPane();
         TxtIndObs = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jDHoras = new com.toedter.calendar.JDateChooser();
+        buscar = new javax.swing.JButton();
+        actua = new javax.swing.JButton();
         panelPagoReg3 = new javax.swing.JPanel();
         lblIdPago3 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -57,11 +58,11 @@ public class AdminIncidencias extends javax.swing.JPanel {
         jLabel24 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         txtEmpID = new javax.swing.JTextField();
-        D1 = new javax.swing.JTextField();
-        D2 = new javax.swing.JTextField();
-        D4 = new javax.swing.JTextField();
-        D5 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtNom = new javax.swing.JTextField();
+        txtApelli = new javax.swing.JTextField();
+        txtdni = new javax.swing.JTextField();
+        txtcorreo = new javax.swing.JTextField();
+        buscadatos = new javax.swing.JButton();
         panelBusqueda = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
         tablaLista = new javax.swing.JScrollPane();
@@ -78,38 +79,38 @@ public class AdminIncidencias extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tipo Indidencia:");
 
-        CboxIndc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Ninguna", "Leve", "Moderado", "Grave" }));
-
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripcion:");
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Fecha:");
 
-        TxtIndDesc.setColumns(20);
-        TxtIndDesc.setLineWrap(true);
-        TxtIndDesc.setRows(5);
-        TxtIndDesc.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(TxtIndDesc);
-
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Observaciones");
 
+        CboxIndc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Ninguna", "Leve", "Moderado", "Grave" }));
+
+        TxtIndDescu.setColumns(20);
+        TxtIndDescu.setLineWrap(true);
+        TxtIndDescu.setRows(5);
+        TxtIndDescu.setWrapStyleWord(true);
+        TxtIndDesc.setViewportView(TxtIndDescu);
+
         TxtIndObs.setColumns(20);
         TxtIndObs.setRows(5);
-        jScrollPane2.setViewportView(TxtIndObs);
+        txtobser.setViewportView(TxtIndObs);
 
-        jButton1.setText("Actualizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buscarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Buscar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        actua.setText("Actualizar");
+        actua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                actuaActionPerformed(evt);
             }
         });
 
@@ -126,7 +127,7 @@ public class AdminIncidencias extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPagoReg4Layout.createSequentialGroup()
                         .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(actua, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelPagoReg4Layout.createSequentialGroup()
                                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
@@ -134,13 +135,13 @@ public class AdminIncidencias extends javax.swing.JPanel {
                                     .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel3))
-                                    .addComponent(jButton4))
+                                    .addComponent(buscar))
                                 .addGap(18, 18, 18)
                                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtIndDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtobser, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(CboxIndc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 26, Short.MAX_VALUE))))
         );
         panelPagoReg4Layout.setVerticalGroup(
@@ -153,19 +154,19 @@ public class AdminIncidencias extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtIndDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtobser, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(19, 19, 19)
                 .addGroup(panelPagoReg4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(buscar)
+                    .addComponent(actua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(81, 81, 81)
                 .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -189,10 +190,34 @@ public class AdminIncidencias extends javax.swing.JPanel {
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("Correo:");
 
-        jButton2.setText("Buscar Datos - Empleado");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        txtEmpID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                txtEmpIDActionPerformed(evt);
+            }
+        });
+
+        txtNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomActionPerformed(evt);
+            }
+        });
+
+        txtApelli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoActionPerformed(evt);
+            }
+        });
+
+        txtcorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcorreoActionPerformed(evt);
+            }
+        });
+
+        buscadatos.setText("Buscar Datos - Empleado");
+        buscadatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscadatosActionPerformed(evt);
             }
         });
 
@@ -205,7 +230,7 @@ public class AdminIncidencias extends javax.swing.JPanel {
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelPagoReg3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(buscadatos))
                     .addGroup(panelPagoReg3Layout.createSequentialGroup()
                         .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel33)
@@ -215,11 +240,11 @@ public class AdminIncidencias extends javax.swing.JPanel {
                             .addComponent(lblIdPago3))
                         .addGap(27, 27, 27)
                         .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(D4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(txtdni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                             .addComponent(txtEmpID)
-                            .addComponent(D2)
-                            .addComponent(D1)
-                            .addComponent(D5, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(txtApelli)
+                            .addComponent(txtNom)
+                            .addComponent(txtcorreo, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         panelPagoReg3Layout.setVerticalGroup(
@@ -231,22 +256,22 @@ public class AdminIncidencias extends javax.swing.JPanel {
                     .addComponent(txtEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(D1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(D2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApelli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(D4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPagoReg3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(D5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(buscadatos)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -367,9 +392,40 @@ public class AdminIncidencias extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void buscadatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadatosActionPerformed
+        // 1) Validar que el campo no esté vacío
+        String textoId = txtEmpID.getText().trim();
+        if (textoId.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingresa una ID.");
+            return;  
+        }
+        // 2) Validar que haya empleados cargados
+        if (gestor.getMisEmpleados().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay empleados registrados.");
+            return;
+        }
+        // 3) Parsear de forma segura
+        int id;
+        try {
+            id = Integer.parseInt(textoId);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error... El ID debe ser un número válido.");
+            return;
+        } // 4) Buscar empleado y rellenar campos
+        Empleado emp = gestor.getEmpleado(id);
+        if (emp != null) {
+            // No volvemos a setear TxtBusID, mantenemos el mismo valor
+            txtNom.setText(emp.getNombre());
+            txtApelli.setText(emp.getApellido());
+            txtdni.setText(emp.getDni());
+            txtcorreo.setText(emp.getEmail());
+        } else {
+            JOptionPane.showMessageDialog(this, "Error... No existe un empleado con ID " + id + ".");
+            txtNom.setText("");
+            txtApelli.setText("");
+            txtdni.setText("");
+            txtcorreo.setText("");
+        }    }//GEN-LAST:event_buscadatosActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
@@ -395,29 +451,42 @@ public class AdminIncidencias extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_buscarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void actuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actuaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_actuaActionPerformed
+
+    private void txtEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmpIDActionPerformed
+
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoActionPerformed
+
+    private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomActionPerformed
+
+    private void txtcorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcorreoActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CboxIndc;
-    private javax.swing.JTextField D1;
-    private javax.swing.JTextField D2;
-    private javax.swing.JTextField D4;
-    private javax.swing.JTextField D5;
-    private javax.swing.JTextArea TxtIndDesc;
+    private javax.swing.JScrollPane TxtIndDesc;
+    private javax.swing.JTextArea TxtIndDescu;
     private javax.swing.JTextArea TxtIndObs;
+    private javax.swing.JButton actua;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton buscadatos;
+    private javax.swing.JButton buscar;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDHoras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
@@ -430,14 +499,17 @@ public class AdminIncidencias extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblIdPago3;
     private javax.swing.JPanel panelBusqueda;
     private javax.swing.JPanel panelPagoReg3;
     private javax.swing.JPanel panelPagoReg4;
     private javax.swing.JScrollPane tablaLista;
     private javax.swing.JTable tbLista;
+    private javax.swing.JTextField txtApelli;
     private javax.swing.JTextField txtEmpID;
+    private javax.swing.JTextField txtNom;
+    private javax.swing.JTextField txtcorreo;
+    private javax.swing.JTextField txtdni;
+    private javax.swing.JScrollPane txtobser;
     // End of variables declaration//GEN-END:variables
 }

@@ -541,8 +541,11 @@ public class EmpAsistencias extends javax.swing.JPanel {
         try {
             int id = Integer.parseInt(txtEmpIdAsis.getText());
             if (gestor.getEmpleado(id) != null) {
+                
+                //Se utiliza un lambda para obtener las horas de los empleados,
                 List<Integer> horas = gestor.getEmpleado(id).getHorasTrabajadasPorDia()
-                    .getOrDefault(fechaComoLocalDate, new ArrayList<>());
+                    .getOrDefault(fechaComoLocalDate, new ArrayList<>()); // Si no hay horas se crea una lista vacia.
+                
                 DefaultTableModel modelo = (DefaultTableModel) tablaAsistencias.getModel();
                 modelo.setRowCount(0);
                 for (int i = 0; i < horas.size(); i++) {

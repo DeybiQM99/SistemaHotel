@@ -1,10 +1,11 @@
 package GestionEmpleados;
 //Hello Sekai
 //Goodbye Sekai
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
     
-public class Area{
+public class Area implements Serializable{
     
     // Identificador único del área
     private final int idArea;

@@ -14,9 +14,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         LblModoRol.setVisible(true);
         
-        
-        
-        
     }
 
     @SuppressWarnings("unchecked")

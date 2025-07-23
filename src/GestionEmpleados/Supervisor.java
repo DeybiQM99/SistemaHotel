@@ -1,12 +1,17 @@
 package GestionEmpleados;
 
 import GestionEmpleados.Enum.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
-public class Supervisor extends Empleado{
+public class Supervisor extends Empleado implements Serializable{
 
     // Identificador del jefe responsable
     private int idJefe;
+
+    public Supervisor() { super(); }
 
     // Constructor principal.
     public Supervisor(int idArea,
@@ -25,6 +30,11 @@ public class Supervisor extends Empleado{
               fechaIngreso, fechaTermino, fechaRenovacion, tipoContrato);
     }
 
+    public Supervisor(int idJefe, double salario, LocalDate fechaTermino, LocalDate fechaRenovacion, TipoContrato tipoContrato, int idArea, double tarifaPorHora, Map<LocalDate, List<Integer>> horasTrabajadasPorDia, Map<LocalDate, Boolean> listaAsistencias, TipoIncidencia tipoIncidencia, String textIncidencia, String textObservacion, LocalDate fechaInc) {
+        super(salario, fechaTermino, fechaRenovacion, tipoContrato, idArea, tarifaPorHora, horasTrabajadasPorDia, listaAsistencias, tipoIncidencia, textIncidencia, textObservacion, fechaInc);
+        this.idJefe = idJefe;
+    }
+    
     // Constructor alternativo: fechaIngreso al momento actual.
     public Supervisor(int idArea,
                       double tarifaPorHora,

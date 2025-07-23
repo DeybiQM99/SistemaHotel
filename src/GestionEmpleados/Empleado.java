@@ -2,10 +2,11 @@ package GestionEmpleados;
 
 import GestionEmpleados.Enum.*;
 import Interfaz.IAsistencia;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class Empleado extends Entidad implements IAsistencia {
+public abstract class Empleado extends Entidad implements IAsistencia, Serializable {
 
     // Salario calculado
     protected double salario;
@@ -26,10 +27,10 @@ public abstract class Empleado extends Entidad implements IAsistencia {
     protected double tarifaPorHora;
 
     // Horas trabajadas cada día de la semana
-    protected final Map<LocalDate, List<Integer>> horasTrabajadasPorDia = new HashMap<>();
+    protected final Map<LocalDate, List<Integer>> horasTrabajadasPorDia;
 
     // Mapa de asistencia: fecha -> presente (true) o falta (false)
-    protected final Map<LocalDate, Boolean> listaAsistencias = new HashMap<>();
+    protected final Map<LocalDate, Boolean> listaAsistencias;
 
     // Tipo de Incidencia
     protected TipoIncidencia tipoIncidencia;
@@ -42,6 +43,12 @@ public abstract class Empleado extends Entidad implements IAsistencia {
     
     // Fecha Incidencia
     protected LocalDate fechaInc;
+    
+    public Empleado(){
+        super();
+        this.horasTrabajadasPorDia = null;
+        this.listaAsistencias = null;
+    }
     
     // Constructor completo.
     public Empleado(int idArea,
@@ -62,8 +69,36 @@ public abstract class Empleado extends Entidad implements IAsistencia {
         this.tipoIncidencia = TipoIncidencia.NINGUNA;
         this.idArea = idArea;
         this.tarifaPorHora = tarifaPorHora;
+        this.horasTrabajadasPorDia = new HashMap<>();
+        this.listaAsistencias = new HashMap<>();
     }
 
+    public Empleado(double salario,
+            LocalDate fechaTermino,
+            LocalDate fechaRenovacion,
+            TipoContrato tipoContrato,
+            int idArea,
+            double tarifaPorHora,
+            Map<LocalDate, List<Integer>> horasTrabajadasPorDia,
+            Map<LocalDate, Boolean> listaAsistencias,
+            TipoIncidencia tipoIncidencia,
+            String textIncidencia,
+            String textObservacion,
+            LocalDate fechaInc) {
+        this.salario = salario;
+        this.fechaTermino = fechaTermino;
+        this.fechaRenovacion = fechaRenovacion;
+        this.tipoContrato = tipoContrato;
+        this.idArea = idArea;
+        this.tarifaPorHora = tarifaPorHora;
+        this.horasTrabajadasPorDia = horasTrabajadasPorDia;
+        this.listaAsistencias = listaAsistencias;
+        this.tipoIncidencia = tipoIncidencia;
+        this.textIncidencia = textIncidencia;
+        this.textObservacion = textObservacion;
+        this.fechaInc = fechaInc;
+    }
+    
     // Constructor alternativo sin fechaIngreso explícita (se toma el momento actual).
     public Empleado(int idArea,
                     double tarifaPorHora,
@@ -82,6 +117,8 @@ public abstract class Empleado extends Entidad implements IAsistencia {
         this.tipoIncidencia = TipoIncidencia.NINGUNA;
         this.idArea = idArea;
         this.tarifaPorHora = tarifaPorHora;
+        this.horasTrabajadasPorDia = new HashMap<>();
+        this.listaAsistencias = new HashMap<>();
     }
 
     //Marca al empleado como despedido y actualiza la fecha de término.

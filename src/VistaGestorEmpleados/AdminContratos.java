@@ -616,6 +616,8 @@ public class AdminContratos extends javax.swing.JPanel {
                 TxtEmpID.setEditable(true);
                 jButton1.setText("Buscar");
                 limpiarFechas();
+        
+                gestor.guardarDatos();
             }
 
         } else {

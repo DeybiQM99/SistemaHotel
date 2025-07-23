@@ -102,6 +102,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
         lbReloj = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(17, 50, 77));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelBusqueda.setBackground(new java.awt.Color(255, 255, 255));
         panelBusqueda.setBorder(javax.swing.BorderFactory.createTitledBorder("PanelBusqueda"));
@@ -192,6 +193,8 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        add(panelBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 303, -1, -1));
+
         panelDatos.setBackground(new java.awt.Color(255, 255, 255));
         panelDatos.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Empleado"));
 
@@ -278,6 +281,8 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, 285));
+
         panelAreas.setBackground(new java.awt.Color(255, 255, 255));
         panelAreas.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar día"));
 
@@ -301,6 +306,8 @@ public class EmpAsistencias extends javax.swing.JPanel {
                     .addComponent(jDHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
+
+        add(panelAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 275, -1));
 
         panelAreas1.setBackground(new java.awt.Color(255, 255, 255));
         panelAreas1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar Hora: Entrada"));
@@ -338,6 +345,8 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        add(panelAreas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 275, -1));
+
         btnAsistencias.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         btnAsistencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reloj.png"))); // NOI18N
         btnAsistencias.setText("Verificar Horas");
@@ -346,6 +355,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 btnAsistenciasActionPerformed(evt);
             }
         });
+        add(btnAsistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 216, 214, 75));
 
         panelAreas4.setBackground(new java.awt.Color(255, 255, 255));
         panelAreas4.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar Hora:  Salida"));
@@ -383,6 +393,8 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        add(panelAreas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, -1));
+
         lbReloj.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         lbReloj.setForeground(new java.awt.Color(255, 0, 51));
         lbReloj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -405,49 +417,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(panelAreas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelAreas4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelAreas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAsistencias, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                            .addComponent(panelReloj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(9, 9, 9))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelAreas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelAreas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
-                        .addComponent(panelAreas4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(panelReloj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAsistencias, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(panelReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 6, 214, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAsistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsistenciasActionPerformed
@@ -507,6 +477,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 txtEmpIdAsis.setEditable(true);
                 jDHoras.setEnabled(true);
                 reset();
+                gestor.guardarDatos();
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Error... Formato inválido.");
             }

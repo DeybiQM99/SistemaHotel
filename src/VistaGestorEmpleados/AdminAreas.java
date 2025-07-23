@@ -293,6 +293,8 @@ GestorEmpleados gestor;
             gestor.addArea(nuevaArea);
             JOptionPane.showMessageDialog(this,"Area correctamente registrada.");
             limpiarcampos();
+        
+            gestor.guardarDatos();
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this,"El ID del area debe ser un numero.");
         }catch(Exception e){

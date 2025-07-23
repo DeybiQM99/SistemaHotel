@@ -544,6 +544,8 @@ public class AdminNominas extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Pago registrado con éxito. ID Pago: " + idPago);
         refrescarTabla();
         limpiarCampos();
+        
+        gestor.guardarDatos();
     }//GEN-LAST:event_BtnRegistarActionPerformed
 
     private void btnBuscarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPagoActionPerformed
@@ -702,6 +704,8 @@ public class AdminNominas extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, 
             "Se realizó correctamente el pago (" + idPago + ").");
         refrescarTabla();
+        
+        gestor.guardarDatos();
     }//GEN-LAST:event_btnAprobarActionPerformed
 
     

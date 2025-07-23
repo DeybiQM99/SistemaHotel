@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public abstract class Entidad {
     // Identificador único de la entidad
-    protected final int id;
+    protected int id;
 
     // Nombre del empleado
     protected String nombre;
@@ -26,6 +26,10 @@ public abstract class Entidad {
     protected static final DateTimeFormatter FORMATO_FECHA =
         DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
+    public Entidad() {
+        
+    }
+    
     // Constructor principal.
     public Entidad(int id,
                    String nombre,
@@ -61,6 +65,9 @@ public abstract class Entidad {
     // Getters y Setters
 
     //Identificador único para Id (solo lectura).
+    
+    public void setId(int id) { this.id = id; }
+
     public int getId() { return id; }
 
     public String getNombre() { return nombre; }

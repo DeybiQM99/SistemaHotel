@@ -27,6 +27,8 @@ public class MenuGerente extends javax.swing.JFrame {
     public MenuGerente() {
         initComponents();
         
+        gestor = new GestorEmpleados();
+        
         Icon miIcono = new ImageIcon(new ImageIcon(getClass().getResource("/imagenes/logoHotelOscuro.jpg")).getImage().getScaledInstance(lbImagen.getWidth(), lbImagen.getHeight(), 0));
         lbImagen.setIcon(miIcono);
         lbImagen.setOpaque(true);

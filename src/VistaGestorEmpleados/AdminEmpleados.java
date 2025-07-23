@@ -763,6 +763,8 @@ public class AdminEmpleados extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this,
             "Empleado registrado correctamente.");
         refrescarTablaEmpleados();
+        
+        gestor.guardarDatos();
     }//GEN-LAST:event_BntRegistrarActionPerformed
 
     private void btnDespedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDespedirActionPerformed
@@ -820,6 +822,7 @@ public class AdminEmpleados extends javax.swing.JPanel {
         // 7) Limpiar campos de búsqueda
         limpiarCamposDespedir();
         
+        gestor.guardarDatos();
     }//GEN-LAST:event_btnDespedirActionPerformed
 
     private void BtnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModActionPerformed

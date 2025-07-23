@@ -1,0 +1,16 @@
+SUPERVISOR,202,Laura,Herrera,laura.herrera@empresa.com,22345679B,0.0,,,INDEFINIDO,1,26.0,,,NINGUNA,,,,302
+SUPERVISOR,204,Eduardo,Salinas,eduardo.salinas@empresa.com,22345681D,0.0,,,INDEFINIDO,2,28.0,,,NINGUNA,,,,304
+OPERARIO,102,Ana,Gómez,ana.gomez@empresa.com,12345679B,0.0,2025-02-05,,TEMPORAL,1,16.0,2025-07-23:1|8;,2025-07-23:true;,NINGUNA,,,,202
+OPERARIO,101,Luis,Pérez,luis.perez@empresa.com,12345678A,0.0,2025-01-10,,TEMPORAL,1,15.0,2025-07-23:1|5|6|7|9|10|12;,2025-07-23:true;,NINGUNA,,,,201
+JEFE,303,Miguel,Ramos,miguel.ramos@empresa.com,32345680C,0.0,2025-03-01,2024-12-31,RENOVABLE,2,42.0,,,NINGUNA,,,,0
+SUPERVISOR,203,Sofía,Vega,sofia.vega@empresa.com,22345680C,0.0,,,INDEFINIDO,2,27.0,,,NINGUNA,,,,303
+OPERARIO,105,Jorge,Torres,jorge.torres@empresa.com,12345682E,0.0,2025-05-15,,TEMPORAL,3,19.0,,,NINGUNA,,,,205
+JEFE,302,Verónica,Salazar,veronica.salazar@empresa.com,32345679B,0.0,2025-02-01,2024-12-31,RENOVABLE,1,41.0,,,NINGUNA,,,,0
+JEFE,15,Nallely,Garayar,Nallely@gmail.com,666,0.0,,,INDEFINIDO,3,10.0,,,NINGUNA,,,,0
+JEFE,304,Antonia,Flores,antonia.flores@empresa.com,32345681D,0.0,2025-04-01,2024-12-31,RENOVABLE,2,43.0,,,NINGUNA,,,,0
+JEFE,301,Fernando,Ortiz,fernando.ortiz@empresa.com,32345678A,0.0,2025-01-01,2024-12-31,RENOVABLE,1,40.0,,,LEVE,INCUMPLIMIENTO DE NORMAS.,Mejorar urgentemente.,2025-07-23,0
+OPERARIO,103,Carlos,López,carlos.lopez@empresa.com,12345680C,0.0,2025-03-01,,TEMPORAL,2,17.0,2025-07-23:2|4|5|7|8|10|13;,2025-07-23:true;,NINGUNA,,,,203
+SUPERVISOR,201,Ricardo,Díaz,ricardo.diaz@empresa.com,22345678A,0.0,,,INDEFINIDO,1,25.0,,,NINGUNA,,,,301
+OPERARIO,104,María,Ramírez,maria.ramirez@empresa.com,12345681D,0.0,2025-04-10,,TEMPORAL,2,18.0,,,NINGUNA,,,,204
+JEFE,305,Ricardo,Blanco,ricardo.blanco@empresa.com,32345682E,0.0,2025-05-01,2024-12-31,RENOVABLE,3,44.0,,,NINGUNA,,,,0
+SUPERVISOR,205,Patricia,Muñoz,patricia.munoz@empresa.com,22345682E,0.0,,,INDEFINIDO,3,29.0,,,NINGUNA,,,,305

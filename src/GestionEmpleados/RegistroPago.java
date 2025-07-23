@@ -1,8 +1,9 @@
 package GestionEmpleados;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class RegistroPago {
+public class RegistroPago implements Serializable {
 
     // Identificador único del registro de pago
     private final int idPago;

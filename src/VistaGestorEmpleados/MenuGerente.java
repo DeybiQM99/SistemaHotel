@@ -288,7 +288,7 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratoActionPerformed
         // Crear instancia del nuevo panel
-        AdminContratos AdminContratos = new AdminContratos();
+        AdminContratos AdminContratos = new AdminContratos(gestor);
         AdminContratos.setPreferredSize(new Dimension(840,600));
 
         panelContenido.removeAll();

@@ -1032,8 +1032,6 @@ public class AdminEmpleados extends javax.swing.JPanel {
                                 cargo,
                                 emp.getTipoContrato()
                             }); 
-                            // Asignar el modelo a la tabla:
-                            tbLista.setModel(modelo);
                         } else {
                             JOptionPane.showMessageDialog(this, "Error... No existe el empleado.");
                         }
@@ -1043,72 +1041,81 @@ public class AdminEmpleados extends javax.swing.JPanel {
                 }
                 break;
             case 1 :
-                String nombreCargo = CboxBusqCargo.getSelectedItem().toString();
+                if(CboxBusqCargo.getSelectedItem().toString().equals("Seleccionar")){
+                    // Agregar filas de empleados
+                    refrescarTablaEmpleados();
+                } else{
                 
-                // Agregar filas de empleados
-                for (Empleado emp : gestor.getMisEmpleados()){
-                    if (emp != null) {
-                        boolean coincide = false;
-                        switch (nombreCargo) {
-                            case "OPERARIO":
-                                coincide = emp instanceof Operario;
-                                break;
-                            case "SUPERVISOR":
-                                coincide = emp instanceof Supervisor;
-                                break;
-                            case "JEFE":
-                                coincide = emp instanceof Jefe;
-                                break;
-                            case "TODOS":
-                                coincide = true;
-                                break;
-                        }
+                    String nombreCargo = CboxBusqCargo.getSelectedItem().toString();
 
-                        String cargo = emp instanceof Operario ? "OPERARIO" :
-                                    emp instanceof Supervisor ? "SUPERVISOR" :
-                                    emp instanceof Jefe ? "JEFE" : "DESCONOCIDO";
+                    // Agregar filas de empleados
+                    for (Empleado emp : gestor.getMisEmpleados()){
+                        if (emp != null) {
+                            boolean coincide = false;
+                            switch (nombreCargo) {
+                                case "OPERARIO":
+                                    coincide = emp instanceof Operario;
+                                    break;
+                                case "SUPERVISOR":
+                                    coincide = emp instanceof Supervisor;
+                                    break;
+                                case "JEFE":
+                                    coincide = emp instanceof Jefe;
+                                    break;
+                                case "TODOS":
+                                    coincide = true;
+                                    break;
+                            }
 
-                        
-                        if (coincide) {
-                            modelo.addRow(new Object[]{
-                                emp.getId(),
-                                emp.getNombre() + " " + emp.getApellido(),
-                                cargo,
-                                emp.getTipoContrato()
-                            });
+                            String cargo = emp instanceof Operario ? "OPERARIO" :
+                                        emp instanceof Supervisor ? "SUPERVISOR" :
+                                        emp instanceof Jefe ? "JEFE" : "DESCONOCIDO";
+
+
+                            if (coincide) {
+                                modelo.addRow(new Object[]{
+                                    emp.getId(),
+                                    emp.getNombre() + " " + emp.getApellido(),
+                                    cargo,
+                                    emp.getTipoContrato()
+                                });
+                            }
                         }
                     }
                 }
                 break;
             case 2: 
-                // Agregar filas de empleados
-                for (Empleado emp : gestor.getMisEmpleados()){
+                if(CboxBusContr.getSelectedItem().toString().equals("Seleccionar")){
+                    // Agregar filas de empleados
+                    refrescarTablaEmpleados();
+                } else {
+                    // Agregar filas de empleados
+                    for (Empleado emp : gestor.getMisEmpleados()){
 
-                    String TipoContratoEmp = CboxBusContr.getSelectedItem().toString();
+                        String TipoContratoEmp = CboxBusContr.getSelectedItem().toString();
 
-                    TipoContrato tipoContr = getTipoContrato(TipoContratoEmp);
+                        TipoContrato tipoContr = getTipoContrato(TipoContratoEmp);
 
-                    if(emp.getTipoContrato() ==  tipoContr){
-                        String cargo = emp instanceof Operario ? "OPERARIO" :
-                                    emp instanceof Supervisor ? "SUPERVISOR" :
-                                    emp instanceof Jefe ? "JEFE" : "DESCONOCIDO";
+                        if(emp.getTipoContrato() ==  tipoContr){
+                            String cargo = emp instanceof Operario ? "OPERARIO" :
+                                        emp instanceof Supervisor ? "SUPERVISOR" :
+                                        emp instanceof Jefe ? "JEFE" : "DESCONOCIDO";
 
-                        if (emp != null) {
-                            model.addRow(new Object[]{
-                                emp.getId(),
-                                emp.getNombre() + " " + emp.getApellido(),
-                                cargo,
-                                emp.getTipoContrato()
-                            }); 
-                        // Asignar el modelo a la tabla:
-                        tbLista.setModel(modelo);
+                            if (emp != null) {
+                                model.addRow(new Object[]{
+                                    emp.getId(),
+                                    emp.getNombre() + " " + emp.getApellido(),
+                                    cargo,
+                                    emp.getTipoContrato()
+                                });
+                            }
                         }
                     }
                 }
-            
             break;
-            
         } 
+        // Asignar el modelo a la tabla:
+        tbLista.setModel(modelo);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void CboxModContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CboxModContActionPerformed

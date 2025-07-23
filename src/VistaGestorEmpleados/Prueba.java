@@ -113,7 +113,7 @@ public class Prueba {
         gestor.addRegistroPago(new RegistroPago(10, 102, LocalDate.of(2025, 5, 10), 470.0,20,39, RegistroPago.MedioPago.TRANSFERENCIA));
         
         //Areas para los empleados
-        gestor.addArea(new Area(1, "Producción"));
+        gestor.addArea(new Area(1, "Recepcion"));
         gestor.getArea(1).addEmpleado(gestor.getEmpleado(101));
         gestor.getArea(1).addEmpleado(gestor.getEmpleado(102));
         gestor.getArea(1).addEmpleado(gestor.getEmpleado(201));
@@ -122,7 +122,7 @@ public class Prueba {
         gestor.getArea(1).addEmpleado(gestor.getEmpleado(302));
         
         
-        gestor.addArea(new Area(2, "Calidad"));
+        gestor.addArea(new Area(2, "Limpieza"));
         gestor.getArea(2).addEmpleado(gestor.getEmpleado(103));
         gestor.getArea(2).addEmpleado(gestor.getEmpleado(104));
         gestor.getArea(2).addEmpleado(gestor.getEmpleado(203));
@@ -131,7 +131,7 @@ public class Prueba {
         gestor.getArea(2).addEmpleado(gestor.getEmpleado(304));
         
         
-        gestor.addArea(new Area(3, "Administración"));
+        gestor.addArea(new Area(3, "Cocina"));
         gestor.getArea(3).addEmpleado(gestor.getEmpleado(105));
         gestor.getArea(3).addEmpleado(gestor.getEmpleado(205));
         gestor.getArea(3).addEmpleado(gestor.getEmpleado(305));

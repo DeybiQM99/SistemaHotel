@@ -1,5 +1,6 @@
 package VistaHotel;
 
+import ConexionBaseDeDatos.ConexionBD;
 import GestionReservas.Cliente;
 
 import java.sql.Connection;
@@ -15,72 +16,45 @@ import java.sql.Statement;
 
 public class EditarReserva extends javax.swing.JFrame {
 
+    private String dniGlobal;
+    private String fechaEntradaGlobal;
+
     public EditarReserva() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        // --------- AQUI: PON LOS LISTENERS DE FECHAS ---------
-        jDateChooserEntrada.getDateEditor().addPropertyChangeListener(evt -> {
-            if ("date".equals(evt.getPropertyName())) {
-                calcularTotalReserva();
-            }
-        });
-
-        jDateChooserSalida.getDateEditor().addPropertyChangeListener(evt -> {
-            if ("date".equals(evt.getPropertyName())) {
-                calcularTotalReserva();
-            }
-        });
 
     }
-    private ReservarHabitacion panelReservarHabitacion;
 
-    // Nuevo constructor que recibe datos
-    public EditarReserva(String numero, String tipo, String precio, ReservarHabitacion panel) {
+    public EditarReserva(String nombre, String apellido, String dni,
+            String telefono, String correo, String direccion,
+            String numHabitacion, String tipo, String descripcion, String precioPorNoche, String estado,
+            String fechaEntrada, String fechaSalida, String precioTotal) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.panelReservarHabitacion = panel;
-        // Asume que tienes JTextFields con estos nombres en Inscripcion
-        TxtNumHabitacion.setText(numero);
+
+        // CLIENTE
+        TxtNombre.setText(nombre);
+        TxtApellido.setText(apellido);
+        TxtDni.setText(dni);
+        TxtTelefono.setText(telefono);
+        TxtCorreo.setText(correo);
+        TxtDireccion.setText(direccion);
+
+        // HABITACIÓN
+        TxtNumHabitacion.setText(numHabitacion);
         TxtTipoH.setText(tipo);
-        TxtPrecioPorNoche.setText(precio);
+        TxtDescripcion.setText(descripcion);
+        TxtPrecioPorNoche.setText(precioPorNoche);
+        CbEstado.setSelectedItem(estado);
 
-        // --------- AQUI TAMBIÉN: PON LOS LISTENERS DE FECHAS ---------
-        jDateChooserEntrada.getDateEditor().addPropertyChangeListener(evt -> {
-            if ("date".equals(evt.getPropertyName())) {
-                calcularTotalReserva();
-            }
-        });
+        // RESERVA
+        jDateChooserEntrada.setDate(java.sql.Date.valueOf(fechaEntrada));
+        jDateChooserSalida.setDate(java.sql.Date.valueOf(fechaSalida));
+        TxtResPrecio.setText(precioTotal);
 
-        jDateChooserSalida.getDateEditor().addPropertyChangeListener(evt -> {
-            if ("date".equals(evt.getPropertyName())) {
-                calcularTotalReserva();
-            }
-        });
+        // Guardar variables para actualizar después
+        dniGlobal = dni;
+        fechaEntradaGlobal = fechaEntrada;
 
-    }
-
-    // --------- AQUI: MÉTODO PARA CALCULAR EL TOTAL ---------
-    private void calcularTotalReserva() {
-        java.util.Date fechaEntradaUtil = jDateChooserEntrada.getDate();
-        java.util.Date fechaSalidaUtil = jDateChooserSalida.getDate();
-
-        if (fechaEntradaUtil != null && fechaSalidaUtil != null) {
-            long diferenciaMillis = fechaSalidaUtil.getTime() - fechaEntradaUtil.getTime();
-            int nroNoches = (int) (diferenciaMillis / (1000 * 60 * 60 * 24));
-
-            if (nroNoches <= 0) {
-                TxtResPrecio.setText("0.00");
-                return;
-            }
-
-            try {
-                double precioPorNoche = Double.parseDouble(TxtPrecioPorNoche.getText());
-                double total = nroNoches * precioPorNoche;
-                TxtResPrecio.setText(String.format("%.2f", total));
-            } catch (NumberFormatException ex) {
-                TxtResPrecio.setText("Precio inválido");
-            }
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -92,7 +66,7 @@ public class EditarReserva extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        BtnRegistrar = new javax.swing.JButton();
+        BtnGuardarCambios = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         BtnRegresar1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -169,21 +143,21 @@ public class EditarReserva extends javax.swing.JFrame {
         jLabel4.setText("DNI");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, 20));
 
-        BtnRegistrar.setBackground(new java.awt.Color(17, 50, 77));
-        BtnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        BtnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
-        BtnRegistrar.setText("GUARDAR");
-        BtnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnGuardarCambios.setBackground(new java.awt.Color(17, 50, 77));
+        BtnGuardarCambios.setForeground(new java.awt.Color(255, 255, 255));
+        BtnGuardarCambios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
+        BtnGuardarCambios.setText("GUARDAR");
+        BtnGuardarCambios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnRegistrarMouseClicked(evt);
+                BtnGuardarCambiosMouseClicked(evt);
             }
         });
-        BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        BtnGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegistrarActionPerformed(evt);
+                BtnGuardarCambiosActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 150, 40));
+        jPanel1.add(BtnGuardarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 150, 40));
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -364,159 +338,56 @@ public class EditarReserva extends javax.swing.JFrame {
         this.dispose(); // finaliza el  jframe pero no cierra el programa por completo
     }//GEN-LAST:event_BtnRegresar1MouseClicked
 
-    private void BtnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarMouseClicked
-            // Leer datos CLIENTES
-        String nombre = TxtNombre.getText();
-        String apellido = TxtApellido.getText();
-        String dni = TxtDni.getText();
-        String telefono = TxtTelefono.getText();
-        String correo = TxtCorreo.getText();
-        String direccion = TxtDireccion.getText();
-            // Leer datos HABITACION
-        String numHabitacion = TxtNumHabitacion.getText();
-        String precioPorNoche = TxtPrecioPorNoche.getText();
-        String estadoSeleccionado = (String) CbEstado.getSelectedItem();
-        String tipoHabitacion = TxtTipoH.getText();
-        String descripcion = TxtDescripcion.getText();
-            // Leer fechas desde JDateChooser
-        java.util.Date fechaEntradaUtil = jDateChooserEntrada.getDate();
-        java.util.Date fechaSalidaUtil = jDateChooserSalida.getDate();
+    private void BtnGuardarCambiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnGuardarCambiosMouseClicked
+        try (Connection con = ConexionBD.conectar()) {
+            java.util.Date nuevaFechaSalidaUtil = jDateChooserSalida.getDate();
 
-        String precio = TxtResPrecio.getText();
-
-        if (fechaEntradaUtil == null || fechaSalidaUtil == null) {
-            JOptionPane.showMessageDialog(null, "Selecciona ambas fechas de entrada y salida.");
-            return;
-        }
-
-        java.sql.Date fechaEntrada = new java.sql.Date(fechaEntradaUtil.getTime());
-        java.sql.Date fechaSalida = new java.sql.Date(fechaSalidaUtil.getTime());
-
-        // Validar que dni sea número (ajusta si DNI es otro tipo)
-        int dniInt;
-        try {
-            dniInt = Integer.parseInt(dni);
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "DNI debe ser un número válido.");
-            return;
-        }
-
-        // Crear objeto Cliente
-        Cliente nuevoCliente = new Cliente(nombre, apellido, telefono, correo, Integer.parseInt(dni), direccion);
-        nuevoCliente.setDireccion(direccion); // Asignamos la dirección
-        // Conexión y guardado en base de datos
-        try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
-            if (conn != null) {
-                // insertar datos en la tabla CLIENTES
-                String sql = "INSERT INTO Clientes (nombre, apellido, dni_pasaporte, correo, telefono, direccion) VALUES (?, ?, ?, ?, ?, ?)";
-                java.sql.PreparedStatement stmtCliente = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                stmtCliente.setString(1, nuevoCliente.getNombre());
-                stmtCliente.setString(2, nuevoCliente.getApellido());
-                stmtCliente.setString(3, String.valueOf(nuevoCliente.getDni()));
-                stmtCliente.setString(4, nuevoCliente.getCorreo());
-                stmtCliente.setString(5, nuevoCliente.getTelefono());
-                stmtCliente.setString(6, nuevoCliente.getDireccion());
-                int filasCliente = stmtCliente.executeUpdate();
-                if (filasCliente == 0) {
-                    JOptionPane.showMessageDialog(null, "Error al insertar cliente.");
-                    return;
-                }
-
-                // Obtener id_cliente generado
-                int idCliente = -1;
-                try (ResultSet generatedKeys = stmtCliente.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        idCliente = generatedKeys.getInt(1);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo obtener el ID del cliente.");
-                        return;
-                    }
-                }
-                // insertar datos en la tabla HABITACIONES
-                String sqlHabitacion = "INSERT INTO Habitaciones (numero_habitacion, tipo, descripcion, precio_por_noche, estado) VALUES (?, ?, ?, ?, ?)";
-                PreparedStatement stmtHabitacion = conn.prepareStatement(sqlHabitacion);
-                stmtHabitacion.setString(1, numHabitacion);                          // Ej: "101"
-                stmtHabitacion.setString(2, tipoHabitacion);                         // Ej: "Suite"
-                stmtHabitacion.setString(3, descripcion);                            // Ej: "Vista al mar"
-                stmtHabitacion.setDouble(4, Double.parseDouble(precioPorNoche));    // Ej: "250.00"
-                stmtHabitacion.setString(5, estadoSeleccionado);                    // SELECCION DEL CB DE ESTADO
-                stmtHabitacion.executeUpdate();
-                // Definir estado reserva (ajusta este id segun tus datos en Estados_Reserva)
-                int idEstadoReserva = 1; // por ejemplo: 1 = "Reservado"
-                // INSERTAR  TABLA RESERVA
-                String sqlReserva = "INSERT INTO Reservas (id_cliente, fecha_entrada, fecha_salida, id_estado) VALUES (?, ?, ?, ?)";
-                PreparedStatement stmtReserva = conn.prepareStatement(sqlReserva, Statement.RETURN_GENERATED_KEYS);
-                stmtReserva.setInt(1, idCliente);
-                stmtReserva.setDate(2, fechaEntrada);
-                stmtReserva.setDate(3, fechaSalida);
-                stmtReserva.setInt(4, idEstadoReserva);
-                stmtReserva.executeUpdate();
-                // INSERTAR EN TABLA DETALLE RESERVA
-
-                // Obtener id_reserva generado
-                int idReserva = -1;
-                try (ResultSet generatedReservaKeys = stmtReserva.getGeneratedKeys()) {
-                    if (generatedReservaKeys.next()) {
-                        idReserva = generatedReservaKeys.getInt(1);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo obtener el ID de la reserva.");
-                        return;
-                    }
-                }
-
-                // Obtener id_habitacion por número de habitación
-                int idHabitacion = -1;
-                String sqlGetHabitacionId = "SELECT id_habitacion FROM Habitaciones WHERE numero_habitacion = ?";
-                try (PreparedStatement stmtGetHabitacion = conn.prepareStatement(sqlGetHabitacionId)) {
-                    stmtGetHabitacion.setString(1, numHabitacion);
-                    ResultSet rsHabitacion = stmtGetHabitacion.executeQuery();
-                    if (rsHabitacion.next()) {
-                        idHabitacion = rsHabitacion.getInt("id_habitacion");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró la habitación recién insertada.");
-                        return;
-                    }
-                }
-
-                // Calcular número de noches
-                long diferenciaMillis = fechaSalida.getTime() - fechaEntrada.getTime();
-                int nroNoches = (int) (diferenciaMillis / (1000 * 60 * 60 * 24));
-                double precioDouble;
-                try {
-                    precioDouble = Double.parseDouble(precio);
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "El precio ingresado no es válido.");
-                    return;
-                }
-
-                // Insertar en tabla Detalle_Reserva
-                String sqlDetalle = "INSERT INTO Detalle_Reserva ( id_reserva, id_habitacion, precio, nro_noches) VALUES (?, ?, ?, ?)";
-
-                PreparedStatement stmtDetalle = conn.prepareStatement(sqlDetalle);
-                stmtDetalle.setInt(1, idReserva);
-                stmtDetalle.setInt(2, idHabitacion);
-                stmtDetalle.setDouble(3, Double.parseDouble(precio));
-                stmtDetalle.setInt(4, nroNoches);
-                stmtDetalle.executeUpdate();
-
-                // Suponiendo que estás en Inscripcion.java y quieres notificar a ReservarHabitacion:
-                if (panelReservarHabitacion != null) {
-                    panelReservarHabitacion.actualizarColorPanelPorEstado(numHabitacion, estadoSeleccionado);
-                }
-
-                javax.swing.JOptionPane.showMessageDialog(null, "Habitaciones registrado correctamente.");
-                this.dispose();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+            if (nuevaFechaSalidaUtil == null) {
+                JOptionPane.showMessageDialog(null, "Seleccione la nueva fecha de salida.");
+                return;
             }
-        } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Error al registrar habitacionessss: " + e.getMessage());
-        }
-    }//GEN-LAST:event_BtnRegistrarMouseClicked
 
-    private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
+            String nuevaFechaSalida = new java.sql.Date(nuevaFechaSalidaUtil.getTime()).toString();
+
+            // Buscar ID de reserva
+            String sqlBuscar = "SELECT r.id_reserva FROM Clientes c "
+                    + "JOIN Reservas r ON c.id_cliente = r.id_cliente "
+                    + "WHERE c.dni_pasaporte = ? AND r.fecha_entrada = ?";
+            PreparedStatement psBuscar = con.prepareStatement(sqlBuscar);
+            psBuscar.setString(1, dniGlobal);
+            psBuscar.setString(2, fechaEntradaGlobal);
+            ResultSet rs = psBuscar.executeQuery();
+
+            if (rs.next()) {
+                int idReserva = rs.getInt("id_reserva");
+
+                // Actualizar fecha de salida
+                String sqlActualizar = "UPDATE Reservas SET fecha_salida = ? WHERE id_reserva = ?";
+                PreparedStatement psActualizar = con.prepareStatement(sqlActualizar);
+                psActualizar.setString(1, nuevaFechaSalida);
+                psActualizar.setInt(2, idReserva);
+
+                int filas = psActualizar.executeUpdate();
+
+                if (filas > 0) {
+                    JOptionPane.showMessageDialog(null, "Fecha de salida actualizada correctamente.");
+                    this.dispose(); // opcional: cerrar la ventana
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo actualizar la fecha de salida.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró la reserva con el DNI y fecha de entrada.");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_BtnGuardarCambiosMouseClicked
+
+    private void BtnGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarCambiosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnRegistrarActionPerformed
+    }//GEN-LAST:event_BtnGuardarCambiosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -555,7 +426,7 @@ public class EditarReserva extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnRegistrar;
+    private javax.swing.JButton BtnGuardarCambios;
     private javax.swing.JButton BtnRegresar1;
     private javax.swing.JComboBox<String> CbEstado;
     private javax.swing.JTextField TxtApellido;

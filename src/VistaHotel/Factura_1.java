@@ -6,6 +6,7 @@ import GestionReservas.FacturaDAO;
 import GestionReservas.GestorFacturas;
 import GestionReservas.Pago;
 import GestionReservas.PagoDAO;
+import Interfaz.Bloqueable;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
@@ -21,14 +22,32 @@ import com.lowagie.text.pdf.*;
 import java.awt.Color;
 import java.math.BigDecimal;
 
-public class Factura_1 extends javax.swing.JFrame {
+public class Factura_1 extends javax.swing.JFrame implements Bloqueable {
 
     public Factura_1() {
         initComponents();
+         bloquearCampos();
         this.setLocationRelativeTo(null);
         inicializarMetodosPago();        // Llenar el ComboBox
     }
-
+    @Override
+    public void bloquearCampos() {
+        TxtFa_Nombre.setEditable(false);
+        TxtFa_DNI.setEditable(false);
+        TxtFa_Telefono.setEditable(false);
+        TxtFa_Correo.setEditable(false);
+        TxtFa_ReservaID.setEditable(false);
+        TxtFa_Entrada.setEditable(false);
+        TxtFa_FechaReserva.setEditable(false);
+        TxtFa_Salida.setEditable(false);
+        TxtFa_Nhab.setEditable(false);
+        TxtFa_Tipo.setEditable(false);
+        TxtFa_Precio.setEditable(false); 
+        TxtFa_SubTotal.setEditable(false); 
+        TxtFa_IGV.setEditable(false); 
+        TxtFa_Total.setEditable(false); 
+    }
+    
     private void inicializarMetodosPago() {
         CboFa_MetodoPago.addItem("Efectivo");
         CboFa_MetodoPago.addItem("Tarjeta");
@@ -40,11 +59,12 @@ public class Factura_1 extends javax.swing.JFrame {
         modelo.setRowCount(0);
 
         String sql = """
-        SELECT s.nombre_servicio, rs.cantidad, (s.precio * rs.cantidad) AS subtotal
-        FROM Reserva_Servicios rs
-        JOIN Servicios_Adicionales s ON rs.id_servicio = s.id_servicio
-        WHERE rs.id_reserva = ?
-    """;
+SELECT p.nombre AS nombre_servicio, dv.cantidad, (dv.precio_unitario * dv.cantidad) AS subtotal
+FROM Ventas v
+JOIN Detalle_Venta dv ON v.id_venta = dv.id_venta
+JOIN Productos p ON dv.id_producto = p.id_producto
+WHERE v.id_reserva = ?
+""";
 
         try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -90,6 +110,35 @@ public class Factura_1 extends javax.swing.JFrame {
         }
     }
 
+    //Liberar Habitacion
+    private void liberarHabitacion(int idReserva) {
+    String sql = """
+        UPDATE Habitaciones
+        SET estado = 'libre'
+        WHERE id_habitacion = (
+            SELECT id_habitacion
+            FROM Reservas
+            WHERE id_reserva = ?
+        )
+    """;
+
+    try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+        ps.setInt(1, idReserva);
+        int filasActualizadas = ps.executeUpdate();
+        if (filasActualizadas > 0) {
+            System.out.println("Habitación liberada correctamente.");
+        } else {
+            System.out.println("No se pudo liberar la habitación.");
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al liberar habitación.");
+    }
+}
+    
     public void generarPDF(int idReserva) {
         try {
             Document doc = new Document(PageSize.A4, 50, 50, 50, 50);
@@ -278,17 +327,9 @@ public class Factura_1 extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Salida:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 84, -1));
-
-        TxtFa_Entrada.setEnabled(false);
         jPanel2.add(TxtFa_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, -1));
-
-        TxtFa_ReservaID.setEnabled(false);
         jPanel2.add(TxtFa_ReservaID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, -1));
-
-        TxtFa_Salida.setEnabled(false);
         jPanel2.add(TxtFa_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 100, -1));
-
-        TxtFa_FechaReserva.setEnabled(false);
         jPanel2.add(TxtFa_FechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 100, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 220, 150));
@@ -308,14 +349,8 @@ public class Factura_1 extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Total:");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-
-        TxtFa_IGV.setEnabled(false);
         jPanel3.add(TxtFa_IGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 100, -1));
-
-        TxtFa_SubTotal.setEnabled(false);
         jPanel3.add(TxtFa_SubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 100, -1));
-
-        TxtFa_Total.setEnabled(false);
         jPanel3.add(TxtFa_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 100, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 180, 120));
@@ -340,17 +375,9 @@ public class Factura_1 extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Correo:");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 84, -1));
-
-        TxtFa_DNI.setEnabled(false);
         jPanel4.add(TxtFa_DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, -1));
-
-        TxtFa_Telefono.setEnabled(false);
         jPanel4.add(TxtFa_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 100, -1));
-
-        TxtFa_Correo.setEnabled(false);
         jPanel4.add(TxtFa_Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 100, -1));
-
-        TxtFa_Nombre.setEnabled(false);
         jPanel4.add(TxtFa_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 220, 150));
@@ -370,14 +397,8 @@ public class Factura_1 extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Precio:");
         jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-
-        TxtFa_Nhab.setEnabled(false);
         jPanel5.add(TxtFa_Nhab, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 100, -1));
-
-        TxtFa_Tipo.setEnabled(false);
         jPanel5.add(TxtFa_Tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 100, -1));
-
-        TxtFa_Precio.setEnabled(false);
         jPanel5.add(TxtFa_Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 100, -1));
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 170, 120));
@@ -459,27 +480,32 @@ public class Factura_1 extends javax.swing.JFrame {
 
     private void Btn_RegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_RegistrarPagoActionPerformed
         int idReserva = Integer.parseInt(TxtFa_ReservaID.getText());
-        BigDecimal total = new BigDecimal(TxtFa_Total.getText());
-        String metodo = CboFa_MetodoPago.getSelectedItem().toString();
+    BigDecimal total = new BigDecimal(TxtFa_Total.getText());
+    String metodo = CboFa_MetodoPago.getSelectedItem().toString();
 
-        try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
-            Pago pago = new Pago(idReserva, total, metodo);
-            PagoDAO pagoDAO = new PagoDAO(conn);
+    try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
+        Pago pago = new Pago(idReserva, total, metodo);
+        PagoDAO pagoDAO = new PagoDAO(conn);
 
-            if (pagoDAO.obtenerPagoPorReserva(idReserva) == null) {
-                boolean ok = pagoDAO.registrarPago(pago);
-                if (ok) {
-                    JOptionPane.showMessageDialog(this, "Pago registrado correctamente.");
-                } else {
-                    JOptionPane.showMessageDialog(this, "No se pudo registrar el pago.");
-                }
+        if (pagoDAO.obtenerPagoPorReserva(idReserva) == null) {
+            boolean ok = pagoDAO.registrarPago(pago);
+            if (ok) {
+                JOptionPane.showMessageDialog(this, "Pago registrado correctamente.");
+
+                liberarHabitacion(idReserva);
+
             } else {
-                JOptionPane.showMessageDialog(this, "Ya existe un pago registrado para esta reserva.");
+                JOptionPane.showMessageDialog(this, "No se pudo registrar el pago.");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al registrar pago.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Ya existe un pago registrado para esta reserva.");
         }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al registrar pago.");
+    }
+
     }//GEN-LAST:event_Btn_RegistrarPagoActionPerformed
 
     private void Btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_BuscarActionPerformed

@@ -40,11 +40,12 @@ public class GestorFacturas {
 
         // 3. Total productos
         String sql3 = """
-            SELECT SUM(p.precio * rp.cantidad)
-            FROM Reserva_Productos rp
-            JOIN Productos p ON rp.id_producto = p.id_producto
-            WHERE rp.id_reserva = ?
-            """;
+        SELECT SUM(p.precio * dv.cantidad) AS total_productos
+        FROM Ventas v
+        JOIN Detalle_Venta dv ON v.id_venta = dv.id_venta
+        JOIN Productos p ON dv.id_producto = p.id_producto
+        WHERE v.id_reserva = ?
+    """;
         try (PreparedStatement ps = conn.prepareStatement(sql3)) {
             ps.setInt(1, idReserva);
             ResultSet rs = ps.executeQuery();

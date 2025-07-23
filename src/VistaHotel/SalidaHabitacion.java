@@ -1,6 +1,5 @@
 package VistaHotel;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import ConexionBaseDeDatos.ConexionBD;
@@ -11,20 +10,17 @@ import java.sql.ResultSet;
 
 import java.sql.*;
 
-
-
-
-public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable{
+public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
 
     ReservarHabitacion panelReservas;
 
     public SalidaHabitacion() {
         initComponents();
         panelReservas = new ReservarHabitacion(); // Creamos una instancia para acceder a los paneles ya diseñados
-             bloquearCampos();   //INICIALIZAMOS EL METODO BLOQUEAR CAMPOS
+        bloquearCampos();   //INICIALIZAMOS EL METODO BLOQUEAR CAMPOS
     }
 
-   //SOBREESCRITURA PARA BLOQUEAR CAMPOS DE NUESTRO JPANEL
+    //SOBREESCRITURA PARA BLOQUEAR CAMPOS DE NUESTRO JPANEL
     @Override
     public void bloquearCampos() {
         TxtCliente.setEditable(false);
@@ -32,9 +28,9 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable{
         TxtEstadoPago.setEditable(false);
         TxtFechEntrada.setEditable(false);
         TxtFechSalida.setEditable(false);
-        
+
         TxtTotalPagar.setEditable(false);
-     
+
     }
 
     @SuppressWarnings("unchecked")
@@ -204,61 +200,115 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAlargarReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAlargarReservaMouseClicked
-      
-        EditarReserva editRes = new EditarReserva();
-        editRes.setVisible(true);
- 
+        String dniCliente = TxtDni.getText().trim();
+
+        if (dniCliente.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el DNI del cliente.");
+            return;
+        }
+
+        try (Connection con = ConexionBD.conectar()) {
+            String sql = "SELECT "
+                    + "c.nombre, c.apellido, c.telefono, c.correo, c.direccion, "
+                    + "r.fecha_entrada, r.fecha_salida, r.id_reserva, "
+                    + "ISNULL(p.monto, 0) AS total_pagar, "
+                    + "h.numero_habitacion, h.tipo, h.descripcion AS descripcion_habitacion, "
+                    + "h.precio_por_noche, h.estado AS estado_habitacion "
+                    + "FROM Clientes c "
+                    + "JOIN Reservas r ON c.id_cliente = r.id_cliente "
+                    + "JOIN Detalle_Reserva dr ON r.id_reserva = dr.id_reserva "
+                    + "JOIN Habitaciones h ON dr.id_habitacion = h.id_habitacion "
+                    + "LEFT JOIN Pagos p ON r.id_reserva = p.id_reserva "
+                    + "WHERE c.dni_pasaporte = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, dniCliente);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String telefono = rs.getString("telefono");
+                String correo = rs.getString("correo");
+                String direccion = rs.getString("direccion");
+
+                String numHabitacion = rs.getString("numero_habitacion");
+                String tipo = rs.getString("tipo");
+                String descripcion = rs.getString("descripcion_habitacion");
+                String precioPorNoche = rs.getString("precio_por_noche");
+                String estado = rs.getString("estado_habitacion");
+
+                String fechaEntrada = rs.getString("fecha_entrada");
+                String fechaSalida = rs.getString("fecha_salida");
+                String precio = rs.getString("total_pagar");
+
+                // Llamamos a la ventana de edición y le pasamos los datos
+                EditarReserva editRes = new EditarReserva(
+                        nombre, apellido, dniCliente,
+                        telefono, correo, direccion,
+                        numHabitacion, tipo, descripcion,
+                        precioPorNoche, estado,
+                        fechaEntrada, fechaSalida, precio
+                );
+                editRes.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontraron datos para el DNI ingresado.");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener datos del cliente: " + e.getMessage());
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_BtnAlargarReservaMouseClicked
 
     private void BtnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnBuscarMouseClicked
 
-       String dniCliente = TxtDni.getText().trim();
+        String dniCliente = TxtDni.getText().trim();
 
-if (dniCliente.isEmpty()) {
-    JOptionPane.showMessageDialog(null, "Ingrese el DNI del cliente.");
-    return;
-}
+        if (dniCliente.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el DNI del cliente.");
+            return;
+        }
 
-try (Connection con = ConexionBD.conectar()) {
-    String sql = "SELECT c.nombre + ' ' + c.apellido AS cliente, " +
-                 "r.fecha_entrada, r.fecha_salida, er.descripcion AS estado_reserva, " +
-                 "ISNULL(p.monto, 0) AS total_pagar, " +
-                 "ISNULL(mp.descripcion, 'Efectivo') AS metodo_pago, " +
-                 "ISNULL(ep.descripcion, 'Pendiente') AS estado_pago " +
-                 "FROM Clientes c " +
-                 "JOIN Reservas r ON c.id_cliente = r.id_cliente " +
-                 "JOIN Estados_Reserva er ON r.id_estado = er.id_estado " +
-                 "LEFT JOIN Pagos p ON r.id_reserva = p.id_reserva " +
-                 "LEFT JOIN Metodos_Pago mp ON p.id_metodo = mp.id_metodo " +
-                 "LEFT JOIN Estados_Pago ep ON p.id_estado_pago = ep.id_estado_pago " +
-                 "WHERE c.dni_pasaporte = ?";
+        try (Connection con = ConexionBD.conectar()) {
+            String sql = "SELECT c.nombre + ' ' + c.apellido AS cliente, "
+                    + "r.fecha_entrada, r.fecha_salida, er.descripcion AS estado_reserva, "
+                    + "ISNULL(p.monto, 0) AS total_pagar, "
+                    + "ISNULL(mp.descripcion, 'Efectivo') AS metodo_pago, "
+                    + "ISNULL(ep.descripcion, 'Pendiente') AS estado_pago "
+                    + "FROM Clientes c "
+                    + "JOIN Reservas r ON c.id_cliente = r.id_cliente "
+                    + "JOIN Estados_Reserva er ON r.id_estado = er.id_estado "
+                    + "LEFT JOIN Pagos p ON r.id_reserva = p.id_reserva "
+                    + "LEFT JOIN Metodos_Pago mp ON p.id_metodo = mp.id_metodo "
+                    + "LEFT JOIN Estados_Pago ep ON p.id_estado_pago = ep.id_estado_pago "
+                    + "WHERE c.dni_pasaporte = ?";
 
-    PreparedStatement ps = con.prepareStatement(sql);
-    ps.setString(1, dniCliente);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, dniCliente);
 
-    ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
-    if (rs.next()) {
-        // Establecer valores en tus campos
-        TxtCliente.setText(rs.getString("cliente"));
-        TxtFechEntrada.setText(rs.getString("fecha_entrada"));
-        TxtFechSalida.setText(rs.getString("fecha_salida"));
-        TxtEstado.setText(rs.getString("estado_reserva"));
-        TxtTotalPagar.setText(String.valueOf(rs.getDouble("total_pagar")));
-        CbTipoPago.setSelectedItem(rs.getString("metodo_pago"));
-        TxtEstadoPago.setText(rs.getString("estado_pago"));
-    } else {
-        JOptionPane.showMessageDialog(null, "No se encontró una reserva para el DNI ingresado.");
-    }
+            if (rs.next()) {
+                // Establecer valores en tus campos
+                TxtCliente.setText(rs.getString("cliente"));
+                TxtFechEntrada.setText(rs.getString("fecha_entrada"));
+                TxtFechSalida.setText(rs.getString("fecha_salida"));
+                TxtEstado.setText(rs.getString("estado_reserva"));
+                TxtTotalPagar.setText(String.valueOf(rs.getDouble("total_pagar")));
+                CbTipoPago.setSelectedItem(rs.getString("metodo_pago"));
+                TxtEstadoPago.setText(rs.getString("estado_pago"));
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró una reserva para el DNI ingresado.");
+            }
 
-} catch (SQLException e) {
-    JOptionPane.showMessageDialog(null, "Error al buscar la reserva: " + e.getMessage());
-    e.printStackTrace();
-}
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar la reserva: " + e.getMessage());
+            e.printStackTrace();
+        }
 
-        
-        
-        
+
     }//GEN-LAST:event_BtnBuscarMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

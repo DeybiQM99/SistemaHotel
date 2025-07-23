@@ -185,8 +185,8 @@ public class CambioContraseña extends javax.swing.JFrame {
 
         BtnAceptar.setBackground(new java.awt.Color(17, 50, 77));
         BtnAceptar.setForeground(new java.awt.Color(255, 255, 255));
-        BtnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
-        BtnAceptar.setText("ACEPTAR");
+        BtnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
+        BtnAceptar.setText("GUARDAR");
         BtnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnAceptarMouseClicked(evt);

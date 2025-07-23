@@ -24,7 +24,7 @@ public class Reservacion extends javax.swing.JFrame {
         BtnServicioAdicional = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         BtnProductos = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        BtnDescripcion = new javax.swing.JButton();
         BtnSalidaHabitacion = new javax.swing.JButton();
         JpContent = new javax.swing.JPanel();
 
@@ -59,7 +59,7 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnReservacionMouseClicked(evt);
             }
         });
-        jPanel2.add(BtnReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 180, 40));
+        jPanel2.add(BtnReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 180, 40));
 
         BtnServicioAdicional.setBackground(new java.awt.Color(17, 50, 77));
         BtnServicioAdicional.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,7 +70,7 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnServicioAdicionalMouseClicked(evt);
             }
         });
-        jPanel2.add(BtnServicioAdicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 180, 40));
+        jPanel2.add(BtnServicioAdicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 180, 40));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogRecepcion.jpg"))); // NOI18N
@@ -85,18 +85,18 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnProductosMouseClicked(evt);
             }
         });
-        jPanel2.add(BtnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 180, 40));
+        jPanel2.add(BtnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 180, 40));
 
-        jButton8.setBackground(new java.awt.Color(17, 50, 77));
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Factura.png"))); // NOI18N
-        jButton8.setText("FACTURA");
-        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnDescripcion.setBackground(new java.awt.Color(17, 50, 77));
+        BtnDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        BtnDescripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DescripcionHab.png"))); // NOI18N
+        BtnDescripcion.setText("DESC. HABITACION");
+        BtnDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton8MouseClicked(evt);
+                BtnDescripcionMouseClicked(evt);
             }
         });
-        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 180, 40));
+        jPanel2.add(BtnDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 180, 40));
 
         BtnSalidaHabitacion.setBackground(new java.awt.Color(17, 50, 77));
         BtnSalidaHabitacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,7 +107,7 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnSalidaHabitacionMouseClicked(evt);
             }
         });
-        jPanel2.add(BtnSalidaHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 180, 40));
+        jPanel2.add(BtnSalidaHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 180, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 490));
 
@@ -178,15 +178,19 @@ public class Reservacion extends javax.swing.JFrame {
         JpContent.repaint();
     }//GEN-LAST:event_BtnSalidaHabitacionMouseClicked
 
-    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+    private void BtnDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnDescripcionMouseClicked
      
+          // TODO add your handling code here:
+        DescripcionHabitacion DescHab = new DescripcionHabitacion();
+        DescHab.setSize(750, 450);
+        DescHab.setLocation(0, 0);
+      
+        JpContent.removeAll();
+        JpContent.add(DescHab, BorderLayout.CENTER);
+        JpContent.revalidate();
+        JpContent.repaint();
         
-        Factura_1 facttura = new Factura_1();
-        facttura.setVisible(true); 
-        
-        
-        
-    }//GEN-LAST:event_jButton8MouseClicked
+    }//GEN-LAST:event_BtnDescripcionMouseClicked
 
 //Método para obtener la instancia actual de ReservarHabitacion
     public ReservarHabitacion getReservarHabitacion() {
@@ -226,13 +230,13 @@ public class Reservacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnDescripcion;
     private javax.swing.JButton BtnProductos;
     private javax.swing.JButton BtnRegresar;
     private javax.swing.JButton BtnReservacion;
     private javax.swing.JButton BtnSalidaHabitacion;
     private javax.swing.JButton BtnServicioAdicional;
     private javax.swing.JPanel JpContent;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

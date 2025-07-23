@@ -24,14 +24,20 @@ import java.awt.Color;
 import java.math.BigDecimal;
 
 public class Factura_1 extends javax.swing.JFrame implements Bloqueable {
-
-    public Factura_1() {
+  private SalidaHabitacion ventanaAnterior;
+    public Factura_1( SalidaHabitacion anterior ) {
+        initComponents();
+        bloquearCampos();
+        this.setLocationRelativeTo(null);
+        inicializarMetodosPago();        // Llenar el ComboBox
+          this.ventanaAnterior = anterior;
+    }
+  public Factura_1() {
         initComponents();
         bloquearCampos();
         this.setLocationRelativeTo(null);
         inicializarMetodosPago();        // Llenar el ComboBox
     }
-
     @Override
     public void bloquearCampos() {
         TxtFa_Nombre.setEditable(false);
@@ -465,18 +471,20 @@ public class Factura_1 extends javax.swing.JFrame implements Bloqueable {
     }//GEN-LAST:event_LblMinimizarMouseClicked
 
     private void LblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblCerrarMouseClicked
-        //cogido para preguntar si se desea salir o no del programa
-        int respuesta = JOptionPane.showConfirmDialog(
-                Factura_1.this, // Referencia al componente la ventana actual (Login)
-                "¿Deseas realmente salir?", // Mensaje que se muestra al usuario
-                "Confirmación", // Título de la ventana de diálogo
-                JOptionPane.YES_NO_OPTION // Tipo de opciones que se presentan al usuario (Sí y No)
-        );
+        
+int respuesta = JOptionPane.showConfirmDialog(
+        this,
+        "¿Deseas cerrar la factura?",
+        "Confirmación",
+        JOptionPane.YES_NO_OPTION
+    );
 
-        if (respuesta == JOptionPane.YES_OPTION) { // Verifica si el usuario seleccionó "Sí"
-            dispose(); // Cierra la ventana y libera los recursos
-            System.exit(0); // Termina la aplicación por completo
+    if (respuesta == JOptionPane.YES_OPTION) {
+        if (ventanaAnterior != null) {
+            ventanaAnterior.setVisible(true); // Regresa a la ventana anterior
         }
+        this.dispose(); // Cierra solo Factura_1
+    }
     }//GEN-LAST:event_LblCerrarMouseClicked
 
 

@@ -185,8 +185,8 @@ public class Inscripcion extends javax.swing.JFrame implements Limpiable {
 
         BtnRegistrar.setBackground(new java.awt.Color(17, 50, 77));
         BtnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        BtnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
-        BtnRegistrar.setText("REGISTRAR");
+        BtnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
+        BtnRegistrar.setText("GUARDAR");
         BtnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnRegistrarMouseClicked(evt);

@@ -182,7 +182,7 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("PRODUCTO");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 170, -1));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 140, 10));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, 10));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 230, 10));

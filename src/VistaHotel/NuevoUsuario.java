@@ -38,6 +38,7 @@ public class NuevoUsuario extends javax.swing.JFrame implements Limpiable {
         LblMinimizar = new javax.swing.JLabel();
         TxtContrasena = new javax.swing.JPasswordField();
         jSeparator3 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(17, 50, 77));
@@ -49,31 +50,31 @@ public class NuevoUsuario extends javax.swing.JFrame implements Limpiable {
 
         LblTipoUsuario.setForeground(new java.awt.Color(255, 255, 255));
         LblTipoUsuario.setText("ROLL");
-        jPanel1.add(LblTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 70, 20));
+        jPanel1.add(LblTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 60, 20));
 
         LblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         LblUsuario.setText("USUARIO");
-        jPanel1.add(LblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 90, -1));
+        jPanel1.add(LblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 80, -1));
 
         LblContrasena.setForeground(new java.awt.Color(255, 255, 255));
         LblContrasena.setText("CONTRASEÑA");
-        jPanel1.add(LblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 110, -1));
+        jPanel1.add(LblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 100, -1));
 
         TxtUsuario.setBackground(new java.awt.Color(17, 50, 77));
         TxtUsuario.setForeground(new java.awt.Color(255, 255, 255));
         TxtUsuario.setBorder(null);
-        jPanel1.add(TxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 150, 20));
+        jPanel1.add(TxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 150, 20));
 
         CbRoll.setBackground(new java.awt.Color(17, 50, 77));
         CbRoll.setForeground(new java.awt.Color(255, 255, 255));
         CbRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "gerente", "recepcion ", "rrhh" }));
-        jPanel1.add(CbRoll, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 170, 30));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 170, 10));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 150, 10));
+        jPanel1.add(CbRoll, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 170, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 170, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 150, 10));
 
         BtnGuardarUsuario.setBackground(new java.awt.Color(17, 50, 77));
         BtnGuardarUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        BtnGuardarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
+        BtnGuardarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
         BtnGuardarUsuario.setText("GUARDAR");
         BtnGuardarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,7 +89,7 @@ public class NuevoUsuario extends javax.swing.JFrame implements Limpiable {
                 LblCerrarMouseClicked(evt);
             }
         });
-        jPanel1.add(LblCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
+        jPanel1.add(LblCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         LblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MinimizarEV.png"))); // NOI18N
         LblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,13 +97,18 @@ public class NuevoUsuario extends javax.swing.JFrame implements Limpiable {
                 LblMinimizarMouseClicked(evt);
             }
         });
-        jPanel1.add(LblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+        jPanel1.add(LblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
 
         TxtContrasena.setBackground(new java.awt.Color(17, 50, 77));
         TxtContrasena.setForeground(new java.awt.Color(255, 255, 255));
         TxtContrasena.setBorder(null);
-        jPanel1.add(TxtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 150, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 150, 10));
+        jPanel1.add(TxtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 150, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 150, 10));
+
+        jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("NUEVO USUARIO");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 240, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 360));
 
@@ -234,6 +240,7 @@ public class NuevoUsuario extends javax.swing.JFrame implements Limpiable {
     private javax.swing.JLabel LblUsuario;
     private javax.swing.JPasswordField TxtContrasena;
     private javax.swing.JTextField TxtUsuario;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

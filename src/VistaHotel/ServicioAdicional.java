@@ -105,6 +105,8 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         TxtResCliente = new javax.swing.JTextField();
         TxtResEliminar = new javax.swing.JButton();
         JcResEstadoVenta = new javax.swing.JComboBox<>();
+        jSeparator14 = new javax.swing.JSeparator();
+        jLabel18 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,13 +141,14 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
 
         BtnFinalizarVenta.setBackground(new java.awt.Color(17, 50, 77));
         BtnFinalizarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        BtnFinalizarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FinPago.png"))); // NOI18N
         BtnFinalizarVenta.setText("FINALIZAR VENTA");
         BtnFinalizarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnFinalizarVentaActionPerformed(evt);
             }
         });
-        add(BtnFinalizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 150, 30));
+        add(BtnFinalizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 170, 30));
 
         JcResProducto.setBackground(new java.awt.Color(17, 50, 77));
         JcResProducto.setEditable(true);
@@ -196,13 +199,14 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
 
         BtnResAgregar.setBackground(new java.awt.Color(17, 50, 77));
         BtnResAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnResAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.png"))); // NOI18N
         BtnResAgregar.setText("AGREGAR");
         BtnResAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnResAgregarActionPerformed(evt);
             }
         });
-        add(BtnResAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 240, 110, 30));
+        add(BtnResAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 150, 30));
 
         TxtResCantidad.setBackground(new java.awt.Color(17, 50, 77));
         TxtResCantidad.setForeground(new java.awt.Color(255, 255, 255));
@@ -250,7 +254,7 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         add(TxtResTotalPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 170, 20));
         add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 170, 10));
         add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 170, 10));
-        add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 170, 10));
+        add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 140, 10));
         add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 170, 10));
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 170, 10));
         add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 170, 10));
@@ -275,18 +279,19 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
 
         jLabel15.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("TOTAL A PAGAR");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 380, 120, 30));
+        jLabel15.setText("ESTADO");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 90, 20));
 
         BtnResBuscar.setBackground(new java.awt.Color(17, 50, 77));
         BtnResBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnResBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarTalentoEV.png"))); // NOI18N
         BtnResBuscar.setText("BUSCAR");
         BtnResBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnResBuscarActionPerformed(evt);
             }
         });
-        add(BtnResBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 90, 30));
+        add(BtnResBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 140, 30));
 
         TxtResCliente.setBackground(new java.awt.Color(17, 50, 77));
         TxtResCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,16 +300,26 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
 
         TxtResEliminar.setBackground(new java.awt.Color(17, 50, 77));
         TxtResEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        TxtResEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarEV.png"))); // NOI18N
         TxtResEliminar.setText("ELIMINAR");
         TxtResEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtResEliminarActionPerformed(evt);
             }
         });
-        add(TxtResEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 110, 30));
+        add(TxtResEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 150, 30));
 
+        JcResEstadoVenta.setBackground(new java.awt.Color(17, 50, 77));
+        JcResEstadoVenta.setEditable(true);
+        JcResEstadoVenta.setForeground(new java.awt.Color(255, 255, 255));
         JcResEstadoVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente ", "Cancelado" }));
-        add(JcResEstadoVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 410, 130, -1));
+        add(JcResEstadoVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 140, 20));
+        add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 170, 10));
+
+        jLabel18.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("TOTAL A PAGAR");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 380, 120, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void JcResProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcResProductoActionPerformed
@@ -607,6 +622,7 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -616,6 +632,7 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;

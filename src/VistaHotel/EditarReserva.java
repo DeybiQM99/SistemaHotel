@@ -2,6 +2,8 @@ package VistaHotel;
 
 import ConexionBaseDeDatos.ConexionBD;
 import GestionReservas.Cliente;
+import Interfaz.Bloqueable;
+import com.sun.source.tree.BlockTree;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,20 +16,40 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class EditarReserva extends javax.swing.JFrame {
+import Interfaz.Bloqueable;
+
+public class EditarReserva extends javax.swing.JFrame implements Bloqueable {
 
     private String dniGlobal;
     private String fechaEntradaGlobal;
 
     public EditarReserva() {
         initComponents();
+        bloquearCampos();
+    }
+
+    @Override
+    public void bloquearCampos() {
+        TxtCorreo.setEditable(false);
+        TxtNombre.setEditable(false);
+        TxtTelefono.setEditable(false);
+        TxtDni.setEditable(false);
+        TxtCorreo.setEditable(false);
+        TxtDescripcion.setEditable(false);
+        TxtDireccion.setEditable(false);
+        TxtResPrecio.setEditable(false);
+        TxtNumHabitacion.setEditable(false);
+        TxtPrecioPorNoche.setEditable(false);
+        TxtTipoH.setEditable(false);
+        CbEstado.setEditable(false);
+        jDateChooserEntrada.setEnabled(false);
 
     }
 
     public EditarReserva(String nombre, String apellido, String dni,
-            String telefono, String correo, String direccion,
-            String numHabitacion, String tipo, String descripcion, String precioPorNoche, String estado,
-            String fechaEntrada, String fechaSalida, String precioTotal) {
+     String telefono, String correo, String direccion,
+     String numHabitacion, String tipo, String descripcion, String precioPorNoche, String estado,
+     String fechaEntrada, String fechaSalida, String precioTotal) {
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -49,7 +71,6 @@ public class EditarReserva extends javax.swing.JFrame {
         // RESERVA
         jDateChooserEntrada.setDate(java.sql.Date.valueOf(fechaEntrada));
         jDateChooserSalida.setDate(java.sql.Date.valueOf(fechaSalida));
-      
 
         // Guardar variables para actualizar después
         dniGlobal = dni;
@@ -110,8 +131,9 @@ public class EditarReserva extends javax.swing.JFrame {
         jDateChooserSalida = new com.toedter.calendar.JDateChooser();
         jDateChooserEntrada = new com.toedter.calendar.JDateChooser();
         CbEstado = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         TxtResPrecio = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 440));
@@ -144,7 +166,7 @@ public class EditarReserva extends javax.swing.JFrame {
 
         BtnGuardarCambios.setBackground(new java.awt.Color(17, 50, 77));
         BtnGuardarCambios.setForeground(new java.awt.Color(255, 255, 255));
-        BtnGuardarCambios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
+        BtnGuardarCambios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
         BtnGuardarCambios.setText("GUARDAR");
         BtnGuardarCambios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -156,7 +178,7 @@ public class EditarReserva extends javax.swing.JFrame {
                 BtnGuardarCambiosActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnGuardarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 150, 40));
+        jPanel1.add(BtnGuardarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 150, 40));
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,8 +290,8 @@ public class EditarReserva extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("F. SALIDA");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, 30));
+        jLabel15.setText("TOTAL");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 70, 30));
 
         jLabel18.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -292,7 +314,7 @@ public class EditarReserva extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("CORREO");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 80, 30));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 170, 10));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 170, 10));
 
         TxtCorreo.setBackground(new java.awt.Color(17, 50, 77));
         TxtCorreo.setForeground(new java.awt.Color(255, 255, 255));
@@ -316,11 +338,16 @@ public class EditarReserva extends javax.swing.JFrame {
         CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OCUPADO", " " }));
         jPanel1.add(CbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 170, -1));
 
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, -1, -1));
+        TxtResPrecio.setBackground(new java.awt.Color(17, 50, 77));
+        TxtResPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        TxtResPrecio.setBorder(null);
+        jPanel1.add(TxtResPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 170, 20));
 
-        TxtResPrecio.setText("jTextField1");
-        jPanel1.add(TxtResPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 150, -1));
+        jLabel16.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("F. SALIDA");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, 30));
+        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 170, 10));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
 
@@ -345,8 +372,8 @@ public class EditarReserva extends javax.swing.JFrame {
 
             // Buscar ID de reserva
             String sqlBuscar = "SELECT r.id_reserva FROM Clientes c "
-                    + "JOIN Reservas r ON c.id_cliente = r.id_cliente "
-                    + "WHERE c.dni_pasaporte = ? AND r.fecha_entrada = ?";
+             + "JOIN Reservas r ON c.id_cliente = r.id_cliente "
+             + "WHERE c.dni_pasaporte = ? AND r.fecha_entrada = ?";
             PreparedStatement psBuscar = con.prepareStatement(sqlBuscar);
             psBuscar.setString(1, dniGlobal);
             psBuscar.setString(2, fechaEntradaGlobal);
@@ -436,13 +463,13 @@ public class EditarReserva extends javax.swing.JFrame {
     private javax.swing.JTextField TxtTipoH;
     private com.toedter.calendar.JDateChooser jDateChooserEntrada;
     private com.toedter.calendar.JDateChooser jDateChooserSalida;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -460,6 +487,7 @@ public class EditarReserva extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;

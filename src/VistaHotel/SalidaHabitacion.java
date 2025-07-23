@@ -57,6 +57,7 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
+        LTitulo = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,7 +92,7 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
                 BtnBuscarMouseClicked(evt);
             }
         });
-        add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 150, 40));
+        add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 150, 40));
 
         TxtDni.setBackground(new java.awt.Color(17, 50, 77));
         TxtDni.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,6 +147,11 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
         BtnConfirmarSalida.setForeground(new java.awt.Color(255, 255, 255));
         BtnConfirmarSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
         BtnConfirmarSalida.setText("CONFIRMAR SALIDA");
+        BtnConfirmarSalida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnConfirmarSalidaMouseClicked(evt);
+            }
+        });
         add(BtnConfirmarSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 180, 40));
 
         BtnCancelarReserva.setBackground(new java.awt.Color(17, 50, 77));
@@ -163,6 +169,11 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
         add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 170, 20));
         add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 170, 20));
         add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 170, 20));
+
+        LTitulo.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
+        LTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        LTitulo.setText("SALIDA DE HABITACIONES");
+        add(LTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 440, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAlargarReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAlargarReservaMouseClicked
@@ -288,6 +299,17 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
         
     }//GEN-LAST:event_BtnCancelarReservaMouseClicked
 
+    private void BtnConfirmarSalidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnConfirmarSalidaMouseClicked
+        
+      
+        
+        Factura_1 factura = new Factura_1(this); // Le pasas esta ventana como referencia
+factura.setVisible(true);
+this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_BtnConfirmarSalidaMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAlargarReserva;
     private javax.swing.JButton BtnBuscar;
@@ -296,6 +318,7 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
     private javax.swing.JLabel CLIENTE;
     private javax.swing.JLabel CLIENTE1;
     private javax.swing.JLabel CLIENTE3;
+    private javax.swing.JLabel LTitulo;
     private javax.swing.JTextField TxtCliente;
     private javax.swing.JTextField TxtDni;
     private javax.swing.JTextField TxtEstado;

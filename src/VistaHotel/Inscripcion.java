@@ -393,12 +393,14 @@ public class Inscripcion extends javax.swing.JFrame implements Limpiable {
         String telefono = TxtTelefono.getText();
         String correo = TxtCorreo.getText();
         String direccion = TxtDireccion.getText();
+
         // Leer datos HABITACION
         String numHabitacion = TxtNumHabitacion.getText();
         String precioPorNoche = TxtPrecioPorNoche.getText();
-        String estadoSeleccionado = (String) CbEstado.getSelectedItem();
+        String estadoSeleccionado = (String) CbEstado.getSelectedItem(); // Este será reemplazado por "Ocupada"
         String tipoHabitacion = TxtTipoH.getText();
         String descripcion = TxtDescripcion.getText();
+
         // Leer fechas desde JDateChooser
         java.util.Date fechaEntradaUtil = jDateChooserEntrada.getDate();
         java.util.Date fechaSalidaUtil = jDateChooserSalida.getDate();
@@ -413,7 +415,6 @@ public class Inscripcion extends javax.swing.JFrame implements Limpiable {
         java.sql.Date fechaEntrada = new java.sql.Date(fechaEntradaUtil.getTime());
         java.sql.Date fechaSalida = new java.sql.Date(fechaSalidaUtil.getTime());
 
-        // Validar que dni sea número (ajusta si DNI es otro tipo)
         int dniInt;
         try {
             dniInt = Integer.parseInt(dni);
@@ -422,116 +423,110 @@ public class Inscripcion extends javax.swing.JFrame implements Limpiable {
             return;
         }
 
-        // Crear objeto Cliente
-        Cliente nuevoCliente = new Cliente(nombre, apellido, telefono, correo, Integer.parseInt(dni), direccion);
-        nuevoCliente.setDireccion(direccion); // Asignamos la dirección
-        // Conexión y guardado en base de datos
         try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
-            if (conn != null) {
-                // insertar datos en la tabla CLIENTES
-                String sql = "INSERT INTO Clientes (nombre, apellido, dni_pasaporte, correo, telefono, direccion) VALUES (?, ?, ?, ?, ?, ?)";
-                java.sql.PreparedStatement stmtCliente = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                stmtCliente.setString(1, nuevoCliente.getNombre());
-                stmtCliente.setString(2, nuevoCliente.getApellido());
-                stmtCliente.setString(3, String.valueOf(nuevoCliente.getDni()));
-                stmtCliente.setString(4, nuevoCliente.getCorreo());
-                stmtCliente.setString(5, nuevoCliente.getTelefono());
-                stmtCliente.setString(6, nuevoCliente.getDireccion());
-                int filasCliente = stmtCliente.executeUpdate();
-                if (filasCliente == 0) {
-                    JOptionPane.showMessageDialog(null, "Error al insertar cliente.");
-                    return;
-                }
-
-                // Obtener id_cliente generado
-                int idCliente = -1;
-                try (ResultSet generatedKeys = stmtCliente.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        idCliente = generatedKeys.getInt(1);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo obtener el ID del cliente.");
-                        return;
-                    }
-                }
-                // insertar datos en la tabla HABITACIONES
-                String sqlHabitacion = "INSERT INTO Habitaciones (numero_habitacion, tipo, descripcion, precio_por_noche, estado) VALUES (?, ?, ?, ?, ?)";
-                PreparedStatement stmtHabitacion = conn.prepareStatement(sqlHabitacion);
-                stmtHabitacion.setString(1, numHabitacion);                          // Ej: "101"
-                stmtHabitacion.setString(2, tipoHabitacion);                         // Ej: "Suite"
-                stmtHabitacion.setString(3, descripcion);                            // Ej: "Vista al mar"
-                stmtHabitacion.setDouble(4, Double.parseDouble(precioPorNoche));    // Ej: "250.00"
-                stmtHabitacion.setString(5, estadoSeleccionado);                    // SELECCION DEL CB DE ESTADO
-                stmtHabitacion.executeUpdate();
-                // Definir estado reserva (ajusta este id segun tus datos en Estados_Reserva)
-                int idEstadoReserva = 1; // por ejemplo: 1 = "Reservado"
-                // INSERTAR  TABLA RESERVA
-                String sqlReserva = "INSERT INTO Reservas (id_cliente, fecha_entrada, fecha_salida, id_estado) VALUES (?, ?, ?, ?)";
-                PreparedStatement stmtReserva = conn.prepareStatement(sqlReserva, Statement.RETURN_GENERATED_KEYS);
-                stmtReserva.setInt(1, idCliente);
-                stmtReserva.setDate(2, fechaEntrada);
-                stmtReserva.setDate(3, fechaSalida);
-                stmtReserva.setInt(4, idEstadoReserva);
-                stmtReserva.executeUpdate();
-                // INSERTAR EN TABLA DETALLE RESERVA
-
-                // Obtener id_reserva generado
-                int idReserva = -1;
-                try (ResultSet generatedReservaKeys = stmtReserva.getGeneratedKeys()) {
-                    if (generatedReservaKeys.next()) {
-                        idReserva = generatedReservaKeys.getInt(1);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se pudo obtener el ID de la reserva.");
-                        return;
-                    }
-                }
-
-                // Obtener id_habitacion por número de habitación
-                int idHabitacion = -1;
-                String sqlGetHabitacionId = "SELECT id_habitacion FROM Habitaciones WHERE numero_habitacion = ?";
-                try (PreparedStatement stmtGetHabitacion = conn.prepareStatement(sqlGetHabitacionId)) {
-                    stmtGetHabitacion.setString(1, numHabitacion);
-                    ResultSet rsHabitacion = stmtGetHabitacion.executeQuery();
-                    if (rsHabitacion.next()) {
-                        idHabitacion = rsHabitacion.getInt("id_habitacion");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró la habitación recién insertada.");
-                        return;
-                    }
-                }
-
-                // Calcular número de noches
-                long diferenciaMillis = fechaSalida.getTime() - fechaEntrada.getTime();
-                int nroNoches = (int) (diferenciaMillis / (1000 * 60 * 60 * 24));
-                double precioDouble;
-                try {
-                    precioDouble = Double.parseDouble(precio);
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "El precio ingresado no es válido.");
-                    return;
-                }
-
-                // Insertar en tabla Detalle_Reserva
-                String sqlDetalle = "INSERT INTO Detalle_Reserva ( id_reserva, id_habitacion, precio, nro_noches) VALUES (?, ?, ?, ?)";
-
-                PreparedStatement stmtDetalle = conn.prepareStatement(sqlDetalle);
-                stmtDetalle.setInt(1, idReserva);
-                stmtDetalle.setInt(2, idHabitacion);
-                stmtDetalle.setDouble(3, Double.parseDouble(precio));
-                stmtDetalle.setInt(4, nroNoches);
-                stmtDetalle.executeUpdate();
-
-                // Suponiendo que estás en Inscripcion.java y quieres notificar a ReservarHabitacion:
-                if (panelReservarHabitacion != null) {
-                    panelReservarHabitacion.actualizarColorPanelPorEstado(numHabitacion, estadoSeleccionado);
-                }
-
-                javax.swing.JOptionPane.showMessageDialog(null, "Habitaciones registrado correctamente.");
-                this.dispose();
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+            if (conn == null) {
+                JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+                return;
             }
+
+            // 1. Insertar CLIENTE
+            String sqlCliente = "INSERT INTO Clientes (nombre, apellido, dni_pasaporte, correo, telefono, direccion) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmtCliente = conn.prepareStatement(sqlCliente, Statement.RETURN_GENERATED_KEYS);
+            stmtCliente.setString(1, nombre);
+            stmtCliente.setString(2, apellido);
+            stmtCliente.setString(3, dni);
+            stmtCliente.setString(4, correo);
+            stmtCliente.setString(5, telefono);
+            stmtCliente.setString(6, direccion);
+            stmtCliente.executeUpdate();
+
+            int idCliente;
+            try (ResultSet generatedKeys = stmtCliente.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    idCliente = generatedKeys.getInt(1);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo obtener el ID del cliente.");
+                    return;
+                }
+            }
+
+            // 2. Obtener o Insertar HABITACIÓN
+            int idHabitacion = -1;
+            String sqlCheckHabitacion = "SELECT id_habitacion FROM Habitaciones WHERE numero_habitacion = ?";
+            PreparedStatement stmtCheckHabitacion = conn.prepareStatement(sqlCheckHabitacion);
+            stmtCheckHabitacion.setString(1, numHabitacion);
+            ResultSet rsCheck = stmtCheckHabitacion.executeQuery();
+
+            if (rsCheck.next()) {
+                idHabitacion = rsCheck.getInt("id_habitacion");
+            } else {
+                String sqlHabitacion = "INSERT INTO Habitaciones (numero_habitacion, tipo, descripcion, precio_por_noche, estado) VALUES (?, ?, ?, ?, ?)";
+                PreparedStatement stmtHabitacion = conn.prepareStatement(sqlHabitacion, Statement.RETURN_GENERATED_KEYS);
+                stmtHabitacion.setString(1, numHabitacion);
+                stmtHabitacion.setString(2, tipoHabitacion);
+                stmtHabitacion.setString(3, descripcion);
+                stmtHabitacion.setDouble(4, Double.parseDouble(precioPorNoche));
+                stmtHabitacion.setString(5, "Ocupada"); // Estado por defecto al registrarse
+                stmtHabitacion.executeUpdate();
+
+                ResultSet rsHabitacion = stmtHabitacion.getGeneratedKeys();
+                if (rsHabitacion.next()) {
+                    idHabitacion = rsHabitacion.getInt(1);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo obtener el ID de la habitación.");
+                    return;
+                }
+            }
+
+            // 3. Insertar RESERVA
+            int idEstadoReserva = 1; // Ej: Reservado
+            String sqlReserva = "INSERT INTO Reservas (id_cliente, fecha_entrada, fecha_salida, id_estado) VALUES (?, ?, ?, ?)";
+            PreparedStatement stmtReserva = conn.prepareStatement(sqlReserva, Statement.RETURN_GENERATED_KEYS);
+            stmtReserva.setInt(1, idCliente);
+            stmtReserva.setDate(2, fechaEntrada);
+            stmtReserva.setDate(3, fechaSalida);
+            stmtReserva.setInt(4, idEstadoReserva);
+            stmtReserva.executeUpdate();
+
+            int idReserva;
+            try (ResultSet rsReserva = stmtReserva.getGeneratedKeys()) {
+                if (rsReserva.next()) {
+                    idReserva = rsReserva.getInt(1);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo obtener el ID de la reserva.");
+                    return;
+                }
+            }
+
+            // 4. Insertar DETALLE_RESERVA
+            long diferenciaMillis = fechaSalida.getTime() - fechaEntrada.getTime();
+            int nroNoches = (int) (diferenciaMillis / (1000 * 60 * 60 * 24));
+            double precioDouble = Double.parseDouble(precio);
+
+            String sqlDetalle = "INSERT INTO Detalle_Reserva (id_reserva, id_habitacion, precio, nro_noches) VALUES (?, ?, ?, ?)";
+            PreparedStatement stmtDetalle = conn.prepareStatement(sqlDetalle);
+            stmtDetalle.setInt(1, idReserva);
+            stmtDetalle.setInt(2, idHabitacion);
+            stmtDetalle.setDouble(3, precioDouble);
+            stmtDetalle.setInt(4, nroNoches);
+            stmtDetalle.executeUpdate();
+
+            // 5. Actualizar estado habitación a "Ocupada"
+            String sqlActualizarEstado = "UPDATE Habitaciones SET estado = 'Ocupada' WHERE id_habitacion = ?";
+            PreparedStatement psEstado = conn.prepareStatement(sqlActualizarEstado);
+            psEstado.setInt(1, idHabitacion);
+            psEstado.executeUpdate();
+
+            // Actualizar UI
+            if (panelReservarHabitacion != null) {
+                panelReservarHabitacion.actualizarColorPanelPorEstado(numHabitacion, "Reservado"); // solo 1
+            }
+            JOptionPane.showMessageDialog(null, "Habitación y reserva registradas correctamente.");
+            this.dispose();
+
         } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Error al registrar habitacionessss: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al registrar habitación: " + e.getMessage());
+            e.printStackTrace();
         }
     }//GEN-LAST:event_BtnRegistrarMouseClicked
 

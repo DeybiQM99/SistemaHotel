@@ -6,6 +6,7 @@ import GestionReservas.FacturaDAO;
 import GestionReservas.GestorFacturas;
 import GestionReservas.Pago;
 import GestionReservas.PagoDAO;
+import GestionReservas.ReservaDAO;
 import Interfaz.Bloqueable;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,10 +27,11 @@ public class Factura_1 extends javax.swing.JFrame implements Bloqueable {
 
     public Factura_1() {
         initComponents();
-         bloquearCampos();
+        bloquearCampos();
         this.setLocationRelativeTo(null);
         inicializarMetodosPago();        // Llenar el ComboBox
     }
+
     @Override
     public void bloquearCampos() {
         TxtFa_Nombre.setEditable(false);
@@ -42,12 +44,12 @@ public class Factura_1 extends javax.swing.JFrame implements Bloqueable {
         TxtFa_Salida.setEditable(false);
         TxtFa_Nhab.setEditable(false);
         TxtFa_Tipo.setEditable(false);
-        TxtFa_Precio.setEditable(false); 
-        TxtFa_SubTotal.setEditable(false); 
-        TxtFa_IGV.setEditable(false); 
-        TxtFa_Total.setEditable(false); 
+        TxtFa_Precio.setEditable(false);
+        TxtFa_SubTotal.setEditable(false);
+        TxtFa_IGV.setEditable(false);
+        TxtFa_Total.setEditable(false);
     }
-    
+
     private void inicializarMetodosPago() {
         CboFa_MetodoPago.addItem("Efectivo");
         CboFa_MetodoPago.addItem("Tarjeta");
@@ -112,7 +114,7 @@ WHERE v.id_reserva = ?
 
     //Liberar Habitacion
     private void liberarHabitacion(int idReserva) {
-    String sql = """
+        String sql = """
         UPDATE Habitaciones
         SET estado = 'libre'
         WHERE id_habitacion = (
@@ -122,23 +124,22 @@ WHERE v.id_reserva = ?
         )
     """;
 
-    try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar();
-         PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
-        ps.setInt(1, idReserva);
-        int filasActualizadas = ps.executeUpdate();
-        if (filasActualizadas > 0) {
-            System.out.println("Habitación liberada correctamente.");
-        } else {
-            System.out.println("No se pudo liberar la habitación.");
+            ps.setInt(1, idReserva);
+            int filasActualizadas = ps.executeUpdate();
+            if (filasActualizadas > 0) {
+                System.out.println("Habitación liberada correctamente.");
+            } else {
+                System.out.println("No se pudo liberar la habitación.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al liberar habitación.");
         }
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al liberar habitación.");
     }
-}
-    
+
     public void generarPDF(int idReserva) {
         try {
             Document doc = new Document(PageSize.A4, 50, 50, 50, 50);
@@ -478,34 +479,45 @@ WHERE v.id_reserva = ?
         }
     }//GEN-LAST:event_LblCerrarMouseClicked
 
+
     private void Btn_RegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_RegistrarPagoActionPerformed
         int idReserva = Integer.parseInt(TxtFa_ReservaID.getText());
-    BigDecimal total = new BigDecimal(TxtFa_Total.getText());
-    String metodo = CboFa_MetodoPago.getSelectedItem().toString();
+        BigDecimal total = new BigDecimal(TxtFa_Total.getText());
+        String metodo = CboFa_MetodoPago.getSelectedItem().toString();
 
-    try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
-        Pago pago = new Pago(idReserva, total, metodo);
-        PagoDAO pagoDAO = new PagoDAO(conn);
+        try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
+            Pago pago = new Pago(idReserva, total, metodo);
+            PagoDAO pagoDAO = new PagoDAO(conn);
 
-        if (pagoDAO.obtenerPagoPorReserva(idReserva) == null) {
-            boolean ok = pagoDAO.registrarPago(pago);
-            if (ok) {
-                JOptionPane.showMessageDialog(this, "Pago registrado correctamente.");
+            if (pagoDAO.obtenerPagoPorReserva(idReserva) == null) {
+                boolean ok = pagoDAO.registrarPago(pago);
 
-                liberarHabitacion(idReserva);
+                if (ok) {
+                    JOptionPane.showMessageDialog(this, "Pago registrado correctamente.");
 
+                    // Instancia de ReservaDAO
+                    ReservaDAO reservaDAO = new ReservaDAO(conn);
+
+                    // Intentar liberar la(s) habitación(es) asociadas a esta reserva
+                    boolean habitacionLiberada = reservaDAO.liberarHabitacion(idReserva);
+
+                    if (habitacionLiberada) {
+
+                        JOptionPane.showMessageDialog(this, "Habitación liberada y disponible para nueva reserva.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Pago registrado, pero no se pudo liberar la habitación.");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo registrar el pago.");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "No se pudo registrar el pago.");
+                JOptionPane.showMessageDialog(this, "Ya existe un pago registrado para esta reserva.");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Ya existe un pago registrado para esta reserva.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al registrar el pago.");
         }
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al registrar pago.");
-    }
-
     }//GEN-LAST:event_Btn_RegistrarPagoActionPerformed
 
     private void Btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_BuscarActionPerformed

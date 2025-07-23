@@ -267,7 +267,7 @@ public class MenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIncidenciasActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        AdminReportes reportes1 = new AdminReportes();
+        AdminReportes reportes1 = new AdminReportes(gestor);
         reportes1.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();

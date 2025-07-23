@@ -62,22 +62,16 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnBuscarPago1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnBuscarInformacion" alignment="0" max="32767" attributes="0"/>
                       <Component id="lblBuscarOpc2" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="jLabel5" pref="172" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="jLabel5" min="-2" pref="106" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="BoxSeleccion" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="65" max="32767" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -87,22 +81,22 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblBuscarOpc2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblBuscarOpc2" min="-2" pref="32" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnBuscarPago1" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnBuscarInformacion" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="BoxSeleccion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="10" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnBuscarPago1">
+        <Component class="javax.swing.JButton" name="btnBuscarInformacion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -112,6 +106,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar Informaci&#xf3;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarInformacionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblBuscarOpc2">
           <Properties>
@@ -137,7 +134,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="Selecci"/>
+            <Property name="text" type="java.lang.String" value="Seleccione :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
@@ -154,13 +151,17 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="BoxSeleccion">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="EMPLEADOS"/>
-                <StringItem index="1" value="PAGOS"/>
-                <StringItem index="2" value="AREAS"/>
+              <StringArray count="7">
+                <StringItem index="0" value="Seleccionar"/>
+                <StringItem index="1" value="Empleados"/>
+                <StringItem index="2" value="&#xc1;reas"/>
+                <StringItem index="3" value="Contratos"/>
+                <StringItem index="4" value="Nominas"/>
+                <StringItem index="5" value="Incidencias"/>
+                <StringItem index="6" value="Jerarquia"/>
               </StringArray>
             </Property>
           </Properties>
@@ -184,30 +185,37 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jScrollPane1" pref="449" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <Component id="jScrollPane2" alignment="0" pref="448" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="txtContrato">
+            <Component class="javax.swing.JTable" name="TablaReportes">
               <Properties>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="- LISTA DE TODOS LOS EMPLEADOS"/>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="6" rowCount="6">
+                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 5" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 6" type="java.lang.Object"/>
+                  </Table>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

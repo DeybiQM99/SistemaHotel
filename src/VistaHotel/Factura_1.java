@@ -61,12 +61,12 @@ public class Factura_1 extends javax.swing.JFrame implements Bloqueable {
         modelo.setRowCount(0);
 
         String sql = """
-SELECT p.nombre AS nombre_servicio, dv.cantidad, (dv.precio_unitario * dv.cantidad) AS subtotal
-FROM Ventas v
-JOIN Detalle_Venta dv ON v.id_venta = dv.id_venta
-JOIN Productos p ON dv.id_producto = p.id_producto
-WHERE v.id_reserva = ?
-""";
+        SELECT p.nombre AS nombre_servicio, dv.cantidad, (dv.precio_unitario * dv.cantidad) AS subtotal
+        FROM Ventas v
+        JOIN Detalle_Venta dv ON v.id_venta = dv.id_venta
+        JOIN Productos p ON dv.id_producto = p.id_producto
+        WHERE v.id_reserva = ?
+        """;
 
         try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar(); PreparedStatement ps = conn.prepareStatement(sql)) {
 

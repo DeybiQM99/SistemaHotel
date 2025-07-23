@@ -323,7 +323,7 @@ public class AdminNominas extends javax.swing.JPanel {
                 .addGap(87, 87, 87))
         );
 
-        jPanel1.add(panelPagosEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, 193));
+        jPanel1.add(panelPagosEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, 193));
 
         panelPagosEmp1.setBackground(new java.awt.Color(0, 0, 0));
         panelPagosEmp1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mostrar Nomina", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N

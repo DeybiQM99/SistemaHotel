@@ -51,6 +51,7 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         mapaPaneles.put("11", Panel11);
         mapaPaneles.put("12", Panel12);
     }
+
     // Colección de tipo Map que asocia el número de habitación con su botón correspondiente
     private void inicializarMapaBotones() {
         mapaBotones.put("1", BtnReservar1);
@@ -141,8 +142,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         }
     }
 
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -586,25 +585,23 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         if (panel != null) {
             switch (estado.toLowerCase()) {
                 case "ocupado":
-                    panel.setBackground(Color.RED); // COLOR PARA OCUPADO
+                case "ocupada":  // <-- AÑADE ESTE CASE
+                    panel.setBackground(Color.RED);
                     if (boton != null) {
-                        if (boton != null) {
-                            boton.setEnabled(false); // 🔒 Desactiva
-
-                            boton.setForeground(Color.BLACK);
-                        }
+                        boton.setEnabled(false);
+                        boton.setForeground(Color.BLACK);
                     }
                     break;
                 case "limpieza":
-                    panel.setBackground(new Color(173, 216, 230)); // COLOR PARA LIMPIEZA CELESTE
+                    panel.setBackground(new Color(173, 216, 230)); // CELESTE
                     if (boton != null) {
-                        boton.setEnabled(true); // Activa si está en limpieza
+                        boton.setEnabled(true);
                     }
                     break;
                 default:
-                    panel.setBackground(Color.GREEN); // POR DEFECTO PARA DISPONIBLE VERDE 
+                    panel.setBackground(Color.GREEN);
                     if (boton != null) {
-                        boton.setEnabled(true); // Activa si está disponibl
+                        boton.setEnabled(true);
                     }
                     break;
             }
@@ -621,7 +618,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         Inscripcion ins = new Inscripcion(numero, tipo, precio, this); // <-- Aquí agregas 'this'
         ins.setVisible(true);
     }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

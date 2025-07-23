@@ -73,6 +73,7 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 60, 20));
 
         TxtNombre.setBackground(new java.awt.Color(17, 50, 77));
+        TxtNombre.setForeground(new java.awt.Color(255, 255, 255));
         TxtNombre.setBorder(null);
         add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 140, 20));
 
@@ -81,6 +82,7 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, 20));
 
         TxtCategoria.setBackground(new java.awt.Color(17, 50, 77));
+        TxtCategoria.setForeground(new java.awt.Color(255, 255, 255));
         TxtCategoria.setBorder(null);
         add(TxtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 116, 140, 20));
 
@@ -89,10 +91,12 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 50, 20));
 
         TxtPrecio.setBackground(new java.awt.Color(17, 50, 77));
+        TxtPrecio.setForeground(new java.awt.Color(255, 255, 255));
         TxtPrecio.setBorder(null);
         add(TxtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 140, 20));
 
         TxtCantidad.setBackground(new java.awt.Color(17, 50, 77));
+        TxtCantidad.setForeground(new java.awt.Color(255, 255, 255));
         TxtCantidad.setBorder(null);
         add(TxtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 140, 20));
 
@@ -141,6 +145,7 @@ public class Producto extends javax.swing.JPanel implements Limpiable {
         add(BtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 140, 40));
 
         TxtBuscar.setBackground(new java.awt.Color(17, 50, 77));
+        TxtBuscar.setForeground(new java.awt.Color(255, 255, 255));
         TxtBuscar.setBorder(null);
         add(TxtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 230, 20));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 750, 20));

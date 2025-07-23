@@ -49,7 +49,7 @@ public class EditarReserva extends javax.swing.JFrame {
         // RESERVA
         jDateChooserEntrada.setDate(java.sql.Date.valueOf(fechaEntrada));
         jDateChooserSalida.setDate(java.sql.Date.valueOf(fechaSalida));
-        TxtResPrecio.setText(precioTotal);
+      
 
         // Guardar variables para actualizar después
         dniGlobal = dni;
@@ -95,10 +95,7 @@ public class EditarReserva extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        TxtResPrecio = new javax.swing.JTextField();
-        jSeparator12 = new javax.swing.JSeparator();
         jSeparator13 = new javax.swing.JSeparator();
         jSeparator14 = new javax.swing.JSeparator();
         TxtDireccion = new javax.swing.JTextField();
@@ -113,6 +110,8 @@ public class EditarReserva extends javax.swing.JFrame {
         jDateChooserSalida = new com.toedter.calendar.JDateChooser();
         jDateChooserEntrada = new com.toedter.calendar.JDateChooser();
         CbEstado = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        TxtResPrecio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 440));
@@ -272,21 +271,10 @@ public class EditarReserva extends javax.swing.JFrame {
         jLabel15.setText("F. SALIDA");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, 30));
 
-        jLabel17.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("PRECIO");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, 30));
-
         jLabel18.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("F. ENTRADA");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, 30));
-
-        TxtResPrecio.setBackground(new java.awt.Color(17, 50, 77));
-        TxtResPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        TxtResPrecio.setBorder(null);
-        jPanel1.add(TxtResPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 170, 20));
-        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 170, 10));
         jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 170, -1));
         jPanel1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 170, 0));
 
@@ -327,6 +315,12 @@ public class EditarReserva extends javax.swing.JFrame {
 
         CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OCUPADO", " " }));
         jPanel1.add(CbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 170, -1));
+
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, -1, -1));
+
+        TxtResPrecio.setText("jTextField1");
+        jPanel1.add(TxtResPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 150, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
 
@@ -442,13 +436,13 @@ public class EditarReserva extends javax.swing.JFrame {
     private javax.swing.JTextField TxtTipoH;
     private com.toedter.calendar.JDateChooser jDateChooserEntrada;
     private com.toedter.calendar.JDateChooser jDateChooserSalida;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -466,7 +460,6 @@ public class EditarReserva extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;

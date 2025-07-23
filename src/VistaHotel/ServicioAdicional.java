@@ -24,7 +24,7 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         agregarListenerTabla();   //  ACTUALIZAR EL SUBTOTAL
 
     }
-    
+
     //SOBREESCRITURA PARA LIMPIAR DATOS
     @Override
     public void limpiarDatos() {
@@ -34,7 +34,8 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         TxtResDni.setText("");
         TxtResTelefono.setText("");
     }
-  //SOBREESCRITURA PARA BLOQUEAR CAMPOS DE NUESTRO JPANEL
+    //SOBREESCRITURA PARA BLOQUEAR CAMPOS DE NUESTRO JPANEL
+
     @Override
     public void bloquearCampos() {
         TxtResCliente.setEditable(false);
@@ -44,7 +45,6 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         TxtResTotalPago.setEditable(false);
         TxtResPrecio.setEditable(false);
     }
-    
 
     //METODO PARA CONECTAR LA BD DE LOS PRODUCTOS EN EL CBRESPRODUCTOS
     private void cargarProductos() {
@@ -79,7 +79,6 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         JtResMostrar = new javax.swing.JTable();
         TxtResPrecio = new javax.swing.JTextField();
         BtnResAgregar = new javax.swing.JButton();
-        JcResEstadoVenta = new javax.swing.JComboBox<>();
         TxtResCantidad = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -90,7 +89,6 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         jLabel12 = new javax.swing.JLabel();
         TxtResTotalPago = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
-        jSeparator14 = new javax.swing.JSeparator();
         jSeparator11 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
         jSeparator13 = new javax.swing.JSeparator();
@@ -103,10 +101,10 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         BtnResBuscar = new javax.swing.JButton();
         TxtResCliente = new javax.swing.JTextField();
         TxtResEliminar = new javax.swing.JButton();
+        JcResEstadoVenta = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -206,12 +204,6 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         });
         add(BtnResAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 240, 110, 30));
 
-        JcResEstadoVenta.setBackground(new java.awt.Color(17, 50, 77));
-        JcResEstadoVenta.setEditable(true);
-        JcResEstadoVenta.setForeground(new java.awt.Color(255, 255, 255));
-        JcResEstadoVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Cancelado" }));
-        add(JcResEstadoVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 170, 20));
-
         TxtResCantidad.setBackground(new java.awt.Color(17, 50, 77));
         TxtResCantidad.setForeground(new java.awt.Color(255, 255, 255));
         TxtResCantidad.setBorder(null);
@@ -257,7 +249,6 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         TxtResTotalPago.setBorder(null);
         add(TxtResTotalPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 170, 20));
         add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 170, 10));
-        add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 170, 10));
         add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 170, 10));
         add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 170, 10));
         add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 170, 10));
@@ -287,11 +278,6 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         jLabel15.setText("TOTAL A PAGAR");
         add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 380, 120, 30));
 
-        jLabel18.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("ESTADO DE VENTA");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 150, 20));
-
         BtnResBuscar.setBackground(new java.awt.Color(17, 50, 77));
         BtnResBuscar.setForeground(new java.awt.Color(255, 255, 255));
         BtnResBuscar.setText("BUSCAR");
@@ -316,6 +302,9 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
             }
         });
         add(TxtResEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 110, 30));
+
+        JcResEstadoVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente ", "Cancelado" }));
+        add(JcResEstadoVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 410, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void JcResProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcResProductoActionPerformed
@@ -401,7 +390,6 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
     }//GEN-LAST:event_TxtResEliminarActionPerformed
 
     private void BtnFinalizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFinalizarVentaActionPerformed
-
         String dniCliente = TxtResDni.getText().trim();
         String totalStr = TxtResTotalPago.getText().trim();
         String estadoVenta = (String) JcResEstadoVenta.getSelectedItem();
@@ -465,7 +453,8 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al guardar la venta: " + e.getMessage());
             e.printStackTrace();
-        }
+        
+    }
 
     }//GEN-LAST:event_BtnFinalizarVentaActionPerformed
 
@@ -618,7 +607,6 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -628,7 +616,6 @@ public class ServicioAdicional extends javax.swing.JPanel implements Limpiable, 
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
-    private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;

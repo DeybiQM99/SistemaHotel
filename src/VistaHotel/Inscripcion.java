@@ -155,7 +155,6 @@ public class Inscripcion extends javax.swing.JFrame implements Limpiable {
         BtnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
         setMinimumSize(new java.awt.Dimension(750, 440));
         setUndecorated(true);
         setResizable(false);
@@ -209,7 +208,7 @@ public class Inscripcion extends javax.swing.JFrame implements Limpiable {
                 BtnRegresar1MouseClicked(evt);
             }
         });
-        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 150, 40));
+        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, 150, 40));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -519,7 +518,7 @@ public class Inscripcion extends javax.swing.JFrame implements Limpiable {
 
             // Actualizar UI
             if (panelReservarHabitacion != null) {
-                panelReservarHabitacion.actualizarColorPanelPorEstado(numHabitacion, "Reservado"); // solo 1
+                panelReservarHabitacion.actualizarColorPanelPorEstado(numHabitacion, "Ocupada"); // solo 1
             }
             JOptionPane.showMessageDialog(null, "Habitación y reserva registradas correctamente.");
             this.dispose();

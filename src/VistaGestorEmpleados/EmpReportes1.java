@@ -68,7 +68,6 @@ public class EmpReportes1 extends javax.swing.JPanel {
         lblBuscarOpc2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtIdCampo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(17, 50, 77));
 
@@ -117,10 +116,6 @@ public class EmpReportes1 extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("ID:  ");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escritura.png"))); // NOI18N
-        jButton1.setText("Generar PDF");
-
         javax.swing.GroupLayout panelBusquedaContratoLayout = new javax.swing.GroupLayout(panelBusquedaContrato);
         panelBusquedaContrato.setLayout(panelBusquedaContratoLayout);
         panelBusquedaContratoLayout.setHorizontalGroup(
@@ -134,9 +129,7 @@ public class EmpReportes1 extends javax.swing.JPanel {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtIdCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(jButton1)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(282, Short.MAX_VALUE))
         );
         panelBusquedaContratoLayout.setVerticalGroup(
             panelBusquedaContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,8 +137,7 @@ public class EmpReportes1 extends javax.swing.JPanel {
                 .addGroup(panelBusquedaContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelBusquedaContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtIdCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1))
+                        .addComponent(txtIdCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelBusquedaContratoLayout.createSequentialGroup()
                         .addComponent(lblBuscarOpc2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -217,7 +209,6 @@ public class EmpReportes1 extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarPago1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

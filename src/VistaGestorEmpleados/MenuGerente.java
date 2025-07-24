@@ -13,7 +13,7 @@ public class MenuGerente extends javax.swing.JFrame {
     
     public MenuGerente(GestorEmpleados gestor) {
         initComponents();
-        
+           this.setLocationRelativeTo(null);
         this.gestor = gestor;
         
         Icon miIcono = new ImageIcon(new ImageIcon(getClass().getResource("/imagenes/logoHotelOscuro.jpg")).getImage().getScaledInstance(lbImagen.getWidth(), lbImagen.getHeight(), 0));
@@ -26,7 +26,7 @@ public class MenuGerente extends javax.swing.JFrame {
     }
     public MenuGerente() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         gestor = new GestorEmpleados();
         
         Icon miIcono = new ImageIcon(new ImageIcon(getClass().getResource("/imagenes/logoHotelOscuro.jpg")).getImage().getScaledInstance(lbImagen.getWidth(), lbImagen.getHeight(), 0));
@@ -55,6 +55,7 @@ public class MenuGerente extends javax.swing.JFrame {
         lbImagenFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panelPrincipal.setLayout(null);
 

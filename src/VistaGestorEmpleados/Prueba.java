@@ -1,6 +1,7 @@
 package VistaGestorEmpleados;
 
 import GestionEmpleados.GestorEmpleados;
+import VistaHotel.CargaInicio;
 import java.util.Scanner;
 
 public class Prueba {
@@ -8,8 +9,12 @@ public class Prueba {
     public static GestorEmpleados gestor = new GestorEmpleados();
     
     public static void main(String[] args) {
-        System.out.println("""
-                           Que menu ingresar?
+        
+        CargaInicio car = new CargaInicio();
+        car.setVisible(true);
+        
+        /*System.out.println("""
+                           Que menu ingresar?1
                            -> 1. Empleado
                            -> 2. Gerente""");
         
@@ -32,13 +37,13 @@ public class Prueba {
             MenuEmpleado menu = new MenuEmpleado(gestor);
 
             menu.setVisible(true);
-        } else {
+        } /*else {
             MenuGerente menu = new MenuGerente(gestor);
 
             menu.setVisible(true);
         }
         
         System.out.println("Menu generado...");
-    }
-
+    }*/
+}
 }

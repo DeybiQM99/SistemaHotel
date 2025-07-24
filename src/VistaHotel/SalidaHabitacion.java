@@ -51,7 +51,6 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
         TxtFechEntrada = new javax.swing.JTextField();
         BtnAlargarReserva = new javax.swing.JButton();
         BtnConfirmarSalida = new javax.swing.JButton();
-        BtnCancelarReserva = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
@@ -141,29 +140,18 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
                 BtnAlargarReservaMouseClicked(evt);
             }
         });
-        add(BtnAlargarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 170, 40));
+        add(BtnAlargarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 170, 40));
 
         BtnConfirmarSalida.setBackground(new java.awt.Color(17, 50, 77));
         BtnConfirmarSalida.setForeground(new java.awt.Color(255, 255, 255));
-        BtnConfirmarSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
+        BtnConfirmarSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConfUsuario.png"))); // NOI18N
         BtnConfirmarSalida.setText("CONFIRMAR SALIDA");
         BtnConfirmarSalida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnConfirmarSalidaMouseClicked(evt);
             }
         });
-        add(BtnConfirmarSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 180, 40));
-
-        BtnCancelarReserva.setBackground(new java.awt.Color(17, 50, 77));
-        BtnCancelarReserva.setForeground(new java.awt.Color(255, 255, 255));
-        BtnCancelarReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
-        BtnCancelarReserva.setText("CANCELAR RESERVA");
-        BtnCancelarReserva.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnCancelarReservaMouseClicked(evt);
-            }
-        });
-        add(BtnCancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 200, 40));
+        add(BtnConfirmarSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 180, 40));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 170, 20));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 170, 20));
         add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 170, 20));
@@ -286,19 +274,6 @@ public class SalidaHabitacion extends javax.swing.JPanel implements Bloqueable {
 
     }//GEN-LAST:event_BtnBuscarMouseClicked
 
-    private void BtnCancelarReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCancelarReservaMouseClicked
-        // TODO add your handling code here:
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_BtnCancelarReservaMouseClicked
-
     private void BtnConfirmarSalidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnConfirmarSalidaMouseClicked
         
       
@@ -313,7 +288,6 @@ this.setVisible(false);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAlargarReserva;
     private javax.swing.JButton BtnBuscar;
-    private javax.swing.JButton BtnCancelarReserva;
     private javax.swing.JButton BtnConfirmarSalida;
     private javax.swing.JLabel CLIENTE;
     private javax.swing.JLabel CLIENTE1;

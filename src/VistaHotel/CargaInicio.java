@@ -6,23 +6,23 @@ import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
 public class CargaInicio extends javax.swing.JFrame {
-
-    private JProgressBar progressBar; // Cambiado para usar progressBar
-    private int progreso = 0;
+    // Variables para la barra, progreso y el temporizador
+    private JProgressBar progressBar; // para referenciar la barra de progreso del formulario,
+    private int progreso = 0; // inicia en 0
     private Timer timer; // Para manejar la actualización del progreso
 
     public CargaInicio() {
         initComponents();
         this.setLocationRelativeTo(null); // centra el Jframe
 
-        // Asigna el progressBar a tu jProgressBar1
+        // Asigna el progressBar al jProgressBar1
         progressBar = jProgressBar1;
 
         // Configuración del Timer para actualizar la ProgressBar
-        timer = new Timer(50, new ActionListener() {
+        timer = new Timer(50, new ActionListener() { // cada 50 milisegundos
             @Override
             public void actionPerformed(ActionEvent e) {
-                progreso += 1; // Incrementa el valor de la variable 'progreso' en 1
+                progreso += 1; // Incrementa el valor  'progreso' en 1
                 progressBar.setValue(progreso); // Actualiza el valor de la ProgressBar
                 if (progreso >= 100) { // verifica si el progres bar a llegado al 100%
                     timer.stop();  //Si es así, detiene el Timer para que deje de ejecutarse
@@ -34,7 +34,7 @@ public class CargaInicio extends javax.swing.JFrame {
     }
 
     private void openNextForm() {
-        // INICIO
+     
         // Cierra el formulario actual
         this.dispose();
         // Crea y muestra el siguiente formulario

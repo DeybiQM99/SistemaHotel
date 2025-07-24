@@ -13,7 +13,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         LblModoRol.setVisible(true);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -186,7 +186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void lbGerenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbGerenteMouseClicked
 
-        if (!lbGerente.isEnabled()) {
+        if (!lbGerente.isEnabled()) { // si no esta activo simplemente no hara nada
             return;
         }
         this.dispose();
@@ -194,7 +194,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         MenuGerente reserwv = new MenuGerente();// Reemplaza con tu clase de formulario
         reserwv.setVisible(true); //  Hace visible la instancia. 
 
-        // ESTA MAL 
+  
     }//GEN-LAST:event_lbGerenteMouseClicked
 
     private void lbEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbEmpleadoMouseClicked
@@ -215,10 +215,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void BtnCrearUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCrearUsuarioMouseClicked
-    
+
         NuevoUsuario numUsu = new NuevoUsuario();
         numUsu.setVisible(true);
- this.dispose();
+        this.dispose();
 
     }//GEN-LAST:event_BtnCrearUsuarioMouseClicked
 
@@ -266,8 +266,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lbEmpleado.setEnabled(false);
         lbGerente.setEnabled(false);
         lbRecepcion.setEnabled(false);
-        switch (rol.toLowerCase()) {
-            case "gerente":
+        switch (rol.toLowerCase()) { // evaluamos el roll 
+            case "gerente": //  se dara el acceso a todos los modulos
                 lbRecepcion.setEnabled(true);
                 lbEmpleado.setEnabled(true);
                 lbGerente.setEnabled(true);
@@ -275,14 +275,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 LblModoRol.setText("GERENTE");
 
                 break;
-            case "recepcion":
+            case "recepcion": // solo mostrara recepcion
                 lbRecepcion.setEnabled(true);
                 lbEmpleado.setEnabled(false);
                 lbGerente.setEnabled(false);
                 BtnCrearUsuario.setVisible(false);
                 LblModoRol.setText("RECEPCIONISTA");
                 break;
-            case "rrhh":
+            case "rrhh": // solo rrhh
                 lbRecepcion.setEnabled(false);
                 lbEmpleado.setEnabled(true);
                 lbGerente.setEnabled(false);

@@ -2,12 +2,12 @@ package GestionReservas;
 
 public abstract class Habitacion {
 
-    private int idHabitacion; // AUTO_INCREMENT, PRIMARY KEY
-    private String numeroHabitacion; // VARCHAR(10), UNIQUE SSSSSSSSSSSSSS
-    private String tipo; // VARCHAR(50)sssssssssssssssssss
-    private String descripcion; // TEXT
-    private double precioPorNoche; // DECIMAL(10,2)SSSSSSSSSSSSSSSSSSSSSSSS
-    private String estado; // VARCHAR(50)SSSSSSSSSSSSSSSSSSS
+    private int idHabitacion; 
+    private String numeroHabitacion; 
+    private String tipo; 
+    private String descripcion; 
+    private double precioPorNoche; 
+    private String estado; 
 
     public Habitacion(int idHabitacion, String numeroHabitacion, String tipo, String descripcion, double precioPorNoche, String estado) {
         this.idHabitacion = idHabitacion;

@@ -5,9 +5,10 @@ import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 
 public class Reservacion extends javax.swing.JFrame {
+
     // Variable de instancia para guardar la instancia actual de ReservarHabitacion
     private ReservarHabitacion rh;
-    
+
     public Reservacion() {
         initComponents();
         this.setLocationRelativeTo(null); // centra el Jframe
@@ -142,8 +143,8 @@ public class Reservacion extends javax.swing.JFrame {
             Login log = new Login();
             log.setVisible(true);
         }
-        
-        
+
+
     }//GEN-LAST:event_BtnRegresarMouseClicked
 
     private void BtnReservacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservacionMouseClicked
@@ -167,11 +168,9 @@ public class Reservacion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnServicioAdicionalMouseClicked
 
     private void BtnSalidaHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnSalidaHabitacionMouseClicked
-        // TODO add your handling code here:
         SalidaHabitacion salidaPanel = new SalidaHabitacion();
         salidaPanel.setSize(750, 450);
         salidaPanel.setLocation(0, 0);
-      
         JpContent.removeAll();
         JpContent.add(salidaPanel, BorderLayout.CENTER);
         JpContent.revalidate();
@@ -179,17 +178,15 @@ public class Reservacion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnSalidaHabitacionMouseClicked
 
     private void BtnDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnDescripcionMouseClicked
-     
-          // TODO add your handling code here:
+
         DescripcionHabitacion DescHab = new DescripcionHabitacion();
         DescHab.setSize(750, 450);
         DescHab.setLocation(0, 0);
-      
         JpContent.removeAll();
         JpContent.add(DescHab, BorderLayout.CENTER);
         JpContent.revalidate();
         JpContent.repaint();
-        
+
     }//GEN-LAST:event_BtnDescripcionMouseClicked
 
 //Método para obtener la instancia actual de ReservarHabitacion

@@ -184,7 +184,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_LblCerrarMouseClicked
 
     private void BtnCambiarContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCambiarContraseñaMouseClicked
-        // Ir al formulario MenuPrincipal
+      
         CambioContraseña nuevoFormulario = new CambioContraseña();
         nuevoFormulario.setVisible(true);
         this.dispose();
@@ -195,7 +195,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtContraseñaActionPerformed
 
     private void TxtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtUsuarioKeyPressed
-        // TODO add your handling code here:
+ 
         // Verificar si se presionó la tecla Enter
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             // Verificar si el campo de texto está vacío
@@ -260,7 +260,7 @@ public class Login extends javax.swing.JFrame {
     private int intentos = 0; //Variable para controlar el intentos de accesos incorrectos
 
 // METODO VALIDAR INGRESO - INICIO
-    private void validarIngreso() {
+    private void validarIngreso() {  // Obtiene datos de los txt
         String usuario = TxtUsuario.getText();
         String contrasena = new String(TxtContraseña.getPassword());
 
@@ -268,7 +268,7 @@ public class Login extends javax.swing.JFrame {
         if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****")
          || usuario.isEmpty() || contrasena.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
-            return;
+            return;// Sale del método si faltan datos
         }
 
         try {
@@ -277,21 +277,22 @@ public class Login extends javax.swing.JFrame {
 
             // Consulta para obtener el rol del usuario
             String query = "SELECT rol FROM usuarios WHERE NombreUsuario = ? AND contrasena = ?";
+            // ejecutar sentencias de java .   preparara la consulta 
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, usuario);
+            statement.setString(1, usuario);  //Verifica si hay coincidencia
             statement.setString(2, contrasena);
 
             ResultSet resultSet = statement.executeQuery();
 
-            if (resultSet.next()) {
-                String rol = resultSet.getString("rol");
+            if (resultSet.next()) { // Si hay resultado, el usuario es válido
+                String rol = resultSet.getString("rol"); // Obtiene el rol del usuario
                 JOptionPane.showMessageDialog(this, "¡Acceso correcto como " + rol + "!");
-                intentos = 0;
-                // Instancia de ventana principal (objeto)
+                intentos = 0; 
+                      // Abre la ventana principal del sistema creando instancia de ese objeto 
                 VentanaPrincipal nuevoFormulario = new VentanaPrincipal();
-                // Asociación entre clases: se le pasa el rol para configurar accesos
+                   // Configura accesos según el rol del usuario 
                 nuevoFormulario.configurarAccesoPorRol(rol);
-                nuevoFormulario.setVisible(true);
+                nuevoFormulario.setVisible(true); // formulario vista principal
                 this.dispose();  // Cierra la ventana actual
 
             } else {
@@ -308,9 +309,9 @@ public class Login extends javax.swing.JFrame {
             }
 
             // Cierre de recursos
-            resultSet.close();
-            statement.close();
-            connection.close();
+            resultSet.close(); // liberar memoria
+            statement.close(); // no saturar el servidor 
+            connection.close(); // cierra la conexion 
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage());

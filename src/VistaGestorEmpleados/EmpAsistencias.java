@@ -145,7 +145,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 .addComponent(lblIDBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jDateBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         panelIdBuscarLayout.setVerticalGroup(
             panelIdBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +278,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCorreo3)
                     .addComponent(txtCorreoAsis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, 285));
@@ -295,7 +295,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
             .addGroup(panelAreasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblIdArea)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jDHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelAreasLayout.setVerticalGroup(
@@ -327,7 +327,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
                     .addComponent(lblArea))
                 .addGap(18, 18, 18)
                 .addGroup(panelAreas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMinEnt)
+                    .addComponent(txtMinEnt, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                     .addComponent(txtHoraEnt))
                 .addContainerGap())
         );
@@ -406,7 +406,7 @@ public class EmpAsistencias extends javax.swing.JPanel {
             panelRelojLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRelojLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbReloj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbReloj, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelRelojLayout.setVerticalGroup(

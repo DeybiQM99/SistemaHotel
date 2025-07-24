@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class EmpReportes extends javax.swing.JPanel {
+public class EmpReportes1 extends javax.swing.JPanel {
 
     private static GestorEmpleados gestor;
     private DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
     
-    public EmpReportes(GestorEmpleados gest) {
+    public EmpReportes1(GestorEmpleados gest) {
         initComponents();
         
         gestor = gest;
@@ -176,11 +176,6 @@ public class EmpReportes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarPago1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPago1ActionPerformed
-        if (txtReporteID.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el ID de empleado.");
-            return;
-        }
-        
         try {
             int id = Integer.parseInt(txtIdCampo.getText());
             Empleado emp = gestor.getEmpleado(id);
@@ -197,27 +192,23 @@ public class EmpReportes extends javax.swing.JPanel {
             info.append("Tarifa: S/ ").append(emp.getTarifaPorHora()).append(" por hora.\n");
             // Contratos
             info.append("Tipo Contrato: ").append(emp.getTipoContrato()).append("\n");
-            info.append("Fecha Ingreso: ").append(emp.getFechaIngreso().format(fmt)).append("\n");
+
+            if (emp.getFechaIngreso() != null) {
+                info.append("Fecha Ingreso: ").append(emp.getFechaIngreso().format(fmt)).append("\n");
+            } else {
+                info.append("Fecha Ingreso: No registrada\n");
+            }
+
             if (emp.getFechaTermino() != null) {
                 info.append("Fecha Término: ").append(emp.getFechaTermino().format(fmt)).append("\n");
             }
+
             if (emp.getFechaRenovacion() != null) {
                 info.append("Fecha Renovación: ").append(emp.getFechaRenovacion().format(fmt)).append("\n");
             }
-            // Información adicional según tipo
-            /*
-            if (emp instanceof Supervisor) {
-                Supervisor sup = (Supervisor) emp;
-                List<Integer> ops = sup.getListaOperarioIds();
-                info.append("Operarios a cargo: ").append(ops).append("\n");
-            } else if (emp instanceof Jefe) {
-                Jefe jefe = (Jefe) emp;
-                List<Integer> sups = jefe.getListaSupervisorIds();
-                info.append("Supervisores a cargo: ").append(sups).append("\n");
-            }
-            */
-            
+
             txtReporteID.setText(info.toString());
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error... Número inválido.");
         }

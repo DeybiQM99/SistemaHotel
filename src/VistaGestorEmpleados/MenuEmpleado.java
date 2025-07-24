@@ -202,7 +202,7 @@ public class MenuEmpleado extends javax.swing.JFrame {
 
     private void btnContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratosActionPerformed
         // Crear instancia del nuevo panel
-        EmpContrato sdf = new EmpContrato(gestor);
+        EmpContrato1 sdf = new EmpContrato1(gestor);
         sdf.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();
@@ -258,7 +258,7 @@ public class MenuEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAsistenciaActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        EmpReportes rpta = new EmpReportes(gestor);
+        EmpReportes1 rpta = new EmpReportes1(gestor);
         rpta.setPreferredSize(new Dimension(840, 600));
         
         panelContenido.removeAll();

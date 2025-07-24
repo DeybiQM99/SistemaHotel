@@ -6,16 +6,17 @@ package VistaGestorEmpleados;
 
 import GestionEmpleados.Empleado;
 import GestionEmpleados.GestorEmpleados;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
-public class EmpContrato extends javax.swing.JPanel {
+public class EmpContrato1 extends javax.swing.JPanel {
 
     public static GestorEmpleados gestor = new GestorEmpleados();
     private DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     
-    public EmpContrato(GestorEmpleados gestor) {
+    public EmpContrato1(GestorEmpleados gestor) {
         initComponents();
         this.gestor = gestor;
         
@@ -194,6 +195,11 @@ public class EmpContrato extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // Método auxiliar para evitar repetición y controlar nulos
+    private String formatearFecha(LocalDate fecha, DateTimeFormatter fmt) {
+        return (fecha != null) ? fecha.format(fmt) : "No registrada";
+    }
+    
     private void btnBuscarPago1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPago1ActionPerformed
         if (txtReporteID.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese el ID de empleado.");
@@ -203,16 +209,17 @@ public class EmpContrato extends javax.swing.JPanel {
             int id = Integer.parseInt(txtReporteID.getText());
             Empleado emp = gestor.getEmpleado(id);
             if (emp != null) {
-                // Dentro del btnBuscarPago1ActionPerformed...
                 StringBuilder c = new StringBuilder();
                 // Encabezado
                 c.append("CONTRATO DE TRABAJO\n");
                 c.append("Conste por el presente documento el Contrato de Trabajo que celebran de una parte EL EMPLEADOR, con RUC/DNI N.º [ ], con domicilio en [Dirección completa], a quien en adelante se denominará EL EMPLEADOR; y de la otra parte, \n")
                  .append(emp.getNombre()).append(", con DNI N.º \n")
                  .append(emp.getDni()).append(", domiciliado en [Dirección del trabajador], a quien en adelante se denominará EL TRABAJADOR, en los términos siguientes:\n");
+
                 // Cláusulas generales
                 c.append("\n\nPRIMERA: OBJETO DEL CONTRATO\n");
-                c.append("Por el presente contrato, EL EMPLEADOR contrata los servicios personales de EL TRABAJADOR, quien se obliga a prestar sus servicios bajo subordinación, realizando las funciones inherentes al cargo de ").append(emp.getClass().getSimpleName()).append(".\n");
+                c.append("Por el presente contrato, EL EMPLEADOR contrata los servicios personales de EL TRABAJADOR, quien se obliga a prestar sus servicios bajo subordinación, realizando las funciones inherentes al cargo de ")
+                 .append(emp.getClass().getSimpleName()).append(".\n");
 
                 c.append("\n\nSEGUNDA: LUGAR DE TRABAJO\n");
                 c.append("EL TRABAJADOR prestará sus servicios en el domicilio de EL EMPLEADOR o en el lugar que este designe dentro del ámbito organizacional.\n");
@@ -224,30 +231,31 @@ public class EmpContrato extends javax.swing.JPanel {
                 c.append("EL TRABAJADOR percibirá una tarifa de S/ ").append(emp.getTarifaPorHora()).append(" por hora, pagadera mensualmente.\n");
 
                 c.append("\n\nQUINTA: DURACIÓN DEL CONTRATO\n");
+
                 switch (emp.getTipoContrato()) {
                     case DISCAPACIDAD -> {
                         c.append("Modalidad: Indefinida con ajustes razonables para discapacidad.\n");
-                        c.append("Fecha Ingreso: ").append(emp.getFechaIngreso().format(fmt)).append("\n");
-                        c.append("Fecha Término: ").append(emp.getFechaTermino().format(fmt)).append("\n");
-                        c.append("Fecha Renovación: ").append(emp.getFechaRenovacion().format(fmt)).append("\n");
+                        c.append("Fecha Ingreso: ").append(formatearFecha(emp.getFechaIngreso(), fmt)).append("\n");
+                        c.append("Fecha Término: ").append(formatearFecha(emp.getFechaTermino(), fmt)).append("\n");
+                        c.append("Fecha Renovación: ").append(formatearFecha(emp.getFechaRenovacion(), fmt)).append("\n");
                         c.append("CLAUSULA ESPECIAL (Discapacidad): EL EMPLEADOR se compromete a realizar ajustes de accesibilidad y proporcionar asistencia técnica personalizada para facilitar el desempeño del TRABAJADOR.\n");
                     }
                     case INDEFINIDO -> {
                         c.append("Modalidad: Contrato a plazo indefinido, sin fecha de término ni renovación.\n");
-                        c.append("Fecha Ingreso: ").append(emp.getFechaIngreso().format(fmt)).append("\n");
+                        c.append("Fecha Ingreso: ").append(formatearFecha(emp.getFechaIngreso(), fmt)).append("\n");
                         c.append("CLAUSULA ESPECIAL (Indefinido): EL EMPLEADOR garantiza estabilidad laboral, con revisión anual de desempeño y ajuste salarial conforme a la inflación.\n");
                     }
                     case RENOVABLE -> {
                         c.append("Modalidad: Contrato a plazo renovable automáticamente.\n");
-                        c.append("Fecha Ingreso: ").append(emp.getFechaIngreso().format(fmt)).append("\n");
-                        c.append("Fecha Término: ").append(emp.getFechaTermino().format(fmt)).append("\n");
-                        c.append("Fecha Renovación: ").append(emp.getFechaRenovacion().format(fmt)).append("\n");
+                        c.append("Fecha Ingreso: ").append(formatearFecha(emp.getFechaIngreso(), fmt)).append("\n");
+                        c.append("Fecha Término: ").append(formatearFecha(emp.getFechaTermino(), fmt)).append("\n");
+                        c.append("Fecha Renovación: ").append(formatearFecha(emp.getFechaRenovacion(), fmt)).append("\n");
                         c.append("CLAUSULA ESPECIAL (Renovable): EL TRABAJADOR podrá solicitar un aumento de tarifa al momento de la renovación, sujeto a evaluación de desempeño.\n");
                     }
                     case TEMPORAL -> {
                         c.append("Modalidad: Contrato a plazo fijo.\n");
-                        c.append("Fecha Ingreso: ").append(emp.getFechaIngreso().format(fmt)).append("\n");
-                        c.append("Fecha Término: ").append(emp.getFechaTermino().format(fmt)).append("\n");
+                        c.append("Fecha Ingreso: ").append(formatearFecha(emp.getFechaIngreso(), fmt)).append("\n");
+                        c.append("Fecha Término: ").append(formatearFecha(emp.getFechaTermino(), fmt)).append("\n");
                         c.append("CLAUSULA ESPECIAL (Temporal): EL TRABAJADOR recibirá una gratificación proporcional al tiempo trabajado al final del contrato.\n");
                     }
                     case DESPEDIDO -> {
@@ -257,6 +265,7 @@ public class EmpContrato extends javax.swing.JPanel {
                     }
                     default -> c.append("ERROR: Tipo de contrato no válido.\n");
                 }
+
                 // Cláusulas finales
                 c.append("\n\nSEXTA: OBLIGACIONES DEL TRABAJADOR\n");
                 c.append("Cumplir las directivas, desempeñar funciones con responsabilidad y respetar normas internas.\n");
@@ -274,7 +283,7 @@ public class EmpContrato extends javax.swing.JPanel {
                 c.append("\n\n\n\n\n\n\n\n");
                 c.append("_________________________  _________________________\n");
                 c.append("EL EMPLEADOR              EL TRABAJADOR\n");
-                c.append(emp.getNombre()).append("");
+                c.append(emp.getNombre());
 
                 txtContrato.setText(c.toString());
             } else {

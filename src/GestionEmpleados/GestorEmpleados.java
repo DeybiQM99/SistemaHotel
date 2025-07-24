@@ -29,7 +29,7 @@ private static final String FILE_AREAS = "data/areas.dat";
     public GestorEmpleados(Set<Empleado> misEmpleados, Set<Area> misAreas, List<RegistroPago> misRegistros) {
         this.misEmpleados = misEmpleados != null ? misEmpleados : new HashSet<>();
         this.misAreas = misAreas != null ? misAreas : new HashSet<>();
-        this.misRegistros = misRegistros != null ? misRegistros : new ArrayList<>();
+        this.misRegistros = misRegistros != null ? misRegistros : new ArrayList<>(); 
     }
 
     // Cargar datos
@@ -68,7 +68,7 @@ private static final String FILE_AREAS = "data/areas.dat";
     }
 
     // ===============================
-    // IMPORTACIÓN CSV (SUPERFICIAL)
+    // IMPORTACIÓN CSV
     // ===============================
     public void importEmpleadosCSV(String path) {
         File file = new File(path);

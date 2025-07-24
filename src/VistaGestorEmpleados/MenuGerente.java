@@ -301,7 +301,7 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnJerarquiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJerarquiasActionPerformed
         // TODO add your handling code here:
-        AdminJerarquias AdminJerarquias = new AdminJerarquias();
+        AdminJerarquias AdminJerarquias = new AdminJerarquias(gestor);
         AdminJerarquias.setPreferredSize(new Dimension(830,600));
 
         panelContenido.removeAll();

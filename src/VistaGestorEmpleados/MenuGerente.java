@@ -50,7 +50,6 @@ public class MenuGerente extends javax.swing.JFrame {
         btnIncidencias = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
-        btnJerarquias = new javax.swing.JButton();
         btnAreas = new javax.swing.JButton();
         panelContenido = new javax.swing.JPanel();
         lbImagenFondo = new javax.swing.JLabel();
@@ -127,16 +126,6 @@ public class MenuGerente extends javax.swing.JFrame {
             }
         });
 
-        btnJerarquias.setBackground(new java.awt.Color(17, 50, 77));
-        btnJerarquias.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
-        btnJerarquias.setForeground(new java.awt.Color(255, 255, 255));
-        btnJerarquias.setText("Jerarquias");
-        btnJerarquias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJerarquiasActionPerformed(evt);
-            }
-        });
-
         btnAreas.setBackground(new java.awt.Color(17, 50, 77));
         btnAreas.setFont(new java.awt.Font("Segoe UI Black", 3, 16)); // NOI18N
         btnAreas.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,7 +148,6 @@ public class MenuGerente extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnJerarquias, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIncidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNominas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,12 +170,10 @@ public class MenuGerente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnIncidencias)
                 .addGap(18, 18, 18)
-                .addComponent(btnJerarquias)
-                .addGap(18, 18, 18)
                 .addComponent(btnReportes)
                 .addGap(18, 18, 18)
                 .addComponent(btnAreas)
-                .addGap(35, 35, 35)
+                .addGap(82, 82, 82)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -299,17 +285,6 @@ public class MenuGerente extends javax.swing.JFrame {
         panelContenido.repaint();
     }//GEN-LAST:event_btnContratoActionPerformed
 
-    private void btnJerarquiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJerarquiasActionPerformed
-        // TODO add your handling code here:
-        AdminJerarquias AdminJerarquias = new AdminJerarquias(gestor);
-        AdminJerarquias.setPreferredSize(new Dimension(830,600));
-
-        panelContenido.removeAll();
-        panelContenido.add(AdminJerarquias,BorderLayout.CENTER);
-        panelContenido.revalidate();
-        panelContenido.repaint();
-    }//GEN-LAST:event_btnJerarquiasActionPerformed
-
     private void btnAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasActionPerformed
     AdminAreas AdminAreasdds = new AdminAreas(gestor);
         AdminAreasdds.setPreferredSize(new Dimension(830,600));
@@ -324,7 +299,6 @@ public class MenuGerente extends javax.swing.JFrame {
     private javax.swing.JButton btnAreas;
     private javax.swing.JButton btnContrato;
     private javax.swing.JButton btnIncidencias;
-    private javax.swing.JButton btnJerarquias;
     private javax.swing.JButton btnNominas;
     private javax.swing.JButton btnPersonal;
     private javax.swing.JButton btnReportes;

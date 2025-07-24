@@ -17,13 +17,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jokan5443
  */
-public class AdminJerarquias extends javax.swing.JPanel {
+public class AdminJerarquias1 extends javax.swing.JPanel {
 
 GestorEmpleados gestor; 
-    public AdminJerarquias(GestorEmpleados gestor) {
+    public AdminJerarquias1(GestorEmpleados gestor) {
         
         initComponents();
         
+        this.gestor = gestor;
     }
 
     /**
